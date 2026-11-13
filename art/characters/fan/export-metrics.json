@@ -1,0 +1,45 @@
+{
+  "ok": true,
+  "skins": 1,
+  "joints": 23,
+  "materials": 2,
+  "textures": 1,
+  "max_bind_matrix_error": 2.980232238769531e-07,
+  "extensions": [
+    "KHR_draco_mesh_compression"
+  ],
+  "characters": [
+    {
+      "id": "fan_f1",
+      "max_position_error_m": 1.4991088619353832e-06,
+      "max_weight_error": 5.960464477539063e-08,
+      "uniform_vertex_color": "white",
+      "max_uv_error": 7.62939453125e-06,
+      "uv_layers": 1
+    },
+    {
+      "id": "fan_f2",
+      "max_position_error_m": 1.5840513469811413e-06,
+      "max_weight_error": 5.960464477539063e-08,
+      "uniform_vertex_color": "white",
+      "max_uv_error": 7.62939453125e-06,
+      "uv_layers": 1
+    },
+    {
+      "id": "fan_m1",
+      "max_position_error_m": 1.5874458085818333e-06,
+      "max_weight_error": 5.960464477539063e-08,
+      "uniform_vertex_color": "white",
+      "max_uv_error": 7.62939453125e-06,
+      "uv_layers": 1
+    },
+    {
+      "id": "fan_m2",
+      "max_position_error_m": 1.4972562212278717e-06,
+      "max_weight_error": 5.960464477539063e-08,
+      "uniform_vertex_color": "white",
+      "max_uv_error": 7.62939453125e-06,
+      "uv_layers": 1
+    }
+  ]
+}

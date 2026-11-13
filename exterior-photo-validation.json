@@ -1,0 +1,17 @@
+{
+  "scene": "Barclays Photo Exterior Final",
+  "lod_triangles": {
+    "LOD0": 61472,
+    "LOD1": 31374,
+    "LOD2": 22124,
+    "LOD3": 3333
+  },
+  "finite": true,
+  "boundary_edges": 0,
+  "nonmanifold_edges": 0,
+  "limitations": [
+    "Single photograph; unsurveyed proportions and unseen geometry approximate",
+    "Logo is simplified silhouette",
+    "No engine import, GPU timing or runtime LOD switching validated"
+  ]
+}

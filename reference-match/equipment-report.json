@@ -1,0 +1,33 @@
+{
+  "reused": [
+    "REF_Reused_Monitor_housing__black",
+    "REF_Reused_Monitor_pixels__cyan",
+    "REF_Reused_Monitor_stand__steel",
+    "REF_Reused_Keyboard__black",
+    "REF_Reused_Keyboard_keys__silver",
+    "REF_Reused_Mousepad__black",
+    "REF_Reused_Player_PC__black",
+    "REF_Reused_PC_LED__cyan",
+    "REF_Reused_Player_chair__black",
+    "REF_Reused_Player_chair_back__blue",
+    "REF_Reused_Chair_pedestal__silver",
+    "REF_Reused_Chair_base__steel",
+    "REF_Reused_InteriorDetail_Monitor_vents__steel",
+    "REF_Reused_InteriorDetail_Monitor_bezel_screws__silver",
+    "REF_Reused_InteriorDetail_Monitor_status__whiteLED",
+    "REF_Reused_InteriorDetail_Monitor_foot__steel",
+    "REF_Reused_InteriorDetail_Mouse__black",
+    "REF_Reused_InteriorDetail_Mouse_split__silver",
+    "REF_Reused_InteriorDetail_Mouse_lead__black",
+    "REF_Reused_InteriorDetail_Headset_cups__black",
+    "REF_Reused_InteriorDetail_Headset_accents__blue",
+    "REF_Reused_InteriorDetail_Headset_band__steel",
+    "REF_Reused_InteriorDetail_PC_grille__steel",
+    "REF_Reused_InteriorDetail_PC_corner_rails__silver",
+    "REF_Reused_InteriorDetail_Chair_bolsters__black",
+    "REF_Reused_InteriorDetail_Chair_piping__ivory",
+    "REF_Reused_InteriorDetail_Chair_casters__black"
+  ],
+  "players": 10,
+  "fan_lightsticks": 0
+}

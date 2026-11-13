@@ -1,0 +1,64 @@
+{
+  "ok": true,
+  "contact": [
+    {
+      "clip": "Emote_CheerClap",
+      "frames": 91,
+      "collisions": []
+    },
+    {
+      "clip": "Emote_Heart",
+      "frames": 109,
+      "collisions": []
+    }
+  ],
+  "clap": [
+    {
+      "id": "fan_f1",
+      "frame": 32,
+      "gap_m": 0.0010714830132201314
+    },
+    {
+      "id": "fan_f2",
+      "frame": 32,
+      "gap_m": 0.0010714830132201314
+    },
+    {
+      "id": "fan_m1",
+      "frame": 32,
+      "gap_m": 0.0017429845174774528
+    },
+    {
+      "id": "fan_m2",
+      "frame": 32,
+      "gap_m": 0.0017429845174774528
+    }
+  ],
+  "stance": [
+    {
+      "clip": "Walk",
+      "speed_mps": 4,
+      "stance_frames": [
+        0,
+        6
+      ],
+      "sample_step_frames": 0.125,
+      "drift_m": 0.0007216056847417706
+    },
+    {
+      "clip": "Run",
+      "speed_mps": 8,
+      "stance_frames": [
+        0,
+        4
+      ],
+      "sample_step_frames": 0.125,
+      "drift_m": 0.00331802553034433
+    }
+  ],
+  "egg_release_velocity_blender_mps": [
+    0.45312702655792236,
+    -1.8274953365325928,
+    -1.6043651103973389
+  ]
+}

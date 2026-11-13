@@ -1,0 +1,28 @@
+{
+  "saved": "D:\\Blender\\Blender\\barclays-worlds-2026\\barclays-worlds-2026.blend",
+  "save_result": [
+    "FINISHED"
+  ],
+  "file_bytes": 67147532,
+  "camera": "REF_Camera_Front",
+  "resolution": [
+    1600,
+    900,
+    100
+  ],
+  "samples": 128,
+  "packed_fonts": [
+    "Arial Bold",
+    "Arial Bold.001",
+    "Arial Bold.002"
+  ],
+  "reviewed_views": [
+    "Front",
+    "East",
+    "Rear",
+    "Top (cutaway)"
+  ],
+  "players": 10,
+  "audience": 12392,
+  "lightsticks": 6197
+}

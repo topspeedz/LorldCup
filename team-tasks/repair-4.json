@@ -1,0 +1,380 @@
+[
+  {
+    "name": "Walk_Stage_steps__black",
+    "before": {
+      "vertices": 1024,
+      "edges": 1536,
+      "faces": 768,
+      "triangles": 1536,
+      "boundary": 0,
+      "nonmanifold": 0,
+      "inconsistent": 0,
+      "degenerate": 128,
+      "finite": true,
+      "signed_volume": -361.76599376411843,
+      "bounds": [
+        [
+          -16.0,
+          -16.0,
+          -10.0
+        ],
+        [
+          16.0,
+          16.0,
+          -9.550000190734863
+        ]
+      ]
+    },
+    "after": {
+      "vertices": 258,
+      "edges": 640,
+      "faces": 384,
+      "triangles": 512,
+      "boundary": 0,
+      "nonmanifold": 0,
+      "inconsistent": 0,
+      "degenerate": 0,
+      "finite": true,
+      "signed_volume": 361.7659937641183,
+      "bounds": [
+        [
+          -16.0,
+          -16.0,
+          -10.0
+        ],
+        [
+          16.0,
+          16.0,
+          -9.550000190734863
+        ]
+      ]
+    },
+    "internal_faces_removed": 384,
+    "degenerate_faces_removed": 128,
+    "material_slots": [
+      "black"
+    ],
+    "uv_layers": [
+      "ShaderUV"
+    ],
+    "uv_values_retained": true,
+    "modifiers": [],
+    "verified_evaluated_triangles": 512,
+    "verified_component_vertex_counts": [
+      258
+    ]
+  },
+  {
+    "name": "Walk_Stage_steps__ivory",
+    "before": {
+      "vertices": 2048,
+      "edges": 3072,
+      "faces": 1536,
+      "triangles": 3072,
+      "boundary": 0,
+      "nonmanifold": 0,
+      "inconsistent": 0,
+      "degenerate": 256,
+      "finite": true,
+      "signed_volume": -636.6233699869508,
+      "bounds": [
+        [
+          -15.5,
+          -15.5,
+          -9.550000190734863
+        ],
+        [
+          15.5,
+          15.5,
+          -8.199999809265137
+        ]
+      ]
+    },
+    "after": {
+      "vertices": 516,
+      "edges": 1280,
+      "faces": 768,
+      "triangles": 1024,
+      "boundary": 0,
+      "nonmanifold": 0,
+      "inconsistent": 0,
+      "degenerate": 0,
+      "finite": true,
+      "signed_volume": 636.6233699869508,
+      "bounds": [
+        [
+          -15.5,
+          -15.5,
+          -9.550000190734863
+        ],
+        [
+          15.5,
+          15.5,
+          -8.199999809265137
+        ]
+      ]
+    },
+    "internal_faces_removed": 768,
+    "degenerate_faces_removed": 256,
+    "material_slots": [
+      "ivory"
+    ],
+    "uv_layers": [
+      "ShaderUV"
+    ],
+    "uv_values_retained": true,
+    "modifiers": [],
+    "verified_evaluated_triangles": 1024,
+    "verified_component_vertex_counts": [
+      258,
+      258
+    ]
+  },
+  {
+    "name": "Walk_Stage_steps__blue",
+    "before": {
+      "vertices": 2048,
+      "edges": 3072,
+      "faces": 1536,
+      "triangles": 3072,
+      "boundary": 0,
+      "nonmanifold": 0,
+      "inconsistent": 0,
+      "degenerate": 256,
+      "finite": true,
+      "signed_volume": -594.9361591440467,
+      "bounds": [
+        [
+          -15.0,
+          -15.0,
+          -9.100000381469727
+        ],
+        [
+          15.0,
+          15.0,
+          -7.75
+        ]
+      ]
+    },
+    "after": {
+      "vertices": 516,
+      "edges": 1280,
+      "faces": 768,
+      "triangles": 1024,
+      "boundary": 0,
+      "nonmanifold": 0,
+      "inconsistent": 0,
+      "degenerate": 0,
+      "finite": true,
+      "signed_volume": 594.9361591440467,
+      "bounds": [
+        [
+          -15.0,
+          -15.0,
+          -9.100000381469727
+        ],
+        [
+          15.0,
+          15.0,
+          -7.75
+        ]
+      ]
+    },
+    "internal_faces_removed": 768,
+    "degenerate_faces_removed": 256,
+    "material_slots": [
+      "blue"
+    ],
+    "uv_layers": [
+      "ShaderUV"
+    ],
+    "uv_values_retained": true,
+    "modifiers": [],
+    "verified_evaluated_triangles": 1024,
+    "verified_component_vertex_counts": [
+      258,
+      258
+    ]
+  },
+  {
+    "name": "Stage_LED__cyan",
+    "before": {
+      "vertices": 5120,
+      "edges": 7680,
+      "faces": 3840,
+      "triangles": 7680,
+      "boundary": 0,
+      "nonmanifold": 0,
+      "inconsistent": 0,
+      "degenerate": 0,
+      "finite": true,
+      "signed_volume": -2.258021219701915,
+      "bounds": [
+        [
+          -16.020000457763672,
+          -16.020000457763672,
+          -9.609999656677246
+        ],
+        [
+          16.020000457763672,
+          16.020000457763672,
+          -7.75
+        ]
+      ]
+    },
+    "after": {
+      "vertices": 2560,
+      "edges": 5120,
+      "faces": 2560,
+      "triangles": 5120,
+      "boundary": 0,
+      "nonmanifold": 0,
+      "inconsistent": 0,
+      "degenerate": 0,
+      "finite": true,
+      "signed_volume": 2.258021219702051,
+      "bounds": [
+        [
+          -16.020000457763672,
+          -16.020000457763672,
+          -9.609999656677246
+        ],
+        [
+          16.020000457763672,
+          16.020000457763672,
+          -7.75
+        ]
+      ]
+    },
+    "internal_faces_removed": 1280,
+    "degenerate_faces_removed": 0,
+    "material_slots": [
+      "cyan"
+    ],
+    "uv_layers": [],
+    "uv_values_retained": true,
+    "modifiers": [],
+    "verified_evaluated_triangles": 5120,
+    "verified_component_vertex_counts": [
+      512,
+      512,
+      512,
+      512,
+      512
+    ]
+  },
+  {
+    "name": "Walk_Stage__ivory",
+    "before": {
+      "vertices": 121,
+      "faces": 120,
+      "triangles": 120,
+      "boundary": 120,
+      "bounds": [
+        [
+          -14.0,
+          -14.0,
+          -7.75
+        ],
+        [
+          14.0,
+          14.0,
+          -7.75
+        ]
+      ]
+    },
+    "after": {
+      "vertices": 242,
+      "faces": 360,
+      "triangles": 480,
+      "boundary": 0,
+      "nonmanifold": 0,
+      "inconsistent": 0,
+      "finite": true,
+      "signed_volume": 1.2308524695281695,
+      "bounds": [
+        [
+          -14.0,
+          -14.0,
+          -7.75
+        ],
+        [
+          14.0,
+          14.0,
+          -7.748000144958496
+        ]
+      ]
+    },
+    "modifier": "TA4 close exposed stage finish",
+    "thickness": 0.002,
+    "offset": 1.0,
+    "uv_layers": [
+      "ShaderUV"
+    ],
+    "material_slots": [
+      "ivory"
+    ],
+    "base_mesh_unchanged": true,
+    "verified_evaluated_triangles": 480,
+    "verified_component_vertex_counts": [
+      242
+    ]
+  },
+  {
+    "name": "Stage_inlay__blue",
+    "before": {
+      "vertices": 121,
+      "faces": 120,
+      "triangles": 120,
+      "boundary": 120,
+      "bounds": [
+        [
+          -11.5,
+          -11.5,
+          -7.730000019073486
+        ],
+        [
+          11.5,
+          11.5,
+          -7.730000019073486
+        ]
+      ]
+    },
+    "after": {
+      "vertices": 242,
+      "faces": 360,
+      "triangles": 480,
+      "boundary": 0,
+      "nonmanifold": 0,
+      "inconsistent": 0,
+      "finite": true,
+      "signed_volume": 7.475196918060055,
+      "bounds": [
+        [
+          -11.5,
+          -11.5,
+          -7.748000144958496
+        ],
+        [
+          11.5,
+          11.5,
+          -7.730000019073486
+        ]
+      ]
+    },
+    "modifier": "TA4 close exposed stage finish",
+    "thickness": 0.018,
+    "offset": -1.0,
+    "uv_layers": [
+      "ShaderUV"
+    ],
+    "material_slots": [
+      "blue"
+    ],
+    "base_mesh_unchanged": true,
+    "verified_evaluated_triangles": 480,
+    "verified_component_vertex_counts": [
+      242
+    ]
+  }
+]

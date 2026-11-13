@@ -1,0 +1,106 @@
+{
+  "Audience_heads__crowd0": {
+    "tris": 37840,
+    "boundary": 0,
+    "nonmanifold": 0,
+    "bad_winding": 0,
+    "finite": true,
+    "volume": 13.001738347095458
+  },
+  "Audience_heads__crowd1": {
+    "tris": 36780,
+    "boundary": 0,
+    "nonmanifold": 0,
+    "bad_winding": 0,
+    "finite": true,
+    "volume": 12.63752750100005
+  },
+  "Audience_heads__crowd2": {
+    "tris": 37420,
+    "boundary": 0,
+    "nonmanifold": 0,
+    "bad_winding": 0,
+    "finite": true,
+    "volume": 12.857427460551149
+  },
+  "Audience_heads__crowd3": {
+    "tris": 37360,
+    "boundary": 0,
+    "nonmanifold": 0,
+    "bad_winding": 0,
+    "finite": true,
+    "volume": 12.836816398215511
+  },
+  "Audience_heads__crowd4": {
+    "tris": 36880,
+    "boundary": 0,
+    "nonmanifold": 0,
+    "bad_winding": 0,
+    "finite": true,
+    "volume": 12.671885650401096
+  },
+  "Audience_torsos__crowd0": {
+    "tris": 29712,
+    "boundary": 0,
+    "nonmanifold": 0,
+    "bad_winding": 0,
+    "finite": true,
+    "volume": 132.27781795878673
+  },
+  "Audience_torsos__crowd1": {
+    "tris": 29784,
+    "boundary": 0,
+    "nonmanifold": 0,
+    "bad_winding": 0,
+    "finite": true,
+    "volume": 132.5983423832036
+  },
+  "Audience_torsos__crowd2": {
+    "tris": 30108,
+    "boundary": 0,
+    "nonmanifold": 0,
+    "bad_winding": 0,
+    "finite": true,
+    "volume": 134.04082272435937
+  },
+  "Audience_torsos__crowd3": {
+    "tris": 29328,
+    "boundary": 0,
+    "nonmanifold": 0,
+    "bad_winding": 0,
+    "finite": true,
+    "volume": 130.56827416327084
+  },
+  "Audience_torsos__crowd4": {
+    "tris": 29772,
+    "boundary": 0,
+    "nonmanifold": 0,
+    "bad_winding": 0,
+    "finite": true,
+    "volume": 132.54496531317332
+  },
+  "Seat_armrests__steel": {
+    "tris": 465216,
+    "boundary": 0,
+    "nonmanifold": 0,
+    "bad_winding": 0,
+    "finite": true,
+    "volume": 49.04156923221908
+  },
+  "Seats__seat": {
+    "tris": 406968,
+    "boundary": 0,
+    "nonmanifold": 0,
+    "bad_winding": 0,
+    "finite": true,
+    "volume": 1187.967370947985
+  },
+  "Seats__seat2": {
+    "tris": 58248,
+    "boundary": 0,
+    "nonmanifold": 0,
+    "bad_winding": 0,
+    "finite": true,
+    "volume": 153.17283344241727
+  }
+}

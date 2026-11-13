@@ -1,0 +1,164 @@
+
+> test
+> playwright test
+
+
+Running 40 tests using 1 worker
+
+(node:82572) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+T23 crowd geometry: {"instances":38,"positiveTransforms":true,"upperTriangles":1174660,"lowerTriangles":842428,"upperCount":7919,"lowerCount":4473,"removedUpper":true,"counters":{"x":-139,"y":-0.02,"z":0,"walking":false,"airborne":false,"drawCalls":1945,"triangles":10982564},"resources":{"geometries":1081,"textures":82},"textures":[{"from":[512,512],"to":[128,128]},{"from":[512,512],"to":[128,128]},{"from":[512,512],"to":[128,128]},{"from":[512,512],"to":[128,128]},{"from":[512,512],"to":[128,128]}]}
+  ok  1 tests\crowd.spec.mjs:19:1 › upper spectators use simpler instances and retain the lower crowd (14.8s)
+  ok  2 tests\crowd.spec.mjs:66:1 › video audio ducks crowd volume to 30 percent and restores it (7.1s)
+  ok  3 tests\crowd.spec.mjs:110:1 › far maps are smaller and the opposite sector follows the camera (190ms)
+  ok  4 tests\crowd.spec.mjs:130:1 › the rendered upper pose freezes between cheers and the far shader samples the reduced map (300ms)
+  ok  5 tests\crowd.spec.mjs:179:1 › dispose releases new resources, keeps source textures and detaches the screen listener (168ms)
+  ok  6 tests\environment.spec.mjs:21:1 › night settings retain the approved stars, moon direction and west shoreline (4ms)
+T24 world/render evidence: {"before":0.017999999225139618,"skyIntensity":0.009,"stars":3000,"moonPixels":4,"starPixels":1046,"seaPixels":28800,"seaHorizonPixels":320,"moonlightPixels":1617,"coastX":-179.49999999999997,"shorelineRegistered":true,"direction":[-0.7093867062176871,0.5735892510381524,0.40959232431176296],"lightIntensity":0.012,"world":[{"name":"CityGround__sidewalk","min":[-290,-0.5899999737739563,-268.65176010131836],"max":[310,-0.2901645004749298,248.76197290420532]},{"name":"CityRoads__road","min":[-180,-0.2800000011920929,-179.09938323497772],"max":[220,-0.20980951189994812,179.11033679095817]},{"name":"Walk_Plaza","min":[-180,-0.019999999552965164,-119.3977986574173],"max":[150,-0.019999999552965164,119.4085396528244]}],"counters":{"drawCalls":1855,"triangles":10952924,"geometries":1082,"textures":83}}
+  ok  7 tests\environment.spec.mjs:36:1 › night sky, stars, moon and west sea render in the real arena (12.7s)
+T24 lifecycle evidence: {"cycles":[{"walkingX":-179.49999999999997,"jumpingX":-179.49999999999997,"sideways":true,"blocked":true,"passesWithoutBlocker":true,"outsideIntensity":0.012,"insideIntensity":0,"released":9,"resources":9,"blockers":0,"restored":0.018,"remaining":0},{"walkingX":-179.49999999999997,"jumpingX":-179.49999999999997,"sideways":true,"blocked":true,"passesWithoutBlocker":true,"outsideIntensity":0.012,"insideIntensity":0,"released":9,"resources":9,"blockers":0,"restored":0.018,"remaining":0},{"walkingX":-179.49999999999997,"jumpingX":-179.49999999999997,"sideways":true,"blocked":true,"passesWithoutBlocker":true,"outsideIntensity":0.012,"insideIntensity":0,"released":9,"resources":9,"blockers":0,"restored":0.018,"remaining":0}]}
+  ok  8 tests\environment.spec.mjs:115:1 › shoreline blocks walking and jumping, while moonlight and resources follow lifecycle (9.4s)
+  ok  9 tests\gpu-lock.spec.mjs:9:1 › acquire then release frees the lock (9ms)
+  ok 10 tests\gpu-lock.spec.mjs:17:1 › a second owner waits and fails after the wait limit (314ms)
+  ok 11 tests\gpu-lock.spec.mjs:24:1 › a second owner gets the lock once it is released (141ms)
+  ok 12 tests\gpu-lock.spec.mjs:32:1 › only the owner can release (10ms)
+  x  13 tests\modules.spec.mjs:36:1 › module and config files match the architecture and approved defaults (24ms)
+(node:78192) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+T11 render counters: {
+  drawCalls: 1945,
+  triangles: 10982564,
+  geometries: 1081,
+  textures: 82
+}
+  ok 14 tests\modules.spec.mjs:69:1 › registry, lifecycle, ctx and window.arena retain the architecture contract (15.5s)
+  ok 15 tests\modules.spec.mjs:104:1 › player hooks preserve teleport, movement locks, invisible blockers and camera reset (8.0s)
+  ok 16 tests\modules.spec.mjs:143:1 › configured actions ignore typing and repeats; capsule acknowledges emotes once (8.6s)
+  ok 17 tests\multiplayer.spec.mjs:32:1 › room creation offers the last 2, the just-started and the next 2 rounds, default just-started; pose rules unchanged (11.2s)
+  ok 18 tests\multiplayer.spec.mjs:58:1 › invite URL joins the same room and round; state, peer:state and nameplates flow; host leaving is announced (23.4s)
+  ok 19 tests\multiplayer.spec.mjs:112:1 › the 17th person sees "방이 가득 찼습니다(16명)" at once, not a timeout (25.3s)
+  ok 20 tests\regression.spec.mjs:8:3 › verify-tps.mjs (32.4s)
+  ok 21 tests\regression.spec.mjs:8:3 › verify-jump.mjs (20.4s)
+  ok 22 tests\screen-video.spec.mjs:82:1 › roundPosition keeps the selected room round, including future starts and the end boundary (336ms)
+  ok 23 tests\screen-video.spec.mjs:88:1 › a room joined before the arena finishes loading supplies the initial round and start URL (231ms)
+  ok 24 tests\screen-video.spec.mjs:95:1 › VOD uses start, room join seeks the same iframe, drift corrects every five seconds, live never seeks (10.3s)
+  ok 25 tests\screen-video.spec.mjs:116:1 › CSS3D matches the projected 16:9 aperture, switches faces, and hides overlapping app DOM (330ms)
+  ok 26 tests\screen-video.spec.mjs:142:1 › small, mostly clipped and hidden views stop playback and restore the poster; returning resynchronizes (653ms)
+  ok 27 tests\screen-video.spec.mjs:162:1 › video IDs and channel live URLs stay in the official player; entry and volume use its audio API (316ms)
+  ok 28 tests\screen-video.spec.mjs:175:1 › VOD end, embed rejection, unavailable broadcasts and autoplay blocking keep original materials and show a notice (273ms)
+  ok 29 tests\screen-video.spec.mjs:195:1 › missing source and a failed official API request produce a poster and useful notice (200ms)
+  ok 30 tests\screen-video.spec.mjs:205:1 › a stream that stalls after playing times out to the poster without repeated play attempts (15.2s)
+  ok 31 tests\screen-video.spec.mjs:217:1 › Full Mode keeps the iframe, enables pointer controls, leaves zero app overlap and restores on exit/dispose (236ms)
+T13 external evidence: {"source":"vod","screen":{"source":"vod","playing":true,"time":407.8549398989105,"muted":true,"status":"playing","error":null},"face":"REF_Jumbotron_0","metrics":{"x":-139,"y":-0.02,"z":0,"walking":false,"airborne":false,"drawCalls":1165,"triangles":10412940,"geometries":1082,"textures":82},"playerErrors":[],"failedRequests":[],"errors":[]}
+T13 external evidence: {"source":"live","screen":{"source":"live","playing":true,"time":0.06614209727478026,"muted":true,"status":"playing","error":null},"face":"REF_Jumbotron_0","metrics":{"x":-139,"y":-0.02,"z":0,"walking":false,"airborne":false,"drawCalls":1165,"triangles":10412940,"geometries":1082,"textures":82},"playerErrors":[],"failedRequests":[{"url":"https://www.youtube.com/api/timedtext?v=EacB7ADMGpY&ei=2WD1ap_GDeOqpt8PrvXQwQk&caps=asr&opi=112496729&xoaf=5&xowf=1&xospf=1&hl=en&ip=0.0.0.0&ipbits=0&expire=1794491209&sparams=ip%2Cipbits%2Cexpire%2Cv%2Cei%2Ccaps%2Copi%2Cxoaf&signature=25872D4E3D2DBA1A543FA90AF5EECADDBF751E59.866418A280BF4FDA8449C4E118ABDB7AEC1CA71E&key=yt8&kind=asr&lang=ko&fmt=json3&xorb=2&xobt=3&xovt=3&cbr=HeadlessChrome&cbrver=158.0.0.0&c=WEB_EMBEDDED_PLAYER&cver=2.20261110.07.00&cplayer=UNIPLAYER&cos=Windows&cosver=10.0&cplatform=DESKTOP","error":"net::ERR_ABORTED"}],"errors":[]}
+  ok 32 tests\screen-video.spec.mjs:242:1 › real arena and official YouTube player play the supplied VOD and inspect the supplied live source (9.0s)
+  ok 33 tests\seat.spec.mjs:23:1 › seat settings provide surveyed seats and the approved seated camera (2ms)
+T18 empty front-row survey: {"count":71,"samples":[{"position":[-25.9406650197221,-9.9,-11.497822133077882],"cushionY":-9.44006633758545,"nearest":0.5881564568352079,"approach":[-24.84359946539455,-10,-11.011563796894341]},{"position":[-26.36908355497679,-9.9,-11.041549648793977],"cushionY":-9.440073013305664,"nearest":0.6639990771612014,"approach":[-25.262204143547994,-10,-10.578065055139517]},{"position":[-27.548354536837447,-9.9,-9.630038828888173],"cushionY":-9.44006633758545,"nearest":0.5644050764552857,"approach":[-26.415572208255792,-10,-9.234053733141979]},{"position":[-29.145609520485007,-9.9,-7.154184904580656],"cushionY":-9.440073013305664,"nearest":0.6085506086919044,"approach":[-27.980205202557077,-10,-6.868120618527791]},{"position":[-30.260369089126566,-9.9,-4.5598959407815505],"cushionY":-9.44006633758545,"nearest":0.5284517878484968,"approach":[-29.07376562099225,-10,-4.381088196509613]},{"position":[-30.4236530802079,-9.9,4.030578742630554],"cushionY":-9.44006633758545,"nearest":0.5625271545576549,"approach":[-29.23404730177467,-10,3.872977689593872]}]}
+  ok 34 tests\seat.spec.mjs:33:1 › configured seats are empty lower-bowl cushions with a walkable approach (12.7s)
+  x  35 tests\seat.spec.mjs:85:1 › E and the seat button sit, enlarge the screen, and restore movement on E or a movement key (30.1s)
+(node:57068) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 36 tests\smoke.spec.mjs:3:1 › arena loads and becomes ready with no page errors (13.7s)
+  ok 37 tests\ticket.spec.mjs:29:1 › barrier sits on the first entrance opening from the config and blocks the opening, the side glass and jumps (8.7s)
+  ok 38 tests\ticket.spec.mjs:53:1 › ticket window opens within the prompt distance only (7.2s)
+  ok 39 tests\ticket.spec.mjs:63:1 › no ticket with only a team or only an emote: entrance and move buttons stay blocked, arena.go is not (14.5s)
+  ok 40 tests\ticket.spec.mjs:80:1 › cheer button opens the emote menu; team plus one emote issues a team-colour card, then entry opens; reload starts over (17.0s)
+
+
+  1) tests\modules.spec.mjs:36:1 › module and config files match the architecture and approved defaults 
+
+    Error: expect(received).toMatchObject(expected)
+
+    - Expected  - 5
+    + Received  + 5
+
+    @@ -1,15 +1,15 @@
+      Object {
+        "barrier": Object {
+    -     "x": -95.6,
+    +     "x": -107.2,
+          "y": Array [
+    -       0,
+    -       8.2,
+    +       -0.02,
+    +       2.9675,
+          ],
+          "z": Array [
+    -       -12.4,
+    -       12.4,
+    +       -5.79,
+    +       6.7175,
+          ],
+        },
+        "guardLocations": Array [
+          "lobby",
+          "arena",
+
+      59 |   expect(config('environment')).toMatchObject({ stars: { count: 3000 }, moon: { elevationDegrees: 35 }, sea: { boundaryX: -180 } });
+      60 |   expect(config('sky-show')).toMatchObject({ beams: { count: 3, periodSeconds: 8, angleDegrees: 25, opacity: 0.055 }, fireworks: { intervalSeconds: [20, 40], count: [1, 3] } });
+    > 61 |   expect(config('ticket')).toMatchObject({ barrier: { x: -95.6, z: [-12.4, 12.4], y: [0, 8.2] }, promptDistance: 3, guardLocations: ['lobby', 'arena'] });
+         |                            ^
+      62 |   expect(config('seats')).toMatchObject({ seats: expect.any(Array), camera: { fov: 45, target: 'screen', height: 'eye' } });
+      63 |   expect(config('stage-monitors')).toMatchObject({ source: 'generated', path: null });
+      64 |   expect(config('stage-players')).toMatchObject({ intervalSeconds: [3, 8], shoutProbability: 0.1 });
+        at D:\Projects\lorldcup-metaverse\tests\modules.spec.mjs:61:28
+
+    Error Context: test-results\modules-module-and-config--66be1-cture-and-approved-defaults\error-context.md
+
+  2) tests\seat.spec.mjs:85:1 › E and the seat button sit, enlarge the screen, and restore movement on E or a movement key 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.click: Test timeout of 30000ms exceeded.
+    Browser logs:
+
+    <launching> C:\Users\SPeeD\AppData\Local\ms-playwright\chromium-1254\chrome-win64\chrome.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,HttpsUpgrades,HttpsFirstBalancedModeAutoEnable,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,AvoidCorsURLLoaderRestartOnRedirect,TcpPortRandomizationWin,OptimizationHints,NetworkTimeServiceQuerying,AimEnabled,PreconnectToSearch,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface,SkipListAccountsWithoutGaiaCookies --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --enable-unsafe-swiftshader --edge-skip-compat-layer-relaunch --disable-stack-profiler --disable-infobars --disable-sync --do-not-de-elevate --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=C:\Users\SPeeD\AppData\Local\Temp\playwright_chromiumdev_profile-NYiNeD --remote-debugging-pipe --no-startup-window
+    <launched> pid=63408
+    [pid=63408][err] [63408:55340:1112/154551.337:ERROR:chrome\browser\ui\views\user_education\impl\browser_user_education_interface_impl.cc:186] Attempting to show IPH IPH_ExtensionsZeroStatePromo before browser initialization complete; IPH will not be shown.
+    [pid=63408] <gracefully close start>
+    Call log:
+      - waiting for getByRole('button', { name: '앉기', exact: true })
+        - locator resolved to <button type="button" id="seat-toggle" aria-pressed="false" aria-keyshortcuts="E">앉기</button>
+      - attempting click action
+        2 × waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - performing click action
+          - <canvas width="1280" height="720" data-engine="three.js r170"></canvas> intercepts pointer events
+        - retrying click action
+        - waiting 20ms
+        2 × waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - performing click action
+          - <canvas width="1280" height="720" data-engine="three.js r170"></canvas> intercepts pointer events
+        - retrying click action
+          - waiting 100ms
+        30 × waiting for element to be visible, enabled and stable
+           - element is visible, enabled and stable
+           - scrolling into view if needed
+           - done scrolling
+           - performing click action
+           - <canvas width="1280" height="720" data-engine="three.js r170"></canvas> intercepts pointer events
+         - retrying click action
+           - waiting 500ms
+        - waiting for element to be visible, enabled and stable
+
+
+      131 |   expect(await page.evaluate(() => arena.camera.position.y)).toBeCloseTo(config.seats[0].position[1] + config.camera.eyeHeight);
+      132 |   expect(await screenArea()).toBeGreaterThan(standingArea);
+    > 133 |   expect(await page.evaluate(() => seatProbe.events.at(-1))).toMatchObject({ type: 'seat:enter', detail: { seatId: config.seats[0].id } });
+          |                ^
+      134 |   const seated = await page.evaluate(() => arena.player.toArray());
+      135 |   await page.keyboard.press('Space');
+      136 |   expect(await page.evaluate(() => arena.player.toArray())).toEqual(seated);
+        at D:\Projects\lorldcup-metaverse\tests\seat.spec.mjs:133:16
+
+    Error Context: test-results\seat-E-and-the-seat-button-38bd6-ment-on-E-or-a-movement-key\error-context.md
+
+  2 failed
+    tests\modules.spec.mjs:36:1 › module and config files match the architecture and approved defaults 
+    tests\seat.spec.mjs:85:1 › E and the seat button sit, enlarge the screen, and restore movement on E or a movement key 
+  38 passed (22.5m)

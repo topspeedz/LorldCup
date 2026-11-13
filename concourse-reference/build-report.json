@@ -1,0 +1,52 @@
+{
+  "rows": 21,
+  "existing_concession_rows": 19,
+  "main_entry_rows": 2,
+  "source_mesh_objects": 89,
+  "source_triangles": 42184,
+  "source_lights": 8,
+  "atlas_size": [
+    1254,
+    1254
+  ],
+  "archived_objects": [
+    "Concession_title",
+    "Concession_title.001",
+    "Concession_title.002",
+    "Concession_title.003",
+    "Concession_title.004",
+    "Concession_title.005",
+    "Concession_title.006",
+    "Concession_title.007",
+    "Concession_title.008",
+    "Concession_title.009",
+    "Concession_title.010",
+    "Concession_title.011",
+    "Concession_title.012",
+    "Concession_title.013",
+    "Concession_title.014",
+    "Concession_title.015",
+    "Concession_title.016",
+    "Concession_title.017",
+    "Concession_title.018",
+    "Collide_Concession__wood",
+    "Kiosk_fascia__black",
+    "Counter__silver",
+    "Menu_board__blue"
+  ],
+  "material_only_objects": [
+    "Walk_Concourse__concrete",
+    "Walk_Atrium__concrete",
+    "Walk_EntryBridge__concrete",
+    "Collide_Columns__concrete",
+    "Collide_LobbyColumns__steel",
+    "Atrium_ceiling__wood"
+  ],
+  "cameras": [
+    "CCR_OriginalView",
+    "CCR_ReverseView",
+    "CCR_CounterView",
+    "CCR_RingView",
+    "CCR_CutawayView"
+  ]
+}

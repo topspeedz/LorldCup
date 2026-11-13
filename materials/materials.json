@@ -1,0 +1,170 @@
+{
+  "concrete": {
+    "family": "concrete",
+    "tile": [
+      2,
+      2
+    ],
+    "metal": 0
+  },
+  "paving": {
+    "family": "paving",
+    "tile": [
+      4,
+      4
+    ],
+    "metal": 0
+  },
+  "asphalt": {
+    "family": "asphalt",
+    "tile": [
+      2,
+      2
+    ],
+    "metal": 0
+  },
+  "steel": {
+    "family": "steel",
+    "tile": [
+      1,
+      1
+    ],
+    "metal": 0.82
+  },
+  "silver": {
+    "family": "silver",
+    "tile": [
+      0.6,
+      0.6
+    ],
+    "metal": 0.92
+  },
+  "seat": {
+    "family": "seat",
+    "tile": [
+      0.45,
+      0.45
+    ],
+    "metal": 0.02
+  },
+  "seat2": {
+    "family": "seat",
+    "tile": [
+      0.45,
+      0.45
+    ],
+    "metal": 0.02
+  },
+  "wood": {
+    "family": "wood",
+    "tile": [
+      3,
+      0.5
+    ],
+    "metal": 0
+  },
+  "glass": {
+    "family": "glass",
+    "tile": [
+      3,
+      3
+    ],
+    "metal": 0.18
+  },
+  "ivory": {
+    "family": "stage",
+    "tile": [
+      3,
+      3
+    ],
+    "metal": 0.12
+  },
+  "blue": {
+    "family": "stage",
+    "tile": [
+      3,
+      3
+    ],
+    "metal": 0.12
+  },
+  "black": {
+    "family": "black",
+    "tile": [
+      2,
+      2
+    ],
+    "metal": 0.18
+  },
+  "green": {
+    "family": "green",
+    "tile": [
+      4,
+      4
+    ],
+    "metal": 0
+  },
+  "corten0": {
+    "family": "corten",
+    "tile": [
+      2,
+      2
+    ],
+    "metal": 0.32
+  },
+  "corten1": {
+    "family": "corten",
+    "tile": [
+      2,
+      2
+    ],
+    "metal": 0.32
+  },
+  "corten2": {
+    "family": "corten",
+    "tile": [
+      2,
+      2
+    ],
+    "metal": 0.32
+  },
+  "corten3": {
+    "family": "corten",
+    "tile": [
+      2,
+      2
+    ],
+    "metal": 0.32
+  },
+  "corten4": {
+    "family": "corten",
+    "tile": [
+      2,
+      2
+    ],
+    "metal": 0.32
+  },
+  "corten5": {
+    "family": "corten",
+    "tile": [
+      2,
+      2
+    ],
+    "metal": 0.32
+  },
+  "corten6": {
+    "family": "corten",
+    "tile": [
+      2,
+      2
+    ],
+    "metal": 0.32
+  },
+  "corten7": {
+    "family": "corten",
+    "tile": [
+      2,
+      2
+    ],
+    "metal": 0.32
+  }
+}

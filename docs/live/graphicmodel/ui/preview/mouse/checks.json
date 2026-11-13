@@ -1,0 +1,1046 @@
+{
+ "d-first": [
+  {
+   "check": "방송 카드 inside viewport",
+   "ok": true
+  },
+  {
+   "check": "상영 시각 inside viewport",
+   "ok": true
+  },
+  {
+   "check": "들어가기 inside viewport",
+   "ok": true
+  },
+  {
+   "check": "방송 카드 × 들어가기 no overlap",
+   "ok": true
+  },
+  {
+   "check": "상영 시각 × 들어가기 no overlap",
+   "ok": true
+  },
+  {
+   "check": "all targets ≥ 24×24",
+   "ok": true
+  },
+  {
+   "check": "one accent button",
+   "ok": true
+  }
+ ],
+ "m-first": [
+  {
+   "check": "방송 카드 inside viewport",
+   "ok": true
+  },
+  {
+   "check": "상영 시각 inside viewport",
+   "ok": true
+  },
+  {
+   "check": "들어가기 inside viewport",
+   "ok": true
+  },
+  {
+   "check": "방송 카드 × 들어가기 no overlap",
+   "ok": true
+  },
+  {
+   "check": "상영 시각 × 들어가기 no overlap",
+   "ok": true
+  },
+  {
+   "check": "all targets ≥ 24×24",
+   "ok": true
+  },
+  {
+   "check": "one accent button",
+   "ok": true
+  }
+ ],
+ "d-invite": [
+  {
+   "check": "들어가기 inside viewport",
+   "ok": true
+  },
+  {
+   "check": "all targets ≥ 24×24",
+   "ok": true
+  },
+  {
+   "check": "one accent button",
+   "ok": true
+  }
+ ],
+ "m-invite": [
+  {
+   "check": "들어가기 inside viewport",
+   "ok": true
+  },
+  {
+   "check": "all targets ≥ 24×24",
+   "ok": true
+  },
+  {
+   "check": "one accent button",
+   "ok": true
+  }
+ ],
+ "d-walk": [
+  {
+   "check": "다음 할 일 inside viewport",
+   "ok": true
+  },
+  {
+   "check": "키 힌트 inside viewport",
+   "ok": true
+  },
+  {
+   "check": "설정 묶음 inside viewport",
+   "ok": true
+  },
+  {
+   "check": "감정표현 inside viewport",
+   "ok": true
+  },
+  {
+   "check": "Full Mode inside viewport",
+   "ok": true
+  },
+  {
+   "check": "다음 할 일 × 키 힌트 no overlap",
+   "ok": true
+  },
+  {
+   "check": "다음 할 일 × 설정 묶음 no overlap",
+   "ok": true
+  },
+  {
+   "check": "다음 할 일 × 감정표현 no overlap",
+   "ok": true
+  },
+  {
+   "check": "다음 할 일 × Full Mode no overlap",
+   "ok": true
+  },
+  {
+   "check": "키 힌트 × 설정 묶음 no overlap",
+   "ok": true
+  },
+  {
+   "check": "키 힌트 × 감정표현 no overlap",
+   "ok": true
+  },
+  {
+   "check": "키 힌트 × Full Mode no overlap",
+   "ok": true
+  },
+  {
+   "check": "설정 묶음 × 감정표현 no overlap",
+   "ok": true
+  },
+  {
+   "check": "설정 묶음 × Full Mode no overlap",
+   "ok": true
+  },
+  {
+   "check": "감정표현 × Full Mode no overlap",
+   "ok": true
+  },
+  {
+   "check": "all targets ≥ 24×24",
+   "ok": true
+  },
+  {
+   "check": "one accent button",
+   "ok": true
+  }
+ ],
+ "m-walk": [
+  {
+   "check": "다음 할 일 inside viewport",
+   "ok": true
+  },
+  {
+   "check": "설정 묶음 inside viewport",
+   "ok": true
+  },
+  {
+   "check": "감정표현 inside viewport",
+   "ok": true
+  },
+  {
+   "check": "Full Mode inside viewport",
+   "ok": true
+  },
+  {
+   "check": "방향 버튼 inside viewport",
+   "ok": true
+  },
+  {
+   "check": "다음 할 일 × 설정 묶음 no overlap",
+   "ok": true
+  },
+  {
+   "check": "다음 할 일 × 감정표현 no overlap",
+   "ok": true
+  },
+  {
+   "check": "다음 할 일 × Full Mode no overlap",
+   "ok": true
+  },
+  {
+   "check": "다음 할 일 × 방향 버튼 no overlap",
+   "ok": true
+  },
+  {
+   "check": "설정 묶음 × 감정표현 no overlap",
+   "ok": true
+  },
+  {
+   "check": "설정 묶음 × Full Mode no overlap",
+   "ok": true
+  },
+  {
+   "check": "설정 묶음 × 방향 버튼 no overlap",
+   "ok": true
+  },
+  {
+   "check": "감정표현 × Full Mode no overlap",
+   "ok": true
+  },
+  {
+   "check": "감정표현 × 방향 버튼 no overlap",
+   "ok": true
+  },
+  {
+   "check": "Full Mode × 방향 버튼 no overlap",
+   "ok": true
+  },
+  {
+   "check": "all targets ≥ 24×24",
+   "ok": true
+  },
+  {
+   "check": "one accent button",
+   "ok": true
+  }
+ ],
+ "d-copied": [
+  {
+   "check": "키 힌트 inside viewport",
+   "ok": true
+  },
+  {
+   "check": "설정 묶음 inside viewport",
+   "ok": true
+  },
+  {
+   "check": "복사 안내 inside viewport",
+   "ok": true
+  },
+  {
+   "check": "감정표현 inside viewport",
+   "ok": true
+  },
+  {
+   "check": "Full Mode inside viewport",
+   "ok": true
+  },
+  {
+   "check": "키 힌트 × 설정 묶음 no overlap",
+   "ok": true
+  },
+  {
+   "check": "키 힌트 × 복사 안내 no overlap",
+   "ok": true
+  },
+  {
+   "check": "키 힌트 × 감정표현 no overlap",
+   "ok": true
+  },
+  {
+   "check": "키 힌트 × Full Mode no overlap",
+   "ok": true
+  },
+  {
+   "check": "설정 묶음 × 복사 안내 no overlap",
+   "ok": true
+  },
+  {
+   "check": "설정 묶음 × 감정표현 no overlap",
+   "ok": true
+  },
+  {
+   "check": "설정 묶음 × Full Mode no overlap",
+   "ok": true
+  },
+  {
+   "check": "복사 안내 × 감정표현 no overlap",
+   "ok": true
+  },
+  {
+   "check": "복사 안내 × Full Mode no overlap",
+   "ok": true
+  },
+  {
+   "check": "감정표현 × Full Mode no overlap",
+   "ok": true
+  },
+  {
+   "check": "all targets ≥ 24×24",
+   "ok": true
+  },
+  {
+   "check": "one accent button",
+   "ok": true
+  }
+ ],
+ "m-copied": [
+  {
+   "check": "설정 묶음 inside viewport",
+   "ok": true
+  },
+  {
+   "check": "복사 안내 inside viewport",
+   "ok": true
+  },
+  {
+   "check": "감정표현 inside viewport",
+   "ok": true
+  },
+  {
+   "check": "Full Mode inside viewport",
+   "ok": true
+  },
+  {
+   "check": "방향 버튼 inside viewport",
+   "ok": true
+  },
+  {
+   "check": "설정 묶음 × 복사 안내 no overlap",
+   "ok": true
+  },
+  {
+   "check": "설정 묶음 × 감정표현 no overlap",
+   "ok": true
+  },
+  {
+   "check": "설정 묶음 × Full Mode no overlap",
+   "ok": true
+  },
+  {
+   "check": "설정 묶음 × 방향 버튼 no overlap",
+   "ok": true
+  },
+  {
+   "check": "복사 안내 × 감정표현 no overlap",
+   "ok": true
+  },
+  {
+   "check": "복사 안내 × Full Mode no overlap",
+   "ok": true
+  },
+  {
+   "check": "복사 안내 × 방향 버튼 no overlap",
+   "ok": true
+  },
+  {
+   "check": "감정표현 × Full Mode no overlap",
+   "ok": true
+  },
+  {
+   "check": "감정표현 × 방향 버튼 no overlap",
+   "ok": true
+  },
+  {
+   "check": "Full Mode × 방향 버튼 no overlap",
+   "ok": true
+  },
+  {
+   "check": "all targets ≥ 24×24",
+   "ok": true
+  },
+  {
+   "check": "one accent button",
+   "ok": true
+  }
+ ],
+ "d-near-seat": [
+  {
+   "check": "키 힌트 inside viewport",
+   "ok": true
+  },
+  {
+   "check": "설정 묶음 inside viewport",
+   "ok": true
+  },
+  {
+   "check": "앉기 inside viewport",
+   "ok": true
+  },
+  {
+   "check": "감정표현 inside viewport",
+   "ok": true
+  },
+  {
+   "check": "Full Mode inside viewport",
+   "ok": true
+  },
+  {
+   "check": "키 힌트 × 설정 묶음 no overlap",
+   "ok": true
+  },
+  {
+   "check": "키 힌트 × 앉기 no overlap",
+   "ok": true
+  },
+  {
+   "check": "키 힌트 × 감정표현 no overlap",
+   "ok": true
+  },
+  {
+   "check": "키 힌트 × Full Mode no overlap",
+   "ok": true
+  },
+  {
+   "check": "설정 묶음 × 앉기 no overlap",
+   "ok": true
+  },
+  {
+   "check": "설정 묶음 × 감정표현 no overlap",
+   "ok": true
+  },
+  {
+   "check": "설정 묶음 × Full Mode no overlap",
+   "ok": true
+  },
+  {
+   "check": "앉기 × 감정표현 no overlap",
+   "ok": true
+  },
+  {
+   "check": "앉기 × Full Mode no overlap",
+   "ok": true
+  },
+  {
+   "check": "감정표현 × Full Mode no overlap",
+   "ok": true
+  },
+  {
+   "check": "all targets ≥ 24×24",
+   "ok": true
+  },
+  {
+   "check": "one accent button",
+   "ok": true
+  }
+ ],
+ "m-near-seat": [
+  {
+   "check": "설정 묶음 inside viewport",
+   "ok": true
+  },
+  {
+   "check": "앉기 inside viewport",
+   "ok": true
+  },
+  {
+   "check": "감정표현 inside viewport",
+   "ok": true
+  },
+  {
+   "check": "Full Mode inside viewport",
+   "ok": true
+  },
+  {
+   "check": "방향 버튼 inside viewport",
+   "ok": true
+  },
+  {
+   "check": "설정 묶음 × 앉기 no overlap",
+   "ok": true
+  },
+  {
+   "check": "설정 묶음 × 감정표현 no overlap",
+   "ok": true
+  },
+  {
+   "check": "설정 묶음 × Full Mode no overlap",
+   "ok": true
+  },
+  {
+   "check": "설정 묶음 × 방향 버튼 no overlap",
+   "ok": true
+  },
+  {
+   "check": "앉기 × 감정표현 no overlap",
+   "ok": true
+  },
+  {
+   "check": "앉기 × Full Mode no overlap",
+   "ok": true
+  },
+  {
+   "check": "앉기 × 방향 버튼 no overlap",
+   "ok": true
+  },
+  {
+   "check": "감정표현 × Full Mode no overlap",
+   "ok": true
+  },
+  {
+   "check": "감정표현 × 방향 버튼 no overlap",
+   "ok": true
+  },
+  {
+   "check": "Full Mode × 방향 버튼 no overlap",
+   "ok": true
+  },
+  {
+   "check": "all targets ≥ 24×24",
+   "ok": true
+  },
+  {
+   "check": "one accent button",
+   "ok": true
+  }
+ ],
+ "d-seated": [
+  {
+   "check": "키 힌트 inside viewport",
+   "ok": true
+  },
+  {
+   "check": "설정 묶음 inside viewport",
+   "ok": true
+  },
+  {
+   "check": "복사 안내 inside viewport",
+   "ok": true
+  },
+  {
+   "check": "알림 inside viewport",
+   "ok": true
+  },
+  {
+   "check": "감정표현 inside viewport",
+   "ok": true
+  },
+  {
+   "check": "일어나기 inside viewport",
+   "ok": true
+  },
+  {
+   "check": "Full Mode inside viewport",
+   "ok": true
+  },
+  {
+   "check": "키 힌트 × 설정 묶음 no overlap",
+   "ok": true
+  },
+  {
+   "check": "키 힌트 × 복사 안내 no overlap",
+   "ok": true
+  },
+  {
+   "check": "키 힌트 × 알림 no overlap",
+   "ok": true
+  },
+  {
+   "check": "키 힌트 × 감정표현 no overlap",
+   "ok": true
+  },
+  {
+   "check": "키 힌트 × 일어나기 no overlap",
+   "ok": true
+  },
+  {
+   "check": "키 힌트 × Full Mode no overlap",
+   "ok": true
+  },
+  {
+   "check": "설정 묶음 × 복사 안내 no overlap",
+   "ok": true
+  },
+  {
+   "check": "설정 묶음 × 알림 no overlap",
+   "ok": true
+  },
+  {
+   "check": "설정 묶음 × 감정표현 no overlap",
+   "ok": true
+  },
+  {
+   "check": "설정 묶음 × 일어나기 no overlap",
+   "ok": true
+  },
+  {
+   "check": "설정 묶음 × Full Mode no overlap",
+   "ok": true
+  },
+  {
+   "check": "복사 안내 × 알림 no overlap",
+   "ok": true
+  },
+  {
+   "check": "복사 안내 × 감정표현 no overlap",
+   "ok": true
+  },
+  {
+   "check": "복사 안내 × 일어나기 no overlap",
+   "ok": true
+  },
+  {
+   "check": "복사 안내 × Full Mode no overlap",
+   "ok": true
+  },
+  {
+   "check": "알림 × 감정표현 no overlap",
+   "ok": true
+  },
+  {
+   "check": "알림 × 일어나기 no overlap",
+   "ok": true
+  },
+  {
+   "check": "알림 × Full Mode no overlap",
+   "ok": true
+  },
+  {
+   "check": "감정표현 × 일어나기 no overlap",
+   "ok": true
+  },
+  {
+   "check": "감정표현 × Full Mode no overlap",
+   "ok": true
+  },
+  {
+   "check": "일어나기 × Full Mode no overlap",
+   "ok": true
+  },
+  {
+   "check": "키 힌트 off the video",
+   "ok": true
+  },
+  {
+   "check": "설정 묶음 off the video",
+   "ok": true
+  },
+  {
+   "check": "복사 안내 off the video",
+   "ok": true
+  },
+  {
+   "check": "알림 off the video",
+   "ok": true
+  },
+  {
+   "check": "감정표현 off the video",
+   "ok": true
+  },
+  {
+   "check": "일어나기 off the video",
+   "ok": true
+  },
+  {
+   "check": "Full Mode off the video",
+   "ok": true
+  },
+  {
+   "check": "all targets ≥ 24×24",
+   "ok": true
+  },
+  {
+   "check": "one accent button",
+   "ok": true
+  }
+ ],
+ "m-seated": [
+  {
+   "check": "설정 묶음 inside viewport",
+   "ok": true
+  },
+  {
+   "check": "복사 안내 inside viewport",
+   "ok": true
+  },
+  {
+   "check": "알림 inside viewport",
+   "ok": true
+  },
+  {
+   "check": "감정표현 inside viewport",
+   "ok": true
+  },
+  {
+   "check": "일어나기 inside viewport",
+   "ok": true
+  },
+  {
+   "check": "Full Mode inside viewport",
+   "ok": true
+  },
+  {
+   "check": "방향 버튼 inside viewport",
+   "ok": true
+  },
+  {
+   "check": "설정 묶음 × 복사 안내 no overlap",
+   "ok": true
+  },
+  {
+   "check": "설정 묶음 × 알림 no overlap",
+   "ok": true
+  },
+  {
+   "check": "설정 묶음 × 감정표현 no overlap",
+   "ok": true
+  },
+  {
+   "check": "설정 묶음 × 일어나기 no overlap",
+   "ok": true
+  },
+  {
+   "check": "설정 묶음 × Full Mode no overlap",
+   "ok": true
+  },
+  {
+   "check": "설정 묶음 × 방향 버튼 no overlap",
+   "ok": true
+  },
+  {
+   "check": "복사 안내 × 알림 no overlap",
+   "ok": true
+  },
+  {
+   "check": "복사 안내 × 감정표현 no overlap",
+   "ok": true
+  },
+  {
+   "check": "복사 안내 × 일어나기 no overlap",
+   "ok": true
+  },
+  {
+   "check": "복사 안내 × Full Mode no overlap",
+   "ok": true
+  },
+  {
+   "check": "복사 안내 × 방향 버튼 no overlap",
+   "ok": true
+  },
+  {
+   "check": "알림 × 감정표현 no overlap",
+   "ok": true
+  },
+  {
+   "check": "알림 × 일어나기 no overlap",
+   "ok": true
+  },
+  {
+   "check": "알림 × Full Mode no overlap",
+   "ok": true
+  },
+  {
+   "check": "알림 × 방향 버튼 no overlap",
+   "ok": true
+  },
+  {
+   "check": "감정표현 × 일어나기 no overlap",
+   "ok": true
+  },
+  {
+   "check": "감정표현 × Full Mode no overlap",
+   "ok": true
+  },
+  {
+   "check": "감정표현 × 방향 버튼 no overlap",
+   "ok": true
+  },
+  {
+   "check": "일어나기 × Full Mode no overlap",
+   "ok": true
+  },
+  {
+   "check": "일어나기 × 방향 버튼 no overlap",
+   "ok": true
+  },
+  {
+   "check": "Full Mode × 방향 버튼 no overlap",
+   "ok": true
+  },
+  {
+   "check": "all targets ≥ 24×24",
+   "ok": true
+  },
+  {
+   "check": "one accent button",
+   "ok": true
+  }
+ ],
+ "d-full": [
+  {
+   "check": "Full Mode 막대 inside viewport",
+   "ok": true
+  },
+  {
+   "check": "all targets ≥ 24×24",
+   "ok": true
+  },
+  {
+   "check": "one accent button",
+   "ok": true
+  }
+ ],
+ "m-full": [
+  {
+   "check": "Full Mode 막대 inside viewport",
+   "ok": true
+  },
+  {
+   "check": "all targets ≥ 24×24",
+   "ok": true
+  },
+  {
+   "check": "one accent button",
+   "ok": true
+  }
+ ],
+ "d-wait": [
+  {
+   "check": "남은 시간 inside viewport",
+   "ok": true
+  },
+  {
+   "check": "다음 할 일 inside viewport",
+   "ok": true
+  },
+  {
+   "check": "키 힌트 inside viewport",
+   "ok": true
+  },
+  {
+   "check": "설정 묶음 inside viewport",
+   "ok": true
+  },
+  {
+   "check": "감정표현 inside viewport",
+   "ok": true
+  },
+  {
+   "check": "Full Mode inside viewport",
+   "ok": true
+  },
+  {
+   "check": "남은 시간 × 다음 할 일 no overlap",
+   "ok": true
+  },
+  {
+   "check": "남은 시간 × 키 힌트 no overlap",
+   "ok": true
+  },
+  {
+   "check": "남은 시간 × 설정 묶음 no overlap",
+   "ok": true
+  },
+  {
+   "check": "남은 시간 × 감정표현 no overlap",
+   "ok": true
+  },
+  {
+   "check": "남은 시간 × Full Mode no overlap",
+   "ok": true
+  },
+  {
+   "check": "다음 할 일 × 키 힌트 no overlap",
+   "ok": true
+  },
+  {
+   "check": "다음 할 일 × 설정 묶음 no overlap",
+   "ok": true
+  },
+  {
+   "check": "다음 할 일 × 감정표현 no overlap",
+   "ok": true
+  },
+  {
+   "check": "다음 할 일 × Full Mode no overlap",
+   "ok": true
+  },
+  {
+   "check": "키 힌트 × 설정 묶음 no overlap",
+   "ok": true
+  },
+  {
+   "check": "키 힌트 × 감정표현 no overlap",
+   "ok": true
+  },
+  {
+   "check": "키 힌트 × Full Mode no overlap",
+   "ok": true
+  },
+  {
+   "check": "설정 묶음 × 감정표현 no overlap",
+   "ok": true
+  },
+  {
+   "check": "설정 묶음 × Full Mode no overlap",
+   "ok": true
+  },
+  {
+   "check": "감정표현 × Full Mode no overlap",
+   "ok": true
+  },
+  {
+   "check": "남은 시간 off the video",
+   "ok": true
+  },
+  {
+   "check": "다음 할 일 off the video",
+   "ok": true
+  },
+  {
+   "check": "키 힌트 off the video",
+   "ok": true
+  },
+  {
+   "check": "설정 묶음 off the video",
+   "ok": true
+  },
+  {
+   "check": "감정표현 off the video",
+   "ok": true
+  },
+  {
+   "check": "Full Mode off the video",
+   "ok": true
+  },
+  {
+   "check": "all targets ≥ 24×24",
+   "ok": true
+  },
+  {
+   "check": "one accent button",
+   "ok": true
+  }
+ ],
+ "m-wait": [
+  {
+   "check": "남은 시간 inside viewport",
+   "ok": true
+  },
+  {
+   "check": "설정 묶음 inside viewport",
+   "ok": true
+  },
+  {
+   "check": "감정표현 inside viewport",
+   "ok": true
+  },
+  {
+   "check": "Full Mode inside viewport",
+   "ok": true
+  },
+  {
+   "check": "방향 버튼 inside viewport",
+   "ok": true
+  },
+  {
+   "check": "남은 시간 × 설정 묶음 no overlap",
+   "ok": true
+  },
+  {
+   "check": "남은 시간 × 감정표현 no overlap",
+   "ok": true
+  },
+  {
+   "check": "남은 시간 × Full Mode no overlap",
+   "ok": true
+  },
+  {
+   "check": "남은 시간 × 방향 버튼 no overlap",
+   "ok": true
+  },
+  {
+   "check": "설정 묶음 × 감정표현 no overlap",
+   "ok": true
+  },
+  {
+   "check": "설정 묶음 × Full Mode no overlap",
+   "ok": true
+  },
+  {
+   "check": "설정 묶음 × 방향 버튼 no overlap",
+   "ok": true
+  },
+  {
+   "check": "감정표현 × Full Mode no overlap",
+   "ok": true
+  },
+  {
+   "check": "감정표현 × 방향 버튼 no overlap",
+   "ok": true
+  },
+  {
+   "check": "Full Mode × 방향 버튼 no overlap",
+   "ok": true
+  },
+  {
+   "check": "남은 시간 off the video",
+   "ok": true
+  },
+  {
+   "check": "설정 묶음 off the video",
+   "ok": true
+  },
+  {
+   "check": "감정표현 off the video",
+   "ok": true
+  },
+  {
+   "check": "Full Mode off the video",
+   "ok": true
+  },
+  {
+   "check": "방향 버튼 off the video",
+   "ok": true
+  },
+  {
+   "check": "all targets ≥ 24×24",
+   "ok": true
+  },
+  {
+   "check": "one accent button",
+   "ok": true
+  }
+ ],
+ "d-wait-full": [
+  {
+   "check": "Full Mode 막대 inside viewport",
+   "ok": true
+  },
+  {
+   "check": "all targets ≥ 24×24",
+   "ok": true
+  },
+  {
+   "check": "one accent button",
+   "ok": true
+  }
+ ],
+ "m-wait-full": [
+  {
+   "check": "Full Mode 막대 inside viewport",
+   "ok": true
+  },
+  {
+   "check": "all targets ≥ 24×24",
+   "ok": true
+  },
+  {
+   "check": "one accent button",
+   "ok": true
+  }
+ ]
+}

@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><title>T60 mouse-first mock</title>
+<!-- Mockup only (not app code). ?s=<state>. Backgrounds are saved app captures (read-only). Values are tokens.md values under their token names.
+     Served from the repo root by render.mjs. -->
+<style>
+:root{
+ --color-bg:#07101b;--color-panel:#07121d;--color-panel-raised:#0c1925;--color-panel-hover:#205779;--color-text:#edf6ff;--color-text-muted:#b6cada;--color-text-subtle:#9bb6c9;--color-text-on-accent:#082338;--color-accent:#7fdcff;--color-border:#638399;--color-border-subtle:#345367;--color-warning:#ffdba1;
+ --panel-alpha:.91;--panel-alpha-hud:.81;--panel-blur:10px;--text-shadow-hud:0 1px 2px #000000b3;--shadow-panel:0 8px 24px #00000066;
+ --font-family:system-ui,sans-serif;--font-size-xs:12px;--font-size-sm:14px;--font-size-md:20px;--font-size-lg:28px;--font-size-xl:30px;--line-height-body:1.6;--font-weight-bold:700;--letter-spacing-label:.16em;--letter-spacing-title:-.02em;
+ --space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-5:24px;--space-6:28px;
+ --size-target-min:24px;--size-target-touch:44px;--size-keycap:20px;--radius-sm:3px;--radius-md:6px;--border-width:1px;--opacity-disabled:.5;
+ /* spec dimensions (hud-controls.md / entry-loading.md 「토큰이 아닌 치수」) */
+ --entry-width:380px;--room-width:340px;
+ --edge:var(--space-5);--target:36px;--col-w:calc(var(--space-5)*8);
+}
+body.m{--edge:var(--space-4);--target:var(--size-target-touch);--col-w:calc(var(--space-5)*7)}
+*{box-sizing:border-box}
+body{margin:0;width:100vw;height:100vh;overflow:hidden;font:var(--font-size-sm)/var(--line-height-body) var(--font-family);color:var(--color-text);background:var(--color-bg) center/cover no-repeat;position:relative}
+.patch{position:absolute;overflow:hidden}.patch i{position:absolute;inset:-20px;background-repeat:no-repeat;filter:blur(12px) brightness(.75)}
+.panel-hud{background:rgb(7 18 29/var(--panel-alpha-hud));backdrop-filter:blur(var(--panel-blur));border:var(--border-width) solid var(--color-border-subtle);border-radius:var(--radius-md)}
+.panel{background:rgb(7 18 29/var(--panel-alpha));backdrop-filter:blur(var(--panel-blur));border:var(--border-width) solid var(--color-border-subtle);border-radius:var(--radius-md);box-shadow:var(--shadow-panel)}
+button{font:inherit;color:var(--color-text);background:var(--color-panel-raised);border:var(--border-width) solid var(--color-border);border-radius:var(--radius-sm);min-height:var(--target);padding:0 var(--space-4);display:inline-flex;align-items:center;justify-content:center;gap:var(--space-2);white-space:nowrap}
+button.primary{background:var(--color-accent);color:var(--color-text-on-accent);border-color:var(--color-accent);font-weight:var(--font-weight-bold)}
+button.ghost{background:transparent;border-color:transparent;justify-content:flex-start;padding:0 var(--space-2);width:100%}
+button.ghost.hover{background:var(--color-panel-hover)}
+button.focus{outline:2px solid var(--color-accent);outline-offset:2px}
+svg.i{width:18px;height:18px;flex:0 0 auto;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.kc{display:inline-grid;place-items:center;min-width:var(--size-keycap);height:var(--size-keycap);padding:0 var(--space-1);font-size:var(--font-size-xs);font-weight:var(--font-weight-bold);line-height:1;border:var(--border-width) solid var(--color-border);border-radius:var(--radius-sm);background:var(--color-panel-raised);color:var(--color-text)}
+.small{font-size:var(--font-size-xs);color:var(--color-text-muted)}
+/* top-right column */
+#col{position:absolute;top:var(--edge);right:var(--edge);width:var(--col-w);display:flex;flex-direction:column;gap:var(--space-2);align-items:stretch}
+#keys{padding:var(--space-2) var(--space-3);display:grid;gap:var(--space-1)}
+#keys .row{display:flex;align-items:center;gap:var(--space-2);color:var(--color-text-muted);white-space:nowrap}
+#keys .row .kc{min-width:calc(var(--size-keycap)*2.4)}
+#keys .row.now{color:var(--color-accent);font-weight:var(--font-weight-bold)}#keys .row.now .kc{border-color:var(--color-accent);color:var(--color-accent)}
+#set{padding:var(--space-1);display:grid;grid-template-columns:minmax(0,1fr);gap:0}
+#set .status{display:flex;align-items:center;gap:var(--space-1);padding:0 var(--space-2);height:var(--size-keycap);font-size:var(--font-size-xs);color:var(--color-text-subtle)}
+#set .status::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+#set .status.warn{color:var(--color-warning)}#set .status.warn::before{display:none}
+#set .vol{display:flex;align-items:center;gap:var(--space-1)}
+#set .vol button{width:var(--target);padding:0;justify-content:center;flex:0 0 auto}
+#set input[type=range]{flex:1;width:0;height:var(--size-target-min);min-width:0;accent-color:var(--color-accent);margin-right:var(--space-2)}
+#set .people{font-size:var(--font-size-xs);color:var(--color-text-muted);padding:0 var(--space-2) var(--space-1) calc(var(--space-2) + 18px + var(--space-2))}
+.sw{width:10px;height:10px;border-radius:50%;background:#e2012d;margin-left:auto}
+#copied{position:absolute;right:var(--edge);width:var(--col-w);padding:var(--space-2) var(--space-3);font-size:var(--font-size-sm);display:flex;gap:var(--space-2);align-items:flex-start;white-space:normal;word-break:keep-all}
+#copied b{color:var(--color-accent)}
+/* T60b LG-H-4: the copied line stays inside the column width (no left/right stretch) on desktop and touch */
+/* top-left next task */
+#objective{position:absolute;top:var(--edge);left:var(--edge);padding:var(--space-2) var(--space-3);border-left:3px solid var(--color-accent)}
+body.m #objective{max-width:calc(100vw - var(--col-w) - 3*var(--edge))}
+/* bottom-right dock, bottom-center seat button */
+#dock{position:absolute;right:var(--edge);bottom:var(--edge);display:flex;gap:var(--space-2)}
+#sit{position:absolute;left:50%;transform:translateX(-50%);bottom:var(--edge)}
+body.m #dock{left:var(--edge);right:auto;flex-direction:column;align-items:stretch}
+#touch{position:absolute;right:var(--edge);bottom:var(--edge);display:grid;grid-template-columns:repeat(3,var(--size-target-touch));gap:var(--space-2)}
+#touch button{padding:0;min-height:var(--size-target-touch);background:rgb(12 25 37/.81)}
+body.m #sit{bottom:calc(var(--edge) + 2*var(--size-target-touch) + var(--space-2) + var(--space-3))}
+/* first page / invite */
+#first{position:absolute;inset:0;display:grid;place-items:center;padding:var(--edge)}
+#first .col{width:min(var(--entry-width),100%);display:flex;flex-direction:column;gap:var(--space-4)}
+#first h1{margin:0;font-size:var(--font-size-xl);letter-spacing:var(--letter-spacing-title);line-height:1.2}
+#first .label{font-size:var(--font-size-xs);letter-spacing:var(--letter-spacing-label);color:var(--color-text-subtle)}
+.card{padding:var(--space-4);border:2px solid var(--color-accent);border-radius:var(--radius-md);background:var(--color-panel);display:grid;gap:var(--space-3)}
+.card .name{font-size:var(--font-size-md);font-weight:var(--font-weight-bold);display:flex;align-items:center;gap:var(--space-2)}
+.card .name .tag{font-size:var(--font-size-xs);font-weight:var(--font-weight-bold);color:var(--color-accent);border:1px solid var(--color-accent);border-radius:var(--radius-sm);padding:0 var(--space-1)}
+.seg{display:flex;border:var(--border-width) solid var(--color-border);border-radius:var(--radius-sm);overflow:hidden}
+.seg button{flex:1;border:0;border-radius:0;border-left:var(--border-width) solid var(--color-border);background:var(--color-panel-raised);padding:0}
+.seg button:first-child{border-left:0}
+.seg button.on{background:var(--color-accent);color:var(--color-text-on-accent);font-weight:var(--font-weight-bold)}
+.seg button:disabled{opacity:var(--opacity-disabled);text-decoration:line-through}
+.notice{font-size:var(--font-size-xs);color:var(--color-text-muted);line-height:var(--line-height-body)}
+.notice u{color:var(--color-text);text-underline-offset:2px}
+#first button.primary{width:100%;min-height:calc(var(--target) + var(--space-3))}
+body.m #first{place-items:end center;padding-bottom:calc(var(--edge) + var(--space-5))}
+/* full mode bar */
+#fm{position:absolute;left:var(--edge);right:var(--edge);bottom:var(--edge);display:flex;justify-content:flex-end}
+#fm .bar{display:flex;align-items:center;gap:var(--space-2);padding:var(--space-1)}
+#fm .bar button.ghost{width:var(--target);justify-content:center;padding:0}
+#fm input{width:calc(var(--space-5)*4);height:var(--size-target-min);accent-color:var(--color-accent)}
+.toast{position:absolute;top:var(--edge);left:50%;transform:translateX(-50%);padding:var(--space-2) var(--space-4);max-width:var(--room-width)}
+/* T60b LG-M-15: seated toast off the video — desktop bottom centre, touch top left */
+.toast.seat{top:auto;bottom:var(--edge)}
+body.m .toast.seat{bottom:auto;top:var(--edge);left:var(--edge);transform:none}
+/* T60c showtime wait: one line on the HUD panel (1 box; text-shadow alone measured 2.56 / 1.22 over the scene). Desktop top-left above the next-task line; touch bottom-left one row above the seat button (off the video) */
+#wait{position:absolute;top:var(--edge);left:var(--edge);padding:var(--space-1) var(--space-3);font-size:var(--font-size-md);font-weight:var(--font-weight-bold);line-height:var(--line-height-body);text-shadow:var(--text-shadow-hud);font-variant-numeric:tabular-nums;white-space:nowrap}
+body.m #wait{top:auto;bottom:calc(var(--edge) + 3*var(--size-target-touch) + 2*var(--space-2) + var(--space-3))}
+body.m #fm .bar{flex-wrap:wrap;justify-content:flex-end;max-width:calc(100vw - 2*var(--edge))}body.m #fm .wait{flex-basis:100%;padding-top:var(--space-1)}
+#fm .wait{padding:0 var(--space-2);font-weight:var(--font-weight-bold);white-space:nowrap;font-variant-numeric:tabular-nums}
+</style></head><body>
+<script>
+const s = new URLSearchParams(location.search).get('s') || 'd-walk';
+const m = s.startsWith('m-'); if (m) document.body.classList.add('m');
+const BG = {
+  'd-walk': '/_workspace/graphicmodel/2026-11-13-ux-motion-rooms/preview/ui/a/bg/d-plaza.png',
+  'm-walk': '/_workspace/graphicmodel/2026-11-13-ux-motion-rooms/preview/ui/b/bg/m-walk-arena.png',
+  'd-copied': '/_workspace/graphicmodel/2026-11-13-ux-motion-rooms/preview/ui/b/bg/d-walk-arena.png',
+  'm-copied': '/_workspace/graphicmodel/2026-11-13-ux-motion-rooms/preview/ui/b/bg/m-walk-arena.png',
+  'd-near-seat': '/_workspace/graphicmodel/2026-11-13-ux-motion-rooms/preview/ui/b/bg/d-near-seat.png',
+  'm-near-seat': '/_workspace/graphicmodel/2026-11-13-ux-motion-rooms/preview/ui/b/bg/m-near-seat.png',
+  'd-seated': '/temp/T59/shots/08-seated.png',
+  'm-seated': '/_workspace/graphicmodel/2026-11-13-ux-motion-rooms/preview/ui/b/bg/m-seated.png',
+  'd-wait': '/_workspace/graphicmodel/2026-11-13-ux-motion-rooms/preview/ui/b/bg/d-walk-arena.png',
+  'm-wait': '/_workspace/graphicmodel/2026-11-13-ux-motion-rooms/preview/ui/b/bg/m-walk-arena.png',
+  'd-wait-full': '/_workspace/graphicmodel/2026-11-13-ux-motion-rooms/preview/ui/b/bg/d-full.png',
+  'm-wait-full': '/_workspace/graphicmodel/2026-11-13-ux-motion-rooms/preview/ui/b/bg/m-full.png',
+  'd-full': '/_workspace/graphicmodel/2026-11-13-ux-motion-rooms/preview/ui/b/bg/d-full.png',
+  'm-full': '/_workspace/graphicmodel/2026-11-13-ux-motion-rooms/preview/ui/b/bg/m-full.png',
+};
+if (BG[s]) document.body.style.backgroundImage = `url(${BG[s]})`;
+// d-seated: the newest seat view exists only as a T59 shot with the old UI on it. The old UI regions are blurred
+// (same pixels, blur + darken) so they read as scene, not as UI; the new UI is drawn on top. Rects are cited in the spec.
+const PATCH = { 'd-seated': [[0, 18, 232, 112], [232, 52, 100, 26], [0, 598, 1280, 122], [1080, 18, 190, 46]] };
+const icon = { link: '<svg class="i" viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>',
+  sound: '<svg class="i" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7"/><path d="M19 6a8.5 8.5 0 0 1 0 12"/></svg>',
+  shirt: '<svg class="i" viewBox="0 0 24 24"><path d="M8 4l-5 3 2 4 3-1v10h8V10l3 1 2-4-5-3a4 4 0 0 1-8 0z"/></svg>',
+  check: '<svg class="i" viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg>' };
+const h = String.raw;
+let html = '';
+for (const [x, y, w, hh] of PATCH[s] || []) html += `<div class="patch" style="left:${x}px;top:${y}px;width:${w}px;height:${hh}px"><i style="background-image:url(${BG[s]});background-position:${20 - x}px ${20 - y}px"></i></div>`;
+
+const first = s === 'd-first' || s === 'm-first', invite = s.includes('invite');
+if (first || invite) {
+  html += h`<div id="first"><div class="col">
+   <div><div class="label">WORLDS 2026</div><h1 data-check="text">${invite ? '친구가 부른 방으로 들어가요' : '어떤 경기를 볼까요?'}</h1></div>
+   ${first ? h`<div class="card" data-box="방송 카드" role="radio" aria-checked="true">
+     <div class="name" data-check="text">결승전 <span class="tag">재방</span></div>
+     <div><div class="small" style="margin-bottom:var(--space-1)">상영 시각</div>
+      <div class="seg" data-box="상영 시각"><button class="on">20:30</button><button>20:40</button><button>20:50</button></div></div>
+   </div>` : ''}
+   <div class="notice" data-check="text">들어가면 같은 경기를 보는 다른 사람과 자동으로 연결돼요. 이때 내 접속 주소가 연결을 돕는 곳과 상대에게 전해져요. <u>자세히</u></div>
+   <button class="primary${first ? '' : ' focus'}" data-box="들어가기" data-check="accent">들어가기</button>
+  </div></div>`;
+}
+const arena = !first && !invite && !s.includes('full');
+const wait = s.includes('wait');
+const seated = s.includes('seated'), near = s.includes('near'), copied = s.includes('copied');
+if (arena) {
+  if (wait) html += h`<div id="wait" class="panel-hud" data-box="남은 시간" data-check="text" role="status">4분 뒤 시작해요</div>`;
+  if (s.includes('walk') || (wait && !m)) html += h`<div id="objective" class="panel-hud" data-box="다음 할 일" data-check="text">입구로 가서 티켓 받기</div>`;
+  html += `<div id="col">`;
+  if (!m) {
+    const rows = seated ? [['E', '일어나기'], ['F', 'Full Mode'], ['Alt', '감정표현']]
+      : [...(near ? [['E', '앉기', 1]] : []), ['WASD', '이동'], ['Space', '점프'], ['Shift', '달리기'], ['Alt', '감정표현'], ['F', 'Full Mode']];
+    html += `<div id="keys" class="panel-hud" data-box="키 힌트" aria-label="키 안내">${rows.map(([k, t, now]) => `<div class="row${now ? ' now' : ''}" data-check="${now ? 'accent' : 'text'}"><span class="kc">${k}</span>${t}</div>`).join('')}</div>`;
+  }
+  html += h`<div id="set" class="panel-hud" data-box="설정 묶음">
+    <div class="status" data-check="text">재방 20:30</div>
+    <div class="vol"><button class="ghost" aria-label="소리 끄기">${icon.sound}</button><input type="range" value="70" aria-label="음량"></div>
+    <button class="ghost" data-check="text">${icon.shirt}팀·캐릭터<span class="sw"></span></button>
+    <button class="ghost${copied ? ' hover' : ''}" data-check="text" aria-label="같이 보기 — 초대 링크 복사">${icon.link}같이 보기</button>
+    ${copied || seated ? '<div class="people" data-check="text">2명 같이 보는 중</div>' : ''}
+  </div></div>`;
+  if (copied || seated) html += h`<div id="copied" class="panel" data-box="복사 안내" data-check="text"><b>${icon.check}</b>복사됐어요. 친구에게 보내면 같은 방으로 들어와요</div>`;
+  if (seated) html += h`<div class="toast seat panel" data-box="알림" data-check="text">1명이 들어왔어요</div>`;
+  if (near) html += h`<button id="sit" class="primary" data-box="앉기" data-check="accent">앉기</button>`;
+  html += `<div id="dock">` + (seated
+    ? h`<button data-box="감정표현" data-check="text">감정표현</button><button data-box="일어나기" data-check="text">일어나기</button><button class="primary" data-box="Full Mode" data-check="accent">Full Mode</button>`
+    : h`<button data-box="감정표현" data-check="text">감정표현</button><button data-box="Full Mode" data-check="text">Full Mode</button>`) + `</div>`;
+  if (m) html += `<div id="touch" data-box="방향 버튼"><span></span><button aria-label="앞">▲</button><span></span><button aria-label="왼쪽">◀</button><button aria-label="뒤">▼</button><button aria-label="오른쪽">▶</button></div>`;
+}
+if (s.includes('full')) html += h`<div id="fm"><div class="bar panel-hud" data-box="Full Mode 막대">${wait ? '<span class="wait" data-check="text" role="status">4분 뒤 시작해요</span>' : ''}<button class="ghost" aria-label="소리 끄기">${icon.sound}</button><input type="range" value="70" aria-label="음량"><button class="primary" data-check="accent">Full Mode 닫기${m ? '' : ' <span class="kc" style="background:transparent;border-color:var(--color-text-on-accent);color:var(--color-text-on-accent)">F</span>'}</button></div></div>`;
+document.body.insertAdjacentHTML('beforeend', html);
+// T60c: the next-task line moves one line down under the wait line (desktop)
+const wl = document.getElementById('wait'), ob = document.getElementById('objective');
+if (wl && ob && !m) ob.style.top = (wl.getBoundingClientRect().bottom + 8) + 'px';
+// place the copied line right under the settings box
+const set = document.getElementById('set'), cp = document.getElementById('copied');
+if (set && cp) cp.style.top = (set.getBoundingClientRect().bottom + 8) + 'px';
+const ts = document.querySelector('.toast.seat'); if (m && ts && set) ts.style.maxWidth = (set.getBoundingClientRect().left - 2 * 16) + 'px';
+if (m && document.getElementById('objective') && set) document.getElementById('objective').style.maxWidth = (set.getBoundingClientRect().left - 2 * 16) + 'px';
+</script>
+</body></html>

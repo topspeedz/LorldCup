@@ -1,0 +1,28 @@
+{
+  "brightness": "darker",
+  "skyIntensity": 0.009,
+  "stars": {
+    "count": 3000,
+    "twinkle": "subtle",
+    "opacity": 0.38,
+    "twinkleAmplitude": 0.1,
+    "periodSeconds": 5,
+    "size": 1.4,
+    "color": "#b8c9e4"
+  },
+  "moon": {
+    "elevationDegrees": 35,
+    "characterLight": "weak",
+    "direction": [-0.7094, 0.5736, 0.4096],
+    "angularDiameterDegrees": 1,
+    "color": [0.72, 0.82, 1.0],
+    "lightIntensity": 0.012
+  },
+  "sea": {
+    "boundaryX": -180,
+    "level": -0.25,
+    "extent": 20000,
+    "color": "#071d30",
+    "horizonColor": "#101d2f"
+  }
+}

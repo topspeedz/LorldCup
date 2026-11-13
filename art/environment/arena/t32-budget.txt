@@ -1,0 +1,68 @@
+web/arena-v2.glb
+  크기 113,128.6 KB · 생성기 Khronos glTF Blender I/O v5.2.40
+  삼각형 5,864,022 · 정점 7,875,324 · 드로 콜(프리미티브) 928 · 메시 793 · 재질 120
+  텍스처 82 · 이미지 61 (최대 변 2048px, GPU 메모리 추정 146 MB)
+    [0] silver-normal image/png 512x512 166.2 KB
+    [1] silver-color image/png 512x512 20.1 KB
+    [2] silver-rough image/png 512x512 4.8 KB
+    [3] audience-face-0 image/png 512x512 2.9 KB
+    [4] audience-face-1 image/png 512x512 2.9 KB
+    [5] audience-face-2 image/png 512x512 2.9 KB
+    [6] audience-jersey-geng image/png 512x512 11.4 KB
+    [7] audience-jersey-blg image/png 512x512 12.4 KB
+    [8] steel-normal image/png 512x512 159.2 KB
+    [9] steel-color image/png 512x512 104.5 KB
+    [10] steel-rough image/png 512x512 226.8 KB
+    [11] black-normal image/png 512x512 137.4 KB
+    [12] black-color image/png 512x512 7.7 KB
+    [13] black-rough image/png 512x512 199.5 KB
+    [14] CCR_Charcoal veined counter stone-normal image/png 1024x1024 41.2 KB
+    [15] CCR_Charcoal veined counter stone-color image/png 1024x1024 1,176.1 KB
+    [16] CCR_Warm vertical timber grain-normal image/png 1024x1024 158.9 KB
+    [17] CCR_Warm vertical timber grain-color image/png 1024x1024 1,283.9 KB
+    [18] CCR_Coffee menu image-color image/png 1024x1024 1,274.1 KB
+    [19] CCR_Snack menu image-color image/png 1024x1024 1,282.9 KB
+    [20] glass-normal image/png 512x512 1.8 KB
+    [21] glass-color image/png 512x512 9.2 KB
+    [22] glass-rough image/png 512x512 43.9 KB
+    [23] concrete-normal image/png 512x512 535.9 KB
+    [24] concrete-color image/png 512x512 309 KB
+    [25] concrete-rough image/png 512x512 226.6 KB
+    [26] stage-normal image/png 512x512 1.9 KB
+    [27] ivory-color image/png 512x512 20.5 KB
+    [28] stage-rough image/png 512x512 64.1 KB
+    [29] blue-color image/png 512x512 14.2 KB
+    [30] EXR_Weathered steel 00.001-baked image/png 256x256 35.7 KB
+    [31] EXR_Weathered steel 01.001-baked image/png 256x256 36.9 KB
+    [32] EXR_Weathered steel 02.001-baked image/png 256x256 37.4 KB
+    [33] EXR_Weathered steel 03.001-baked image/png 256x256 37.7 KB
+    [34] EXR_Weathered steel 04.001-baked image/png 256x256 37.9 KB
+    [35] EXR_Weathered steel 05.001-baked image/png 256x256 38.1 KB
+    [36] EXR_Weathered steel 06.001-baked image/png 256x256 39.4 KB
+    [37] EXR_Weathered steel 07.001-baked image/png 256x256 39.5 KB
+    [38] EXR_Weathered steel 08.001-baked image/png 256x256 39.7 KB
+    [39] EXR_Sedum roof.001-baked image/png 256x256 87.3 KB
+    [40] wood-normal image/png 512x512 54.9 KB
+    [41] wood-color image/png 512x512 75.2 KB
+    [42] wood-rough image/png 512x512 77.2 KB
+    [43] 월드 2026 GEN.G·BLG 아레나 톱뷰 image/png 1672x941 2,566.2 KB
+    [44] REF_Deck-baked image/png 1024x1024 489.5 KB
+    [45] arena-patterns-v2 image/png 1024x1024 33.6 KB
+    [46] arena-patterns-v2 image/png 1024x1024 23.4 KB
+    [47] asphalt-normal image/png 512x512 677.6 KB
+    [48] asphalt-color image/png 512x512 338.4 KB
+    [49] asphalt-rough image/png 512x512 180.8 KB
+    [50] seat-normal image/png 512x512 394.8 KB
+    [51] seat-color image/png 512x512 163.6 KB
+    [52] seat-rough image/png 512x512 222.9 KB
+    [53] seat2-color image/png 512x512 154.3 KB
+    [54] REF_GoldWaves-baked image/png 1024x1024 573.9 KB
+    [55] REF_BlueWaves-baked image/png 1024x1024 658.9 KB
+    [56] CCR_Charcoal stone floor with 1200mm joints-normal image/png 1024x1024 15.6 KB
+    [57] CCR_Charcoal stone floor with 1200mm joints-color image/png 2048x2048 1,140.9 KB
+    [58] paving-normal image/png 512x512 426.6 KB
+    [59] paving-color image/png 512x512 152.2 KB
+    [60] paving-rough image/png 512x512 209.8 KB
+  스킨 0 (최대 관절 0) · 애니메이션 0
+  확장: KHR_draco_mesh_compression, KHR_materials_clearcoat, KHR_materials_transmission, KHR_materials_emissive_strength, KHR_materials_ior
+  예산: OK

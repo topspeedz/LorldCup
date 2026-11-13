@@ -1,0 +1,529 @@
+{
+ "d-first": [],
+ "m-first": [],
+ "d-invite": [],
+ "m-invite": [],
+ "d-walk": [
+  {
+   "text": "입구로 가서 티켓 받기",
+   "kind": "text",
+   "contrast": 16.27
+  },
+  {
+   "text": "WASD이동",
+   "kind": "text",
+   "contrast": 10.42
+  },
+  {
+   "text": "Space점프",
+   "kind": "text",
+   "contrast": 11.43
+  },
+  {
+   "text": "Shift달리기",
+   "kind": "text",
+   "contrast": 10.37
+  },
+  {
+   "text": "Alt감정표현",
+   "kind": "text",
+   "contrast": 11.43
+  },
+  {
+   "text": "FFull Mode",
+   "kind": "text",
+   "contrast": 10.32
+  },
+  {
+   "text": "재방 20:30",
+   "kind": "text",
+   "contrast": 8.51
+  },
+  {
+   "text": "팀·캐릭터",
+   "kind": "text",
+   "contrast": 17.46
+  },
+  {
+   "text": "같이 보기",
+   "kind": "text",
+   "contrast": 13.26
+  },
+  {
+   "text": "감정표현",
+   "kind": "text",
+   "contrast": 16.27
+  },
+  {
+   "text": "Full Mode",
+   "kind": "text",
+   "contrast": 16.27
+  }
+ ],
+ "m-walk": [
+  {
+   "text": "입구로 가서 티켓 받기",
+   "kind": "text",
+   "contrast": 9.8
+  },
+  {
+   "text": "재방 20:30",
+   "kind": "text",
+   "contrast": 7.29
+  },
+  {
+   "text": "팀·캐릭터",
+   "kind": "text",
+   "contrast": 10.31
+  },
+  {
+   "text": "같이 보기",
+   "kind": "text",
+   "contrast": 10.2
+  },
+  {
+   "text": "감정표현",
+   "kind": "text",
+   "contrast": 16.27
+  },
+  {
+   "text": "Full Mode",
+   "kind": "text",
+   "contrast": 16.27
+  }
+ ],
+ "d-copied": [
+  {
+   "text": "WASD이동",
+   "kind": "text",
+   "contrast": 8.85
+  },
+  {
+   "text": "Space점프",
+   "kind": "text",
+   "contrast": 7.74
+  },
+  {
+   "text": "Shift달리기",
+   "kind": "text",
+   "contrast": 6.99
+  },
+  {
+   "text": "Alt감정표현",
+   "kind": "text",
+   "contrast": 7.5
+  },
+  {
+   "text": "FFull Mode",
+   "kind": "text",
+   "contrast": 7.86
+  },
+  {
+   "text": "재방 20:30",
+   "kind": "text",
+   "contrast": 6.11
+  },
+  {
+   "text": "팀·캐릭터",
+   "kind": "text",
+   "contrast": 11.69
+  },
+  {
+   "text": "같이 보기",
+   "kind": "text",
+   "contrast": 11.69
+  },
+  {
+   "text": "2명 같이 보는 중",
+   "kind": "text",
+   "contrast": 8.7
+  },
+  {
+   "text": "복사됐어요. 친구에게 보내면 같은 방",
+   "kind": "text",
+   "contrast": 14.1
+  },
+  {
+   "text": "감정표현",
+   "kind": "text",
+   "contrast": 16.27
+  },
+  {
+   "text": "Full Mode",
+   "kind": "text",
+   "contrast": 16.27
+  }
+ ],
+ "m-copied": [
+  {
+   "text": "재방 20:30",
+   "kind": "text",
+   "contrast": 7.29
+  },
+  {
+   "text": "팀·캐릭터",
+   "kind": "text",
+   "contrast": 10.31
+  },
+  {
+   "text": "같이 보기",
+   "kind": "text",
+   "contrast": 10.2
+  },
+  {
+   "text": "2명 같이 보는 중",
+   "kind": "text",
+   "contrast": 6.65
+  },
+  {
+   "text": "복사됐어요. 친구에게 보내면 같은 방",
+   "kind": "text",
+   "contrast": 13.86
+  },
+  {
+   "text": "감정표현",
+   "kind": "text",
+   "contrast": 16.27
+  },
+  {
+   "text": "Full Mode",
+   "kind": "text",
+   "contrast": 16.27
+  }
+ ],
+ "d-near-seat": [
+  {
+   "text": "E앉기",
+   "kind": "accent",
+   "contrast": 7.6
+  },
+  {
+   "text": "WASD이동",
+   "kind": "text",
+   "contrast": 7.59
+  },
+  {
+   "text": "Space점프",
+   "kind": "text",
+   "contrast": 7.32
+  },
+  {
+   "text": "Shift달리기",
+   "kind": "text",
+   "contrast": 8.93
+  },
+  {
+   "text": "Alt감정표현",
+   "kind": "text",
+   "contrast": 7.84
+  },
+  {
+   "text": "FFull Mode",
+   "kind": "text",
+   "contrast": 7.68
+  },
+  {
+   "text": "재방 20:30",
+   "kind": "text",
+   "contrast": 6.14
+  },
+  {
+   "text": "팀·캐릭터",
+   "kind": "text",
+   "contrast": 11.69
+  },
+  {
+   "text": "같이 보기",
+   "kind": "text",
+   "contrast": 10.37
+  },
+  {
+   "text": "앉기",
+   "kind": "accent",
+   "contrast": 10.39
+  },
+  {
+   "text": "감정표현",
+   "kind": "text",
+   "contrast": 16.27
+  },
+  {
+   "text": "Full Mode",
+   "kind": "text",
+   "contrast": 16.27
+  }
+ ],
+ "m-near-seat": [
+  {
+   "text": "재방 20:30",
+   "kind": "text",
+   "contrast": 5.06
+  },
+  {
+   "text": "팀·캐릭터",
+   "kind": "text",
+   "contrast": 9.8
+  },
+  {
+   "text": "같이 보기",
+   "kind": "text",
+   "contrast": 10.02
+  },
+  {
+   "text": "앉기",
+   "kind": "accent",
+   "contrast": 10.39
+  },
+  {
+   "text": "감정표현",
+   "kind": "text",
+   "contrast": 16.27
+  },
+  {
+   "text": "Full Mode",
+   "kind": "text",
+   "contrast": 16.27
+  }
+ ],
+ "d-seated": [
+  {
+   "text": "E일어나기",
+   "kind": "text",
+   "contrast": 7.43
+  },
+  {
+   "text": "FFull Mode",
+   "kind": "text",
+   "contrast": 9.83
+  },
+  {
+   "text": "Alt감정표현",
+   "kind": "text",
+   "contrast": 9.77
+  },
+  {
+   "text": "재방 20:30",
+   "kind": "text",
+   "contrast": 7.74
+  },
+  {
+   "text": "팀·캐릭터",
+   "kind": "text",
+   "contrast": 14.96
+  },
+  {
+   "text": "같이 보기",
+   "kind": "text",
+   "contrast": 14.93
+  },
+  {
+   "text": "2명 같이 보는 중",
+   "kind": "text",
+   "contrast": 9.67
+  },
+  {
+   "text": "복사됐어요. 친구에게 보내면 같은 방",
+   "kind": "text",
+   "contrast": 14.81
+  },
+  {
+   "text": "1명이 들어왔어요",
+   "kind": "text",
+   "contrast": 13.83
+  },
+  {
+   "text": "감정표현",
+   "kind": "text",
+   "contrast": 16.27
+  },
+  {
+   "text": "일어나기",
+   "kind": "text",
+   "contrast": 16.27
+  },
+  {
+   "text": "Full Mode",
+   "kind": "accent",
+   "contrast": 10.39
+  }
+ ],
+ "m-seated": [
+  {
+   "text": "재방 20:30",
+   "kind": "text",
+   "contrast": 9.09
+  },
+  {
+   "text": "팀·캐릭터",
+   "kind": "text",
+   "contrast": 17.6
+  },
+  {
+   "text": "같이 보기",
+   "kind": "text",
+   "contrast": 17.58
+  },
+  {
+   "text": "2명 같이 보는 중",
+   "kind": "text",
+   "contrast": 11.4
+  },
+  {
+   "text": "복사됐어요. 친구에게 보내면 같은 방",
+   "kind": "text",
+   "contrast": 17.42
+  },
+  {
+   "text": "1명이 들어왔어요",
+   "kind": "text",
+   "contrast": 17.43
+  },
+  {
+   "text": "감정표현",
+   "kind": "text",
+   "contrast": 16.27
+  },
+  {
+   "text": "일어나기",
+   "kind": "text",
+   "contrast": 16.27
+  },
+  {
+   "text": "Full Mode",
+   "kind": "accent",
+   "contrast": 10.39
+  }
+ ],
+ "d-full": [
+  {
+   "text": "Full Mode 닫기 F",
+   "kind": "accent",
+   "contrast": 10.39
+  }
+ ],
+ "m-full": [
+  {
+   "text": "Full Mode 닫기",
+   "kind": "accent",
+   "contrast": 10.39
+  }
+ ],
+ "d-wait": [
+  {
+   "text": "4분 뒤 시작해요",
+   "kind": "text",
+   "contrast": 12.01
+  },
+  {
+   "text": "입구로 가서 티켓 받기",
+   "kind": "text",
+   "contrast": 10.64
+  },
+  {
+   "text": "WASD이동",
+   "kind": "text",
+   "contrast": 8.85
+  },
+  {
+   "text": "Space점프",
+   "kind": "text",
+   "contrast": 7.74
+  },
+  {
+   "text": "Shift달리기",
+   "kind": "text",
+   "contrast": 6.99
+  },
+  {
+   "text": "Alt감정표현",
+   "kind": "text",
+   "contrast": 7.5
+  },
+  {
+   "text": "FFull Mode",
+   "kind": "text",
+   "contrast": 7.86
+  },
+  {
+   "text": "재방 20:30",
+   "kind": "text",
+   "contrast": 6.11
+  },
+  {
+   "text": "팀·캐릭터",
+   "kind": "text",
+   "contrast": 11.69
+  },
+  {
+   "text": "같이 보기",
+   "kind": "text",
+   "contrast": 11.69
+  },
+  {
+   "text": "감정표현",
+   "kind": "text",
+   "contrast": 16.27
+  },
+  {
+   "text": "Full Mode",
+   "kind": "text",
+   "contrast": 16.27
+  }
+ ],
+ "m-wait": [
+  {
+   "text": "4분 뒤 시작해요",
+   "kind": "text",
+   "contrast": 10.73
+  },
+  {
+   "text": "재방 20:30",
+   "kind": "text",
+   "contrast": 7.29
+  },
+  {
+   "text": "팀·캐릭터",
+   "kind": "text",
+   "contrast": 10.31
+  },
+  {
+   "text": "같이 보기",
+   "kind": "text",
+   "contrast": 10.2
+  },
+  {
+   "text": "감정표현",
+   "kind": "text",
+   "contrast": 16.27
+  },
+  {
+   "text": "Full Mode",
+   "kind": "text",
+   "contrast": 16.27
+  }
+ ],
+ "d-wait-full": [
+  {
+   "text": "4분 뒤 시작해요",
+   "kind": "text",
+   "contrast": 17.23
+  },
+  {
+   "text": "Full Mode 닫기 F",
+   "kind": "accent",
+   "contrast": 10.39
+  }
+ ],
+ "m-wait-full": [
+  {
+   "text": "4분 뒤 시작해요",
+   "kind": "text",
+   "contrast": 17.7
+  },
+  {
+   "text": "Full Mode 닫기",
+   "kind": "accent",
+   "contrast": 10.39
+  }
+ ]
+}

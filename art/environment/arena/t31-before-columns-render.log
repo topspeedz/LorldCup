@@ -1,0 +1,9 @@
+00:01.047  blend            | Read blend: "D:\Projects\lorldcup-metaverse\barclays-worlds-2026.blend"
+BlenderMCP addon registered
+T31_RENDER_SETTINGS {"engine": "CYCLES", "device": "CPU", "samples": 8, "view": "AgX", "exposure": 0.0}
+00:12.563  render           | Saved: 'D:\Projects\lorldcup-metaverse\art\environment\arena\t31-before-columns.png'
+T31_RENDERED D:\Projects\lorldcup-metaverse\art\environment\arena\t31-before-columns.png
+BlenderMCP addon unregistered
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

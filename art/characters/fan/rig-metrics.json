@@ -1,0 +1,87 @@
+{
+  "ok": true,
+  "stage": "T30-rig",
+  "rig": "FanRig",
+  "joints": 23,
+  "parents": {
+    "root": null,
+    "hips": "root",
+    "spine": "hips",
+    "chest": "spine",
+    "neck": "chest",
+    "head": "neck",
+    "shoulder_L": "chest",
+    "upper_arm_L": "shoulder_L",
+    "forearm_L": "upper_arm_L",
+    "hand_L": "forearm_L",
+    "thigh_L": "hips",
+    "shin_L": "thigh_L",
+    "foot_L": "shin_L",
+    "toe_L": "foot_L",
+    "shoulder_R": "chest",
+    "upper_arm_R": "shoulder_R",
+    "forearm_R": "upper_arm_R",
+    "hand_R": "forearm_R",
+    "thigh_R": "hips",
+    "shin_R": "thigh_R",
+    "foot_R": "shin_R",
+    "toe_R": "foot_R",
+    "prop_R": "hand_R"
+  },
+  "characters": [
+    {
+      "id": "fan_f1",
+      "vertices": 2264,
+      "triangles": 4392,
+      "height": 1.801,
+      "materials": [
+        "Uniform",
+        "FanSurface"
+      ],
+      "max_influences": 2,
+      "nonmanifold_edges": 0,
+      "unweighted_vertices": 0
+    },
+    {
+      "id": "fan_f2",
+      "vertices": 3030,
+      "triangles": 5840,
+      "height": 1.826,
+      "materials": [
+        "Uniform",
+        "FanSurface"
+      ],
+      "max_influences": 2,
+      "nonmanifold_edges": 0,
+      "unweighted_vertices": 0
+    },
+    {
+      "id": "fan_m1",
+      "vertices": 2362,
+      "triangles": 4584,
+      "height": 1.821,
+      "materials": [
+        "Uniform",
+        "FanSurface"
+      ],
+      "max_influences": 2,
+      "nonmanifold_edges": 0,
+      "unweighted_vertices": 0
+    },
+    {
+      "id": "fan_m2",
+      "vertices": 2746,
+      "triangles": 5296,
+      "height": 1.801,
+      "materials": [
+        "Uniform",
+        "FanSurface"
+      ],
+      "max_influences": 2,
+      "nonmanifold_edges": 0,
+      "unweighted_vertices": 0
+    }
+  ],
+  "shared_uniform_uv": true,
+  "clips": []
+}

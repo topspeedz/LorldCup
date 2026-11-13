@@ -1,0 +1,513 @@
+{
+  "affected_material": "Blue_light_haze",
+  "affected_object": "Stage_light_beams",
+  "before": {
+    "vertices": 384,
+    "faces": 192,
+    "triangles": 384,
+    "boundary_edges": 384,
+    "nonmanifold_including_boundary": 384,
+    "zero_area_faces": 0,
+    "finite_coordinates": true,
+    "finite_normals": true,
+    "bounds": [
+      [
+        -27.070417404174805,
+        -23.075336456298828,
+        -8.40158748626709
+      ],
+      [
+        -27.070417404174805,
+        -23.075336456298828,
+        21.95409393310547
+      ],
+      [
+        -27.070417404174805,
+        23.075336456298828,
+        21.95409393310547
+      ],
+      [
+        -27.070417404174805,
+        23.075336456298828,
+        -8.40158748626709
+      ],
+      [
+        27.070417404174805,
+        -23.075336456298828,
+        -8.40158748626709
+      ],
+      [
+        27.070417404174805,
+        -23.075336456298828,
+        21.95409393310547
+      ],
+      [
+        27.070417404174805,
+        23.075336456298828,
+        21.95409393310547
+      ],
+      [
+        27.070417404174805,
+        23.075336456298828,
+        -8.40158748626709
+      ]
+    ],
+    "uv_layers": [],
+    "materials": [
+      "Blue_light_haze"
+    ],
+    "geometry_sha256": "92056dc4228abccf9820e594e48b01c64d58b09f12ef3c820851acaa3d48bf35"
+  },
+  "after": {
+    "vertices": 384,
+    "faces": 192,
+    "triangles": 384,
+    "boundary_edges": 384,
+    "nonmanifold_including_boundary": 384,
+    "zero_area_faces": 0,
+    "finite_coordinates": true,
+    "finite_normals": true,
+    "bounds": [
+      [
+        -27.070417404174805,
+        -23.075336456298828,
+        -8.40158748626709
+      ],
+      [
+        -27.070417404174805,
+        -23.075336456298828,
+        21.95409393310547
+      ],
+      [
+        -27.070417404174805,
+        23.075336456298828,
+        21.95409393310547
+      ],
+      [
+        -27.070417404174805,
+        23.075336456298828,
+        -8.40158748626709
+      ],
+      [
+        27.070417404174805,
+        -23.075336456298828,
+        -8.40158748626709
+      ],
+      [
+        27.070417404174805,
+        -23.075336456298828,
+        21.95409393310547
+      ],
+      [
+        27.070417404174805,
+        23.075336456298828,
+        21.95409393310547
+      ],
+      [
+        27.070417404174805,
+        23.075336456298828,
+        -8.40158748626709
+      ]
+    ],
+    "uv_layers": [],
+    "materials": [
+      "Blue_light_haze"
+    ],
+    "geometry_sha256": "92056dc4228abccf9820e594e48b01c64d58b09f12ef3c820851acaa3d48bf35"
+  },
+  "old_shader": {
+    "surface_render_method": "DITHERED",
+    "alpha": 0.02500000037252903,
+    "emission_strength": 2.0,
+    "specular": 0.5
+  },
+  "new_shader": {
+    "surface_render_method": "BLENDED",
+    "emission_strength": 0.7,
+    "specular": 0,
+    "alpha": "0.035 * (1-Facing)^2 * smoothstep(0,6,world_position.z)",
+    "unlinked_alpha_fallback": 0.012
+  },
+  "triangles_added": 0,
+  "finite_shader_parameters": true,
+  "images": [
+    {
+      "name": "asphalt-color.png",
+      "packed": true,
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "name": "asphalt-normal.png",
+      "packed": true,
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "name": "asphalt-rough.png",
+      "packed": true,
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "name": "black-color.png",
+      "packed": true,
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "name": "black-normal.png",
+      "packed": true,
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "name": "black-rough.png",
+      "packed": true,
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "name": "blue-color.png",
+      "packed": true,
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "name": "city-sky.jpg",
+      "packed": true,
+      "size": [
+        2048,
+        1024
+      ]
+    },
+    {
+      "name": "concrete-color.png",
+      "packed": true,
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "name": "concrete-normal.png",
+      "packed": true,
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "name": "concrete-rough.png",
+      "packed": true,
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "name": "corten-normal.png",
+      "packed": true,
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "name": "corten-rough.png",
+      "packed": true,
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "name": "corten0-color.png",
+      "packed": true,
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "name": "corten1-color.png",
+      "packed": true,
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "name": "corten2-color.png",
+      "packed": true,
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "name": "corten3-color.png",
+      "packed": true,
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "name": "corten4-color.png",
+      "packed": true,
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "name": "corten5-color.png",
+      "packed": true,
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "name": "corten6-color.png",
+      "packed": true,
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "name": "corten7-color.png",
+      "packed": true,
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "name": "glass-color.png",
+      "packed": true,
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "name": "glass-normal.png",
+      "packed": true,
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "name": "glass-rough.png",
+      "packed": true,
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "name": "green-color.png",
+      "packed": true,
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "name": "green-normal.png",
+      "packed": true,
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "name": "green-rough.png",
+      "packed": true,
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "name": "ivory-color.png",
+      "packed": true,
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "name": "paving-color.png",
+      "packed": true,
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "name": "paving-normal.png",
+      "packed": true,
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "name": "paving-rough.png",
+      "packed": true,
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "name": "seat-color.png",
+      "packed": true,
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "name": "seat-normal.png",
+      "packed": true,
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "name": "seat-rough.png",
+      "packed": true,
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "name": "seat2-color.png",
+      "packed": true,
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "name": "silver-color.png",
+      "packed": true,
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "name": "silver-normal.png",
+      "packed": true,
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "name": "silver-rough.png",
+      "packed": true,
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "name": "stage-normal.png",
+      "packed": true,
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "name": "stage-rough.png",
+      "packed": true,
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "name": "steel-color.png",
+      "packed": true,
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "name": "steel-normal.png",
+      "packed": true,
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "name": "steel-rough.png",
+      "packed": true,
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "name": "wood-color.png",
+      "packed": true,
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "name": "wood-normal.png",
+      "packed": true,
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "name": "wood-rough.png",
+      "packed": true,
+      "size": [
+        512,
+        512
+      ]
+    }
+  ],
+  "all_file_images_packed": true,
+  "lights_modified": [],
+  "limitations": [
+    "No post-change render: coordinator owns render and save",
+    "Surface approximation, not volumetric scattering; no additional volume cost",
+    "BLENDED forward transparency is incompatible with some raytracing/render passes and may have overlapping-surface sorting artifacts",
+    "Procedural Facing/world-position alpha is Blender-specific and is not portable through standard GLTF export; target engine must recreate fade or use separately approved baked/mobile fallback",
+    "No engine GPU/overdraw profiling performed",
+    "Other surface materials unchanged: previews do not justify additional shader changes"
+  ]
+}

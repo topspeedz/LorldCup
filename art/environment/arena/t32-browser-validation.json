@@ -1,0 +1,222 @@
+{
+  "v1": {
+    "baked": {
+      "meshes": 417,
+      "materials": 417,
+      "textures": 7
+    },
+    "crowd": 96,
+    "crowdBaked": false,
+    "lightmapped": 417,
+    "bad": [],
+    "newMeshes": [],
+    "ranges": {
+      "./lightmaps/interior.png": 32,
+      "./lightmaps/concourse.png": 64,
+      "./lightmaps/city.png": 2,
+      "./lightmaps/exterior.png": 8,
+      "./lightmaps/stage.png": 128,
+      "./lightmaps/seats.png": 8,
+      "./lightmaps/bowl.png": 16
+    },
+    "motifs": [
+      {
+        "node": "REF_DeskFace_1",
+        "material": "REF_Artwork_DeskB",
+        "image": "Final Arena",
+        "transparent": false
+      },
+      {
+        "node": "REF_DeskFace_-1",
+        "material": "REF_Artwork_DeskG",
+        "image": "Final Arena",
+        "transparent": false
+      },
+      {
+        "node": "REF_HeaderCrest_0",
+        "material": "REF_Artwork_Crest",
+        "image": "WORLDS crest alpha",
+        "transparent": true
+      },
+      {
+        "node": "REF_HeaderCrest_1",
+        "material": "REF_Artwork_Crest",
+        "image": "WORLDS crest alpha",
+        "transparent": true
+      },
+      {
+        "node": "REF_HeaderCrest_2",
+        "material": "REF_Artwork_Crest",
+        "image": "WORLDS crest alpha",
+        "transparent": true
+      },
+      {
+        "node": "REF_HeaderCrest_3",
+        "material": "REF_Artwork_Crest",
+        "image": "WORLDS crest alpha",
+        "transparent": true
+      },
+      {
+        "node": "REF_Jumbotron_0",
+        "material": "REF_Artwork_B",
+        "image": "Final Arena",
+        "transparent": false
+      },
+      {
+        "node": "REF_Jumbotron_1",
+        "material": "REF_Artwork_B",
+        "image": "Final Arena",
+        "transparent": false
+      },
+      {
+        "node": "REF_Jumbotron_2",
+        "material": "REF_Artwork_G",
+        "image": "Final Arena",
+        "transparent": false
+      },
+      {
+        "node": "REF_Jumbotron_3",
+        "material": "REF_Artwork_G",
+        "image": "Final Arena",
+        "transparent": false
+      },
+      {
+        "node": "REF_PedestalCrest",
+        "material": "REF_Artwork_Crest",
+        "image": "WORLDS crest alpha",
+        "transparent": true
+      },
+      {
+        "node": "REF_WorldsCrest",
+        "material": "REF_Artwork_Crest",
+        "image": "WORLDS crest alpha",
+        "transparent": true
+      }
+    ],
+    "lightmaps": [
+      "/lightmaps/interior.png",
+      "/lightmaps/concourse.png",
+      "/lightmaps/city.png",
+      "/lightmaps/exterior.png",
+      "/lightmaps/stage.png",
+      "/lightmaps/seats.png",
+      "/lightmaps/bowl.png"
+    ],
+    "errors": []
+  },
+  "v2": {
+    "baked": {
+      "meshes": 425,
+      "materials": 425,
+      "textures": 7
+    },
+    "crowd": 96,
+    "crowdBaked": false,
+    "lightmapped": 425,
+    "bad": [],
+    "newMeshes": [
+      "Collide_RampInfill__concrete",
+      "Collide_TierColumns__concrete",
+      "Fix_PCFeet__black",
+      "Fix_SeatBases__steel",
+      "Fix_TierBeams__concrete",
+      "Fix_TierFascia__concrete",
+      "Fix_TierRisers__concrete",
+      "Fix_TierSoffits__concrete",
+      "Fix_UpperWestTreads__concrete"
+    ],
+    "ranges": {
+      "./lightmaps/interior-v2.png": 16,
+      "./lightmaps/concourse-v2.png": 64,
+      "./lightmaps/city-v2.png": 2,
+      "./lightmaps/exterior-v2.png": 8,
+      "./lightmaps/stage-v2.png": 128,
+      "./lightmaps/seats-v2.png": 8,
+      "./lightmaps/bowl-v2.png": 16
+    },
+    "motifs": [
+      {
+        "node": "REF_DeskFace_1",
+        "material": "REF_Artwork_DeskB",
+        "image": "arena-patterns-v2",
+        "transparent": false
+      },
+      {
+        "node": "REF_DeskFace_-1",
+        "material": "REF_Artwork_DeskG",
+        "image": "arena-patterns-v2",
+        "transparent": false
+      },
+      {
+        "node": "REF_HeaderCrest_0",
+        "material": "REF_Artwork_Crest",
+        "image": "arena-patterns-v2",
+        "transparent": true
+      },
+      {
+        "node": "REF_HeaderCrest_1",
+        "material": "REF_Artwork_Crest",
+        "image": "arena-patterns-v2",
+        "transparent": true
+      },
+      {
+        "node": "REF_HeaderCrest_2",
+        "material": "REF_Artwork_Crest",
+        "image": "arena-patterns-v2",
+        "transparent": true
+      },
+      {
+        "node": "REF_HeaderCrest_3",
+        "material": "REF_Artwork_Crest",
+        "image": "arena-patterns-v2",
+        "transparent": true
+      },
+      {
+        "node": "REF_Jumbotron_0",
+        "material": "REF_Artwork_B",
+        "image": "arena-patterns-v2",
+        "transparent": false
+      },
+      {
+        "node": "REF_Jumbotron_1",
+        "material": "REF_Artwork_B",
+        "image": "arena-patterns-v2",
+        "transparent": false
+      },
+      {
+        "node": "REF_Jumbotron_2",
+        "material": "REF_Artwork_G",
+        "image": "arena-patterns-v2",
+        "transparent": false
+      },
+      {
+        "node": "REF_Jumbotron_3",
+        "material": "REF_Artwork_G",
+        "image": "arena-patterns-v2",
+        "transparent": false
+      },
+      {
+        "node": "REF_PedestalCrest",
+        "material": "REF_Artwork_Crest",
+        "image": "arena-patterns-v2",
+        "transparent": true
+      },
+      {
+        "node": "REF_WorldsCrest",
+        "material": "REF_Artwork_Crest",
+        "image": "arena-patterns-v2",
+        "transparent": true
+      }
+    ],
+    "lightmaps": [
+      "/lightmaps/interior-v2.png",
+      "/lightmaps/city-v2.png",
+      "/lightmaps/concourse-v2.png",
+      "/lightmaps/exterior-v2.png",
+      "/lightmaps/stage-v2.png",
+      "/lightmaps/seats-v2.png",
+      "/lightmaps/bowl-v2.png"
+    ],
+    "errors": []
+  }
+}

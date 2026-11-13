@@ -1,0 +1,11 @@
+{
+  "name": "lorldcup-metaverse",
+  "private": true,
+  "scripts": {
+    "test": "playwright test",
+    "walk": "playwright test -c tests/walk.config.mjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.65.0"
+  }
+}

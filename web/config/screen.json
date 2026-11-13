@@ -1,0 +1,29 @@
+{
+  "vod": "https://www.youtube.com/watch?v=rQTHR3aL0SE",
+  "live": "https://www.youtube.com/watch?v=EacB7ADMGpY",
+  "source": "vod",
+  "schedule": [],
+  "liveFallback": "vod",
+  "roundIntervalMinutes": 10,
+  "defaultRound": "current",
+  "ended": "next-round",
+  "retry": { "noticeFromFailure": 1, "waitLimitSeconds": 60, "maxIntervalSeconds": 30 },
+  "syncIntervalSeconds": 5,
+  "syncToleranceSeconds": 2,
+  "distanceVolume": { "nearMeters": 25, "farMeters": 90, "farRatio": 0.4 },
+  "arenaBounds": { "minX": -61, "maxX": 94, "maxAbsZ": 70 },
+  "face": "front",
+  "aspectRatio": [
+    16,
+    9
+  ],
+  "fit": "contain",
+  "mesh": { "width": 15.5, "centerY": 3.1 },
+  "playerWidth": 1920,
+  "playerHeight": 1080,
+  "minimumVisiblePixels": 200,
+  "muted": true,
+  "unmuteOnEnter": true,
+  "volume": 70,
+  "crowdVolume": 0.3
+}

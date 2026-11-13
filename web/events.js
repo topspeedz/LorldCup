@@ -1,0 +1,24 @@
+export const APP_READY='app:ready';
+export const APP_ENTER='app:enter';
+export const WORLD_CLICK='world:click';
+export const INPUT_ACTION='input:action';
+export const TEAM_CHANGED='team:changed';
+export const CHARACTER_CHANGED='character:changed';
+export const EMOTE_REQUEST='emote:request';
+export const EMOTE_PLAYED='emote:played';
+export const EMOTE_MENU_OPEN='emoteMenu:open';
+export const TEAM_SELECT_OPEN='teamSelect:open';
+export const TICKET_ISSUED='ticket:issued';
+export const SEAT_ENTER='seat:enter';
+export const SEAT_EXIT='seat:exit';
+export const FULLMODE_ENTER='fullmode:enter';
+export const FULLMODE_EXIT='fullmode:exit';
+export const SCREEN_STATE='screen:state';
+export const ROOM_JOINED='room:joined';
+export const ROOM_LEFT='room:left';
+export const ROOM_STATE='room:state';
+export const ROOM_ROUND='room:round';
+export const PEER_STATE='peer:state';
+export const HUD_TOAST='hud:toast';
+
+export const events=new EventTarget();

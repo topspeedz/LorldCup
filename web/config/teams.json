@@ -1,0 +1,18 @@
+{
+  "teams": [
+    {
+      "id": "geng",
+      "name": "GEN.G",
+      "color": "#10131a",
+      "accent": "#d6b45a",
+      "uniform": "./assets/characters/uniform-geng.png"
+    },
+    {
+      "id": "blg",
+      "name": "BLG",
+      "color": "#e9f1f4",
+      "accent": "#00bcd4",
+      "uniform": "./assets/characters/uniform-blg.png"
+    }
+  ]
+}

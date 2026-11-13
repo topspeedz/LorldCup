@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Player_chair_back__blue",
+    "before": 120,
+    "after": 1880,
+    "width": 0.045
+  },
+  {
+    "name": "Player_chair__black",
+    "before": 120,
+    "after": 1880,
+    "width": 0.035
+  },
+  {
+    "name": "Monitor_housing__black",
+    "before": 120,
+    "after": 1880,
+    "width": 0.007
+  },
+  {
+    "name": "Player_PC__black",
+    "before": 120,
+    "after": 1880,
+    "width": 0.012
+  }
+]

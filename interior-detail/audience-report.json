@@ -1,0 +1,547 @@
+{
+  "spectator_count": 12392,
+  "teams": {
+    "GEN.G": 6158,
+    "BLG": 6234
+  },
+  "triangle_delta": 1266968,
+  "total_audience_triangles": 1639880,
+  "objects": [
+    {
+      "name": "Audience_torsos__crowd0",
+      "before": {
+        "vertices": 19808,
+        "faces": 14856,
+        "triangles": 29712,
+        "bounds": [
+          [
+            -84.79212951660156,
+            -69.83431243896484,
+            -9.375
+          ],
+          [
+            84.5573959350586,
+            69.83431243896484,
+            21.114999771118164
+          ]
+        ]
+      },
+      "after": {
+        "vertices": 114520,
+        "faces": 89656,
+        "triangles": 179104,
+        "bounds": [
+          [
+            -84.75202941894531,
+            -69.79471588134766,
+            -9.580994606018066
+          ],
+          [
+            84.51435089111328,
+            69.79471588134766,
+            21.110000610351562
+          ]
+        ]
+      },
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "finite": true,
+      "original_material_slots": [
+        "crowd0"
+      ],
+      "uv": "AudienceJerseyUV"
+    },
+    {
+      "name": "Audience_torsos__crowd1",
+      "before": {
+        "vertices": 19856,
+        "faces": 14892,
+        "triangles": 29784,
+        "bounds": [
+          [
+            -84.82640075683594,
+            -69.68505859375,
+            -9.375
+          ],
+          [
+            84.86559295654297,
+            69.82035064697266,
+            21.114999771118164
+          ]
+        ]
+      },
+      "after": {
+        "vertices": 114790,
+        "faces": 89867,
+        "triangles": 179528,
+        "bounds": [
+          [
+            -84.78695678710938,
+            -69.64282989501953,
+            -9.580994606018066
+          ],
+          [
+            84.82715606689453,
+            69.78041076660156,
+            21.110000610351562
+          ]
+        ]
+      },
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "finite": true,
+      "original_material_slots": [
+        "crowd1"
+      ],
+      "uv": "AudienceJerseyUV"
+    },
+    {
+      "name": "Audience_torsos__crowd2",
+      "before": {
+        "vertices": 20072,
+        "faces": 15054,
+        "triangles": 30108,
+        "bounds": [
+          [
+            -84.87539672851562,
+            -69.26004028320312,
+            -9.375
+          ],
+          [
+            84.77255249023438,
+            69.6603775024414,
+            21.114999771118164
+          ]
+        ]
+      },
+      "after": {
+        "vertices": 116044,
+        "faces": 90849,
+        "triangles": 181488,
+        "bounds": [
+          [
+            -84.83729553222656,
+            -69.21363830566406,
+            -9.580994606018066
+          ],
+          [
+            84.73211669921875,
+            69.61782836914062,
+            21.110000610351562
+          ]
+        ]
+      },
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "finite": true,
+      "original_material_slots": [
+        "crowd2"
+      ],
+      "uv": "AudienceJerseyUV"
+    },
+    {
+      "name": "Audience_torsos__crowd3",
+      "before": {
+        "vertices": 19552,
+        "faces": 14664,
+        "triangles": 29328,
+        "bounds": [
+          [
+            -84.87539672851562,
+            -69.88404083251953,
+            -9.375
+          ],
+          [
+            84.72852325439453,
+            69.86817169189453,
+            21.114999771118164
+          ]
+        ]
+      },
+      "after": {
+        "vertices": 113030,
+        "faces": 88489,
+        "triangles": 176776,
+        "bounds": [
+          [
+            -84.83728790283203,
+            -69.84610748291016,
+            -9.580994606018066
+          ],
+          [
+            84.68743133544922,
+            69.8295669555664,
+            21.110000610351562
+          ]
+        ]
+      },
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "finite": true,
+      "original_material_slots": [
+        "crowd3"
+      ],
+      "uv": "AudienceJerseyUV"
+    },
+    {
+      "name": "Audience_torsos__crowd4",
+      "before": {
+        "vertices": 19848,
+        "faces": 14886,
+        "triangles": 29772,
+        "bounds": [
+          [
+            -84.52318572998047,
+            -69.80503845214844,
+            -9.375
+          ],
+          [
+            84.84109497070312,
+            69.87677764892578,
+            21.114999771118164
+          ]
+        ]
+      },
+      "after": {
+        "vertices": 114750,
+        "faces": 89836,
+        "triangles": 179464,
+        "bounds": [
+          [
+            -84.47981262207031,
+            -69.7647705078125,
+            -9.580994606018066
+          ],
+          [
+            84.80199432373047,
+            69.83850860595703,
+            21.110000610351562
+          ]
+        ]
+      },
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "finite": true,
+      "original_material_slots": [
+        "crowd4"
+      ],
+      "uv": "AudienceJerseyUV"
+    },
+    {
+      "name": "Audience_heads__crowd0",
+      "before": {
+        "vertices": 22704,
+        "faces": 15136,
+        "triangles": 37840,
+        "bounds": [
+          [
+            -84.61151885986328,
+            -69.31639099121094,
+            -8.819999694824219
+          ],
+          [
+            84.51644134521484,
+            69.52086639404297,
+            21.34000015258789
+          ]
+        ]
+      },
+      "after": {
+        "vertices": 60544,
+        "faces": 49192,
+        "triangles": 113520,
+        "bounds": [
+          [
+            -84.60418701171875,
+            -69.32395935058594,
+            -8.885001182556152
+          ],
+          [
+            84.50898742675781,
+            69.52874755859375,
+            21.37999725341797
+          ]
+        ]
+      },
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "finite": true,
+      "original_material_slots": [
+        "crowd0"
+      ],
+      "uv": "AudienceJerseyUV"
+    },
+    {
+      "name": "Audience_heads__crowd1",
+      "before": {
+        "vertices": 22068,
+        "faces": 14712,
+        "triangles": 36780,
+        "bounds": [
+          [
+            -84.79364776611328,
+            -69.42461395263672,
+            -8.819999694824219
+          ],
+          [
+            84.83513641357422,
+            69.77105712890625,
+            21.34000015258789
+          ]
+        ]
+      },
+      "after": {
+        "vertices": 58848,
+        "faces": 47814,
+        "triangles": 110340,
+        "bounds": [
+          [
+            -84.78654479980469,
+            -69.4323501586914,
+            -8.885001182556152
+          ],
+          [
+            84.82809448242188,
+            69.77932739257812,
+            21.37999725341797
+          ]
+        ]
+      },
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "finite": true,
+      "original_material_slots": [
+        "crowd1"
+      ],
+      "uv": "AudienceJerseyUV"
+    },
+    {
+      "name": "Audience_heads__crowd2",
+      "before": {
+        "vertices": 22452,
+        "faces": 14968,
+        "triangles": 37420,
+        "bounds": [
+          [
+            -84.84571075439453,
+            -69.19620513916016,
+            -8.819999694824219
+          ],
+          [
+            84.73753356933594,
+            69.60511779785156,
+            21.34000015258789
+          ]
+        ]
+      },
+      "after": {
+        "vertices": 59872,
+        "faces": 48646,
+        "triangles": 112260,
+        "bounds": [
+          [
+            -84.83867645263672,
+            -69.2035903930664,
+            -8.885001182556152
+          ],
+          [
+            84.7303695678711,
+            69.61312866210938,
+            21.37999725341797
+          ]
+        ]
+      },
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "finite": true,
+      "original_material_slots": [
+        "crowd2"
+      ],
+      "uv": "AudienceJerseyUV"
+    },
+    {
+      "name": "Audience_heads__crowd3",
+      "before": {
+        "vertices": 22416,
+        "faces": 14944,
+        "triangles": 37360,
+        "bounds": [
+          [
+            -84.84571075439453,
+            -69.7991714477539,
+            -8.819999694824219
+          ],
+          [
+            84.69200134277344,
+            69.82192993164062,
+            21.34000015258789
+          ]
+        ]
+      },
+      "after": {
+        "vertices": 59776,
+        "faces": 48568,
+        "triangles": 112080,
+        "bounds": [
+          [
+            -84.83867645263672,
+            -69.8074951171875,
+            -8.885001182556152
+          ],
+          [
+            84.68477630615234,
+            69.83027648925781,
+            21.37999725341797
+          ]
+        ]
+      },
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "finite": true,
+      "original_material_slots": [
+        "crowd3"
+      ],
+      "uv": "AudienceJerseyUV"
+    },
+    {
+      "name": "Audience_heads__crowd4",
+      "before": {
+        "vertices": 22128,
+        "faces": 14752,
+        "triangles": 36880,
+        "bounds": [
+          [
+            -84.48150634765625,
+            -69.75498962402344,
+            -8.819999694824219
+          ],
+          [
+            83.88026428222656,
+            69.83130645751953,
+            21.34000015258789
+          ]
+        ]
+      },
+      "after": {
+        "vertices": 59008,
+        "faces": 47944,
+        "triangles": 110640,
+        "bounds": [
+          [
+            -84.47401428222656,
+            -69.76323699951172,
+            -8.885001182556152
+          ],
+          [
+            83.87200164794922,
+            69.83966827392578,
+            21.37999725341797
+          ]
+        ]
+      },
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "finite": true,
+      "original_material_slots": [
+        "crowd4"
+      ],
+      "uv": "AudienceJerseyUV"
+    },
+    {
+      "name": "Audience_heads__skin",
+      "before": {
+        "vertices": 36936,
+        "faces": 24624,
+        "triangles": 61560,
+        "bounds": [
+          [
+            -84.75786590576172,
+            -69.83934020996094,
+            -8.819999694824219
+          ],
+          [
+            84.8091049194336,
+            69.78578186035156,
+            21.34000015258789
+          ]
+        ]
+      },
+      "after": {
+        "vertices": 98496,
+        "faces": 80028,
+        "triangles": 184680,
+        "bounds": [
+          [
+            -84.75072479248047,
+            -69.84771728515625,
+            -8.885001182556152
+          ],
+          [
+            84.8020248413086,
+            69.79407501220703,
+            21.37999725341797
+          ]
+        ]
+      },
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "finite": true,
+      "original_material_slots": [
+        "skin"
+      ],
+      "uv": "AudienceJerseyUV"
+    }
+  ],
+  "notes": [
+    "All original spectator XY centers retained",
+    "Uniforms are reference-inspired GEN.G and BLG designs, not official kit reproductions",
+    "No cameras, lighting, other geometry, saves or renders changed"
+  ],
+  "seating_details": [
+    {
+      "name": "AudienceDetail_Aisle_supports",
+      "triangles": 4960,
+      "finite": true,
+      "boundary": 0,
+      "nonmanifold": 0
+    },
+    {
+      "name": "AudienceDetail_Aisle_mounts",
+      "triangles": 2976,
+      "finite": true,
+      "boundary": 0,
+      "nonmanifold": 0
+    },
+    {
+      "name": "AudienceDetail_Aisle_nosing",
+      "triangles": 6696,
+      "finite": true,
+      "boundary": 0,
+      "nonmanifold": 0
+    },
+    {
+      "name": "AudienceDetail_Aisle_guides",
+      "triangles": 6696,
+      "finite": true,
+      "boundary": 0,
+      "nonmanifold": 0
+    },
+    {
+      "name": "AudienceDetail_Ribbon_chevrons",
+      "triangles": 2304,
+      "finite": true,
+      "boundary": 0,
+      "nonmanifold": 0
+    }
+  ],
+  "verification": "All 11 final meshes have verified evaluated triangle counts; all five jersey and face images packed; new UVs present; closed finite consistently oriented components validated before commit",
+  "head_refinement": "8-sided four-ring heads, integrated necks, rounded crowns, three packed face atlases with eyes/brows/nose/mouth; shoulders use three rounded contour rings",
+  "budget": 1300000,
+  "packed_images": [
+    "audience-jersey-geng.png",
+    "audience-jersey-blg.png",
+    "audience-face-0.png",
+    "audience-face-1.png",
+    "audience-face-2.png"
+  ]
+}

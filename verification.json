@@ -1,0 +1,56 @@
+{
+  "blender_connection": "MCP, Blender 5.2.2 LTS",
+  "blender_objects_initial": 202,
+  "modeled_seats": 19384,
+  "simplified_spectators": 12392,
+  "web_model_loaded": true,
+  "web_triangles_observed": 1655206,
+  "outdoor_to_stage": {
+    "passed": true,
+    "distance": 139,
+    "increment": 0.25,
+    "start": [
+      -139,
+      -0.02,
+      0
+    ],
+    "end": [
+      0,
+      -7.75,
+      0
+    ]
+  },
+  "stage_to_outdoor": {
+    "passed": true,
+    "steps": 556
+  },
+  "curtain_wall_collision": {
+    "passed": true,
+    "stopped_at": [
+      -92.75,
+      -0.02,
+      20
+    ]
+  },
+  "keyboard_forward": {
+    "passed": true,
+    "distance_observed": 4.4508
+  },
+  "escape_menu": true,
+  "javascript_syntax_check": "node --check web/main.js passed",
+  "design_review": {
+    "small_text": "fixed: all text at least 14px",
+    "suppressed": 0,
+    "outstanding": 0
+  },
+  "not_verified": [
+    "actual 2026 finals layout",
+    "surveyed building dimensions",
+    "mobile device performance",
+    "individual collision for every small prop"
+  ],
+  "final_blender_objects": 205,
+  "final_web_triangles": 1658534,
+  "final_browser_errors": [],
+  "final_route_steps_passed": 556
+}

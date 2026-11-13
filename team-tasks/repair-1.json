@@ -1,0 +1,420 @@
+{
+  "affected": [
+    "CityGround__sidewalk"
+  ],
+  "before": {
+    "CityGround__sidewalk": {
+      "vertices": 8,
+      "faces": 6,
+      "triangles": 12,
+      "bounds": [
+        [
+          -290.0,
+          310.0
+        ],
+        [
+          -250.0,
+          270.0
+        ],
+        [
+          -0.5899999737739563,
+          -0.28999999165534973
+        ]
+      ],
+      "boundary": 0,
+      "nonmanifold": 0,
+      "finite": true,
+      "bad_normals": 0,
+      "signed_volume": 93599.99442100525,
+      "uv": [],
+      "materials": [
+        "City_sidewalk"
+      ],
+      "modifiers": []
+    },
+    "CityRoads__road": {
+      "vertices": 40,
+      "faces": 30,
+      "triangles": 60,
+      "bounds": [
+        [
+          -180.0,
+          220.0
+        ],
+        [
+          -180.0,
+          180.0
+        ],
+        [
+          -0.2800000011920929,
+          -0.20999999344348907
+        ]
+      ],
+      "boundary": 0,
+      "nonmanifold": 0,
+      "finite": true,
+      "bad_normals": 0,
+      "signed_volume": 1526.4001893997192,
+      "uv": [],
+      "materials": [
+        "City_road"
+      ],
+      "modifiers": []
+    },
+    "CityRoadMarkings__paint": {
+      "vertices": 1520,
+      "faces": 1140,
+      "triangles": 2280,
+      "bounds": [
+        [
+          -172.0,
+          222.0
+        ],
+        [
+          -172.0,
+          172.0
+        ],
+        [
+          -0.22200000286102295,
+          -0.1899999976158142
+        ]
+      ],
+      "boundary": 0,
+      "nonmanifold": 0,
+      "finite": true,
+      "bad_normals": 0,
+      "signed_volume": 1.823925400749391,
+      "uv": [],
+      "materials": [
+        "City_paint"
+      ],
+      "modifiers": []
+    },
+    "CityCrosswalk__paint": {
+      "vertices": 384,
+      "faces": 288,
+      "triangles": 576,
+      "bounds": [
+        [
+          113.6500015258789,
+          177.35000610351562
+        ],
+        [
+          -93.4000015258789,
+          96.4000015258789
+        ],
+        [
+          -0.18250000476837158,
+          -0.1574999988079071
+        ]
+      ],
+      "boundary": 0,
+      "nonmanifold": 0,
+      "finite": true,
+      "bad_normals": 0,
+      "signed_volume": 2.592014900227552,
+      "uv": [],
+      "materials": [
+        "City_paint"
+      ],
+      "modifiers": []
+    }
+  },
+  "after": {
+    "CityGround__sidewalk": {
+      "vertices": 1040,
+      "faces": 1040,
+      "triangles": 2080,
+      "bounds": [
+        [
+          -290.0,
+          310.0
+        ],
+        [
+          -250.0,
+          270.0
+        ],
+        [
+          -0.5899999737739563,
+          -0.28999999165534973
+        ]
+      ],
+      "boundary": 0,
+      "nonmanifold": 0,
+      "finite": true,
+      "bad_normals": 0,
+      "signed_volume": 86995.77349743104,
+      "uv": [],
+      "materials": [
+        "City_sidewalk"
+      ],
+      "modifiers": []
+    },
+    "CityRoads__road": {
+      "vertices": 40,
+      "faces": 30,
+      "triangles": 60,
+      "bounds": [
+        [
+          -180.0,
+          220.0
+        ],
+        [
+          -180.0,
+          180.0
+        ],
+        [
+          -0.2800000011920929,
+          -0.20999999344348907
+        ]
+      ],
+      "boundary": 0,
+      "nonmanifold": 0,
+      "finite": true,
+      "bad_normals": 0,
+      "signed_volume": 1526.4001893997192,
+      "uv": [],
+      "materials": [
+        "City_road"
+      ],
+      "modifiers": []
+    },
+    "CityRoadMarkings__paint": {
+      "vertices": 1520,
+      "faces": 1140,
+      "triangles": 2280,
+      "bounds": [
+        [
+          -172.0,
+          222.0
+        ],
+        [
+          -172.0,
+          172.0
+        ],
+        [
+          -0.22200000286102295,
+          -0.1899999976158142
+        ]
+      ],
+      "boundary": 0,
+      "nonmanifold": 0,
+      "finite": true,
+      "bad_normals": 0,
+      "signed_volume": 1.823925400749391,
+      "uv": [],
+      "materials": [
+        "City_paint"
+      ],
+      "modifiers": []
+    },
+    "CityCrosswalk__paint": {
+      "vertices": 384,
+      "faces": 288,
+      "triangles": 576,
+      "bounds": [
+        [
+          113.6500015258789,
+          177.35000610351562
+        ],
+        [
+          -93.4000015258789,
+          96.4000015258789
+        ],
+        [
+          -0.18250000476837158,
+          -0.1574999988079071
+        ]
+      ],
+      "boundary": 0,
+      "nonmanifold": 0,
+      "finite": true,
+      "bad_normals": 0,
+      "signed_volume": 2.592014900227552,
+      "uv": [],
+      "materials": [
+        "City_paint"
+      ],
+      "modifiers": []
+    }
+  },
+  "triangles_added": 2068,
+  "opening": "Exact existing Walk_Plaza 256-segment ellipse footprint, radii 96 x 73; four collinear inner points align outer rectangle corners",
+  "vertical_ray_checks": [
+    {
+      "x": 0,
+      "y": 0,
+      "hits": []
+    },
+    {
+      "x": -12,
+      "y": 0,
+      "hits": []
+    },
+    {
+      "x": 12,
+      "y": 0,
+      "hits": []
+    },
+    {
+      "x": 0,
+      "y": 12,
+      "hits": []
+    },
+    {
+      "x": 0,
+      "y": -12,
+      "hits": []
+    },
+    {
+      "x": -50,
+      "y": 15,
+      "hits": []
+    },
+    {
+      "x": 50,
+      "y": 15,
+      "hits": []
+    },
+    {
+      "x": 0,
+      "y": 43,
+      "hits": []
+    },
+    {
+      "x": 0,
+      "y": -43,
+      "hits": []
+    },
+    {
+      "x": -80,
+      "y": 20,
+      "hits": []
+    },
+    {
+      "x": 80,
+      "y": 20,
+      "hits": []
+    },
+    {
+      "x": 0,
+      "y": 68,
+      "hits": []
+    },
+    {
+      "x": 0,
+      "y": -68,
+      "hits": []
+    }
+  ],
+  "external_sidewalk_samples": [
+    [
+      -200,
+      0
+    ],
+    [
+      200,
+      0
+    ],
+    [
+      0,
+      200
+    ],
+    [
+      0,
+      -200
+    ],
+    [
+      -110,
+      0
+    ],
+    [
+      100,
+      0
+    ],
+    [
+      0,
+      76
+    ],
+    [
+      0,
+      -76
+    ]
+  ],
+  "entry_path_samples": [
+    {
+      "x": -130,
+      "y": 0,
+      "walk_surface_hits": [
+        "Walk_Plaza"
+      ]
+    },
+    {
+      "x": -100,
+      "y": 0,
+      "walk_surface_hits": [
+        "Walk_Plaza"
+      ]
+    },
+    {
+      "x": -95,
+      "y": 0,
+      "walk_surface_hits": [
+        "Walk_Atrium__concrete"
+      ]
+    },
+    {
+      "x": -80,
+      "y": 0,
+      "walk_surface_hits": [
+        "Walk_Atrium__concrete"
+      ]
+    },
+    {
+      "x": -65,
+      "y": 0,
+      "walk_surface_hits": [
+        "Walk_Atrium__concrete",
+        "Walk_EntryBridge__concrete"
+      ]
+    },
+    {
+      "x": -63,
+      "y": 0,
+      "walk_surface_hits": [
+        "Walk_EntryBridge__concrete"
+      ]
+    },
+    {
+      "x": -61,
+      "y": 0,
+      "walk_surface_hits": [
+        "Walk_EntryRamp__concrete"
+      ]
+    },
+    {
+      "x": -59,
+      "y": 0,
+      "walk_surface_hits": [
+        "Walk_EntryRamp__concrete"
+      ]
+    },
+    {
+      "x": -45,
+      "y": 0,
+      "walk_surface_hits": [
+        "Walk_EntryRamp__concrete"
+      ]
+    },
+    {
+      "x": -30,
+      "y": 0,
+      "walk_surface_hits": [
+        "Walk_EntryRamp__concrete"
+      ]
+    }
+  ],
+  "all_walk_meshes_unchanged": true,
+  "roads_and_paint_unchanged": true,
+  "limitations": "No render, save, export or engine runtime test; coordinator must render and save integrated scene."
+}

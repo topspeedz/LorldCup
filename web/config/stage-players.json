@@ -1,0 +1,15 @@
+{
+  "intervalSeconds": [
+    3,
+    8
+  ],
+  "shoutProbability": 0.1,
+  "shout": {
+    "files": [
+      "./assets/audio/sfx/pro-shout_01.mp3",
+      "./assets/audio/sfx/pro-shout_02.mp3",
+      "./assets/audio/sfx/pro-shout_03.mp3"
+    ],
+    "gain": 0.25
+  }
+}

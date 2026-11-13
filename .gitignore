@@ -1,0 +1,17 @@
+_workspace/
+.claude/coordinator.settings.local.json
+.playwright-mcp/
+node_modules/
+
+# GitHub export: sources and work folders live on the local PC only
+temp/
+test-results/
+_workspace/
+web-export/
+web-lightmaps/
+crowd-animation/
+renders/
+*.blend
+*.blend1
+*.zip
+web/arena.glb

@@ -1,0 +1,27 @@
+{
+  "file": "D:\\Blender\\Blender\\barclays-worlds-2026\\barclays-worlds-2026.blend",
+  "objects": 239,
+  "beveled_objects": [
+    "Facade_mullions__silver",
+    "Roof_seams__steel",
+    "Counter__silver",
+    "Collide_TicketGate__silver",
+    "Suite_piers__ivory",
+    "Suite_fascia__ivory",
+    "Player_desks__ivory",
+    "Desk_fronts__blue",
+    "Desk_trim__cyan"
+  ],
+  "worker_reports": [
+    "production-1.md",
+    "production-2.md",
+    "production-3.md",
+    "production-4.md",
+    "production-5.md"
+  ],
+  "renders": "complete",
+  "web_export": "unchanged",
+  "saved": true,
+  "visual_review": "Exterior reviewed; revised interior shows stage and player desks. Existing CityGround__sidewalk overlaps arena and obscures upper view; geometry correction not performed.",
+  "interior_preview": "renders/team-interior-revised.png"
+}

@@ -1,0 +1,54 @@
+{
+  "ok": true,
+  "rest_transform_error": 0,
+  "roundtrip_pose_error": 1.1324882507324219e-06,
+  "clips": [
+    {
+      "clip": "Emote_Angry",
+      "seconds": 2.5999999046325684,
+      "channels": 23
+    },
+    {
+      "clip": "Emote_CheerClap",
+      "seconds": 3.0,
+      "channels": 23
+    },
+    {
+      "clip": "Emote_EggThrow",
+      "seconds": 3.0,
+      "channels": 23
+    },
+    {
+      "clip": "Emote_Heart",
+      "seconds": 3.5999999046325684,
+      "channels": 23
+    },
+    {
+      "clip": "Idle",
+      "seconds": 3.0,
+      "channels": 23
+    },
+    {
+      "clip": "Jump",
+      "seconds": 0.7200000286102295,
+      "channels": 23
+    },
+    {
+      "clip": "Run",
+      "seconds": 0.5333333611488342,
+      "channels": 23
+    },
+    {
+      "clip": "Sit",
+      "seconds": 0.800000011920929,
+      "channels": 23
+    },
+    {
+      "clip": "Walk",
+      "seconds": 0.4000000059604645,
+      "channels": 23
+    }
+  ],
+  "egg_release_frame": 40,
+  "egg_scream_frame": 34
+}

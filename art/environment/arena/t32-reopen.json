@@ -1,0 +1,35 @@
+{
+  "mesh_objects": 793,
+  "materials": 120,
+  "bounds_blender": [
+    [
+      -290.0,
+      310.0
+    ],
+    [
+      -248.76197814941406,
+      268.6517639160156
+    ],
+    [
+      -10.59000015258789,
+      120.0
+    ]
+  ],
+  "new_meshes": [
+    "Fix_SeatBases__steel",
+    "Fix_TierRisers__concrete",
+    "Fix_TierSoffits__concrete",
+    "Fix_TierFascia__concrete",
+    "Fix_UpperWestTreads__concrete",
+    "Collide_RampInfill__concrete",
+    "Fix_PCFeet__black",
+    "Collide_TierColumns__concrete",
+    "Fix_TierBeams__concrete"
+  ],
+  "screens": [
+    "REF_Jumbotron_0",
+    "REF_Jumbotron_1",
+    "REF_Jumbotron_2",
+    "REF_Jumbotron_3"
+  ]
+}

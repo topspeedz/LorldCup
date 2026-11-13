@@ -1,0 +1,9 @@
+00:00.578  blend            | Read blend: "D:\Projects\lorldcup-metaverse\art\environment\arena\barclays-arena-v2.blend"
+BlenderMCP addon registered
+T31_RENDER_SETTINGS {"engine": "CYCLES", "device": "CPU", "samples": 8, "view": "AgX", "exposure": 0.0}
+00:11.313  render           | Saved: 'D:\Projects\lorldcup-metaverse\art\environment\arena\t31-after-columns.png'
+T31_RENDERED D:\Projects\lorldcup-metaverse\art\environment\arena\t31-after-columns.png
+BlenderMCP addon unregistered
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

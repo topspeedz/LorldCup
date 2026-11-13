@@ -1,0 +1,250 @@
+[
+  {
+    "name": "REF_CircularStage__Deck",
+    "triangles": 1148
+  },
+  {
+    "name": "REF_StageEdge__Gold",
+    "triangles": 1920
+  },
+  {
+    "name": "REF_StageEdge__Cyan",
+    "triangles": 1920
+  },
+  {
+    "name": "REF_StageFascia_panels__Obsidian",
+    "triangles": 864
+  },
+  {
+    "name": "REF_StageFascia_lamps__Pink",
+    "triangles": 72
+  },
+  {
+    "name": "REF_StageFascia_vents__Steel",
+    "triangles": 1152
+  },
+  {
+    "name": "REF_StageFascia_lamps__Cyan",
+    "triangles": 144
+  },
+  {
+    "name": "REF_StageFascia_lamps__Gold",
+    "triangles": 216
+  },
+  {
+    "name": "REF_DeckSeams__Rubber",
+    "triangles": 372
+  },
+  {
+    "name": "REF_TrophyIsland__Obsidian",
+    "triangles": 28
+  },
+  {
+    "name": "REF_RunwayEdge__Gold",
+    "triangles": 160
+  },
+  {
+    "name": "REF_RunwayInset__White",
+    "triangles": 160
+  },
+  {
+    "name": "REF_TrophyCyanAccent__Cyan",
+    "triangles": 40
+  },
+  {
+    "name": "REF_RunwaySeams__Rubber",
+    "triangles": 96
+  },
+  {
+    "name": "REF_PedestalFoot__Silver",
+    "triangles": 44
+  },
+  {
+    "name": "REF_Pedestal__Obsidian",
+    "triangles": 44
+  },
+  {
+    "name": "REF_PedestalTrim__Gold",
+    "triangles": 320
+  },
+  {
+    "name": "REF_PedestalRibs__GoldMetal",
+    "triangles": 160
+  },
+  {
+    "name": "REF_Trophy__Silver",
+    "triangles": 1788
+  },
+  {
+    "name": "REF_TrophyHandles__Silver",
+    "triangles": 160
+  },
+  {
+    "name": "REF_TrophyCrown__Silver",
+    "triangles": 160
+  },
+  {
+    "name": "REF_CenterStair__Obsidian",
+    "triangles": 84
+  },
+  {
+    "name": "REF_CenterStairNosing__Gold",
+    "triangles": 140
+  },
+  {
+    "name": "REF_CenterBackdrop__Obsidian",
+    "triangles": 12
+  },
+  {
+    "name": "REF_CenterBackdropTrim__GoldMetal",
+    "triangles": 80
+  },
+  {
+    "name": "REF_GrandFinalFascia__ScreenBlack",
+    "triangles": 12
+  },
+  {
+    "name": "REF_GrandFinalTrim__Gold",
+    "triangles": 80
+  },
+  {
+    "name": "REF_WingMainFrame__Obsidian",
+    "triangles": 24
+  },
+  {
+    "name": "REF_WingLED__GoldWaves",
+    "triangles": 12
+  },
+  {
+    "name": "REF_WingLEDTrim__Gold",
+    "triangles": 80
+  },
+  {
+    "name": "REF_ScenicBlade__Obsidian",
+    "triangles": 72
+  },
+  {
+    "name": "REF_ScenicBladeEdge__Gold",
+    "triangles": 60
+  },
+  {
+    "name": "REF_ScenicBladeRim__Silver",
+    "triangles": 120
+  },
+  {
+    "name": "REF_RearBraces__Steel",
+    "triangles": 448
+  },
+  {
+    "name": "REF_BackstageCase__Rubber",
+    "triangles": 96
+  },
+  {
+    "name": "REF_FlightCaseCorners__Silver",
+    "triangles": 192
+  },
+  {
+    "name": "REF_BackstageCable__Rubber",
+    "triangles": 320
+  },
+  {
+    "name": "REF_WingLED__BlueWaves",
+    "triangles": 12
+  },
+  {
+    "name": "REF_WingLEDTrim__Cyan",
+    "triangles": 80
+  },
+  {
+    "name": "REF_ScenicBladeEdge__Cyan",
+    "triangles": 40
+  },
+  {
+    "name": "REF_ScenicBladeEdge__Pink",
+    "triangles": 20
+  },
+  {
+    "name": "REF_TeamRiser__Obsidian",
+    "triangles": 120
+  },
+  {
+    "name": "REF_TeamRiserEdge__Gold",
+    "triangles": 360
+  },
+  {
+    "name": "REF_DeskBody__Obsidian",
+    "triangles": 24
+  },
+  {
+    "name": "REF_DeskWorktop__Steel",
+    "triangles": 24
+  },
+  {
+    "name": "REF_DeskLEDOutline__Gold",
+    "triangles": 80
+  },
+  {
+    "name": "REF_TeamRiserEdge__Cyan",
+    "triangles": 240
+  },
+  {
+    "name": "REF_TeamRiserEdge__Pink",
+    "triangles": 120
+  },
+  {
+    "name": "REF_DeskLEDOutline__Cyan",
+    "triangles": 80
+  },
+  {
+    "name": "REF_ScoreboardStructure__Obsidian",
+    "triangles": 12
+  },
+  {
+    "name": "REF_JumbotronTrim__Cyan",
+    "triangles": 160
+  },
+  {
+    "name": "REF_HeaderLight__Cyan",
+    "triangles": 112
+  },
+  {
+    "name": "REF_ScreenUndersideLamps__Cyan",
+    "triangles": 360
+  },
+  {
+    "name": "REF_ScreenUndersideLamps__White",
+    "triangles": 1152
+  },
+  {
+    "name": "REF_JumbotronTrim__Gold",
+    "triangles": 160
+  },
+  {
+    "name": "REF_HeaderLight__Gold",
+    "triangles": 112
+  },
+  {
+    "name": "REF_ScreenUndersideLamps__Gold",
+    "triangles": 360
+  },
+  {
+    "name": "REF_ScoreboardCorner__Steel",
+    "triangles": 112
+  },
+  {
+    "name": "REF_ScoreboardSuspension__Steel",
+    "triangles": 112
+  },
+  {
+    "name": "REF_ScoreboardHoist__Rubber",
+    "triangles": 48
+  },
+  {
+    "name": "REF_ScoreboardTopRail__Steel",
+    "triangles": 160
+  },
+  {
+    "name": "REF_ScoreboardTopTruss__Steel",
+    "triangles": 960
+  }
+]

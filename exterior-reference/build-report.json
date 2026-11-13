@@ -1,0 +1,32 @@
+{
+  "replaced_exterior_objects": [
+    "Barclays_sign",
+    "Corten_panels__corten3",
+    "Corten_panels__corten6",
+    "Corten_panels__corten0",
+    "Corten_panels__corten2",
+    "Corten_panels__corten7",
+    "Corten_panels__corten5",
+    "Corten_panels__corten4",
+    "Corten_panels__corten1",
+    "Roof__green",
+    "Roof_seams__steel",
+    "Oculus_corten__corten0",
+    "Oculus_corten__corten1",
+    "Oculus_corten__corten2",
+    "Oculus_corten__corten3",
+    "Oculus_corten__corten4",
+    "Oculus_corten__corten5",
+    "Oculus_corten__corten6",
+    "Oculus_corten__corten7",
+    "Oculus_LED__cyan",
+    "Oculus_panel_reveals",
+    "Upper_corten_skin"
+  ],
+  "preserved_objects": 1531,
+  "new_mesh_triangles": 339782,
+  "new_objects": 25,
+  "source": "Nine supplied photographs; geometry inferred, not surveyed",
+  "materials": "New exterior-only Principled materials; procedural weathering requires baking for web",
+  "interior_unchanged": true
+}

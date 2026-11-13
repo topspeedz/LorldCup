@@ -1,0 +1,48 @@
+{
+  "preserved_original_objects": 1564,
+  "changed_original_objects": [],
+  "mesh_issues": [],
+  "preservation_mode": "persisted transforms and mesh topology",
+  "intentional_menu_image_surfaces": [
+    "CCR_Menu images",
+    "CCR_Menu images_Compact"
+  ],
+  "source_triangles": {
+    "CCR_SharedFourBayRow": 42184,
+    "CCR_EntryAdjacentTwoBayRow": 19172
+  },
+  "evaluated_source_triangles": {
+    "CCR_SharedFourBayRow": 48088,
+    "CCR_EntryAdjacentTwoBayRow": 23220
+  },
+  "total_instanced_triangles": 960112,
+  "source_lights": {
+    "CCR_SharedFourBayRow": 11,
+    "CCR_EntryAdjacentTwoBayRow": 8
+  },
+  "instanced_local_lights": 225,
+  "rows": 21,
+  "row_footprint_overlaps": [],
+  "gate_or_ramp_obstructions": [],
+  "main_aisle_clear_width_m": 3.181,
+  "ring_min_straight_aisle_width_m": 2.547,
+  "packed_images": [
+    [
+      "finish-menu-atlas.png",
+      true,
+      [
+        1254,
+        1254
+      ]
+    ],
+    [
+      "wide-menu-atlas.png",
+      true,
+      [
+        1536,
+        1024
+      ]
+    ]
+  ],
+  "web_export_updated": false
+}

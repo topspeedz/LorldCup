@@ -1,0 +1,56 @@
+{
+  "replacements": [
+    {
+      "material": "REF_Artwork_Crest",
+      "original_image": "Final Arena.png",
+      "new_image": "arena-patterns-v2",
+      "file": "art/environment/arena/arena-patterns-v2.png",
+      "objects": [
+        "REF_WorldsCrest",
+        "REF_PedestalCrest",
+        "REF_HeaderCrest_0",
+        "REF_HeaderCrest_1",
+        "REF_HeaderCrest_2",
+        "REF_HeaderCrest_3"
+      ]
+    },
+    {
+      "material": "REF_Artwork_G",
+      "original_image": "Final Arena.png",
+      "new_image": "arena-patterns-v2",
+      "file": "art/environment/arena/arena-patterns-v2.png",
+      "objects": [
+        "REF_Jumbotron_2",
+        "REF_Jumbotron_3"
+      ]
+    },
+    {
+      "material": "REF_Artwork_B",
+      "original_image": "Final Arena.png",
+      "new_image": "arena-patterns-v2",
+      "file": "art/environment/arena/arena-patterns-v2.png",
+      "objects": [
+        "REF_Jumbotron_0",
+        "REF_Jumbotron_1"
+      ]
+    },
+    {
+      "material": "REF_Artwork_DeskG",
+      "original_image": "Final Arena.png",
+      "new_image": "arena-patterns-v2",
+      "file": "art/environment/arena/arena-patterns-v2.png",
+      "objects": [
+        "REF_DeskFace_-1"
+      ]
+    },
+    {
+      "material": "REF_Artwork_DeskB",
+      "original_image": "Final Arena.png",
+      "new_image": "arena-patterns-v2",
+      "file": "art/environment/arena/arena-patterns-v2.png",
+      "objects": [
+        "REF_DeskFace_1"
+      ]
+    }
+  ]
+}

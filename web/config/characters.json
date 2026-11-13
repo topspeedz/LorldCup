@@ -1,0 +1,57 @@
+{
+  "ids": [
+    "fan_f1",
+    "fan_f2",
+    "fan_m1",
+    "fan_m2"
+  ],
+  "names": {
+    "fan_f1": "여성 팬 1",
+    "fan_f2": "여성 팬 2",
+    "fan_m1": "남성 팬 1",
+    "fan_m2": "남성 팬 2"
+  },
+  "default": "fan_f1",
+  "clipFile": "./assets/characters/fan-anim-v2.glb",
+  "clipFps": 30,
+  "cues": {
+    "Emote_CheerClap": { "cheer_windup": 2, "cheer_raise": 7, "clap_contact": [7, 17, 26, 35, 44, 52, 61, 70, 79] },
+    "Emote_Heart": { "heart_open": 16, "heart_form": 34, "heart_release": 76 },
+    "Emote_Angry": { "angry_raise": 18, "angry_swing": [18, 22] },
+    "Emote_EggThrow": { "egg_windup": 12, "egg_scream": 26, "egg_release": 32 }
+  },
+  "fx": {
+    "cheer_clap": {
+      "maxParticles": 12, "seconds": 0.3, "size": 0.28,
+      "preludeParticles": 2, "preludeSeconds": 0.2, "preludeScale": 0.5,
+      "raiseParticles": 6, "spreadMeters": 0.5, "color": "#edf6ff",
+      "reducedMotionParticles": 2
+    },
+    "heart": {
+      "maxParticles": 4, "seconds": 0.5, "size": 0.65,
+      "preludeParticles": 2, "preludeSeconds": 0.2, "preludeScale": 0.4,
+      "secondaryScale": 0.4, "riseMeters": 0.3, "handOffsetMeters": 0.35,
+      "color": "#f2a6bd", "reducedMotionParticles": 1,
+      "flightSeconds": 0.8, "arcHeightMeters": 1.2, "target": "facing",
+      "burstParticles": 4, "burstSeconds": 0.5, "burstRadiusMeters": 1.2,
+      "burstSizeMeters": 0.32, "surfaceOffsetMeters": 0.04, "renderOrder": 2
+    },
+    "angry": {
+      "maxParticles": 4, "seconds": 0.5, "size": 0.48,
+      "preludeParticles": 1, "preludeSeconds": 0.2, "preludeScale": 0.6,
+      "spreadMeters": 0.24, "headOffsetMeters": 0.65, "color": "#e9a06b",
+      "reducedMotionParticles": 2
+    },
+    "egg_throw": {
+      "maxParticles": 8, "seconds": 0.6, "size": 0.14,
+      "flightSeconds": 0.8, "splatSeconds": 1.5, "splatFadeSeconds": 0.6,
+      "target": "facing", "arcHeightMeters": 0.6,
+      "shardSpeedMetersPerSecond": 2.4, "shardNormalSpeedMetersPerSecond": 0.5,
+      "shardGravityMetersPerSecondSquared": 3,
+      "splatSizeMeters": 0.7, "maxSplatsPerFace": 1,
+      "maxSplatAreaRatio": 0.0025, "splatOpacity": 0.7, "surfaceOffsetMeters": 0.02,
+      "shellColor": "#f1ead8", "yolkColor": "#e8bd52", "renderOrder": 2,
+      "reducedMotionParticles": 2, "projectileScale": 2.5
+    }
+  }
+}

@@ -1,0 +1,270 @@
+{
+  "effect": "emotes",
+  "clipFile": "./assets/characters/fan-anim-v2.glb",
+  "fps": 30,
+  "frameOrigin": 0,
+  "frameSource": "_workspace/graphicmodel/2026-11-13-ux-motion-rooms/04_graphic-character-designer_clips-fan-v2_v2.md#클립",
+  "eventFrames": {
+    "Emote_CheerClap": {
+      "cheer_windup": 2,
+      "cheer_raise": 7,
+      "clap_contact": [
+        7,
+        17,
+        26,
+        35,
+        44,
+        52,
+        61,
+        70,
+        79
+      ]
+    },
+    "Emote_Heart": {
+      "heart_open": 16,
+      "heart_form": 34,
+      "heart_release": 76
+    },
+    "Emote_Angry": {
+      "angry_raise": 18,
+      "angry_swing": [
+        18,
+        22
+      ]
+    },
+    "Emote_EggThrow": {
+      "egg_windup": 12,
+      "egg_scream": 26,
+      "egg_release": 32
+    }
+  },
+  "fx": {
+    "cheer_clap": {
+      "maxParticles": 12,
+      "seconds": 0.3,
+      "size": 0.28,
+      "preludeParticles": 2,
+      "preludeSeconds": 0.2,
+      "preludeScale": 0.5,
+      "raiseParticles": 6,
+      "spreadMeters": 0.5,
+      "color": "#edf6ff",
+      "reducedMotionParticles": 2
+    },
+    "heart": {
+      "maxParticles": 4,
+      "seconds": 0.5,
+      "size": 0.65,
+      "preludeParticles": 2,
+      "preludeSeconds": 0.2,
+      "preludeScale": 0.4,
+      "secondaryScale": 0.4,
+      "riseMeters": 0.3,
+      "handOffsetMeters": 0.35,
+      "color": "#f2a6bd",
+      "reducedMotionParticles": 1,
+      "flightSeconds": 0.8,
+      "arcHeightMeters": 1.2,
+      "target": "facing",
+      "burstParticles": 4,
+      "burstSeconds": 0.5,
+      "burstRadiusMeters": 1.2,
+      "burstSizeMeters": 0.32,
+      "surfaceOffsetMeters": 0.04,
+      "renderOrder": 2
+    },
+    "angry": {
+      "maxParticles": 4,
+      "seconds": 0.5,
+      "size": 0.48,
+      "preludeParticles": 1,
+      "preludeSeconds": 0.2,
+      "preludeScale": 0.6,
+      "spreadMeters": 0.24,
+      "headOffsetMeters": 0.65,
+      "color": "#e9a06b",
+      "reducedMotionParticles": 2
+    },
+    "egg_throw": {
+      "maxParticles": 8,
+      "seconds": 0.6,
+      "size": 0.14,
+      "flightSeconds": 0.8,
+      "splatSeconds": 1.5,
+      "splatFadeSeconds": 0.6,
+      "target": "facing",
+      "arcHeightMeters": 0.6,
+      "shardSpeedMetersPerSecond": 2.4,
+      "shardNormalSpeedMetersPerSecond": 0.5,
+      "shardGravityMetersPerSecondSquared": 3,
+      "splatSizeMeters": 0.7,
+      "maxSplatsPerFace": 1,
+      "maxSplatAreaRatio": 0.0025,
+      "splatOpacity": 0.7,
+      "surfaceOffsetMeters": 0.02,
+      "shellColor": "#f1ead8",
+      "yolkColor": "#e8bd52",
+      "renderOrder": 2,
+      "reducedMotionParticles": 2,
+      "projectileScale": 2.5
+    }
+  },
+  "textures": [
+    {
+      "id": "clap_rays",
+      "width": 256,
+      "height": 256,
+      "mipmaps": false
+    },
+    {
+      "id": "heart",
+      "width": 256,
+      "height": 256,
+      "mipmaps": false
+    },
+    {
+      "id": "anger_tick",
+      "width": 256,
+      "height": 256,
+      "mipmaps": false
+    },
+    {
+      "id": "yolk_splat",
+      "width": 256,
+      "height": 256,
+      "mipmaps": false
+    }
+  ],
+  "budget": {
+    "avatars": 16,
+    "maxParticles": 384,
+    "maxHeldEggs": 16,
+    "maxFlyingEggs": 16,
+    "maxSplats": 4,
+    "textureBytes": 1048576,
+    "textureLimitBytes": 2097152,
+    "maxAdditionalDrawCalls": 9,
+    "maxTransparentLayersPerFace": 1,
+    "maxFlyingHearts": 16,
+    "maxHeartScreenParticles": 64,
+    "maxHeartInstances": 128,
+    "maxFanVoicesDesktop": 16,
+    "maxFanVoicesMobile": 14,
+    "maxCombinedVoicesDesktop": 26,
+    "maxCombinedVoicesMobile": 24,
+    "targetFps": 60
+  },
+  "revision": "FX1 / U-사용자-5 / 2026-11-13",
+  "sounds": {
+    "cheer_clap": {
+      "files": [
+        "cheer-clap_01.mp3",
+        "cheer-clap_02.mp3",
+        "cheer-clap_03.mp3"
+      ],
+      "gain": 0.3,
+      "spatial": "3D",
+      "anchor": "hand_L,hand_R",
+      "refDistanceMeters": 4,
+      "minIntervalSeconds": 0.12
+    },
+    "heart_send": {
+      "files": [
+        "heart-pop_01.mp3",
+        "heart-pop_02.mp3",
+        "heart-pop_03.mp3"
+      ],
+      "gain": 0.18,
+      "spatial": "3D",
+      "anchor": "release world position",
+      "refDistanceMeters": 4,
+      "minIntervalSeconds": 0.15
+    },
+    "heart_pop": {
+      "files": [
+        "heart-pop_01.mp3",
+        "heart-pop_02.mp3",
+        "heart-pop_03.mp3"
+      ],
+      "gain": 0.3,
+      "spatial": "3D",
+      "anchor": "selected screen.faces face",
+      "refDistanceMeters": 4,
+      "minIntervalSeconds": 0.15
+    },
+    "angry_voice": {
+      "files": [
+        "angry-voice_01.mp3",
+        "angry-voice_02.mp3",
+        "angry-voice_03.mp3"
+      ],
+      "gain": 0.32,
+      "spatial": "3D",
+      "anchor": "head",
+      "refDistanceMeters": 4,
+      "minIntervalSeconds": 0.75
+    },
+    "egg_scream": {
+      "files": [
+        "egg-scream_01.mp3"
+      ],
+      "gain": 0.25,
+      "spatial": "3D",
+      "anchor": "head",
+      "refDistanceMeters": 4,
+      "minIntervalSeconds": 0.05
+    },
+    "egg_impact": {
+      "files": [
+        "egg-impact_01.mp3",
+        "egg-impact_02.mp3",
+        "egg-impact_03.mp3"
+      ],
+      "gain": 0.3,
+      "spatial": "3D",
+      "anchor": "selected screen.faces face",
+      "refDistanceMeters": 4,
+      "minIntervalSeconds": 0.15
+    }
+  },
+  "soundPolicy": {
+    "remote": true,
+    "maxVoicesPerAvatar": 1,
+    "lateToleranceSeconds": 0.1,
+    "muteInFullMode": true,
+    "muteWhenDocumentHidden": true,
+    "randomPitch": false,
+    "variantSelection": "(emoteSeq + eventIndex) modulo file count; avoid immediate repeat per emitter/event",
+    "priority": "local action, nearest remote, remaining remote; within one sender impact replaces older voice"
+  },
+  "cues": [
+    {"id": "cheer_prepare", "emote": "cheer_clap", "clip": "Emote_CheerClap", "event": "cheer_windup", "offsetFrames": 0, "frame": 2, "phase": "예고", "trigger": "두 손이 환호 준비 자세로 모임", "socket": "hand_L,hand_R", "visual": "hand_glints", "sound": null, "weight": 0.5},
+    {"id": "cheer_raise", "emote": "cheer_clap", "clip": "Emote_CheerClap", "event": "cheer_raise", "offsetFrames": 0, "frame": 7, "phase": "타격", "trigger": "v2 첫 박수의 가장 센 박자 (clap_1과 동시, 새 묶음 중복 방출 없음)", "socket": "hand_L,hand_R", "visual": "raised_rays", "sound": null, "weight": 0.7},
+    {"id": "clap_1", "emote": "cheer_clap", "clip": "Emote_CheerClap", "event": "clap_contact", "eventIndex": 0, "offsetFrames": 0, "frame": 7, "phase": "타격", "trigger": "박수 접촉 1", "socket": "hand_L,hand_R", "visual": "clap_burst", "sound": "cheer_clap", "weight": 1},
+    {"id": "clap_2", "emote": "cheer_clap", "clip": "Emote_CheerClap", "event": "clap_contact", "eventIndex": 1, "offsetFrames": 0, "frame": 17, "phase": "타격", "trigger": "박수 접촉 2", "socket": "hand_L,hand_R", "visual": "clap_burst", "sound": "cheer_clap", "weight": 1},
+    {"id": "clap_3", "emote": "cheer_clap", "clip": "Emote_CheerClap", "event": "clap_contact", "eventIndex": 2, "offsetFrames": 0, "frame": 26, "phase": "타격", "trigger": "박수 접촉 3", "socket": "hand_L,hand_R", "visual": "clap_burst", "sound": "cheer_clap", "weight": 1},
+    {"id": "clap_4", "emote": "cheer_clap", "clip": "Emote_CheerClap", "event": "clap_contact", "eventIndex": 3, "offsetFrames": 0, "frame": 35, "phase": "타격", "trigger": "박수 접촉 4", "socket": "hand_L,hand_R", "visual": "clap_burst", "sound": "cheer_clap", "weight": 1},
+    {"id": "clap_5", "emote": "cheer_clap", "clip": "Emote_CheerClap", "event": "clap_contact", "eventIndex": 4, "offsetFrames": 0, "frame": 44, "phase": "타격", "trigger": "박수 접촉 5", "socket": "hand_L,hand_R", "visual": "clap_burst", "sound": "cheer_clap", "weight": 1},
+    {"id": "clap_6", "emote": "cheer_clap", "clip": "Emote_CheerClap", "event": "clap_contact", "eventIndex": 5, "offsetFrames": 0, "frame": 52, "phase": "타격", "trigger": "박수 접촉 6", "socket": "hand_L,hand_R", "visual": "clap_burst", "sound": "cheer_clap", "weight": 1},
+    {"id": "clap_7", "emote": "cheer_clap", "clip": "Emote_CheerClap", "event": "clap_contact", "eventIndex": 6, "offsetFrames": 0, "frame": 61, "phase": "타격", "trigger": "박수 접촉 7", "socket": "hand_L,hand_R", "visual": "clap_burst", "sound": "cheer_clap", "weight": 1},
+    {"id": "clap_8", "emote": "cheer_clap", "clip": "Emote_CheerClap", "event": "clap_contact", "eventIndex": 7, "offsetFrames": 0, "frame": 70, "phase": "타격", "trigger": "박수 접촉 8", "socket": "hand_L,hand_R", "visual": "clap_burst", "sound": "cheer_clap", "weight": 1},
+    {"id": "clap_9", "emote": "cheer_clap", "clip": "Emote_CheerClap", "event": "clap_contact", "eventIndex": 8, "offsetFrames": 0, "frame": 79, "phase": "타격", "trigger": "박수 접촉 9", "socket": "hand_L,hand_R", "visual": "clap_burst", "sound": "cheer_clap", "weight": 1},
+    {"id": "cheer_tail", "emote": "cheer_clap", "clip": "Emote_CheerClap", "event": "clap_contact", "eventIndex": 8, "offsetFrames": 3, "frame": 82, "phase": "여운", "trigger": "마지막 접촉 뒤 남은 광선 수축", "socket": "hand_L,hand_R", "visual": "rays_shrink", "sound": null, "weight": 0.5},
+    {"id": "heart_prepare", "emote": "heart", "clip": "Emote_Heart", "event": "heart_open", "offsetFrames": 0, "frame": 16, "phase": "예고", "trigger": "양팔을 벌림", "socket": "hand_L,hand_R", "visual": "small_hearts", "sound": null, "weight": 0.4},
+    {"id": "heart_form", "emote": "heart", "clip": "Emote_Heart", "event": "heart_form", "offsetFrames": 0, "frame": 34, "phase": "타격", "trigger": "머리 위 손 하트 완성", "socket": "hand_L,hand_R", "visual": "heart_hold", "sound": null, "weight": 1},
+    {"id": "heart_release", "emote": "heart", "clip": "Emote_Heart", "event": "heart_release", "offsetFrames": 0, "frame": 76, "phase": "타격", "trigger": "손 하트를 풀며 중심 하트를 스크린으로 보냄", "socket": "hand_L,hand_R", "visual": "heart_flight", "sound": "heart_send", "weight": 1},
+    {"id": "heart_impact", "emote": "heart", "clip": null, "event": null, "after": "heart_release", "frame": 24, "timeFormula": "flightSeconds", "phase": "타격", "trigger": "하트 중심이 선택한 스크린 면에 도착", "anchor": "selected screen.faces face", "visual": "heart_screen_burst", "sound": "heart_pop", "weight": 1},
+    {"id": "heart_burst_end", "emote": "heart", "clip": null, "event": null, "after": "heart_release", "frame": 39, "timeFormula": "flightSeconds + burstSeconds", "phase": "여운", "trigger": "스크린 하트 파편 수명 종료, 자국 없음", "anchor": "selected screen.faces face", "visual": "heart_burst_remove", "sound": null, "weight": 0},
+    {"id": "angry_prepare", "emote": "angry", "clip": "Emote_Angry", "event": "angry_raise", "offsetFrames": 0, "frame": 18, "phase": "예고", "trigger": "v2 왼손 첫 전진 박자 (angry_swing_1과 동시, 타격 큐 우선)", "socket": "head", "visual": "anger_prepare", "sound": null, "weight": 0.6},
+    {"id": "angry_swing_1", "emote": "angry", "clip": "Emote_Angry", "event": "angry_swing", "eventIndex": 0, "offsetFrames": 0, "frame": 18, "phase": "타격", "trigger": "첫 손 휘두름", "socket": "head", "visual": "anger_ticks", "sound": "angry_voice", "weight": 1},
+    {"id": "angry_swing_2", "emote": "angry", "clip": "Emote_Angry", "event": "angry_swing", "eventIndex": 1, "offsetFrames": 0, "frame": 22, "phase": "타격", "trigger": "둘째 손 휘두름", "socket": "head", "visual": "anger_ticks", "sound": null, "weight": 1},
+    {"id": "angry_tail", "emote": "angry", "clip": "Emote_Angry", "event": "angry_swing", "eventIndex": 1, "offsetFrames": 3, "frame": 25, "phase": "여운", "trigger": "마지막 휘두름 뒤 표식 수축", "socket": "head", "visual": "ticks_shrink", "sound": null, "weight": 0.5},
+    {"id": "egg_prepare", "emote": "egg_throw", "clip": "Emote_EggThrow", "event": "egg_windup", "offsetFrames": 0, "frame": 12, "phase": "예고", "trigger": "계란을 든 팔을 뒤로 당김", "socket": "prop_R", "visual": "held_egg", "sound": null, "weight": 0.5},
+    {"id": "egg_scream", "emote": "egg_throw", "clip": "Emote_EggThrow", "event": "egg_scream", "offsetFrames": 0, "frame": 26, "phase": "예고", "trigger": "던지기 직전 괴성 시작", "socket": "head", "visual": "egg_throw_pose", "sound": "egg_scream", "weight": 1},
+    {"id": "egg_release", "emote": "egg_throw", "clip": "Emote_EggThrow", "event": "egg_release", "offsetFrames": 0, "frame": 32, "phase": "타격", "trigger": "계란이 오른손을 떠남", "socket": "prop_R", "visual": "egg_flight", "sound": null, "weight": 1},
+    {"id": "egg_impact", "emote": "egg_throw", "clip": null, "event": null, "after": "egg_release", "frame": 24.0, "timeFormula": "flightSeconds", "phase": "타격", "trigger": "계란 중심이 선택한 스크린 면의 목표에 도달함", "anchor": "selected screen.faces face", "visual": "shells_and_yolk", "sound": "egg_impact", "weight": 1},
+    {"id": "egg_shells_end", "emote": "egg_throw", "clip": null, "event": null, "after": "egg_release", "frame": 42.0, "timeFormula": "flightSeconds + seconds", "phase": "여운", "trigger": "명중 때 생긴 조각 수명이 끝남", "anchor": "selected screen.faces face", "visual": "shells_remove", "sound": null, "weight": 0},
+    {"id": "egg_splat_fade", "emote": "egg_throw", "clip": null, "event": null, "after": "egg_release", "frame": 51.0, "timeFormula": "flightSeconds + splatSeconds - splatFadeSeconds", "phase": "여운", "trigger": "명중 뒤 자국의 유지 구간이 끝남", "anchor": "selected screen.faces face", "visual": "splat_fade", "sound": null, "weight": 0.5},
+    {"id": "egg_splat_end", "emote": "egg_throw", "clip": null, "event": null, "after": "egg_release", "frame": 69.0, "timeFormula": "flightSeconds + splatSeconds", "phase": "여운", "trigger": "명중 후 1.5초가 되어 자국 완전 제거", "anchor": "selected screen.faces face", "visual": "splat_remove", "sound": null, "weight": 0}
+  ]
+}

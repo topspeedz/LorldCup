@@ -1,0 +1,92 @@
+{
+ "d-first": {
+  "boxes": 6,
+  "chars": 99,
+  "accents": 1
+ },
+ "m-first": {
+  "boxes": 6,
+  "chars": 99,
+  "accents": 1
+ },
+ "d-invite": {
+  "boxes": 1,
+  "chars": 78,
+  "accents": 1
+ },
+ "m-invite": {
+  "boxes": 1,
+  "chars": 78,
+  "accents": 1
+ },
+ "d-walk": {
+  "boxes": 6,
+  "chars": 74,
+  "accents": 0
+ },
+ "m-walk": {
+  "boxes": 9,
+  "chars": 41,
+  "accents": 0
+ },
+ "d-copied": {
+  "boxes": 7,
+  "chars": 94,
+  "accents": 0
+ },
+ "m-copied": {
+  "boxes": 10,
+  "chars": 61,
+  "accents": 0
+ },
+ "d-near-seat": {
+  "boxes": 6,
+  "chars": 70,
+  "accents": 1
+ },
+ "m-near-seat": {
+  "boxes": 9,
+  "chars": 34,
+  "accents": 1
+ },
+ "d-seated": {
+  "boxes": 8,
+  "chars": 90,
+  "accents": 1
+ },
+ "m-seated": {
+  "boxes": 11,
+  "chars": 73,
+  "accents": 1
+ },
+ "d-full": {
+  "boxes": 3,
+  "chars": 11,
+  "accents": 1
+ },
+ "m-full": {
+  "boxes": 3,
+  "chars": 10,
+  "accents": 1
+ },
+ "d-wait": {
+  "boxes": 7,
+  "chars": 81,
+  "accents": 0
+ },
+ "m-wait": {
+  "boxes": 9,
+  "chars": 39,
+  "accents": 0
+ },
+ "d-wait-full": {
+  "boxes": 3,
+  "chars": 18,
+  "accents": 1
+ },
+ "m-wait-full": {
+  "boxes": 3,
+  "chars": 17,
+  "accents": 1
+ }
+}

@@ -1,0 +1,17 @@
+{
+  "file": "D:\\Blender\\Blender\\barclays-worlds-2026\\barclays-worlds-2026.blend",
+  "size_bytes": 147120204,
+  "backup": "D:/Blender/Blender/barclays-worlds-2026/before-concourse-reference-20261112.blend",
+  "review_scene": "Concourse Reference Review",
+  "camera": "CCR_RingView",
+  "rendered_views": [
+    "CounterView",
+    "CutawayView",
+    "ReverseView",
+    "RingView",
+    "ExitConnection",
+    "OriginalView"
+  ],
+  "web_updated": false,
+  "saved_file_verification_passed": true
+}

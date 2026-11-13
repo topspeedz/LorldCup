@@ -1,0 +1,172 @@
+{
+  "background_buildings": 20,
+  "background_meshes": 33,
+  "original_objects_preserved": true,
+  "buildings": [
+    {
+      "name": "Green tower lower",
+      "position": [
+        69,
+        111
+      ],
+      "height": 53
+    },
+    {
+      "name": "Right glass tower",
+      "position": [
+        91,
+        -105
+      ],
+      "height": 96
+    },
+    {
+      "name": "Red tower podium",
+      "position": [
+        70,
+        -100
+      ],
+      "height": 51
+    },
+    {
+      "name": "Center limestone block",
+      "position": [
+        130,
+        34
+      ],
+      "height": 61
+    },
+    {
+      "name": "Rear midrise",
+      "position": [
+        136,
+        -10
+      ],
+      "height": 54
+    },
+    {
+      "name": "Rear midrise two",
+      "position": [
+        150,
+        -54
+      ],
+      "height": 42
+    },
+    {
+      "name": "Left beige block",
+      "position": [
+        -31,
+        130
+      ],
+      "height": 30
+    },
+    {
+      "name": "Left apartment",
+      "position": [
+        8,
+        143
+      ],
+      "height": 43
+    },
+    {
+      "name": "Far left apartment",
+      "position": [
+        42,
+        167
+      ],
+      "height": 48
+    },
+    {
+      "name": "Street block 1",
+      "position": [
+        -89,
+        123
+      ],
+      "height": 24
+    },
+    {
+      "name": "Street block 2",
+      "position": [
+        -55,
+        125
+      ],
+      "height": 18
+    },
+    {
+      "name": "Street block 3",
+      "position": [
+        -110,
+        -118
+      ],
+      "height": 21
+    },
+    {
+      "name": "Street block 4",
+      "position": [
+        -65,
+        -124
+      ],
+      "height": 14
+    },
+    {
+      "name": "Street block 5",
+      "position": [
+        -25,
+        -130
+      ],
+      "height": 26
+    },
+    {
+      "name": "Street block 6",
+      "position": [
+        17,
+        -141
+      ],
+      "height": 24
+    },
+    {
+      "name": "Street block 7",
+      "position": [
+        132,
+        83
+      ],
+      "height": 27
+    },
+    {
+      "name": "Street block 8",
+      "position": [
+        165,
+        120
+      ],
+      "height": 26
+    },
+    {
+      "name": "Street block 9",
+      "position": [
+        181,
+        37
+      ],
+      "height": 27
+    },
+    {
+      "name": "Street block 10",
+      "position": [
+        178,
+        -40
+      ],
+      "height": 26
+    },
+    {
+      "name": "Street block 11",
+      "position": [
+        153,
+        -102
+      ],
+      "height": 26
+    }
+  ],
+  "final_scene": "Barclays \u2022 WORLDS 2026",
+  "final_objects": 239,
+  "web_errors": [],
+  "entry_route_steps": 556,
+  "glb_bytes": 128880792
+}

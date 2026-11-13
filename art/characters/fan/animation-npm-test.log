@@ -1,0 +1,9 @@
+
+> test
+> playwright test
+
+
+Running 31 tests using 1 worker
+
+(node:78076) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)

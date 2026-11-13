@@ -1,0 +1,25 @@
+{
+  "scene": "Barclays \u2022 WORLDS 2026",
+  "spectators": 12392,
+  "audience_net_triangles": 1266968,
+  "stage_and_equipment_net_triangles": 66216,
+  "combined_net_triangles": 1333184,
+  "packed_images": [
+    "audience-face-0.png",
+    "audience-face-1.png",
+    "audience-face-2.png",
+    "audience-jersey-blg.png",
+    "audience-jersey-geng.png"
+  ],
+  "review_renders": [
+    "interior-overview.png",
+    "interior-equipment.png",
+    "interior-audience.png"
+  ],
+  "active_camera": "04_City_Exterior",
+  "render_size": [
+    1440,
+    900
+  ],
+  "verification": "Geometry and three final still renders reviewed; runtime/animation not tested."
+}

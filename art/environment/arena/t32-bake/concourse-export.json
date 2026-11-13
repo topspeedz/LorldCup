@@ -1,0 +1,13 @@
+{
+  "rows": 21,
+  "detail_batches": 150,
+  "triangles": 1613384,
+  "material_textures": [
+    "CCR_Warm vertical timber grain",
+    "CCR_Charcoal veined counter stone",
+    "CCR_Coffee menu image",
+    "CCR_Snack menu image",
+    "CCR_Charcoal stone floor with 1200mm joints"
+  ],
+  "lights": 225
+}

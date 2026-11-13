@@ -1,0 +1,66 @@
+{
+  "ok": true,
+  "stage": "T28-static-blockout",
+  "characters": [
+    {
+      "id": "fan_f1",
+      "vertices": 1946,
+      "triangles": 3732,
+      "height": 1.801,
+      "materials": [
+        "Uniform",
+        "FanSurface"
+      ],
+      "nonmanifold_edges": 0,
+      "loose_vertices": 0,
+      "hair": "side-part-bob",
+      "body_base": "female"
+    },
+    {
+      "id": "fan_f2",
+      "vertices": 2712,
+      "triangles": 5180,
+      "height": 1.826,
+      "materials": [
+        "Uniform",
+        "FanSurface"
+      ],
+      "nonmanifold_edges": 0,
+      "loose_vertices": 0,
+      "hair": "high-curly-puff",
+      "body_base": "female"
+    },
+    {
+      "id": "fan_m1",
+      "vertices": 2044,
+      "triangles": 3924,
+      "height": 1.821,
+      "materials": [
+        "Uniform",
+        "FanSurface"
+      ],
+      "nonmanifold_edges": 0,
+      "loose_vertices": 0,
+      "hair": "swept-quiff",
+      "body_base": "male"
+    },
+    {
+      "id": "fan_m2",
+      "vertices": 2428,
+      "triangles": 4636,
+      "height": 1.801,
+      "materials": [
+        "Uniform",
+        "FanSurface"
+      ],
+      "nonmanifold_edges": 0,
+      "loose_vertices": 0,
+      "hair": "short-textured-crop",
+      "body_base": "male"
+    }
+  ],
+  "shared_body_bases": 2,
+  "shared_joint_layout": true,
+  "rigged": false,
+  "clips": []
+}

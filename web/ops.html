@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>운영자 화면</title>
+<style>
+  :root { color-scheme: light dark; }
+  body { margin: 0; padding: 16px; font: 16px/1.5 system-ui, sans-serif; background: Canvas; color: CanvasText; }
+  main { max-width: 32rem; margin: 0 auto; }
+  h1 { font-size: 1.25rem; margin: 0 0 .5rem; }
+  h2 { font-size: 1rem; margin: 1rem 0 .25rem; }
+  ul { list-style: none; padding: 0; margin: .5rem 0; }
+  li { padding: .25rem 0; border-bottom: 1px solid color-mix(in srgb, CanvasText 15%, transparent); font-variant-numeric: tabular-nums; }
+  .note { opacity: .75; font-size: .875rem; }
+</style>
+</head>
+<body>
+<main>
+  <h1>운영자 화면</h1>
+  <p id="ops-status" role="status">확인 중…</p>
+  <div id="ops-broadcasts"></div>
+  <p id="ops-time" class="note"></p>
+</main>
+<script src="./vendor/peerjs.min.js"></script>
+<script type="module" src="./ops.js"></script>
+</body>
+</html>

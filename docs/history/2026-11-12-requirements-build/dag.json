@@ -1,0 +1,1245 @@
+{
+ "title": "BL-0002~0024 계획 DAG",
+ "heading": "BL-0002~0024 계획 — Task 스윔레인 (22:39 진행 상태)",
+ "sub": "레인 = 팀, 행 = 워커 한 줄, <b>같은 열 = 그 무렵 함께 도는 Task</b>(열 머리 = likely 시작 T+분, T+0은 계획 승인). 점선 상자 = 팀장이 띄우는 묶음. 오른쪽 아래 태그 = 배정(런타임·effort, 모델은 마우스 오버).",
+ "aria": "계획 승인 뒤 코디네이터가 첫 묶음을 띄운다. 필수 줄(검증 토대 → main.js 분할 → 스크린 유튜브 → Full Mode → 필수 리뷰)이 먼저 끝나고, 그래픽 캐릭터 줄(아트 디렉션 → 그래픽 제작 묶음 → 클립)이 연결·리뷰·끝 QA·성능·수정·재검·최종 테스트로 이어지는 임계 경로다.",
+ "columns": [
+  "t0 · T+0",
+  "t1 · T+0",
+  "t2 · T+18",
+  "t3 · T+51",
+  "t4 · T+76",
+  "t5 · T+111",
+  "t6 · T+152",
+  "t7 · T+212",
+  "t8 · T+244",
+  "t9 · T+289",
+  "t10 · T+327",
+  "t11 · T+383",
+  "t12 · T+416",
+  "t13 · T+439",
+  "t14 · T+525",
+  "t15 · T+558",
+  "t16 · T+596",
+  "t17 · T+616",
+  "t18 · T+634",
+  "t19 · T+652",
+  "t20 · T+685",
+  "t21 · T+715",
+  "t22 · T+715"
+ ],
+ "lanes": [
+  {
+   "id": "coord",
+   "name": "창구·코디네이터",
+   "tone": "coord",
+   "roles": [
+    "사용자 승인 · coordinator"
+   ]
+  },
+  {
+   "id": "product",
+   "name": "기획 팀",
+   "tone": "plan",
+   "roles": [
+    "product-manager"
+   ]
+  },
+  {
+   "id": "legal",
+   "name": "법무검토팀",
+   "tone": "verify",
+   "roles": [
+    "행0 팀장 · 행1~2 앞 검토 → 끝 검토"
+   ]
+  },
+  {
+   "id": "web",
+   "name": "웹 개발 팀",
+   "tone": "dev",
+   "roles": [
+    "행0~1 토대·분할·필수 · 행2~ 기능 묶음",
+    "팀원 최대 4 + 팀장 1 · 8행"
+   ]
+  },
+  {
+   "id": "graphic",
+   "name": "그래픽 팀",
+   "tone": "dev",
+   "roles": [
+    "Blender MCP 한 줄 · 배치 Blender 한 줄",
+    "graphic-leader · vfx · 성능 · 6행"
+   ]
+  },
+  {
+   "id": "qa",
+   "name": "검증 팀",
+   "tone": "verify",
+   "roles": [
+    "code-reviewer · qa-inspector"
+   ]
+  },
+  {
+   "id": "harness",
+   "name": "하네스 팀",
+   "tone": "harness",
+   "roles": [
+    "harness-engineer"
+   ]
+  }
+ ],
+ "nodes": [
+  {
+   "id": "G1",
+   "lane": "coord",
+   "col": 0,
+   "row": 0,
+   "title": "G1 계획 승인",
+   "sub": "계획서·그림 2개 승인 뒤 Orca 실행",
+   "status": "done"
+  },
+  {
+   "id": "C01",
+   "lane": "coord",
+   "col": 1,
+   "row": 0,
+   "title": "C01 코디네이터 기동",
+   "sub": "실행 Run·첫 묶음 spec·등록",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "high"
+  },
+  {
+   "id": "T01",
+   "lane": "product",
+   "col": 2,
+   "row": 0,
+   "bl": "BL-0002~0024",
+   "title": "T01 백로그 연결(4단계)",
+   "sub": "계획 Task를 23개 항목에 연결",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T02",
+   "lane": "web",
+   "col": 2,
+   "row": 0,
+   "title": "T02 검증 토대",
+   "sub": "package.json·Playwright·서버·회귀 2개 실행기",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T03",
+   "lane": "web",
+   "col": 2,
+   "row": 1,
+   "title": "T03 아키텍처 문서",
+   "sub": "모듈 표·약속·파일 소유",
+   "status": "done",
+   "agent": "claude",
+   "model": "fable",
+   "effort": "high"
+  },
+  {
+   "id": "T04",
+   "lane": "web",
+   "col": 2,
+   "row": 2,
+   "bl": "BL-0002",
+   "title": "T04 자산 연동 규약",
+   "sub": "이름 보존·클립·재질·4종 예산",
+   "status": "done",
+   "agent": "claude",
+   "model": "fable",
+   "effort": "high"
+  },
+  {
+   "id": "T05",
+   "lane": "graphic",
+   "col": 2,
+   "row": 0,
+   "bl": "BL-0002",
+   "title": "T05 아트 디렉션",
+   "sub": "캐릭터 4종·밤·하늘 쇼·마네킹",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "medium"
+  },
+  {
+   "id": "T06",
+   "lane": "graphic",
+   "col": 2,
+   "row": 1,
+   "bl": "BL-0011",
+   "title": "T06 Blender·조사",
+   "sub": "MCP 연결 확인·뜬 사물·관통 조사",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T07",
+   "lane": "legal",
+   "col": 2,
+   "row": 3,
+   "bl": "BL-0016",
+   "title": "T07 법무 기준",
+   "sub": "사실 표·판정 기준",
+   "status": "done",
+   "agent": "claude",
+   "model": "fable",
+   "effort": "high"
+  },
+  {
+   "id": "T08",
+   "lane": "legal",
+   "col": 4,
+   "row": 3,
+   "bl": "BL-0003",
+   "title": "T08 Riot 앞 검토",
+   "sub": "팀 표지·게임 화면·유튜브",
+   "status": "done",
+   "agent": "claude",
+   "model": "fable",
+   "effort": "high"
+  },
+  {
+   "id": "T09",
+   "lane": "legal",
+   "col": 4,
+   "row": 4,
+   "bl": "BL-0012",
+   "title": "T09 법률 앞 검토",
+   "sub": "임베드 조건·CC0·PeerJS 정보",
+   "status": "done",
+   "agent": "claude",
+   "model": "fable",
+   "effort": "high"
+  },
+  {
+   "id": "T10",
+   "lane": "harness",
+   "col": 3,
+   "row": 0,
+   "title": "T10 하네스 1차",
+   "sub": "AGENTS.md 명령·스택, 편집 범위",
+   "status": "done",
+   "agent": "claude",
+   "model": "fable",
+   "effort": "high"
+  },
+  {
+   "id": "T11",
+   "lane": "web",
+   "col": 3,
+   "row": 0,
+   "title": "T11 main.js 분할",
+   "sub": "main.js를 모듈로, 동작 불변",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T12",
+   "lane": "web",
+   "col": 3,
+   "row": 1,
+   "bl": "BL-0022",
+   "title": "T12 방 구조 문서",
+   "sub": "PeerJS Cloud·방 id 목록·회차 배치",
+   "status": "done",
+   "agent": "claude",
+   "model": "fable",
+   "effort": "high"
+  },
+  {
+   "id": "T13",
+   "lane": "web",
+   "col": 4,
+   "row": 0,
+   "bl": "BL-0016",
+   "title": "T13 스크린 유튜브",
+   "sub": "IFrame·CSS3D·생방송·회차 위치",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T14",
+   "lane": "web",
+   "col": 6,
+   "row": 0,
+   "bl": "BL-0020",
+   "title": "T14 Full Mode",
+   "sub": "전체화면·F키·종료 복귀",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T15",
+   "lane": "qa",
+   "col": 7,
+   "row": 0,
+   "bl": "BL-0016",
+   "title": "T15 필수 리뷰",
+   "sub": "필수 변경 읽기 검증",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T16",
+   "lane": "web",
+   "col": 8,
+   "row": 4,
+   "bl": "BL-0023",
+   "title": "T16 커서·우클릭·휠 줌",
+   "sub": "드래그 커서·우클릭·휠 줌",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T17",
+   "lane": "web",
+   "col": 7,
+   "row": 4,
+   "bl": "BL-0017",
+   "title": "T17 2층 차단·캐릭터 충돌",
+   "sub": "2층 막기·캐릭터 관통 막기",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T18",
+   "lane": "web",
+   "col": 6,
+   "row": 6,
+   "bl": "BL-0019",
+   "title": "T18 좌석 관람",
+   "sub": "빈 좌석·앉기·스크린 구도",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T19",
+   "lane": "web",
+   "col": 8,
+   "row": 5,
+   "bl": "BL-0003",
+   "title": "T19 팀·캐릭터 선택",
+   "sub": "팀 2·캐릭터 4종 고르기",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T20",
+   "lane": "web",
+   "col": 9,
+   "row": 5,
+   "bl": "BL-0009",
+   "title": "T20 Alt 감정표현 메뉴",
+   "sub": "Alt 2x2 버튼 4개",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T21",
+   "lane": "web",
+   "col": 6,
+   "row": 5,
+   "bl": "BL-0007",
+   "title": "T21 티켓팅",
+   "sub": "첫 입구 차단·티켓 연출·순간이동 막기",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T22",
+   "lane": "web",
+   "col": 8,
+   "row": 6,
+   "bl": "BL-0012",
+   "title": "T22 모니터 게임 화면",
+   "sub": "롤 비슷한 반복 화면",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T23",
+   "lane": "web",
+   "col": 5,
+   "row": 5,
+   "bl": "BL-0018",
+   "title": "T23 마네킹·먼 관중",
+   "sub": "2층 마네킹·먼 관중 낮은 텍스처",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T24",
+   "lane": "web",
+   "col": 5,
+   "row": 6,
+   "bl": "BL-0004",
+   "title": "T24 밤·달빛·바다",
+   "sub": "밤하늘·별·달·달빛·바다",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T25",
+   "lane": "web",
+   "col": 8,
+   "row": 7,
+   "bl": "BL-0006",
+   "title": "T25 하늘 쇼",
+   "sub": "빛줄기 3개·폭죽",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T26",
+   "lane": "web",
+   "col": 7,
+   "row": 7,
+   "bl": "BL-0013",
+   "title": "T26 프로게이머 동작",
+   "sub": "마우스·키보드·고개·고함·머리",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T27",
+   "lane": "web",
+   "col": 5,
+   "row": 4,
+   "bl": "BL-0010",
+   "title": "T27 멀티·회차",
+   "sub": "회차 선택·초대·정원·닉네임·상태",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T28",
+   "lane": "graphic",
+   "col": 3,
+   "row": 3,
+   "bl": "BL-0002",
+   "title": "T28 시트·블록아웃",
+   "sub": "여2·남2 시트·블록아웃",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T29",
+   "lane": "graphic",
+   "col": 5,
+   "row": 3,
+   "bl": "BL-0002",
+   "title": "T29 아트 리뷰 1",
+   "sub": "형태 확정 지점 대조",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "medium"
+  },
+  {
+   "id": "T30",
+   "lane": "graphic",
+   "col": 6,
+   "row": 3,
+   "bl": "BL-0002",
+   "title": "T30 모델·뼈대",
+   "sub": "몸 2·공용 뼈대·변형 4·Uniform",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T31",
+   "lane": "graphic",
+   "col": 3,
+   "row": 4,
+   "bl": "BL-0011",
+   "title": "T31 경기장 수정(배치)",
+   "sub": "지지 기둥·계단 아래·겹침·달 조명",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T32",
+   "lane": "graphic",
+   "col": 5,
+   "row": 4,
+   "bl": "BL-0014",
+   "title": "T32 다시 굽기·내보내기",
+   "sub": "라이트맵 7장·GLB 1회",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T33",
+   "lane": "graphic",
+   "col": 3,
+   "row": 5,
+   "bl": "BL-0006",
+   "title": "T33 이펙트 명세·큐 표",
+   "sub": "하늘 쇼·고함·계란 큐 표",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T34",
+   "lane": "graphic",
+   "col": 4,
+   "row": 5,
+   "bl": "BL-0008",
+   "title": "T34 효과음",
+   "sub": "CC0 괴성·고함",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T35",
+   "lane": "graphic",
+   "col": 8,
+   "row": 0,
+   "bl": "BL-0008",
+   "title": "T35 클립 9개",
+   "sub": "기본 5·감정표현 4·계란",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T36",
+   "lane": "web",
+   "col": 10,
+   "row": 0,
+   "bl": "BL-0002",
+   "title": "T36 캐릭터 연결 1",
+   "sub": "모델·변형·유니폼·원격 아바타",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T37",
+   "lane": "web",
+   "col": 11,
+   "row": 0,
+   "bl": "BL-0008",
+   "title": "T37 캐릭터 연결 2",
+   "sub": "캐릭터 클립 9개·감정표현·앉기·계란 연결",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T38",
+   "lane": "web",
+   "col": 10,
+   "row": 1,
+   "bl": "BL-0011",
+   "title": "T38 경기장 연결",
+   "sub": "새 GLB·라이트맵·큐·효과음",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T39",
+   "lane": "qa",
+   "col": 10,
+   "row": 0,
+   "bl": "BL-0018",
+   "title": "T39 리뷰 2a",
+   "sub": "웹 기능 3D 파일",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T40",
+   "lane": "qa",
+   "col": 10,
+   "row": 1,
+   "bl": "BL-0022",
+   "title": "T40 리뷰 2b",
+   "sub": "UI·멀티 파일·BL-0022 문서",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T41",
+   "lane": "qa",
+   "col": 12,
+   "row": 0,
+   "bl": "BL-0002",
+   "title": "T41 리뷰 3",
+   "sub": "T36~T38 변경만",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T42",
+   "lane": "qa",
+   "col": 12,
+   "row": 3,
+   "bl": "BL-0016",
+   "title": "T42 QA A",
+   "sub": "스크린·Full Mode·좌석",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T43",
+   "lane": "qa",
+   "col": 12,
+   "row": 4,
+   "bl": "BL-0007",
+   "title": "T43 QA B",
+   "sub": "캐릭터·팀·감정표현·티켓",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T44",
+   "lane": "qa",
+   "col": 12,
+   "row": 5,
+   "bl": "BL-0004",
+   "title": "T44 QA C",
+   "sub": "월드·무대·관중·경기장",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T45",
+   "lane": "qa",
+   "col": 12,
+   "row": 6,
+   "bl": "BL-0010",
+   "title": "T45 QA X",
+   "sub": "조작·멀티 16명·횡단",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T46",
+   "lane": "graphic",
+   "col": 12,
+   "row": 0,
+   "bl": "BL-0002",
+   "title": "T46 아트 리뷰 2",
+   "sub": "최종 화면 대조",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "medium"
+  },
+  {
+   "id": "T47",
+   "lane": "legal",
+   "col": 12,
+   "row": 0,
+   "bl": "BL-0012",
+   "title": "T47 Riot 끝 검토",
+   "sub": "실제 화면·문구",
+   "status": "done",
+   "agent": "claude",
+   "model": "fable",
+   "effort": "high"
+  },
+  {
+   "id": "T48",
+   "lane": "legal",
+   "col": 12,
+   "row": 1,
+   "bl": "BL-0003",
+   "title": "T48 법률 끝 검토",
+   "sub": "출처·임베드·정보",
+   "status": "done",
+   "agent": "claude",
+   "model": "fable",
+   "effort": "high"
+  },
+  {
+   "id": "T49",
+   "lane": "graphic",
+   "col": 14,
+   "row": 0,
+   "bl": "BL-0015",
+   "title": "T49 성능 점검",
+   "sub": "BL-0015 판정·예산·FPS",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T50",
+   "lane": "web",
+   "col": 15,
+   "row": 0,
+   "bl": "BL-0016",
+   "title": "T50 수정 A·B (High만)",
+   "sub": "A·B High만",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T51",
+   "lane": "web",
+   "col": 15,
+   "row": 1,
+   "bl": "BL-0004",
+   "title": "T51 수정 C·X (High만)",
+   "sub": "C·X High만",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T52",
+   "lane": "qa",
+   "col": 16,
+   "row": 0,
+   "bl": "BL-0016",
+   "title": "T52 재검 A·B",
+   "sub": "A·B 결함 ID만",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T53",
+   "lane": "qa",
+   "col": 16,
+   "row": 1,
+   "bl": "BL-0004",
+   "title": "T53 재검 C·X",
+   "sub": "C·X 결함 ID만",
+   "status": "run",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T54",
+   "lane": "coord",
+   "col": 17,
+   "row": 0,
+   "title": "T54 최종 테스트 1회",
+   "sub": "전체 테스트 1회(기한 기준)",
+   "status": "wait",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "high"
+  },
+  {
+   "id": "T55",
+   "lane": "product",
+   "col": 18,
+   "row": 0,
+   "title": "T55 완료 처리(6단계)",
+   "sub": "done 보관·인박스",
+   "status": "wait",
+   "agent": "claude",
+   "model": "sonnet",
+   "effort": "medium"
+  },
+  {
+   "id": "T56",
+   "lane": "harness",
+   "col": 19,
+   "row": 0,
+   "title": "T56 하네스 회고",
+   "sub": "측정과 회고",
+   "status": "wait",
+   "agent": "claude",
+   "model": "fable",
+   "effort": "high"
+  },
+  {
+   "id": "T57",
+   "lane": "harness",
+   "col": 20,
+   "row": 0,
+   "title": "T57 하네스 수정",
+   "sub": "근거 있는 하네스 수정",
+   "status": "wait",
+   "agent": "claude",
+   "model": "fable",
+   "effort": "high"
+  },
+  {
+   "id": "G2",
+   "lane": "coord",
+   "col": 21,
+   "row": 0,
+   "title": "G2 커밋 승인",
+   "sub": "경로 지정 커밋 승인",
+   "status": "wait"
+  },
+  {
+   "id": "T58",
+   "lane": "coord",
+   "col": 22,
+   "row": 0,
+   "title": "T58 로컬 커밋",
+   "sub": "원격 없음, 로컬만",
+   "status": "wait",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "high"
+  },
+  {
+   "id": "LGAL",
+   "lane": "legal",
+   "col": 2,
+   "row": 2,
+   "title": "LGA 팀장",
+   "sub": "법무 앞 검토 묶음: 팀원 기동·정산·통합 보고",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "high"
+  },
+  {
+   "id": "WFL",
+   "lane": "web",
+   "col": 5,
+   "row": 3,
+   "title": "WF 팀장",
+   "sub": "웹 기능 묶음: 팀원 기동·정산·통합 보고",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "high"
+  },
+  {
+   "id": "GXL",
+   "lane": "graphic",
+   "col": 3,
+   "row": 2,
+   "title": "GX 직접 기동",
+   "sub": "팀장 없음(결정 1): 코디네이터가 T28~T34를 직접 띄움",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "high"
+  },
+  {
+   "id": "QAL",
+   "lane": "qa",
+   "col": 12,
+   "row": 2,
+   "title": "QA 직접 기동",
+   "sub": "팀장 없음(결정 1): 20:02 코디네이터가 4영역을 바로 띄움",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "high"
+  }
+ ],
+ "groups": [
+  {
+   "id": "GLGA",
+   "nodes": [
+    "T07",
+    "T08",
+    "T09",
+    "LGAL"
+   ]
+  },
+  {
+   "id": "GWF",
+   "nodes": [
+    "T16",
+    "T17",
+    "T18",
+    "T19",
+    "T20",
+    "T21",
+    "T22",
+    "T23",
+    "T24",
+    "T25",
+    "T26",
+    "T27",
+    "WFL"
+   ]
+  },
+  {
+   "id": "GGX",
+   "nodes": [
+    "T28",
+    "T29",
+    "T30",
+    "T31",
+    "T32",
+    "T33",
+    "T34",
+    "GXL"
+   ]
+  },
+  {
+   "id": "GQA",
+   "nodes": [
+    "T42",
+    "T43",
+    "T44",
+    "T45",
+    "QAL"
+   ]
+  }
+ ],
+ "edges": [
+  {
+   "from": "G1",
+   "to": "C01"
+  },
+  {
+   "from": "C01",
+   "to": "T01"
+  },
+  {
+   "from": "C01",
+   "to": "T02"
+  },
+  {
+   "from": "C01",
+   "to": "T03"
+  },
+  {
+   "from": "C01",
+   "to": "T04"
+  },
+  {
+   "from": "C01",
+   "to": "T05"
+  },
+  {
+   "from": "C01",
+   "to": "T06"
+  },
+  {
+   "from": "T07",
+   "to": "T08"
+  },
+  {
+   "from": "T07",
+   "to": "T09"
+  },
+  {
+   "from": "T02",
+   "to": "T10"
+  },
+  {
+   "from": "T02",
+   "to": "T11"
+  },
+  {
+   "from": "T03",
+   "to": "T11"
+  },
+  {
+   "from": "T03",
+   "to": "T12"
+  },
+  {
+   "from": "T11",
+   "to": "T13"
+  },
+  {
+   "from": "T10",
+   "to": "T13"
+  },
+  {
+   "from": "T13",
+   "to": "T14"
+  },
+  {
+   "from": "T14",
+   "to": "T15"
+  },
+  {
+   "from": "T28",
+   "to": "T29"
+  },
+  {
+   "from": "T29",
+   "to": "T30"
+  },
+  {
+   "from": "T31",
+   "to": "T32"
+  },
+  {
+   "from": "T33",
+   "to": "T34"
+  },
+  {
+   "from": "GGX",
+   "to": "T35"
+  },
+  {
+   "from": "GGX",
+   "to": "T36"
+  },
+  {
+   "from": "GWF",
+   "to": "T36"
+  },
+  {
+   "from": "GLGA",
+   "to": "T36"
+  },
+  {
+   "from": "T35",
+   "to": "T37"
+  },
+  {
+   "from": "T36",
+   "to": "T37"
+  },
+  {
+   "from": "GGX",
+   "to": "T38"
+  },
+  {
+   "from": "GWF",
+   "to": "T38"
+  },
+  {
+   "from": "GWF",
+   "to": "T39"
+  },
+  {
+   "from": "GWF",
+   "to": "T40"
+  },
+  {
+   "from": "T12",
+   "to": "T40"
+  },
+  {
+   "from": "T37",
+   "to": "T41"
+  },
+  {
+   "from": "T38",
+   "to": "T41"
+  },
+  {
+   "from": "T37",
+   "to": "T46"
+  },
+  {
+   "from": "T38",
+   "to": "T46"
+  },
+  {
+   "from": "T37",
+   "to": "T47"
+  },
+  {
+   "from": "T38",
+   "to": "T47"
+  },
+  {
+   "from": "T37",
+   "to": "T48"
+  },
+  {
+   "from": "T38",
+   "to": "T48"
+  },
+  {
+   "from": "GQA",
+   "to": "T49"
+  },
+  {
+   "from": "T46",
+   "to": "T49"
+  },
+  {
+   "from": "T47",
+   "to": "T49"
+  },
+  {
+   "from": "T48",
+   "to": "T49"
+  },
+  {
+   "from": "T49",
+   "to": "T50"
+  },
+  {
+   "from": "T49",
+   "to": "T51"
+  },
+  {
+   "from": "T50",
+   "to": "T52"
+  },
+  {
+   "from": "T51",
+   "to": "T53"
+  },
+  {
+   "from": "T52",
+   "to": "T54"
+  },
+  {
+   "from": "T53",
+   "to": "T54"
+  },
+  {
+   "from": "T54",
+   "to": "T55"
+  },
+  {
+   "from": "T01",
+   "to": "T55"
+  },
+  {
+   "from": "T55",
+   "to": "T56"
+  },
+  {
+   "from": "T56",
+   "to": "T57"
+  },
+  {
+   "from": "T57",
+   "to": "G2"
+  },
+  {
+   "from": "G2",
+   "to": "T58"
+  },
+  {
+   "from": "C01",
+   "to": "GLGA"
+  },
+  {
+   "from": "T11",
+   "to": "GWF"
+  },
+  {
+   "from": "T10",
+   "to": "GWF"
+  },
+  {
+   "from": "T04",
+   "to": "GGX"
+  },
+  {
+   "from": "T05",
+   "to": "GGX"
+  },
+  {
+   "from": "T06",
+   "to": "GGX"
+  },
+  {
+   "from": "T37",
+   "to": "GQA",
+   "label": "실제 입력만"
+  },
+  {
+   "from": "T41",
+   "to": "T49"
+  }
+ ],
+ "notes": [
+  {
+   "title": "읽는 법",
+   "body": "열은 시간 순서이고 행은 워커 한 줄이다. 화살표는 산출물 의존만 그렸다. 점선 상자로 들어가는 화살표는 그 묶음 전체의 선행이고, 상자에서 나가는 화살표는 팀장의 통합 보고 뒤에 시작한다."
+  },
+  {
+   "title": "지금",
+   "body": "22:39 — 계획 밖에 더해진 수정 Task(그림에 노드 없음): LGA 완료, WF 완료, T13f 완료, T15r 완료, T21u 완료, T59 대기, T60 진행, T63 완료, T62 진행, T64 대기, T65 진행. T59 FPS·관중 57%, T60 라이트맵 2048, T62 생방송, T63 커서, T64 좌석 표시, T65 로딩 가림막. 끝 예상 01:30 전후(코디네이터 22:15)."
+  },
+  {
+   "title": "임계 경로",
+   "body": "아트 디렉션 → 그래픽 제작 묶음(시트 → 아트 리뷰 → 모델·공용 뼈대) → 클립 → 캐릭터 연결 2 → 리뷰 3 → 끝 QA → 성능 → 수정 → 재검 → 최종 테스트. likely 631분, Blender MCP 한 대가 길이를 정한다."
+  },
+  {
+   "title": "바뀐 규칙",
+   "body": "코디네이터는 깰 때마다 <code>orca-launch.mjs launchable</code>을 돌려, 빈 슬롯 안에서 편집 경로·자원이 겹치지 않는 준비된 Task를 띄운다. 의존은 그 Task가 실제로 읽는 산출물만 건다(20:0x 하네스 반영)."
+  }
+ ]
+}

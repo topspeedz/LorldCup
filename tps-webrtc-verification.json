@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "scope": "Three browser pages in one isolated browser context on the same PC; real PeerJS Cloud signaling and WebRTC data channels",
+  "checks": {
+    "plaza_to_stage_steps": 556,
+    "three_connected_peers": true,
+    "guest_to_guest_position_delivery": true,
+    "keyboard_movement": true,
+    "tps_avatar_visible": true,
+    "camera_distance_from_player": 5.47569222076336,
+    "guest_leave_cleanup": true,
+    "host_leave_cleanup": true,
+    "invalid_pose_rejection": true,
+    "runtime_errors": []
+  },
+  "not_verified": [
+    "different devices/networks",
+    "TURN relay (not configured)",
+    "public HTTPS deployment (not performed)",
+    "mobile performance",
+    "large room load"
+  ],
+  "source_model": "Existing web/arena.glb; original .blend unchanged"
+}

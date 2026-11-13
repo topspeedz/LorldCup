@@ -1,0 +1,22 @@
+{
+  "seats": [
+    {"id": "lower-entry-north-01", "position": [-53.305719, -0.87, -5.149108]},
+    {"id": "lower-entry-north-02", "position": [-52.216487, -1.3, -5.134863]},
+    {"id": "lower-entry-north-03", "position": [-51.126792, -1.73, -5.119948]},
+    {"id": "lower-entry-south-01", "position": [-53.305719, -0.87, 5.149108]},
+    {"id": "lower-entry-south-02", "position": [-52.216487, -1.3, 5.134863]},
+    {"id": "lower-entry-south-03", "position": [-51.126792, -1.73, 5.119948]}
+  ],
+  "interactionDistance": 1.8,
+  "clickSit": {
+    "flightSeconds": 1.2,
+    "arcHeightMeters": 2.4
+  },
+  "camera": {
+    "height": "eye",
+    "target": "screen",
+    "fov": 50,
+    "eyeHeight": 3.54,
+    "screenFill": 0.85
+  }
+}

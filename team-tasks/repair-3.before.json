@@ -1,0 +1,922 @@
+{
+  "Walk_Concourse__concrete": {
+    "source": {
+      "v": 1232,
+      "f": 924,
+      "tris": 1848,
+      "boundary": 0,
+      "nonmanifold": 0,
+      "bad_winding": 0,
+      "finite": true,
+      "volume": -2570.1289276152474,
+      "uv": [
+        "ShaderUV"
+      ],
+      "materials": [
+        "concrete"
+      ],
+      "bounds": [
+        [
+          -94.34150695800781,
+          -72.0,
+          -0.20000000298023224
+        ],
+        [
+          95.0,
+          72.0,
+          0.0
+        ]
+      ]
+    },
+    "evaluated": {
+      "v": 1232,
+      "f": 924,
+      "tris": 1848,
+      "boundary": 0,
+      "nonmanifold": 0,
+      "bad_winding": 0,
+      "finite": true,
+      "volume": -2570.1289276152474,
+      "uv": [
+        "ShaderUV"
+      ],
+      "materials": [
+        "concrete"
+      ],
+      "bounds": [
+        [
+          -94.34150695800781,
+          -72.0,
+          -0.20000000298023224
+        ],
+        [
+          95.0,
+          72.0,
+          0.0
+        ]
+      ]
+    },
+    "uv_hash": "ba971b4189bbc5b5195a2d14b381690b0ebf21c23628c60768e9c610bde483e4",
+    "modifiers": []
+  },
+  "Walk_EntryBridge__concrete": {
+    "source": {
+      "v": 8,
+      "f": 6,
+      "tris": 12,
+      "boundary": 0,
+      "nonmanifold": 0,
+      "bad_winding": 0,
+      "finite": true,
+      "volume": 5.44000023365021,
+      "uv": [
+        "ShaderUV"
+      ],
+      "materials": [
+        "concrete"
+      ],
+      "bounds": [
+        [
+          -65.0,
+          -3.4000000953674316,
+          -0.20000000298023224
+        ],
+        [
+          -61.0,
+          3.4000000953674316,
+          0.0
+        ]
+      ]
+    },
+    "evaluated": {
+      "v": 8,
+      "f": 6,
+      "tris": 12,
+      "boundary": 0,
+      "nonmanifold": 0,
+      "bad_winding": 0,
+      "finite": true,
+      "volume": 5.44000023365021,
+      "uv": [
+        "ShaderUV"
+      ],
+      "materials": [
+        "concrete"
+      ],
+      "bounds": [
+        [
+          -65.0,
+          -3.4000000953674316,
+          -0.20000000298023224
+        ],
+        [
+          -61.0,
+          3.4000000953674316,
+          0.0
+        ]
+      ]
+    },
+    "uv_hash": "ec938d17de88dbcfb2a4ac3b019a4cb1570b6ba94f2538ce8cb5a031172894f9",
+    "modifiers": []
+  },
+  "Walk_Atrium__concrete": {
+    "source": {
+      "v": 8,
+      "f": 6,
+      "tris": 12,
+      "boundary": 0,
+      "nonmanifold": 0,
+      "bad_winding": 0,
+      "finite": true,
+      "volume": 160.0000023841858,
+      "uv": [
+        "ShaderUV"
+      ],
+      "materials": [
+        "concrete"
+      ],
+      "bounds": [
+        [
+          -96.0,
+          -12.5,
+          -0.20000000298023224
+        ],
+        [
+          -64.0,
+          12.5,
+          0.0
+        ]
+      ]
+    },
+    "evaluated": {
+      "v": 8,
+      "f": 6,
+      "tris": 12,
+      "boundary": 0,
+      "nonmanifold": 0,
+      "bad_winding": 0,
+      "finite": true,
+      "volume": 160.0000023841858,
+      "uv": [
+        "ShaderUV"
+      ],
+      "materials": [
+        "concrete"
+      ],
+      "bounds": [
+        [
+          -96.0,
+          -12.5,
+          -0.20000000298023224
+        ],
+        [
+          -64.0,
+          12.5,
+          0.0
+        ]
+      ]
+    },
+    "uv_hash": "297fd47852f95bb7860d0512733dd36c673791b13f02192e0058c08a7d3adaaa",
+    "modifiers": []
+  },
+  "Walk_EntryRamp__concrete": {
+    "source": {
+      "v": 4,
+      "f": 1,
+      "tris": 2,
+      "boundary": 4,
+      "nonmanifold": 4,
+      "bad_winding": 0,
+      "finite": true,
+      "volume": -1382.6667054494221,
+      "uv": [
+        "ShaderUV"
+      ],
+      "materials": [
+        "concrete"
+      ],
+      "bounds": [
+        [
+          -61.0,
+          -3.4000000953674316,
+          -10.0
+        ],
+        [
+          -29.0,
+          3.4000000953674316,
+          0.0
+        ]
+      ]
+    },
+    "evaluated": {
+      "v": 4,
+      "f": 1,
+      "tris": 2,
+      "boundary": 4,
+      "nonmanifold": 4,
+      "bad_winding": 0,
+      "finite": true,
+      "volume": -1382.6667054494221,
+      "uv": [
+        "ShaderUV"
+      ],
+      "materials": [
+        "concrete"
+      ],
+      "bounds": [
+        [
+          -61.0,
+          -3.4000000953674316,
+          -10.0
+        ],
+        [
+          -29.0,
+          3.4000000953674316,
+          0.0
+        ]
+      ]
+    },
+    "uv_hash": "eaa9753cf33d890ae8b7db81c1f64f936c83b9a22af5712348a9fddd5c7103b9",
+    "modifiers": []
+  },
+  "Walk_Tier0__concrete": {
+    "source": {
+      "v": 45632,
+      "f": 34224,
+      "tris": 68448,
+      "boundary": 0,
+      "nonmanifold": 0,
+      "bad_winding": 0,
+      "finite": true,
+      "volume": -1209.7320364632983,
+      "uv": [
+        "ShaderUV"
+      ],
+      "materials": [
+        "concrete"
+      ],
+      "bounds": [
+        [
+          -55.59101867675781,
+          -45.86000061035156,
+          -10.100000381469727
+        ],
+        [
+          55.86000061035156,
+          45.86000061035156,
+          -0.4399999976158142
+        ]
+      ]
+    },
+    "evaluated": {
+      "v": 45632,
+      "f": 34224,
+      "tris": 68448,
+      "boundary": 0,
+      "nonmanifold": 0,
+      "bad_winding": 0,
+      "finite": true,
+      "volume": -1209.7320364632983,
+      "uv": [
+        "ShaderUV"
+      ],
+      "materials": [
+        "concrete"
+      ],
+      "bounds": [
+        [
+          -55.59101867675781,
+          -45.86000061035156,
+          -10.100000381469727
+        ],
+        [
+          55.86000061035156,
+          45.86000061035156,
+          -0.4399999976158142
+        ]
+      ]
+    },
+    "uv_hash": "1cac4359e31a19ddeb9a351df250b46d0cea4e073ffb14ad6e80784c816cf6f5",
+    "modifiers": []
+  },
+  "Walk_Tier1__concrete": {
+    "source": {
+      "v": 46368,
+      "f": 34776,
+      "tris": 69552,
+      "boundary": 0,
+      "nonmanifold": 0,
+      "bad_winding": 0,
+      "finite": true,
+      "volume": -2104.1297298908235,
+      "uv": [
+        "ShaderUV"
+      ],
+      "materials": [
+        "concrete"
+      ],
+      "bounds": [
+        [
+          -85.75657653808594,
+          -70.86000061035156,
+          6.0
+        ],
+        [
+          85.86000061035156,
+          70.86000061035156,
+          20.059999465942383
+        ]
+      ]
+    },
+    "evaluated": {
+      "v": 46368,
+      "f": 34776,
+      "tris": 69552,
+      "boundary": 0,
+      "nonmanifold": 0,
+      "bad_winding": 0,
+      "finite": true,
+      "volume": -2104.1297298908235,
+      "uv": [
+        "ShaderUV"
+      ],
+      "materials": [
+        "concrete"
+      ],
+      "bounds": [
+        [
+          -85.75657653808594,
+          -70.86000061035156,
+          6.0
+        ],
+        [
+          85.86000061035156,
+          70.86000061035156,
+          20.059999465942383
+        ]
+      ]
+    },
+    "uv_hash": "9f038e3207e1d4591cfc4bd34ed323237c20f11a26270a76ce567cb30d20bfcd",
+    "modifiers": []
+  },
+  "Suites_floor__concrete": {
+    "source": {
+      "v": 1280,
+      "f": 960,
+      "tris": 1920,
+      "boundary": 0,
+      "nonmanifold": 0,
+      "bad_winding": 0,
+      "finite": true,
+      "volume": -582.301501050698,
+      "uv": [
+        "ShaderUV"
+      ],
+      "materials": [
+        "concrete"
+      ],
+      "bounds": [
+        [
+          -62.0,
+          -47.0,
+          1.0
+        ],
+        [
+          62.0,
+          47.0,
+          1.2999999523162842
+        ]
+      ]
+    },
+    "evaluated": {
+      "v": 1280,
+      "f": 960,
+      "tris": 1920,
+      "boundary": 0,
+      "nonmanifold": 0,
+      "bad_winding": 0,
+      "finite": true,
+      "volume": -582.301501050698,
+      "uv": [
+        "ShaderUV"
+      ],
+      "materials": [
+        "concrete"
+      ],
+      "bounds": [
+        [
+          -62.0,
+          -47.0,
+          1.0
+        ],
+        [
+          62.0,
+          47.0,
+          1.2999999523162842
+        ]
+      ]
+    },
+    "uv_hash": "cccf8b7c85a32120a5fc8aa358820dd6162208ef351fe0847593a8ee2375575f",
+    "modifiers": []
+  },
+  "Atrium_ceiling__wood": {
+    "source": {
+      "v": 8,
+      "f": 6,
+      "tris": 12,
+      "boundary": 0,
+      "nonmanifold": 0,
+      "bad_winding": 0,
+      "finite": true,
+      "volume": 177.31983089447021,
+      "uv": [
+        "ShaderUV"
+      ],
+      "materials": [
+        "wood"
+      ],
+      "bounds": [
+        [
+          -95.5,
+          -13.0,
+          7.590000152587891
+        ],
+        [
+          -64.5,
+          13.0,
+          7.809999942779541
+        ]
+      ]
+    },
+    "evaluated": {
+      "v": 8,
+      "f": 6,
+      "tris": 12,
+      "boundary": 0,
+      "nonmanifold": 0,
+      "bad_winding": 0,
+      "finite": true,
+      "volume": 177.31983089447021,
+      "uv": [
+        "ShaderUV"
+      ],
+      "materials": [
+        "wood"
+      ],
+      "bounds": [
+        [
+          -95.5,
+          -13.0,
+          7.590000152587891
+        ],
+        [
+          -64.5,
+          13.0,
+          7.809999942779541
+        ]
+      ]
+    },
+    "uv_hash": "7d0eb87fdc63c60a81620633ac5d94e590ec5347f9030af0f1ab0d964b310050",
+    "modifiers": []
+  },
+  "Suite_piers__ivory": {
+    "source": {
+      "v": 912,
+      "f": 608,
+      "tris": 1520,
+      "boundary": 0,
+      "nonmanifold": 0,
+      "bad_winding": 0,
+      "finite": true,
+      "volume": 14.216772477411707,
+      "uv": [
+        "ShaderUV"
+      ],
+      "materials": [
+        "ivory"
+      ],
+      "bounds": [
+        [
+          -59.94790267944336,
+          -46.068458557128906,
+          1.0
+        ],
+        [
+          61.07297134399414,
+          46.068458557128906,
+          6.0
+        ]
+      ]
+    },
+    "evaluated": {
+      "v": 2736,
+      "f": 2888,
+      "tris": 5168,
+      "boundary": 0,
+      "nonmanifold": 0,
+      "bad_winding": 0,
+      "finite": true,
+      "volume": 14.179361607800844,
+      "uv": [
+        "ShaderUV"
+      ],
+      "materials": [
+        "ivory"
+      ],
+      "bounds": [
+        [
+          -59.94490432739258,
+          -46.068458557128906,
+          1.0
+        ],
+        [
+          61.06997299194336,
+          46.068458557128906,
+          6.0
+        ]
+      ]
+    },
+    "uv_hash": "ab66befcf5cd8291d3a13acb747d970b2f8d45e89cb62d24a7a8c451ee5be7b0",
+    "modifiers": [
+      [
+        "TA2_Conservative_edge_finish",
+        "BEVEL"
+      ]
+    ]
+  },
+  "Suite_fascia__ivory": {
+    "source": {
+      "v": 1280,
+      "f": 960,
+      "tris": 1920,
+      "boundary": 0,
+      "nonmanifold": 0,
+      "bad_winding": 0,
+      "finite": true,
+      "volume": -76.91905396959451,
+      "uv": [
+        "ShaderUV"
+      ],
+      "materials": [
+        "ivory"
+      ],
+      "bounds": [
+        [
+          -61.5,
+          -46.5,
+          5.699999809265137
+        ],
+        [
+          61.5,
+          46.5,
+          6.349999904632568
+        ]
+      ]
+    },
+    "evaluated": {
+      "v": 3840,
+      "f": 4160,
+      "tris": 7040,
+      "boundary": 0,
+      "nonmanifold": 0,
+      "bad_winding": 0,
+      "finite": true,
+      "volume": -76.85558351561792,
+      "uv": [
+        "ShaderUV"
+      ],
+      "materials": [
+        "ivory"
+      ],
+      "bounds": [
+        [
+          -61.499794006347656,
+          -46.499881744384766,
+          5.699999809265137
+        ],
+        [
+          61.499794006347656,
+          46.499881744384766,
+          6.349999904632568
+        ]
+      ]
+    },
+    "uv_hash": "e78c2ca7b26b41bd99aa2679a993ec05146a781dba3f5f67b6063c75114cff02",
+    "modifiers": [
+      [
+        "TA2_Conservative_edge_finish",
+        "BEVEL"
+      ]
+    ]
+  },
+  "Counter__silver": {
+    "source": {
+      "v": 456,
+      "f": 342,
+      "tris": 684,
+      "boundary": 0,
+      "nonmanifold": 0,
+      "bad_winding": 0,
+      "finite": true,
+      "volume": 16.92899721179351,
+      "uv": [
+        "ShaderUV"
+      ],
+      "materials": [
+        "silver"
+      ],
+      "bounds": [
+        [
+          -79.78628540039062,
+          -60.95000076293945,
+          0.9750000238418579
+        ],
+        [
+          82.94999694824219,
+          60.95000076293945,
+          1.125
+        ]
+      ]
+    },
+    "evaluated": {
+      "v": 1368,
+      "f": 1482,
+      "tris": 2508,
+      "boundary": 0,
+      "nonmanifold": 0,
+      "bad_winding": 0,
+      "finite": true,
+      "volume": 16.90690009127191,
+      "uv": [
+        "ShaderUV"
+      ],
+      "materials": [
+        "silver"
+      ],
+      "bounds": [
+        [
+          -79.7838134765625,
+          -60.95000076293945,
+          0.9750000238418579
+        ],
+        [
+          82.94999694824219,
+          60.95000076293945,
+          1.125
+        ]
+      ]
+    },
+    "uv_hash": "5e729be45149ff83b421e07cf5b1b341c0a9cffd7be6c926d220fcb754f17b42",
+    "modifiers": [
+      [
+        "TA2_Conservative_edge_finish",
+        "BEVEL"
+      ]
+    ]
+  },
+  "Collide_TicketGate__silver": {
+    "source": {
+      "v": 32,
+      "f": 24,
+      "tris": 48,
+      "boundary": 0,
+      "nonmanifold": 0,
+      "bad_winding": 0,
+      "finite": true,
+      "volume": 2.970235098570985,
+      "uv": [
+        "ShaderUV"
+      ],
+      "materials": [
+        "silver"
+      ],
+      "bounds": [
+        [
+          -91.8499984741211,
+          -9.210000038146973,
+          0.0
+        ],
+        [
+          -90.1500015258789,
+          9.210000038146973,
+          1.0399999618530273
+        ]
+      ]
+    },
+    "evaluated": {
+      "v": 96,
+      "f": 104,
+      "tris": 176,
+      "boundary": 0,
+      "nonmanifold": 0,
+      "bad_winding": 0,
+      "finite": true,
+      "volume": 2.9666314855777145,
+      "uv": [
+        "ShaderUV"
+      ],
+      "materials": [
+        "silver"
+      ],
+      "bounds": [
+        [
+          -91.8499984741211,
+          -9.210000038146973,
+          0.0
+        ],
+        [
+          -90.1500015258789,
+          9.210000038146973,
+          1.0399999618530273
+        ]
+      ]
+    },
+    "uv_hash": "a86d010d2b8d7b6d4352d4e874b901e0f6b45f2d9e9e679cf48289c5d9915b1c",
+    "modifiers": [
+      [
+        "TA2_Conservative_edge_finish",
+        "BEVEL"
+      ]
+    ]
+  },
+  "Ramp_rail__silver": {
+    "source": {
+      "v": 24,
+      "f": 16,
+      "tris": 40,
+      "boundary": 0,
+      "nonmanifold": 0,
+      "bad_winding": 0,
+      "finite": true,
+      "volume": 0.5269759278203257,
+      "uv": [
+        "ShaderUV"
+      ],
+      "materials": [
+        "silver"
+      ],
+      "bounds": [
+        [
+          -61.01420593261719,
+          -3.455000162124634,
+          -8.945463180541992
+        ],
+        [
+          -28.98579216003418,
+          3.455000162124634,
+          1.145463228225708
+        ]
+      ]
+    },
+    "evaluated": {
+      "v": 24,
+      "f": 16,
+      "tris": 40,
+      "boundary": 0,
+      "nonmanifold": 0,
+      "bad_winding": 0,
+      "finite": true,
+      "volume": 0.5269759278203257,
+      "uv": [
+        "ShaderUV"
+      ],
+      "materials": [
+        "silver"
+      ],
+      "bounds": [
+        [
+          -61.01420593261719,
+          -3.455000162124634,
+          -8.945463180541992
+        ],
+        [
+          -28.98579216003418,
+          3.455000162124634,
+          1.145463228225708
+        ]
+      ]
+    },
+    "uv_hash": "12fcf25689fca58afd888576f663da58209c44c057b4a73f21500732b365c2f6",
+    "modifiers": []
+  },
+  "Ramp_posts__silver": {
+    "source": {
+      "v": 408,
+      "f": 272,
+      "tris": 680,
+      "boundary": 0,
+      "nonmanifold": 0,
+      "bad_winding": 0,
+      "finite": true,
+      "volume": 0.11903407933099253,
+      "uv": [
+        "ShaderUV"
+      ],
+      "materials": [
+        "silver"
+      ],
+      "bounds": [
+        [
+          -61.03499984741211,
+          -3.4303109645843506,
+          -10.0
+        ],
+        [
+          -28.96500015258789,
+          3.4303109645843506,
+          1.100000023841858
+        ]
+      ]
+    },
+    "evaluated": {
+      "v": 408,
+      "f": 272,
+      "tris": 680,
+      "boundary": 0,
+      "nonmanifold": 0,
+      "bad_winding": 0,
+      "finite": true,
+      "volume": 0.11903407933099253,
+      "uv": [
+        "ShaderUV"
+      ],
+      "materials": [
+        "silver"
+      ],
+      "bounds": [
+        [
+          -61.03499984741211,
+          -3.4303109645843506,
+          -10.0
+        ],
+        [
+          -28.96500015258789,
+          3.4303109645843506,
+          1.100000023841858
+        ]
+      ]
+    },
+    "uv_hash": "d89c90f5d784799eae6e647594cb285cdb0b8cf223a64266accf1d14a8faa600",
+    "modifiers": []
+  },
+  "Aisle_handrails__silver": {
+    "source": {
+      "v": 2604,
+      "f": 1736,
+      "tris": 4340,
+      "boundary": 0,
+      "nonmanifold": 0,
+      "bad_winding": 0,
+      "finite": true,
+      "volume": 3.2685771284110388,
+      "uv": [
+        "ShaderUV"
+      ],
+      "materials": [
+        "silver"
+      ],
+      "bounds": [
+        [
+          -83.69745635986328,
+          -68.69745635986328,
+          -8.932183265686035
+        ],
+        [
+          83.69745635986328,
+          68.69745635986328,
+          20.459922790527344
+        ]
+      ]
+    },
+    "evaluated": {
+      "v": 2604,
+      "f": 1736,
+      "tris": 4340,
+      "boundary": 0,
+      "nonmanifold": 0,
+      "bad_winding": 0,
+      "finite": true,
+      "volume": 3.2685771284110388,
+      "uv": [
+        "ShaderUV"
+      ],
+      "materials": [
+        "silver"
+      ],
+      "bounds": [
+        [
+          -83.69745635986328,
+          -68.69745635986328,
+          -8.932183265686035
+        ],
+        [
+          83.69745635986328,
+          68.69745635986328,
+          20.459922790527344
+        ]
+      ]
+    },
+    "uv_hash": "18fab0ad23949f11d594eef26f3c857472bee686f148f92c645c7bfbe49e1510",
+    "modifiers": []
+  }
+}

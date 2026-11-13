@@ -1,0 +1,17 @@
+{
+  "capacity": 16,
+  "fullMessage": "방이 가득 찼습니다(16명)",
+  "nickname": {
+    "prefix": "팬",
+    "digits": 4,
+    "collisionExtraDigits": 1
+  },
+  "roomKeyPrefix": "barclays-tps-room-",
+  "roomKeyDigits": 2,
+  "maxRooms": 50,
+  "connectTimeoutSeconds": 8,
+  "handoffTimeoutSeconds": 10,
+  "hostLostGraceSeconds": 4,
+  "opsRefreshSeconds": 30,
+  "probeParallel": 2
+}

@@ -1,0 +1,216 @@
+{
+  "objects": [
+    {
+      "name": "InteriorDetail_Fascia_fasteners__silver",
+      "triangles": 17920,
+      "material": "silver"
+    },
+    {
+      "name": "InteriorDetail_Fascia_service_frame__steel",
+      "triangles": 960,
+      "material": "steel"
+    },
+    {
+      "name": "InteriorDetail_Fascia_vent_slats__black",
+      "triangles": 4800,
+      "material": "black"
+    },
+    {
+      "name": "InteriorDetail_Deck_panel_joints__steel",
+      "triangles": 768,
+      "material": "steel"
+    },
+    {
+      "name": "InteriorDetail_Desk_corner_trim__silver",
+      "triangles": 400,
+      "material": "silver"
+    },
+    {
+      "name": "InteriorDetail_Desk_panel_screws__silver",
+      "triangles": 1120,
+      "material": "silver"
+    },
+    {
+      "name": "InteriorDetail_Desk_lower_reveal__steel",
+      "triangles": 120,
+      "material": "steel"
+    },
+    {
+      "name": "InteriorDetail_Desk_underside_tray__steel",
+      "triangles": 120,
+      "material": "steel"
+    },
+    {
+      "name": "InteriorDetail_Desk_cable_drops__black",
+      "triangles": 400,
+      "material": "black"
+    },
+    {
+      "name": "InteriorDetail_Monitor_vents__steel",
+      "triangles": 1320,
+      "material": "steel"
+    },
+    {
+      "name": "InteriorDetail_Monitor_bezel_screws__silver",
+      "triangles": 800,
+      "material": "silver"
+    },
+    {
+      "name": "InteriorDetail_Monitor_status__whiteLED",
+      "triangles": 120,
+      "material": "whiteLED"
+    },
+    {
+      "name": "InteriorDetail_Monitor_foot__steel",
+      "triangles": 120,
+      "material": "steel"
+    },
+    {
+      "name": "InteriorDetail_Mouse__black",
+      "triangles": 120,
+      "material": "black"
+    },
+    {
+      "name": "InteriorDetail_Mouse_split__silver",
+      "triangles": 120,
+      "material": "silver"
+    },
+    {
+      "name": "InteriorDetail_Mouse_lead__black",
+      "triangles": 200,
+      "material": "black"
+    },
+    {
+      "name": "InteriorDetail_Headset_cups__black",
+      "triangles": 720,
+      "material": "black"
+    },
+    {
+      "name": "InteriorDetail_Headset_accents__blue",
+      "triangles": 720,
+      "material": "blue"
+    },
+    {
+      "name": "InteriorDetail_Headset_band__steel",
+      "triangles": 2400,
+      "material": "steel"
+    },
+    {
+      "name": "InteriorDetail_PC_grille__steel",
+      "triangles": 1440,
+      "material": "steel"
+    },
+    {
+      "name": "InteriorDetail_PC_corner_rails__silver",
+      "triangles": 240,
+      "material": "silver"
+    },
+    {
+      "name": "InteriorDetail_Chair_bolsters__black",
+      "triangles": 560,
+      "material": "black"
+    },
+    {
+      "name": "InteriorDetail_Chair_piping__ivory",
+      "triangles": 400,
+      "material": "ivory"
+    },
+    {
+      "name": "InteriorDetail_Chair_casters__black",
+      "triangles": 1800,
+      "material": "black"
+    },
+    {
+      "name": "InteriorDetail_Screen_corner_rails__silver",
+      "triangles": 224,
+      "material": "silver"
+    },
+    {
+      "name": "InteriorDetail_Screen_fasteners__silver",
+      "triangles": 1344,
+      "material": "silver"
+    },
+    {
+      "name": "InteriorDetail_Screen_header_reveals__black",
+      "triangles": 336,
+      "material": "black"
+    },
+    {
+      "name": "InteriorDetail_Screen_graphic_shards__cyan",
+      "triangles": 288,
+      "material": "cyan"
+    },
+    {
+      "name": "InteriorDetail_Screen_graphic_shards__ivory",
+      "triangles": 288,
+      "material": "ivory"
+    },
+    {
+      "name": "InteriorDetail_Screen_lower_modules__black",
+      "triangles": 1152,
+      "material": "black"
+    },
+    {
+      "name": "InteriorDetail_Screen_downlight__whiteLED",
+      "triangles": 2688,
+      "material": "whiteLED"
+    },
+    {
+      "name": "InteriorDetail_Lighting_boxtruss_chords__silver",
+      "triangles": 3840,
+      "material": "silver"
+    },
+    {
+      "name": "InteriorDetail_Lighting_boxtruss_diagonals__steel",
+      "triangles": 1920,
+      "material": "steel"
+    },
+    {
+      "name": "InteriorDetail_Lighting_boxtruss_uprights__silver",
+      "triangles": 1920,
+      "material": "silver"
+    },
+    {
+      "name": "InteriorDetail_Fixture_yokes__steel",
+      "triangles": 768,
+      "material": "steel"
+    },
+    {
+      "name": "InteriorDetail_Fixture_clamps__black",
+      "triangles": 384,
+      "material": "black"
+    },
+    {
+      "name": "InteriorDetail_Fixture_safety_wire__steel",
+      "triangles": 640,
+      "material": "steel"
+    },
+    {
+      "name": "InteriorDetail_Speaker_grille__steel",
+      "triangles": 4032,
+      "material": "steel"
+    },
+    {
+      "name": "InteriorDetail_Speaker_side_rails__silver",
+      "triangles": 1152,
+      "material": "silver"
+    },
+    {
+      "name": "InteriorDetail_Speaker_rigging__steel",
+      "triangles": 224,
+      "material": "steel"
+    },
+    {
+      "name": "InteriorDetail_Screen_chain_hoists__black",
+      "triangles": 48,
+      "material": "black"
+    },
+    {
+      "name": "InteriorDetail_Screen_cable_clamps__silver",
+      "triangles": 240,
+      "material": "silver"
+    }
+  ],
+  "total_triangles": 59176,
+  "original_objects_edited": 0
+}

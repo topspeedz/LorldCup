@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><link rel="icon" href="data:,"><title>WORLDS 2026 · Barclays Center</title>
+<link rel="stylesheet" href="./ui/tokens.css">
+<style>
+/* Mouse-first frame (BL-0034/0035): docs/live/graphicmodel/ui/hud-controls.md, entry-loading.md. Static boxes stay z-index auto: #ui-root (z 1) carries the menus above them. */
+:root{--edge:var(--space-5);--btn-h:calc(var(--font-size-sm)*1.6 + var(--space-2)*2);--tier1-h:calc(var(--btn-h) + var(--space-1)*2);--tier2-bottom:calc(var(--edge) + var(--tier1-h) + var(--space-2));--hud-h:calc(var(--size-keycap) + var(--space-2)*2);--above-hud:calc(var(--tier2-bottom) + var(--hud-h) + var(--space-3));--entry-width:380px;--cover-width:420px;--room-width:340px;--hud-col-width:calc(var(--space-5)*8)}
+*{box-sizing:border-box}body{margin:0;background:var(--color-bg);color:var(--color-text);font:var(--font-weight-regular) var(--font-size-sm)/var(--line-height-body) var(--font-family)}canvas{display:block;width:100vw;height:100vh}
+button{font:inherit;cursor:pointer;border:var(--border-width) solid var(--color-border);background:var(--color-panel-raised);color:var(--color-text);padding:var(--space-2) var(--space-4);border-radius:var(--radius-sm);min-height:var(--size-target-min);transition:background var(--motion-fast) var(--ease-out)}
+button:hover{background:var(--color-panel-hover)}button:active{background:var(--color-panel-hover);border-color:var(--color-accent)}button:focus-visible,summary:focus-visible{outline:var(--focus-ring);outline-offset:2px}button:disabled{opacity:var(--opacity-disabled);cursor:wait}
+kbd{display:inline-grid;place-items:center;min-width:var(--size-keycap);height:var(--size-keycap);padding:0 var(--space-1);margin-right:var(--space-1);border:var(--border-width) solid var(--color-border);border-radius:var(--radius-sm);background:var(--color-panel-raised);color:var(--color-text);font:var(--font-weight-bold) var(--font-size-xs)/1 var(--font-family)}
+.panel-hud{background:rgb(7 18 29/var(--panel-alpha-hud));border:var(--border-width) solid var(--color-border-subtle);border-radius:var(--radius-md);backdrop-filter:blur(var(--panel-blur))}
+/* First page and invite entry: one centred column over color-bg (entry-loading.md). */
+#panel{position:fixed;inset:0;z-index:var(--z-loading);display:grid;place-items:center;overflow:auto;padding:var(--space-4);background:var(--color-bg)}#panel[hidden]{display:none}
+#panel>div{width:min(var(--entry-width),100%);display:flex;flex-direction:column;gap:var(--space-4)}
+#panel .tag{font-size:var(--font-size-xs);letter-spacing:var(--letter-spacing-label);color:var(--color-text-subtle)}
+h1{font-size:var(--font-size-xl);font-weight:var(--font-weight-bold);margin:calc(var(--space-4)*-1 + var(--space-1)) 0 0;letter-spacing:var(--letter-spacing-title);line-height:1.2}
+#broadcasts{display:flex;flex-direction:column;gap:var(--space-2)}
+#broadcasts button{display:flex;align-items:center;justify-content:space-between;gap:var(--space-3);padding:var(--space-4);text-align:left;background:var(--color-panel);border:2px solid var(--color-border);border-radius:var(--radius-md);font-size:var(--font-size-md);font-weight:var(--font-weight-bold)}
+#broadcasts button:hover{border-color:var(--color-text-muted)}#broadcasts button[aria-pressed=true]{border-color:var(--color-accent)}
+#broadcasts .source{padding:0 var(--space-2);border:var(--border-width) solid var(--color-accent);border-radius:var(--radius-sm);color:var(--color-accent);font-size:var(--font-size-xs);font-weight:var(--font-weight-bold)}
+#showtimes{display:flex;flex-direction:column;gap:var(--space-1)}#showtimes[hidden]{display:none}#showtimes .label{font-size:var(--font-size-xs);color:var(--color-text-muted)}
+#showtimes .row{display:grid;grid-template-columns:repeat(3,1fr);border:var(--border-width) solid var(--color-border);border-radius:var(--radius-sm);overflow:hidden}
+#showtimes button{border:0;border-radius:0;font-variant-numeric:tabular-nums}#showtimes button+button{border-left:var(--border-width) solid var(--color-border)}
+#showtimes button[aria-pressed=true]{background:var(--color-accent);color:var(--color-text-on-accent);font-weight:var(--font-weight-bold)}
+#entry-notice{font-size:var(--font-size-xs);color:var(--color-text-muted)}#entry-notice p{margin:0}#entry-notice summary{cursor:pointer;color:var(--color-text-subtle);margin-top:var(--space-1)}#entry-notice details p{margin-top:var(--space-2)}
+#enter{width:100%;padding:var(--space-3) var(--space-4);background:var(--color-accent);border-color:var(--color-accent);color:var(--color-text-on-accent);font-weight:var(--font-weight-bold)}#enter:hover{border-color:var(--color-text)}#enter:active{border-color:var(--color-text-on-accent);transform:translateY(1px)}
+#panel[data-mode=invite] :is(.tag,#broadcasts,#showtimes){display:none}
+/* In the arena: top-right column (key hints, then settings), top-left status lines, bottom-right actions (hud-controls.md 공용 자리). */
+#hud{position:fixed;right:var(--edge);top:var(--edge);width:var(--hud-col-width);display:flex;flex-direction:column;gap:var(--space-2)}
+#hud-keys{display:flex;flex-direction:column;gap:var(--space-1);padding:var(--space-2) var(--space-3);color:var(--color-text-muted)}
+#hud-keys>[data-for]{display:none;flex-direction:column;gap:var(--space-1)}#hud[data-state=walking] [data-for=walking],#hud[data-state=seated] [data-for=seated]{display:flex}
+#hud-keys .k{display:flex;align-items:center;gap:var(--space-1)}#hud-keys kbd{min-width:calc(var(--size-keycap)*2.4)}
+#hud-keys kbd.on{border-color:var(--color-accent);color:var(--color-accent);transition:none}
+#settings{display:flex;flex-direction:column;padding:var(--space-1)}#settings>#arena-screen-controls{order:1;position:static;max-width:none;width:100%;background:transparent;border:0;padding:0;opacity:1}#settings>#network{order:2}
+#network{display:flex;flex-direction:column}#network>#watch-together{order:1}#network>#watch-together-note{order:2}#network>#network-status{order:3}
+#network button{width:100%;text-align:left;background:transparent;border:0;padding:var(--space-1) var(--space-2)}#network button:hover{background:var(--color-panel-hover)}
+/* LG-H-4: the copy note folds inside the column width, never past it onto the video. */
+#watch-together-note,#network-status{margin:0;padding:0 var(--space-2);font-size:var(--font-size-xs);color:var(--color-text-muted);white-space:normal;overflow-wrap:anywhere}#watch-together-note:empty,#network-status:empty{display:none}#watch-together-note[data-tone=warning]{color:var(--color-warning)}#watch-together-note[data-tone=warning]::before{content:'⚠ '}#network-status[hidden]{display:none}
+.hud-left{position:fixed;left:50%;top:18vh;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:var(--space-2);max-width:calc(100vw - var(--edge)*2);text-align:center;pointer-events:none}.hud-left>*{pointer-events:auto}
+#showtime-wait{padding:var(--space-1) var(--space-3);font-size:var(--font-size-md);font-weight:var(--font-weight-bold);font-variant-numeric:tabular-nums;text-shadow:var(--text-shadow-hud)}#showtime-wait[hidden]{display:none}
+#hud-objective{font-size:var(--font-size-lg,1.25rem);font-weight:var(--font-weight-bold,700);text-shadow:var(--text-shadow-hud)}#hud-objective:empty{display:none}
+#dock{position:fixed;right:var(--edge);bottom:var(--edge);display:flex;gap:var(--space-2)}#dock>#emote-open{order:1}#dock>#full-mode-open{order:2}
+#hud-toast{position:fixed;z-index:var(--z-toast);left:50%;top:var(--edge);transform:translateX(-50%);display:flex;flex-direction:column;gap:var(--space-2);width:max-content;max-width:min(var(--room-width),calc(100vw - var(--edge)*2));pointer-events:none}
+body[data-hud=seated] #hud-toast{top:auto;bottom:var(--edge)}
+#hud-toast>div{padding:var(--space-2) var(--space-4);background:rgb(7 18 29/var(--panel-alpha));border:var(--border-width) solid var(--color-border);border-radius:var(--radius-md);box-shadow:var(--shadow-panel);color:var(--color-text);animation:toast-in var(--motion-base) var(--ease-out)}#hud-toast>[data-tone=warning]{color:var(--color-warning)}
+@keyframes toast-in{from{opacity:0}}
+body[data-hud=entry] :is(#hud,.hud-left,#dock,#touch),body[data-hud=full] :is(#hud,.hud-left,#dock){display:none}
+#touch{display:none;position:fixed;bottom:var(--tier2-bottom);right:max(var(--space-4),env(safe-area-inset-right));grid-template-columns:repeat(3,var(--size-target-touch));gap:var(--space-2)}#touch button{padding:0;height:var(--size-target-touch);touch-action:none}
+body.touch #touch{display:grid}body.touch #hud-keys{display:none}body.touch #network button{min-height:var(--size-target-touch)}
+/* H-W10 (T27f): wrap upward within the width left of the arrow pad, so no button or empty cell sits over #touch. */
+body.touch #dock{left:max(var(--space-4),env(safe-area-inset-left));right:auto;bottom:var(--tier2-bottom);display:flex;flex-wrap:wrap-reverse;max-width:calc(100vw - max(var(--space-4),env(safe-area-inset-left)) - max(var(--space-4),env(safe-area-inset-right)) - var(--size-target-touch)*3 - var(--space-2)*3)}body.touch #dock button{min-height:var(--size-target-touch)}
+/* LG-H-4b: on touch the top-left is where the hung screen sits; the wait line and the objective go bottom-left, objective just above the wait line. */
+body.touch .hud-left{transform:none;left:var(--edge);text-align:left;align-items:flex-start;top:auto;bottom:calc(var(--edge) + var(--size-target-touch)*3 + var(--space-2)*2 + var(--space-3));flex-direction:column-reverse;max-width:calc(100vw - var(--edge)*2)}
+body.touch #hud-toast{top:auto;bottom:calc(var(--tier2-bottom) + var(--size-target-touch)*2 + var(--space-2) + var(--space-3));flex-direction:column-reverse;max-width:calc(100vw - var(--space-4)*2)}
+body.touch[data-hud=seated] #hud-toast{left:var(--edge);top:var(--edge);bottom:auto;transform:none;max-width:calc(100vw - var(--hud-col-width) - var(--edge)*3)}
+@media(max-width:650px){:root{--edge:max(var(--space-4),env(safe-area-inset-left));--hud-col-width:calc(var(--space-5)*7)}#hud-keys .k:is([data-row=move],[data-row=jump]){display:none}}
+body.touch{--hud-col-width:calc(var(--space-5)*7)}
+@media(max-width:800px){#panel{place-items:end center;padding-bottom:calc(var(--space-5) + env(safe-area-inset-bottom))}#panel>div{width:100%}#showtimes button,#enter{min-height:var(--size-target-touch)}}
+#loading{position:fixed;inset:0;z-index:var(--z-loading);display:grid;place-items:center;background:var(--color-bg);padding:var(--space-4)}#loading[hidden]{display:none}#loading>div{width:min(var(--cover-width),100%);text-align:center}#loading b{letter-spacing:var(--letter-spacing-label);color:var(--color-text-subtle)}#loading h2{font-size:var(--font-size-lg);margin:var(--space-3) 0 var(--space-4);letter-spacing:var(--letter-spacing-title)}#loading progress{width:100%;height:6px;accent-color:var(--color-accent)}#loading [role=status]{color:var(--color-accent);margin-top:var(--space-3)}
+@media (prefers-reduced-motion:reduce){#hud-toast>div{animation:none}#enter:active{transform:none}}
+</style>
+<script type="importmap">{"imports":{"three":"./vendor/three.module.js"}}</script></head><body data-hud="entry">
+<div id="loading" role="dialog" aria-modal="true" aria-label="경기장 로딩 중" aria-busy="true" hidden><div><b>WORLDS 2026</b><h2>로딩 중</h2><progress max="100" aria-label="로딩 진행률"></progress><p role="status" aria-live="polite">경기장 불러오는 중…</p></div></div>
+<section id="panel" aria-labelledby="panel-title" hidden><div><span class="tag">WORLDS 2026</span><h1 id="panel-title">어떤 경기를 볼까요?</h1><div id="broadcasts" role="group" aria-label="방송"></div><div id="showtimes" role="group" aria-labelledby="showtimes-label"><span class="label" id="showtimes-label">상영 시각</span><div class="row"></div></div><div id="entry-notice"><p>들어가면 다른 사람과 자동으로 연결돼요. 이때 내 접속 주소가 연결을 돕는 외부 서비스와 상대에게 전해져요.</p><details><summary>자세히</summary><p>입장하면 다른 관람객과 자동으로 연결되며, 이때 내 IP 주소가 연결 중개 서버(PeerJS Cloud·Google STUN)와 연결 상대에게 전달됩니다.</p><p>같은 방 사람에게는 자동으로 정해진 닉네임, 캐릭터의 위치와 동작, 응원팀이 보입니다. 빈자리를 찾는 동안 다른 방의 방장과, 방 현황을 확인하는 운영자 화면과도 잠깐 연결될 수 있습니다. 이 앱은 이 정보를 저장하지 않습니다. 영상은 각자의 브라우저가 YouTube에서 직접 받습니다.</p><p>제공 사진을 참고한 공간 재현 · 실제 2026 행사 배치와 실측 치수를 검증한 모델은 아닙니다.</p></details></div><button id="enter" type="button">들어가기</button><p id="status" role="status" hidden>경기장 불러오는 중…</p></div></section>
+<div class="hud-left"><div id="showtime-wait" role="status" hidden></div><div id="hud-objective"></div></div>
+<div id="hud" data-state="entry"><div id="hud-keys" class="panel-hud"><div data-for="walking"><span class="k" data-row="move"><kbd>WASD</kbd>이동</span><span class="k" data-row="jump"><kbd>Space</kbd>점프</span><span class="k"><kbd>Shift</kbd>달리기</span><span class="k"><kbd>Alt</kbd>감정표현</span><span class="k"><kbd>F</kbd>Full Mode</span></div><div data-for="seated"><span class="k"><kbd>F</kbd>Full Mode</span><span class="k"><kbd>Alt</kbd>감정표현</span></div></div><div id="settings" class="panel-hud"><div id="network" role="group" aria-label="같이 보기"><p id="network-status" role="status"></p></div></div></div>
+<div id="dock"></div>
+<div id="hud-toast" role="status" aria-live="polite"></div>
+<div id="touch"><span></span><button data-key="KeyW" aria-label="앞으로">↑</button><span></span><button data-key="KeyA" aria-label="왼쪽">←</button><button data-key="KeyS" aria-label="뒤로">↓</button><button data-key="KeyD" aria-label="오른쪽">→</button></div>
+<script src="./vendor/peerjs.min.js"></script>
+<script type="module" src="./ui/loading.js"></script>
+<script type="module" src="./main.js"></script></body></html>

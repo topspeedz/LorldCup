@@ -1,0 +1,2657 @@
+BlenderMCP addon registered
+BlenderMCP addon unregistered
+15:22:49 | INFO: Data are loaded, start creating Blender stuff
+15:22:49 | INFO: Blender create Mesh node Aisle_handrails__silver
+15:22:49 | INFO: Draco Decoder: Decode primitive Aisle_handrails__silver
+15:22:49 | INFO: Blender create Mesh node Aisle_step_lights__cyan.001
+15:22:49 | INFO: Draco Decoder: Decode primitive Aisle_step_lights__cyan.001
+15:22:49 | INFO: Draco Decoder: Decode primitive Aisle_step_lights__cyan.001
+15:22:49 | INFO: Draco Decoder: Decode primitive Aisle_step_lights__cyan.001
+15:22:49 | INFO: Blender create Mesh node Atrium_ceiling__wood.002
+15:22:49 | INFO: Draco Decoder: Decode primitive Atrium_ceiling__wood.002
+15:22:49 | INFO: Blender create Mesh node Audience_heads__crowd0_rounded
+15:22:49 | INFO: Draco Decoder: Decode primitive Audience_heads__crowd0_rounded
+15:22:49 | INFO: Draco Decoder: Decode primitive Audience_heads__crowd0_rounded
+15:22:49 | INFO: Draco Decoder: Decode primitive Audience_heads__crowd0_rounded
+15:22:49 | INFO: Draco Decoder: Decode primitive Audience_heads__crowd0_rounded
+15:22:49 | INFO: Draco Decoder: Decode primitive Audience_heads__crowd0_rounded
+15:22:49 | INFO: Draco Decoder: Decode primitive Audience_heads__crowd0_rounded
+15:22:49 | INFO: Draco Decoder: Decode primitive Audience_heads__crowd0_rounded
+15:22:49 | INFO: Draco Decoder: Decode primitive Audience_heads__crowd0_rounded
+15:22:49 | INFO: Blender create Mesh node Audience_heads__crowd1_rounded
+15:22:49 | INFO: Draco Decoder: Decode primitive Audience_heads__crowd1_rounded
+15:22:49 | INFO: Draco Decoder: Decode primitive Audience_heads__crowd1_rounded
+15:22:49 | INFO: Draco Decoder: Decode primitive Audience_heads__crowd1_rounded
+15:22:49 | INFO: Draco Decoder: Decode primitive Audience_heads__crowd1_rounded
+15:22:49 | INFO: Draco Decoder: Decode primitive Audience_heads__crowd1_rounded
+15:22:49 | INFO: Draco Decoder: Decode primitive Audience_heads__crowd1_rounded
+15:22:49 | INFO: Draco Decoder: Decode primitive Audience_heads__crowd1_rounded
+15:22:49 | INFO: Draco Decoder: Decode primitive Audience_heads__crowd1_rounded
+15:22:50 | INFO: Blender create Mesh node Audience_heads__crowd2_rounded
+15:22:50 | INFO: Draco Decoder: Decode primitive Audience_heads__crowd2_rounded
+15:22:50 | INFO: Draco Decoder: Decode primitive Audience_heads__crowd2_rounded
+15:22:50 | INFO: Draco Decoder: Decode primitive Audience_heads__crowd2_rounded
+15:22:50 | INFO: Draco Decoder: Decode primitive Audience_heads__crowd2_rounded
+15:22:50 | INFO: Draco Decoder: Decode primitive Audience_heads__crowd2_rounded
+15:22:50 | INFO: Draco Decoder: Decode primitive Audience_heads__crowd2_rounded
+15:22:50 | INFO: Draco Decoder: Decode primitive Audience_heads__crowd2_rounded
+15:22:50 | INFO: Draco Decoder: Decode primitive Audience_heads__crowd2_rounded
+15:22:50 | INFO: Blender create Mesh node Audience_heads__crowd3_rounded
+15:22:50 | INFO: Draco Decoder: Decode primitive Audience_heads__crowd3_rounded
+15:22:50 | INFO: Draco Decoder: Decode primitive Audience_heads__crowd3_rounded
+15:22:50 | INFO: Draco Decoder: Decode primitive Audience_heads__crowd3_rounded
+15:22:50 | INFO: Draco Decoder: Decode primitive Audience_heads__crowd3_rounded
+15:22:50 | INFO: Draco Decoder: Decode primitive Audience_heads__crowd3_rounded
+15:22:50 | INFO: Draco Decoder: Decode primitive Audience_heads__crowd3_rounded
+15:22:50 | INFO: Draco Decoder: Decode primitive Audience_heads__crowd3_rounded
+15:22:50 | INFO: Draco Decoder: Decode primitive Audience_heads__crowd3_rounded
+15:22:50 | INFO: Blender create Mesh node Audience_heads__crowd4_rounded
+15:22:50 | INFO: Draco Decoder: Decode primitive Audience_heads__crowd4_rounded
+15:22:50 | INFO: Draco Decoder: Decode primitive Audience_heads__crowd4_rounded
+15:22:50 | INFO: Draco Decoder: Decode primitive Audience_heads__crowd4_rounded
+15:22:50 | INFO: Draco Decoder: Decode primitive Audience_heads__crowd4_rounded
+15:22:50 | INFO: Draco Decoder: Decode primitive Audience_heads__crowd4_rounded
+15:22:50 | INFO: Draco Decoder: Decode primitive Audience_heads__crowd4_rounded
+15:22:50 | INFO: Draco Decoder: Decode primitive Audience_heads__crowd4_rounded
+15:22:50 | INFO: Draco Decoder: Decode primitive Audience_heads__crowd4_rounded
+15:22:51 | INFO: Blender create Mesh node Audience_heads__skin_rounded
+15:22:51 | INFO: Draco Decoder: Decode primitive Audience_heads__skin_rounded
+15:22:51 | INFO: Draco Decoder: Decode primitive Audience_heads__skin_rounded
+15:22:51 | INFO: Draco Decoder: Decode primitive Audience_heads__skin_rounded
+15:22:51 | INFO: Draco Decoder: Decode primitive Audience_heads__skin_rounded
+15:22:51 | INFO: Draco Decoder: Decode primitive Audience_heads__skin_rounded
+15:22:51 | INFO: Draco Decoder: Decode primitive Audience_heads__skin_rounded
+15:22:51 | INFO: Draco Decoder: Decode primitive Audience_heads__skin_rounded
+15:22:51 | INFO: Draco Decoder: Decode primitive Audience_heads__skin_rounded
+15:22:51 | INFO: Blender create Mesh node Audience_torsos__crowd0_animated
+15:22:51 | INFO: Draco Decoder: Decode primitive Audience_torsos__crowd0_animated
+15:22:51 | INFO: Draco Decoder: Decode primitive Audience_torsos__crowd0_animated
+15:22:51 | INFO: Draco Decoder: Decode primitive Audience_torsos__crowd0_animated
+15:22:51 | INFO: Draco Decoder: Decode primitive Audience_torsos__crowd0_animated
+15:22:51 | INFO: Draco Decoder: Decode primitive Audience_torsos__crowd0_animated
+15:22:51 | INFO: Draco Decoder: Decode primitive Audience_torsos__crowd0_animated
+15:22:51 | INFO: Draco Decoder: Decode primitive Audience_torsos__crowd0_animated
+15:22:51 | INFO: Draco Decoder: Decode primitive Audience_torsos__crowd0_animated
+15:22:51 | INFO: Draco Decoder: Decode primitive Audience_torsos__crowd0_animated
+15:22:52 | INFO: Blender create Mesh node Audience_torsos__crowd1_animated
+15:22:52 | INFO: Draco Decoder: Decode primitive Audience_torsos__crowd1_animated
+15:22:52 | INFO: Draco Decoder: Decode primitive Audience_torsos__crowd1_animated
+15:22:52 | INFO: Draco Decoder: Decode primitive Audience_torsos__crowd1_animated
+15:22:52 | INFO: Draco Decoder: Decode primitive Audience_torsos__crowd1_animated
+15:22:52 | INFO: Draco Decoder: Decode primitive Audience_torsos__crowd1_animated
+15:22:52 | INFO: Draco Decoder: Decode primitive Audience_torsos__crowd1_animated
+15:22:52 | INFO: Draco Decoder: Decode primitive Audience_torsos__crowd1_animated
+15:22:52 | INFO: Draco Decoder: Decode primitive Audience_torsos__crowd1_animated
+15:22:52 | INFO: Draco Decoder: Decode primitive Audience_torsos__crowd1_animated
+15:22:53 | INFO: Blender create Mesh node Audience_torsos__crowd2_animated
+15:22:53 | INFO: Draco Decoder: Decode primitive Audience_torsos__crowd2_animated
+15:22:53 | INFO: Draco Decoder: Decode primitive Audience_torsos__crowd2_animated
+15:22:53 | INFO: Draco Decoder: Decode primitive Audience_torsos__crowd2_animated
+15:22:53 | INFO: Draco Decoder: Decode primitive Audience_torsos__crowd2_animated
+15:22:53 | INFO: Draco Decoder: Decode primitive Audience_torsos__crowd2_animated
+15:22:53 | INFO: Draco Decoder: Decode primitive Audience_torsos__crowd2_animated
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+DracoDecoder | Decoded 9842 vertices, 13020 indices
+DracoDecoder | Decoded 1740 vertices, 2610 indices
+DracoDecoder | Decoded 1640 vertices, 2460 indices
+DracoDecoder | Decoded 340 vertices, 510 indices
+DracoDecoder | Decoded 24 vertices, 36 indices
+DracoDecoder | Decoded 19561 vertices, 56790 indices
+DracoDecoder | Decoded 19561 vertices, 56790 indices
+DracoDecoder | Decoded 19530 vertices, 56700 indices
+DracoDecoder | Decoded 17028 vertices, 39732 indices
+DracoDecoder | Decoded 17028 vertices, 39732 indices
+DracoDecoder | Decoded 9465 vertices, 30288 indices
+DracoDecoder | Decoded 9465 vertices, 30288 indices
+DracoDecoder | Decoded 9450 vertices, 30240 indices
+DracoDecoder | Decoded 19003 vertices, 55170 indices
+DracoDecoder | Decoded 19003 vertices, 55170 indices
+DracoDecoder | Decoded 19003 vertices, 55170 indices
+DracoDecoder | Decoded 16560 vertices, 38640 indices
+DracoDecoder | Decoded 16542 vertices, 38598 indices
+DracoDecoder | Decoded 9195 vertices, 29424 indices
+DracoDecoder | Decoded 9195 vertices, 29424 indices
+DracoDecoder | Decoded 9195 vertices, 29424 indices
+DracoDecoder | Decoded 19344 vertices, 56160 indices
+DracoDecoder | Decoded 19344 vertices, 56160 indices
+DracoDecoder | Decoded 19313 vertices, 56070 indices
+DracoDecoder | Decoded 16848 vertices, 39312 indices
+DracoDecoder | Decoded 16830 vertices, 39270 indices
+DracoDecoder | Decoded 9360 vertices, 29952 indices
+DracoDecoder | Decoded 9360 vertices, 29952 indices
+DracoDecoder | Decoded 9345 vertices, 29904 indices
+DracoDecoder | Decoded 19313 vertices, 56070 indices
+DracoDecoder | Decoded 19313 vertices, 56070 indices
+DracoDecoder | Decoded 19282 vertices, 55980 indices
+DracoDecoder | Decoded 16812 vertices, 39228 indices
+DracoDecoder | Decoded 16812 vertices, 39228 indices
+DracoDecoder | Decoded 9345 vertices, 29904 indices
+DracoDecoder | Decoded 9345 vertices, 29904 indices
+DracoDecoder | Decoded 9330 vertices, 29856 indices
+DracoDecoder | Decoded 19065 vertices, 55350 indices
+DracoDecoder | Decoded 19065 vertices, 55350 indices
+DracoDecoder | Decoded 19034 vertices, 55260 indices
+DracoDecoder | Decoded 16596 vertices, 38724 indices
+DracoDecoder | Decoded 16596 vertices, 38724 indices
+DracoDecoder | Decoded 9225 vertices, 29520 indices
+DracoDecoder | Decoded 9225 vertices, 29520 indices
+DracoDecoder | Decoded 9210 vertices, 29472 indices
+DracoDecoder | Decoded 31806 vertices, 92340 indices
+DracoDecoder | Decoded 31806 vertices, 92340 indices
+DracoDecoder | Decoded 31806 vertices, 92340 indices
+DracoDecoder | Decoded 27702 vertices, 64638 indices
+DracoDecoder | Decoded 27702 vertices, 64638 indices
+DracoDecoder | Decoded 15390 vertices, 49248 indices
+DracoDecoder | Decoded 15390 vertices, 49248 indices
+DracoDecoder | Decoded 15390 vertices, 49248 indices
+DracoDecoder | Decoded 7380 vertices, 14760 indices
+DracoDecoder | Decoded 7476 vertices, 14952 indices
+DracoDecoder | Decoded 71532 vertices, 281208 indices
+DracoDecoder | Decoded 42364 vertices, 164472 indices
+DracoDecoder | Decoded 17220 vertices, 29520 indices
+DracoDecoder | Decoded 18068 vertices, 32400 indices
+DracoDecoder | Decoded 26432 vertices, 118944 indices
+DracoDecoder | Decoded 26400 vertices, 118800 indices
+DracoDecoder | Decoded 26400 vertices, 118800 indices
+DracoDecoder | Decoded 7458 vertices, 14916 indices
+DracoDecoder | Decoded 7434 vertices, 14868 indices
+DracoDecoder | Decoded 72046 vertices, 283212 indices
+DracoDecoder | Decoded 42126 vertices, 163548 indices
+DracoDecoder | Decoded 17402 vertices, 29832 indices
+DracoDecoder | Decoded 17964 vertices, 32208 indices
+DracoDecoder | Decoded 26464 vertices, 119088 indices
+DracoDecoder | Decoded 26496 vertices, 119232 indices
+DracoDecoder | Decoded 26464 vertices, 119088 indices
+DracoDecoder | Decoded 7716 vertices, 15432 indices
+DracoDecoder | Decoded 7338 vertices, 14676 indices
+DracoDecoder | Decoded 73832 vertices, 290184 indices
+DracoDecoder | Decoded 41582 vertices, 161436 indices
+DracoDecoder | Decoded 18004 vertices, 30864 indices
+DracoDecoder | Decoded 1775215:22:53 | INFO: Draco Decoder: Decode primitive Audience_torsos__crowd2_animated
+15:22:53 | INFO: Draco Decoder: Decode primitive Audience_torsos__crowd2_animated
+15:22:53 | INFO: Draco Decoder: Decode primitive Audience_torsos__crowd2_animated
+15:22:54 | INFO: Blender create Mesh node Audience_torsos__crowd3_animated
+15:22:54 | INFO: Draco Decoder: Decode primitive Audience_torsos__crowd3_animated
+15:22:54 | INFO: Draco Decoder: Decode primitive Audience_torsos__crowd3_animated
+15:22:54 | INFO: Draco Decoder: Decode primitive Audience_torsos__crowd3_animated
+15:22:54 | INFO: Draco Decoder: Decode primitive Audience_torsos__crowd3_animated
+15:22:54 | INFO: Draco Decoder: Decode primitive Audience_torsos__crowd3_animated
+15:22:54 | INFO: Draco Decoder: Decode primitive Audience_torsos__crowd3_animated
+15:22:54 | INFO: Draco Decoder: Decode primitive Audience_torsos__crowd3_animated
+15:22:54 | INFO: Draco Decoder: Decode primitive Audience_torsos__crowd3_animated
+15:22:54 | INFO: Draco Decoder: Decode primitive Audience_torsos__crowd3_animated
+15:22:54 | INFO: Blender create Mesh node Audience_torsos__crowd4_animated
+15:22:54 | INFO: Draco Decoder: Decode primitive Audience_torsos__crowd4_animated
+15:22:54 | INFO: Draco Decoder: Decode primitive Audience_torsos__crowd4_animated
+15:22:54 | INFO: Draco Decoder: Decode primitive Audience_torsos__crowd4_animated
+15:22:54 | INFO: Draco Decoder: Decode primitive Audience_torsos__crowd4_animated
+15:22:55 | INFO: Draco Decoder: Decode primitive Audience_torsos__crowd4_animated
+15:22:55 | INFO: Draco Decoder: Decode primitive Audience_torsos__crowd4_animated
+15:22:55 | INFO: Draco Decoder: Decode primitive Audience_torsos__crowd4_animated
+15:22:55 | INFO: Draco Decoder: Decode primitive Audience_torsos__crowd4_animated
+15:22:55 | INFO: Draco Decoder: Decode primitive Audience_torsos__crowd4_animated
+15:22:55 | INFO: Blender create Mesh node AudienceDetail_Aisle_guides.001
+15:22:55 | INFO: Draco Decoder: Decode primitive AudienceDetail_Aisle_guides.001
+15:22:55 | INFO: Draco Decoder: Decode primitive AudienceDetail_Aisle_guides.001
+15:22:55 | INFO: Draco Decoder: Decode primitive AudienceDetail_Aisle_guides.001
+15:22:55 | INFO: Blender create Mesh node AudienceDetail_Aisle_mounts
+15:22:55 | INFO: Draco Decoder: Decode primitive AudienceDetail_Aisle_mounts
+15:22:55 | INFO: Blender create Mesh node AudienceDetail_Aisle_nosing
+15:22:55 | INFO: Draco Decoder: Decode primitive AudienceDetail_Aisle_nosing
+15:22:55 | INFO: Blender create Mesh node AudienceDetail_Aisle_supports
+15:22:55 | INFO: Draco Decoder: Decode primitive AudienceDetail_Aisle_supports
+15:22:55 | INFO: Blender create Mesh node AudienceDetail_Ribbon_chevrons.001
+15:22:55 | INFO: Draco Decoder: Decode primitive AudienceDetail_Ribbon_chevrons.001
+15:22:55 | INFO: Draco Decoder: Decode primitive AudienceDetail_Ribbon_chevrons.001
+15:22:55 | INFO: Draco Decoder: Decode primitive AudienceDetail_Ribbon_chevrons.001
+15:22:55 | INFO: Blender create Mesh node Bench_legs__steel
+15:22:55 | INFO: Draco Decoder: Decode primitive Bench_legs__steel
+15:22:55 | INFO: Blender create Mesh node Bollards__silver
+15:22:55 | INFO: Draco Decoder: Decode primitive Bollards__silver
+15:22:55 | INFO: Blender create Mesh node Catwalk__steel
+15:22:55 | INFO: Draco Decoder: Decode primitive Catwalk__steel
+15:22:55 | INFO: Blender create Mesh node CCR_Banquette back cushion_Web
+15:22:55 | INFO: Draco Decoder: Decode primitive CCR_Banquette back cushion_Web
+15:22:55 | INFO: Blender create Mesh node CCR_Banquette base_Web
+15:22:55 | INFO: Draco Decoder: Decode primitive CCR_Banquette base_Web
+15:22:55 | INFO: Blender create Mesh node CCR_Banquette seat cushion_Web
+15:22:55 | INFO: Draco Decoder: Decode primitive CCR_Banquette seat cushion_Web
+15:22:55 | INFO: Blender create Mesh node CCR_Black cylindrical columns_Web
+15:22:55 | INFO: Draco Decoder: Decode primitive CCR_Black cylindrical columns_Web
+15:22:55 | INFO: Blender create Mesh node CCR_Black sign fascia_Compact_Web
+15:22:55 | INFO: Draco Decoder: Decode primitive CCR_Black sign fascia_Compact_Web
+15:22:55 | INFO: Blender create Mesh node CCR_Black sign fascia_Web
+15:22:55 | INFO: Draco Decoder: Decode primitive CCR_Black sign fascia_Web
+15:22:55 | INFO: Blender create Mesh node CCR_Bottle caps_Web
+15:22:55 | INFO: Draco Decoder: Decode primitive CCR_Bottle caps_Web
+15:22:55 | INFO: Blender create Mesh node CCR_Bottle necks_Web
+15:22:55 | INFO: Draco Decoder: Decode primitive CCR_Bottle necks_Web
+15:22:55 | INFO: Draco Decoder: Decode primitive CCR_Bottle necks_Web
+15:22:55 | INFO: Draco Decoder: Decode primitive CCR_Bottle necks_Web
+15:22:56 | INFO: Blender create Mesh node CCR_Bottle wrap labels_Web
+15:22:56 | INFO: Draco Decoder: Decode primitive CCR_Bottle wrap labels_Web
+15:22:56 | INFO: Blender create Mesh node CCR_Cabinet seams_Compact_Web
+15:22:56 | INFO: Draco Decoder: Decode primitive CCR_Cabinet seams_Compact_Web
+15:22:56 | INFO: Blender create Mesh node CCR_Cabinet seams_Web
+15:22:56 | INFO: Draco Decoder: Decode primitive CCR_Cabinet seams_Web
+15:22:56 | INFO: Blender create Mesh node CCR_Ceiling edge trim_Web
+15:22:56 | INFO: Draco Decoder: Decode primitive CCR_Ceiling edge trim_Web
+15:22:56 | INFO: Blender create Mesh node CCR_Ceiling light diffusers_Compact_Web
+15:22:56 | INFO: Draco Decoder: Decode primitive CCR_Ceiling light diffusers_Compact_Web
+15:22:56 | INFO: Blender create Mesh node CCR_Ceiling light diffusers_Web
+15:22:56 | INFO: Draco Decoder: Decode primitive CCR_Ceiling light diffusers_Web
+15:22:56 | INFO: Blender create Mesh node CCR_Ceiling light housings_Compact_Web
+15:22:56 | INFO: Draco Decoder: Decode primitive CCR_Ceiling light housings_Compact_Web
+15:22:56 | INFO: Blender create Mesh node CCR_Ceiling light housings_Web
+15:22:56 | INFO: Draco Decoder: Decode primitive CCR_Ceiling light housings_Web
+15:22:56 | INFO: Blender create Mesh node CCR_Ceiling_Compact_Web
+15:22:56 | INFO: Draco Decoder: Decode primitive CCR_Ceiling_Compact_Web
+15:22:56 | INFO: Blender create Mesh node CCR_Ceiling_Web
+15:22:56 | INFO: Draco Decoder: Decode primitive CCR_Ceiling_Web
+15:22:56 | INFO: Blender create Mesh node CCR_Coffee grinder base_Compact_Web
+15:22:56 | INFO: Draco Decoder: Decode primitive CCR_Coffee grinder base_Compact_Web
+15:22:56 | INFO: Blender create Mesh node CCR_Coffee grinder base_Web
+15:22:56 | INFO: Draco Decoder: Decode primitive CCR_Coffee grinder base_Web
+15:22:56 | INFO: Blender create Mesh node CCR_Coffee grinder beans_Compact_Web
+15:22:56 | INFO: Draco Decoder: Decode primitive CCR_Coffee grinder beans_Compact_Web
+15:22:56 | INFO: Blender create Mesh node CCR_Coffee grinder beans_Web
+15:22:56 | INFO: Draco Decoder: Decode primitive CCR_Coffee grinder beans_Web
+15:22:56 | INFO: Blender create Mesh node CCR_Coffee grinder hopper_Compact_Web
+15:22:56 | INFO: Draco Decoder: Decode primitive CCR_Coffee grinder hopper_Compact_Web
+15:22:56 | INFO: Blender create Mesh node CCR_Coffee grinder hopper_Web
+15:22:56 | INFO: Draco Decoder: Decode primitive CCR_Coffee grinder hopper_Web
+15:22:56 | INFO: Blender create Mesh node CCR_Coffee grinder lid_Compact_Web
+15:22:56 | INFO: Draco Decoder: Decode primitive CCR_Coffee grinder lid_Compact_Web
+15:22:56 | INFO: Blender create Mesh node CCR_Coffee grinder lid_Web
+15:22:56 | INFO: Draco Decoder: Decode primitive CCR_Coffee grinder lid_Web
+15:22:56 | INFO: Blender create Mesh node CCR_Coffee group heads_Compact_Web
+15:22:56 | INFO: Draco Decoder: Decode primitive CCR_Coffee group heads_Compact_Web
+15:22:56 | INFO: Blender create Mesh node CCR_Coffee group heads_Web
+15:22:56 | INFO: Draco Decoder: Decode primitive CCR_Coffee group heads_Web
+15:22:56 | INFO: Blender create Mesh node CCR_Coffee syrups_Compact_Web
+15:22:56 | INFO: Draco Decoder: Decode primitive CCR_Coffee syrups_Compact_Web
+15:22:56 | INFO: Blender create Mesh node CCR_Coffee syrups_Web
+15:22:56 | INFO: Draco Decoder: Decode primitive CCR_Coffee syrups_Web
+15:22:56 | INFO: Blender create Mesh node CCR_Column collars_Web
+15:22:56 | INFO: Draco Decoder: Decode primitive CCR_Column collars_Web
+15:22:56 | INFO: Blender create Mesh node CCR_Counter accessories_Compact_Web
+15:22:56 | INFO: Draco Decoder: Decode primitive CCR_Counter accessories_Compact_Web
+15:22:56 | INFO: Draco Decoder: Decode primitive CCR_Counter accessories_Compact_Web
+15:22:56 | INFO: Blender create Mesh node CCR_Counter accessories_Web
+15:22:56 | INFO: Draco Decoder: Decode primitive CCR_Counter accessories_Web
+15:22:56 | INFO: Draco Decoder: Decode primitive CCR_Counter accessories_Web
+15:22:56 | INFO: Blender create Mesh node CCR_Counter bronze foot trim_Compact_Web
+15:22:56 | INFO: Draco Decoder: Decode primitive CCR_Counter bronze foot trim_Compact_Web
+15:22:56 | INFO: Blender create Mesh node CCR_Counter bronze foot trim_Web
+15:22:56 | INFO: Draco Decoder: Decode primitive CCR_Counter bronze foot trim_Web
+15:22:56 | INFO: Blender create Mesh node CCR_Counter plinth_Compact_Web
+15:22:56 | INFO: Draco Decoder: Decode primitive CCR_Counter plinth_Compact_Web
+15:22:56 | INFO: Blender create Mesh node CCR_Counter plinth_Web
+15:22:56 | INFO: Draco Decoder: Decode primitive CCR_Counter plinth_Web
+15:22:56 | INFO: Blender create Mesh node CCR_Counter toe light_Compact_Web
+15:22:56 | INFO: Draco Decoder: Decode primitive CCR_Counter toe light_Compact_Web
+15:22:56 | INFO: Blender create Mesh node CCR_Counter toe light_Web
+15:22:56 | INFO: Draco Decoder: Decode primitive CCR_Counter toe light_Web
+15:22:56 | INFO: Blender create Mesh node CCR_Counter upper light_Compact_Web
+15:22:56 | INFO: Draco Decoder: Decode primitive CCR_Counter upper light_Compact_Web
+15:22:56 | INFO: Blender create Mesh node CCR_Counter upper light_Web
+15:22:56 | INFO: Draco Decoder: Decode primitive CCR_Counter upper light_Web
+15:22:56 | INFO: Blender create Mesh node CCR_Counter worktops_Compact_Web
+15:22:56 | INFO: Draco Decoder: Decode primitive CCR_Counter worktops_Compact_Web
+15:22:56 | INFO: Blender create Mesh node CCR_Counter worktops_Web
+15:22:56 | INFO: Draco Decoder: Decode primitive CCR_Counter worktops_Web
+ vertices, 31872 indices
+DracoDecoder | Decoded 26752 vertices, 120384 indices
+DracoDecoder | Decoded 26752 vertices, 120384 indices
+DracoDecoder | Decoded 26784 vertices, 120528 indices
+DracoDecoder | Decoded 6990 vertices, 13980 indices
+DracoDecoder | Decoded 7674 vertices, 15348 indices
+DracoDecoder | Decoded 68938 vertices, 271092 indices
+DracoDecoder | Decoded 43486 vertices, 168828 indices
+DracoDecoder | Decoded 16310 vertices, 27960 indices
+DracoDecoder | Decoded 18512 vertices, 33120 indices
+DracoDecoder | Decoded 26080 vertices, 117360 indices
+DracoDecoder | Decoded 26080 vertices, 117360 indices
+DracoDecoder | Decoded 26048 vertices, 117216 indices
+DracoDecoder | Decoded 7404 vertices, 14808 indices
+DracoDecoder | Decoded 7482 vertices, 14964 indices
+DracoDecoder | Decoded 71728 vertices, 281976 indices
+DracoDecoder | Decoded 42398 vertices, 164604 indices
+DracoDecoder | Decoded 17276 vertices, 29616 indices
+DracoDecoder | Decoded 18082 vertices, 32424 indices
+DracoDecoder | Decoded 26464 vertices, 119088 indices
+DracoDecoder | Decoded 26464 vertices, 119088 indices
+DracoDecoder | Decoded 26464 vertices, 119088 indices
+DracoDecoder | Decoded 6264 vertices, 9396 indices
+DracoDecoder | Decoded 5904 vertices, 8856 indices
+DracoDecoder | Decoded 1224 vertices, 1836 indices
+DracoDecoder | Decoded 5952 vertices, 8928 indices
+DracoDecoder | Decoded 13392 vertices, 20088 indices
+DracoDecoder | Decoded 8928 vertices, 14880 indices
+DracoDecoder | Decoded 2304 vertices, 3456 indices
+DracoDecoder | Decoded 1920 vertices, 2880 indices
+DracoDecoder | Decoded 384 vertices, 576 indices
+DracoDecoder | Decoded 192 vertices, 288 indices
+DracoDecoder | Decoded 216 vertices, 360 indices
+DracoDecoder | Decoded 3840 vertices, 5760 indices
+DracoDecoder | Decoded 7296 vertices, 10716 indices
+DracoDecoder | Decoded 456 vertices, 684 indices
+DracoDecoder | Decoded 7296 vertices, 10716 indices
+DracoDecoder | Decoded 10480 vertices, 26220 indices
+DracoDecoder | Decoded 1536 vertices, 2256 indices
+DracoDecoder | Decoded 29184 vertices, 42864 indices
+DracoDecoder | Decoded 82080 vertices, 184680 indices
+DracoDecoder | Decoded 30120 vertices, 61560 indices
+DracoDecoder | Decoded 30120 vertices, 61560 indices
+DracoDecoder | Decoded 30120 vertices, 61560 indices
+DracoDecoder | Decoded 90360 vertices, 184680 indices
+DracoDecoder | Decoded 288 vertices, 432 indices
+DracoDecoder | Decoded 2736 vertices, 4104 indices
+DracoDecoder | Decoded 456 vertices, 684 indices
+DracoDecoder | Decoded 96 vertices, 144 indices
+DracoDecoder | Decoded 1824 vertices, 2736 indices
+DracoDecoder | Decoded 96 vertices, 144 indices
+DracoDecoder | Decoded 1824 vertices, 2736 indices
+DracoDecoder | Decoded 48 vertices, 72 indices
+DracoDecoder | Decoded 456 vertices, 684 indices
+DracoDecoder | Decoded 48 vertices, 72 indices
+DracoDecoder | Decoded 456 vertices, 684 indices
+DracoDecoder | Decoded 144 vertices, 312 indices
+DracoDecoder | Decoded 1324 vertices, 2964 indices
+DracoDecoder | Decoded 144 vertices, 360 indices
+DracoDecoder | Decoded 1368 vertices, 3420 indices
+DracoDecoder | Decoded 160 vertices, 360 indices
+DracoDecoder | Decoded 1480 vertices, 3420 indices
+DracoDecoder | Decoded 336 vertices, 792 indices
+DracoDecoder | Decoded 3192 vertices, 7524 indices
+DracoDecoder | Decoded 488 vertices, 1056 indices
+DracoDecoder | Decoded 4680 vertices, 10032 indices
+DracoDecoder | Decoded 10480 vertices, 26220 indices
+DracoDecoder | Decoded 6336 vertices, 13728 indices
+DracoDecoder | Decoded 3168 vertices, 6864 indices
+DracoDecoder | Decoded 58256 vertices, 130416 indices
+DracoDecoder | Decoded 29128 vertices, 65208 indices
+DracoDecoder | Decoded 96 vertices, 144 indices
+DracoDecoder | Decoded 912 vertices, 1368 indices
+DracoDecoder | Decoded 96 vertices, 144 indices
+DracoDecoder | Decoded 912 vertices, 1368 indices
+DracoDecoder | Decoded 96 vertices, 144 indices
+DracoDecoder | Decoded 912 vertices, 1368 indices
+DracoDecoder | Decoded 96 vertices, 144 indices
+DracoDecoder | Decoded 912 vertices, 1368 indices
+DracoDecoder | Decoded 1536 vertices, 2256 indices
+DracoDecoder | D15:22:56 | INFO: Blender create Mesh node CCR_Display case frames_Compact_Web
+15:22:56 | INFO: Draco Decoder: Decode primitive CCR_Display case frames_Compact_Web
+15:22:56 | INFO: Blender create Mesh node CCR_Display case frames_Web
+15:22:56 | INFO: Draco Decoder: Decode primitive CCR_Display case frames_Web
+15:22:56 | INFO: Blender create Mesh node CCR_Display glass_Compact_Web
+15:22:56 | INFO: Draco Decoder: Decode primitive CCR_Display glass_Compact_Web
+15:22:56 | INFO: Blender create Mesh node CCR_Display glass_Web
+15:22:56 | INFO: Draco Decoder: Decode primitive CCR_Display glass_Web
+15:22:56 | INFO: Blender create Mesh node CCR_Display shelves_Compact_Web
+15:22:56 | INFO: Draco Decoder: Decode primitive CCR_Display shelves_Compact_Web
+15:22:56 | INFO: Blender create Mesh node CCR_Display shelves_Web
+15:22:56 | INFO: Draco Decoder: Decode primitive CCR_Display shelves_Web
+15:22:56 | INFO: Blender create Mesh node CCR_Display warm strip_Compact_Web
+15:22:56 | INFO: Draco Decoder: Decode primitive CCR_Display warm strip_Compact_Web
+15:22:56 | INFO: Blender create Mesh node CCR_Display warm strip_Web
+15:22:56 | INFO: Draco Decoder: Decode primitive CCR_Display warm strip_Web
+15:22:56 | INFO: Blender create Mesh node CCR_Drink bottles_Web
+15:22:56 | INFO: Draco Decoder: Decode primitive CCR_Drink bottles_Web
+15:22:56 | INFO: Draco Decoder: Decode primitive CCR_Drink bottles_Web
+15:22:56 | INFO: Draco Decoder: Decode primitive CCR_Drink bottles_Web
+15:22:57 | INFO: Blender create Mesh node CCR_Drink refrigerator bodies_Web
+15:22:57 | INFO: Draco Decoder: Decode primitive CCR_Drink refrigerator bodies_Web
+15:22:57 | INFO: Blender create Mesh node CCR_Espresso black panel_Compact_Web
+15:22:57 | INFO: Draco Decoder: Decode primitive CCR_Espresso black panel_Compact_Web
+15:22:57 | INFO: Blender create Mesh node CCR_Espresso black panel_Web
+15:22:57 | INFO: Draco Decoder: Decode primitive CCR_Espresso black panel_Web
+15:22:57 | INFO: Blender create Mesh node CCR_Espresso buttons_Compact_Web
+15:22:57 | INFO: Draco Decoder: Decode primitive CCR_Espresso buttons_Compact_Web
+15:22:57 | INFO: Blender create Mesh node CCR_Espresso buttons_Web
+15:22:57 | INFO: Draco Decoder: Decode primitive CCR_Espresso buttons_Web
+15:22:57 | INFO: Blender create Mesh node CCR_Espresso drip tray_Compact_Web
+15:22:57 | INFO: Draco Decoder: Decode primitive CCR_Espresso drip tray_Compact_Web
+15:22:57 | INFO: Blender create Mesh node CCR_Espresso drip tray_Web
+15:22:57 | INFO: Draco Decoder: Decode primitive CCR_Espresso drip tray_Web
+15:22:57 | INFO: Blender create Mesh node CCR_Espresso machines_Compact_Web
+15:22:57 | INFO: Draco Decoder: Decode primitive CCR_Espresso machines_Compact_Web
+15:22:57 | INFO: Blender create Mesh node CCR_Espresso machines_Web
+15:22:57 | INFO: Draco Decoder: Decode primitive CCR_Espresso machines_Web
+15:22:57 | INFO: Blender create Mesh node CCR_Fridge door frame_Web
+15:22:57 | INFO: Draco Decoder: Decode primitive CCR_Fridge door frame_Web
+15:22:57 | INFO: Blender create Mesh node CCR_Fridge door handles_Web
+15:22:57 | INFO: Draco Decoder: Decode primitive CCR_Fridge door handles_Web
+15:22:57 | INFO: Blender create Mesh node CCR_Fridge light strips_Web
+15:22:57 | INFO: Draco Decoder: Decode primitive CCR_Fridge light strips_Web
+15:22:57 | INFO: Blender create Mesh node CCR_Fridge vent_Web
+15:22:57 | INFO: Draco Decoder: Decode primitive CCR_Fridge vent_Web
+15:22:57 | INFO: Blender create Mesh node CCR_Hot dog buns_Compact_Web
+15:22:57 | INFO: Draco Decoder: Decode primitive CCR_Hot dog buns_Compact_Web
+15:22:57 | INFO: Blender create Mesh node CCR_Hot dog buns_Web
+15:22:57 | INFO: Draco Decoder: Decode primitive CCR_Hot dog buns_Web
+15:22:57 | INFO: Blender create Mesh node CCR_Hot dog sausages_Compact_Web
+15:22:57 | INFO: Draco Decoder: Decode primitive CCR_Hot dog sausages_Compact_Web
+15:22:57 | INFO: Blender create Mesh node CCR_Hot dog sausages_Web
+15:22:57 | INFO: Draco Decoder: Decode primitive CCR_Hot dog sausages_Web
+15:22:57 | INFO: Blender create Mesh node CCR_Lounge stool cushions_Web
+15:22:57 | INFO: Draco Decoder: Decode primitive CCR_Lounge stool cushions_Web
+15:22:57 | INFO: Blender create Mesh node CCR_Lounge stool legs_Web
+15:22:57 | INFO: Draco Decoder: Decode primitive CCR_Lounge stool legs_Web
+15:22:57 | INFO: Blender create Mesh node CCR_Lounge table feet_Web
+15:22:57 | INFO: Draco Decoder: Decode primitive CCR_Lounge table feet_Web
+15:22:57 | INFO: Blender create Mesh node CCR_Lounge table stems_Web
+15:22:57 | INFO: Draco Decoder: Decode primitive CCR_Lounge table stems_Web
+15:22:57 | INFO: Blender create Mesh node CCR_Lounge table tops_Web.001
+15:22:57 | INFO: Draco Decoder: Decode primitive CCR_Lounge table tops_Web.001
+15:22:57 | INFO: Blender create Mesh node CCR_Menu images_Compact_Web
+15:22:57 | INFO: Draco Decoder: Decode primitive CCR_Menu images_Compact_Web
+15:22:57 | INFO: Draco Decoder: Decode primitive CCR_Menu images_Compact_Web
+15:22:57 | INFO: Blender create Mesh node CCR_Menu images_Web
+15:22:57 | INFO: Draco Decoder: Decode primitive CCR_Menu images_Web
+15:22:57 | INFO: Draco Decoder: Decode primitive CCR_Menu images_Web
+15:22:57 | INFO: Blender create Mesh node CCR_Menu monitor frames_Compact_Web
+15:22:57 | INFO: Draco Decoder: Decode primitive CCR_Menu monitor frames_Compact_Web
+15:22:57 | INFO: Blender create Mesh node CCR_Menu monitor frames_Web
+15:22:57 | INFO: Draco Decoder: Decode primitive CCR_Menu monitor frames_Web
+15:22:57 | INFO: Blender create Mesh node CCR_Mustard_Compact_Web
+15:22:57 | INFO: Draco Decoder: Decode primitive CCR_Mustard_Compact_Web
+15:22:57 | INFO: Blender create Mesh node CCR_Mustard_Web
+15:22:57 | INFO: Draco Decoder: Decode primitive CCR_Mustard_Web
+15:22:57 | INFO: Blender create Mesh node CCR_Pastries_Compact_Web
+15:22:57 | INFO: Draco Decoder: Decode primitive CCR_Pastries_Compact_Web
+15:22:57 | INFO: Blender create Mesh node CCR_Pastries_Web
+15:22:57 | INFO: Draco Decoder: Decode primitive CCR_Pastries_Web
+15:22:57 | INFO: Blender create Mesh node CCR_Pendant cords_Web
+15:22:57 | INFO: Draco Decoder: Decode primitive CCR_Pendant cords_Web
+15:22:57 | INFO: Blender create Mesh node CCR_Pendant glowing faces_Web
+15:22:57 | INFO: Draco Decoder: Decode primitive CCR_Pendant glowing faces_Web
+15:22:57 | INFO: Blender create Mesh node CCR_Pendant shades_Web
+15:22:57 | INFO: Draco Decoder: Decode primitive CCR_Pendant shades_Web
+15:22:57 | INFO: Blender create Mesh node CCR_Plant leaves_Web
+15:22:57 | INFO: Draco Decoder: Decode primitive CCR_Plant leaves_Web
+15:22:57 | INFO: Blender create Mesh node CCR_Plant stems_Web
+15:22:57 | INFO: Draco Decoder: Decode primitive CCR_Plant stems_Web
+15:22:57 | INFO: Blender create Mesh node CCR_Planter pots_Web.001
+15:22:57 | INFO: Draco Decoder: Decode primitive CCR_Planter pots_Web.001
+15:22:57 | INFO: Blender create Mesh node CCR_Popcorn base_Compact_Web
+15:22:57 | INFO: Draco Decoder: Decode primitive CCR_Popcorn base_Compact_Web
+15:22:57 | INFO: Blender create Mesh node CCR_Popcorn base_Web
+15:22:57 | INFO: Draco Decoder: Decode primitive CCR_Popcorn base_Web
+15:22:57 | INFO: Blender create Mesh node CCR_Popcorn canopy_Compact_Web
+15:22:57 | INFO: Draco Decoder: Decode primitive CCR_Popcorn canopy_Compact_Web
+15:22:57 | INFO: Blender create Mesh node CCR_Popcorn canopy_Web
+15:22:57 | INFO: Draco Decoder: Decode primitive CCR_Popcorn canopy_Web
+15:22:57 | INFO: Blender create Mesh node CCR_Popcorn frame_Compact_Web
+15:22:57 | INFO: Draco Decoder: Decode primitive CCR_Popcorn frame_Compact_Web
+15:22:57 | INFO: Blender create Mesh node CCR_Popcorn frame_Web
+15:22:57 | INFO: Draco Decoder: Decode primitive CCR_Popcorn frame_Web
+15:22:57 | INFO: Blender create Mesh node CCR_Popcorn glass_Compact_Web
+15:22:57 | INFO: Draco Decoder: Decode primitive CCR_Popcorn glass_Compact_Web
+15:22:57 | INFO: Blender create Mesh node CCR_Popcorn glass_Web
+15:22:57 | INFO: Draco Decoder: Decode primitive CCR_Popcorn glass_Web
+15:22:57 | INFO: Blender create Mesh node CCR_Popcorn kernels_Compact_Web
+15:22:57 | INFO: Draco Decoder: Decode primitive CCR_Popcorn kernels_Compact_Web
+15:22:57 | INFO: Blender create Mesh node CCR_Popcorn kernels_Web
+15:22:57 | INFO: Draco Decoder: Decode primitive CCR_Popcorn kernels_Web
+15:22:58 | INFO: Blender create Mesh node CCR_Popcorn kettle shaft_Compact_Web
+15:22:58 | INFO: Draco Decoder: Decode primitive CCR_Popcorn kettle shaft_Compact_Web
+15:22:58 | INFO: Blender create Mesh node CCR_Popcorn kettle shaft_Web
+15:22:58 | INFO: Draco Decoder: Decode primitive CCR_Popcorn kettle shaft_Web
+15:22:58 | INFO: Blender create Mesh node CCR_Popcorn kettle_Compact_Web
+15:22:58 | INFO: Draco Decoder: Decode primitive CCR_Popcorn kettle_Compact_Web
+15:22:58 | INFO: Blender create Mesh node CCR_Popcorn kettle_Web
+15:22:58 | INFO: Draco Decoder: Decode primitive CCR_Popcorn kettle_Web
+15:22:58 | INFO: Blender create Mesh node CCR_Popcorn lamp_Compact_Web
+15:22:58 | INFO: Draco Decoder: Decode primitive CCR_Popcorn lamp_Compact_Web
+15:22:58 | INFO: Blender create Mesh node CCR_Popcorn lamp_Web
+15:22:58 | INFO: Draco Decoder: Decode primitive CCR_Popcorn lamp_Web
+15:22:58 | INFO: Blender create Mesh node CCR_Portafilter handles_Compact_Web
+15:22:58 | INFO: Draco Decoder: Decode primitive CCR_Portafilter handles_Compact_Web
+15:22:58 | INFO: Blender create Mesh node CCR_Portafilter handles_Web
+15:22:58 | INFO: Draco Decoder: Decode primitive CCR_Portafilter handles_Web
+15:22:58 | INFO: Blender create Mesh node CCR_Rear prep counter_Compact_Web
+15:22:58 | INFO: Draco Decoder: Decode primitive CCR_Rear prep counter_Compact_Web
+15:22:58 | INFO: Blender create Mesh node CCR_Rear prep counter_Web
+15:22:58 | INFO: Draco Decoder: Decode primitive CCR_Rear prep counter_Web
+15:22:58 | INFO: Blender create Mesh node CCR_Rear service cabinet_Compact_Web
+15:22:58 | INFO: Draco Decoder: Decode primitive CCR_Rear service cabinet_Compact_Web
+15:22:58 | INFO: Blender create Mesh node CCR_Rear service cabinet_Web
+15:22:58 | INFO: Draco Decoder: Decode primitive CCR_Rear service cabinet_Web
+15:22:58 | INFO: Blender create Mesh node CCR_Refrigerator bright inner back_Web
+15:22:58 | INFO: Draco Decoder: Decode primitive CCR_Refrigerator bright inner back_Web
+15:22:58 | INFO: Blender create Mesh node CCR_Refrigerator door glass_Web
+15:22:58 | INFO: Draco Decoder: Decode primitive CCR_Refrigerator door glass_Web
+15:22:58 | INFO: Blender create Mesh node CCR_Refrigerator interior opening_Web
+15:22:58 | INFO: Draco Decoder: Decode primitive CCR_Refrigerator interior opening_Web
+15:22:58 | INFO: Blender create Mesh node CCR_Refrigerator shelves_Web
+15:22:58 | INFO: Draco Decoder: Decode primitive CCR_Refrigerator shelves_Web
+15:22:58 | INFO: Blender create Mesh node CCR_Sign bronze lower edge_Compact_Web
+15:22:58 | INFO: Draco Decoder: Decode primitive CCR_Sign bronze lower edge_Compact_Web
+15:22:58 | INFO: Blender create Mesh node CCR_Sign bronze lower edge_Web
+15:22:58 | INFO: Draco Decoder: Decode primitive CCR_Sign bronze lower edge_Web
+15:22:58 | INFO: Blender create Mesh node CCR_Signage COFFEE_Compact_Web
+15:22:58 | INFO: Draco Decoder: Decode primitive CCR_Signage COFFEE_Compact_Web
+15:22:58 | INFO: Blender create Mesh node CCR_Signage COFFEE_Web
+15:22:58 | INFO: Draco Decoder: Decode primitive CCR_Signage COFFEE_Web
+15:22:58 | INFO: Blender create Mesh node CCR_Signage DRINKS_Web
+15:22:58 | INFO: Draco Decoder: Decode primitive CCR_Signage DRINKS_Web
+15:22:58 | INFO: Blender create Mesh node CCR_Signage LOUNGE_Web
+15:22:58 | INFO: Draco Decoder: Decode primitive CCR_Signage LOUNGE_Web
+ecoded 14592 vertices, 21432 indices
+DracoDecoder | Decoded 864 vertices, 1872 indices
+DracoDecoder | Decoded 8208 vertices, 17784 indices
+DracoDecoder | Decoded 384 vertices, 576 indices
+DracoDecoder | Decoded 3648 vertices, 5472 indices
+DracoDecoder | Decoded 288 vertices, 432 indices
+DracoDecoder | Decoded 2736 vertices, 4104 indices
+DracoDecoder | Decoded 96 vertices, 144 indices
+DracoDecoder | Decoded 912 vertices, 1368 indices
+DracoDecoder | Decoded 30120 vertices, 61560 indices
+DracoDecoder | Decoded 30120 vertices, 61560 indices
+DracoDecoder | Decoded 30120 vertices, 61560 indices
+DracoDecoder | Decoded 6840 vertices, 10260 indices
+DracoDecoder | Decoded 48 vertices, 72 indices
+DracoDecoder | Decoded 456 vertices, 684 indices
+DracoDecoder | Decoded 288 vertices, 648 indices
+DracoDecoder | Decoded 2736 vertices, 6156 indices
+DracoDecoder | Decoded 48 vertices, 72 indices
+DracoDecoder | Decoded 456 vertices, 684 indices
+DracoDecoder | Decoded 768 vertices, 1128 indices
+DracoDecoder | Decoded 7296 vertices, 10716 indices
+DracoDecoder | Decoded 5472 vertices, 8208 indices
+DracoDecoder | Decoded 2736 vertices, 6156 indices
+DracoDecoder | Decoded 1368 vertices, 2052 indices
+DracoDecoder | Decoded 1368 vertices, 2052 indices
+DracoDecoder | Decoded 1098 vertices, 3240 indices
+DracoDecoder | Decoded 10350 vertices, 30780 indices
+DracoDecoder | Decoded 1044 vertices, 3240 indices
+DracoDecoder | Decoded 10188 vertices, 30780 indices
+DracoDecoder | Decoded 4192 vertices, 10488 indices
+DracoDecoder | Decoded 8032 vertices, 16416 indices
+DracoDecoder | Decoded 4192 vertices, 10488 indices
+DracoDecoder | Decoded 2340 vertices, 5016 indices
+DracoDecoder | Decoded 5734 vertices, 12312 indices
+DracoDecoder | Decoded 8 vertices, 12 indices
+DracoDecoder | Decoded 8 vertices, 12 indices
+DracoDecoder | Decoded 76 vertices, 114 indices
+DracoDecoder | Decoded 76 vertices, 114 indices
+DracoDecoder | Decoded 96 vertices, 144 indices
+DracoDecoder | Decoded 912 vertices, 1368 indices
+DracoDecoder | Decoded 2880 vertices, 5400 indices
+DracoDecoder | Decoded 27360 vertices, 51300 indices
+DracoDecoder | Decoded 5616 vertices, 12960 indices
+DracoDecoder | Decoded 51444 vertices, 123120 indices
+DracoDecoder | Decoded 1968 vertices, 3420 indices
+DracoDecoder | Decoded 1140 vertices, 2052 indices
+DracoDecoder | Decoded 684 vertices, 2052 indices
+DracoDecoder | Decoded 24624 vertices, 65664 indices
+DracoDecoder | Decoded 15782 vertices, 27360 indices
+DracoDecoder | Decoded 3502 vertices, 6840 indices
+DracoDecoder | Decoded 48 vertices, 72 indices
+DracoDecoder | Decoded 456 vertices, 684 indices
+DracoDecoder | Decoded 768 vertices, 1128 indices
+DracoDecoder | Decoded 7296 vertices, 10716 indices
+DracoDecoder | Decoded 384 vertices, 864 indices
+DracoDecoder | Decoded 3648 vertices, 8208 indices
+DracoDecoder | Decoded 144 vertices, 216 indices
+DracoDecoder | Decoded 1368 vertices, 2052 indices
+DracoDecoder | Decoded 14060 vertices, 26640 indices
+DracoDecoder | Decoded 129870 vertices, 253080 indices
+DracoDecoder | Decoded 96 vertices, 216 indices
+DracoDecoder | Decoded 912 vertices, 2052 indices
+DracoDecoder | Decoded 144 vertices, 360 indices
+DracoDecoder | Decoded 1368 vertices, 3420 indices
+DracoDecoder | Decoded 48 vertices, 72 indices
+DracoDecoder | Decoded 456 vertices, 684 indices
+DracoDecoder | Decoded 288 vertices, 648 indices
+DracoDecoder | Decoded 2736 vertices, 6156 indices
+DracoDecoder | Decoded 96 vertices, 144 indices
+DracoDecoder | Decoded 912 vertices, 1368 indices
+DracoDecoder | Decoded 96 vertices, 144 indices
+DracoDecoder | Decoded 912 vertices, 1368 indices
+DracoDecoder | Decoded 1368 vertices, 2052 indices
+DracoDecoder | Decoded 1368 vertices, 2052 indices
+DracoDecoder | Decoded 1368 vertices, 2052 indices
+DracoDecoder | Decoded 6840 vertices, 10260 indices
+DracoDecoder | Decoded 96 vertices, 144 indices
+DracoDecoder | Decoded 1824 vertices, 2736 indices
+DracoDecoder | Decoded 11576 vertices, 42480 indices
+DracoDecoder | Decoded 104784 vertices, 403560 indices
+DracoDecoder | Decoded 113832 vertices, 442776 indices
+DracoDecoder | 15:22:59 | INFO: Blender create Mesh node CCR_Signage SNACKS_Compact_Web
+15:22:59 | INFO: Draco Decoder: Decode primitive CCR_Signage SNACKS_Compact_Web
+15:22:59 | INFO: Blender create Mesh node CCR_Signage SNACKS_Web
+15:22:59 | INFO: Draco Decoder: Decode primitive CCR_Signage SNACKS_Web
+15:22:59 | INFO: Blender create Mesh node CCR_Snack packet crimp_Compact_Web
+15:22:59 | INFO: Draco Decoder: Decode primitive CCR_Snack packet crimp_Compact_Web
+15:22:59 | INFO: Blender create Mesh node CCR_Snack packet crimp_Web
+15:22:59 | INFO: Draco Decoder: Decode primitive CCR_Snack packet crimp_Web
+15:22:59 | INFO: Blender create Mesh node CCR_Snack packet label_Compact_Web
+15:22:59 | INFO: Draco Decoder: Decode primitive CCR_Snack packet label_Compact_Web
+15:22:59 | INFO: Blender create Mesh node CCR_Snack packet label_Web
+15:22:59 | INFO: Draco Decoder: Decode primitive CCR_Snack packet label_Web
+15:22:59 | INFO: Blender create Mesh node CCR_Snack packets_Compact_Web
+15:22:59 | INFO: Draco Decoder: Decode primitive CCR_Snack packets_Compact_Web
+15:22:59 | INFO: Draco Decoder: Decode primitive CCR_Snack packets_Compact_Web
+15:22:59 | INFO: Draco Decoder: Decode primitive CCR_Snack packets_Compact_Web
+15:22:59 | INFO: Blender create Mesh node CCR_Snack packets_Web
+15:22:59 | INFO: Draco Decoder: Decode primitive CCR_Snack packets_Web
+15:22:59 | INFO: Draco Decoder: Decode primitive CCR_Snack packets_Web
+15:22:59 | INFO: Draco Decoder: Decode primitive CCR_Snack packets_Web
+15:23:00 | INFO: Blender create Mesh node CCR_Snack rack front lips_Compact_Web
+15:23:00 | INFO: Draco Decoder: Decode primitive CCR_Snack rack front lips_Compact_Web
+15:23:00 | INFO: Blender create Mesh node CCR_Snack rack front lips_Web
+15:23:00 | INFO: Draco Decoder: Decode primitive CCR_Snack rack front lips_Web
+15:23:00 | INFO: Blender create Mesh node CCR_Snack rack shelves_Compact_Web
+15:23:00 | INFO: Draco Decoder: Decode primitive CCR_Snack rack shelves_Compact_Web
+15:23:00 | INFO: Blender create Mesh node CCR_Snack rack shelves_Web
+15:23:00 | INFO: Draco Decoder: Decode primitive CCR_Snack rack shelves_Web
+15:23:00 | INFO: Blender create Mesh node CCR_Solid wall returns_Compact_Web
+15:23:00 | INFO: Draco Decoder: Decode primitive CCR_Solid wall returns_Compact_Web
+15:23:00 | INFO: Blender create Mesh node CCR_Solid wall returns_Web
+15:23:00 | INFO: Draco Decoder: Decode primitive CCR_Solid wall returns_Web
+15:23:00 | INFO: Blender create Mesh node CCR_Standing table feet_Web
+15:23:00 | INFO: Draco Decoder: Decode primitive CCR_Standing table feet_Web
+15:23:00 | INFO: Blender create Mesh node CCR_Standing table pedestals_Web
+15:23:00 | INFO: Draco Decoder: Decode primitive CCR_Standing table pedestals_Web
+15:23:00 | INFO: Blender create Mesh node CCR_Standing table tops_Web.001
+15:23:00 | INFO: Draco Decoder: Decode primitive CCR_Standing table tops_Web.001
+15:23:00 | INFO: Blender create Mesh node CCR_Steam wands_Compact_Web
+15:23:00 | INFO: Draco Decoder: Decode primitive CCR_Steam wands_Compact_Web
+15:23:00 | INFO: Blender create Mesh node CCR_Steam wands_Web
+15:23:00 | INFO: Draco Decoder: Decode primitive CCR_Steam wands_Web
+15:23:00 | INFO: Blender create Mesh node CCR_Syrup pumps_Compact_Web
+15:23:00 | INFO: Draco Decoder: Decode primitive CCR_Syrup pumps_Compact_Web
+15:23:00 | INFO: Blender create Mesh node CCR_Syrup pumps_Web
+15:23:00 | INFO: Draco Decoder: Decode primitive CCR_Syrup pumps_Web
+15:23:00 | INFO: Blender create Mesh node CCR_Under fascia strip_Compact_Web
+15:23:00 | INFO: Draco Decoder: Decode primitive CCR_Under fascia strip_Compact_Web
+15:23:00 | INFO: Blender create Mesh node CCR_Under fascia strip_Web
+15:23:00 | INFO: Draco Decoder: Decode primitive CCR_Under fascia strip_Web
+15:23:00 | INFO: Blender create Mesh node CCR_Upholstery vertical channels_Web
+15:23:00 | INFO: Draco Decoder: Decode primitive CCR_Upholstery vertical channels_Web
+15:23:00 | INFO: Blender create Mesh node CCR_Veined stone counters_Compact_Web
+15:23:00 | INFO: Draco Decoder: Decode primitive CCR_Veined stone counters_Compact_Web
+15:23:00 | INFO: Blender create Mesh node CCR_Veined stone counters_Web
+15:23:00 | INFO: Draco Decoder: Decode primitive CCR_Veined stone counters_Web
+15:23:00 | INFO: Blender create Mesh node CCR_Vertical timber slats_Compact_Web
+15:23:00 | INFO: Draco Decoder: Decode primitive CCR_Vertical timber slats_Compact_Web
+15:23:00 | INFO: Blender create Mesh node CCR_Vertical timber slats_Web
+15:23:00 | INFO: Draco Decoder: Decode primitive CCR_Vertical timber slats_Web
+15:23:01 | INFO: Blender create Mesh node CCR_Wall backing_Compact_Web
+15:23:01 | INFO: Draco Decoder: Decode primitive CCR_Wall backing_Compact_Web
+15:23:01 | INFO: Blender create Mesh node CCR_Wall backing_Web
+15:23:01 | INFO: Draco Decoder: Decode primitive CCR_Wall backing_Web
+15:23:01 | INFO: Blender create Mesh node CityCars
+15:23:01 | INFO: Draco Decoder: Decode primitive CityCars
+15:23:01 | INFO: Blender create Mesh node CityCars.002
+15:23:01 | INFO: Draco Decoder: Decode primitive CityCars.002
+15:23:01 | INFO: Blender create Mesh node CityCars.001
+15:23:01 | INFO: Draco Decoder: Decode primitive CityCars.001
+15:23:01 | INFO: Blender create Mesh node CityCarWindows
+15:23:01 | INFO: Draco Decoder: Decode primitive CityCarWindows
+15:23:01 | INFO: Blender create Mesh node CityCrosswalk
+15:23:01 | INFO: Draco Decoder: Decode primitive CityCrosswalk
+15:23:01 | INFO: Blender create Mesh node CityGround_arena_opening
+15:23:01 | INFO: Draco Decoder: Decode primitive CityGround_arena_opening
+15:23:01 | INFO: Blender create Mesh node CityGroundStorefront
+15:23:01 | INFO: Draco Decoder: Decode primitive CityGroundStorefront
+15:23:01 | INFO: Blender create Mesh node CityLampHead
+15:23:01 | INFO: Draco Decoder: Decode primitive CityLampHead
+15:23:01 | INFO: Blender create Mesh node CityPenthouse
+15:23:01 | INFO: Draco Decoder: Decode primitive CityPenthouse
+15:23:01 | INFO: Blender create Mesh node CityRoadMarkings
+15:23:01 | INFO: Draco Decoder: Decode primitive CityRoadMarkings
+15:23:02 | INFO: Blender create Mesh node CityRoads
+15:23:02 | INFO: Draco Decoder: Decode primitive CityRoads
+15:23:02 | INFO: Blender create Mesh node CityRoofCaps
+15:23:02 | INFO: Draco Decoder: Decode primitive CityRoofCaps
+15:23:02 | INFO: Blender create Mesh node CityRoofPlant
+15:23:02 | INFO: Draco Decoder: Decode primitive CityRoofPlant
+15:23:02 | INFO: Blender create Mesh node CityRooftopLouvers
+15:23:02 | INFO: Draco Decoder: Decode primitive CityRooftopLouvers
+15:23:02 | INFO: Blender create Mesh node CitySpandrels.005
+15:23:02 | INFO: Draco Decoder: Decode primitive CitySpandrels.005
+15:23:02 | INFO: Blender create Mesh node CitySpandrels.004
+15:23:02 | INFO: Draco Decoder: Decode primitive CitySpandrels.004
+15:23:02 | INFO: Blender create Mesh node CitySpandrels.001
+15:23:02 | INFO: Draco Decoder: Decode primitive CitySpandrels.001
+15:23:02 | INFO: Blender create Mesh node CitySpandrels.003
+15:23:02 | INFO: Draco Decoder: Decode primitive CitySpandrels.003
+15:23:02 | INFO: Blender create Mesh node CitySpandrels.002
+15:23:02 | INFO: Draco Decoder: Decode primitive CitySpandrels.002
+15:23:02 | INFO: Blender create Mesh node CitySpandrels
+15:23:02 | INFO: Draco Decoder: Decode primitive CitySpandrels
+15:23:02 | INFO: Blender create Mesh node CityStreetlights
+15:23:02 | INFO: Draco Decoder: Decode primitive CityStreetlights
+15:23:02 | INFO: Blender create Mesh node CityTrees.001
+15:23:02 | INFO: Draco Decoder: Decode primitive CityTrees.001
+15:23:02 | INFO: Blender create Mesh node CityTrees
+15:23:02 | INFO: Draco Decoder: Decode primitive CityTrees
+15:23:02 | INFO: Blender create Mesh node CityTreeTrunks
+15:23:02 | INFO: Draco Decoder: Decode primitive CityTreeTrunks
+15:23:02 | INFO: Blender create Mesh node CityWindows
+15:23:02 | INFO: Draco Decoder: Decode primitive CityWindows
+15:23:02 | INFO: Blender create Mesh node CityWindows.001
+15:23:02 | INFO: Draco Decoder: Decode primitive CityWindows.001
+15:23:02 | INFO: Blender create Mesh node CityWindows.002
+15:23:02 | INFO: Draco Decoder: Decode primitive CityWindows.002
+15:23:02 | INFO: Blender create Mesh node Collide_Arena_shell__black
+15:23:02 | INFO: Draco Decoder: Decode primitive Collide_Arena_shell__black
+15:23:02 | INFO: Blender create Mesh node Collide_CityBuildings.005
+15:23:02 | INFO: Draco Decoder: Decode primitive Collide_CityBuildings.005
+15:23:02 | INFO: Blender create Mesh node Collide_CityBuildings.004
+15:23:02 | INFO: Draco Decoder: Decode primitive Collide_CityBuildings.004
+15:23:02 | INFO: Blender create Mesh node Collide_CityBuildings.001
+15:23:02 | INFO: Draco Decoder: Decode primitive Collide_CityBuildings.001
+15:23:02 | INFO: Blender create Mesh node Collide_CityBuildings.003
+15:23:02 | INFO: Draco Decoder: Decode primitive Collide_CityBuildings.003
+15:23:02 | INFO: Blender create Mesh node Collide_CityBuildings.002
+15:23:02 | INFO: Draco Decoder: Decode primitive Collide_CityBuildings.002
+15:23:02 | INFO: Blender create Mesh node Collide_CityBuildings
+15:23:02 | INFO: Draco Decoder: Decode primitive Collide_CityBuildings
+15:23:02 | INFO: Blender create Mesh node Collide_Columns__concrete.002
+15:23:02 | INFO: Draco Decoder: Decode primitive Collide_Columns__concrete.002
+15:23:02 | INFO: Blender create Mesh node Collide_CurtainWall__glass
+15:23:02 | INFO: Draco Decoder: Decode primitive Collide_CurtainWall__glass
+15:23:02 | INFO: Blender create Mesh node Collide_LobbyColumns__steel.002
+15:23:02 | INFO: Draco Decoder: Decode primitive Collide_LobbyColumns__steel.002
+15:23:02 | INFO: Blender create Mesh node Collide_RampInfill__concrete
+15:23:02 | INFO: Draco Decoder: Decode primitive Collide_RampInfill__concrete
+15:23:02 | INFO: Blender create Mesh node Collide_TicketGate__silver
+15:23:02 | INFO: Draco Decoder: Decode primitive Collide_TicketGate__silver
+15:23:02 | INFO: Blender create Mesh node Collide_TierColumns__concrete
+15:23:02 | INFO: Draco Decoder: Decode primitive Collide_TierColumns__concrete
+15:23:02 | INFO: Blender create Mesh node Crosswalk__ivory
+15:23:02 | INFO: Draco Decoder: Decode primitive Crosswalk__ivory
+15:23:02 | INFO: Blender create Mesh node Entry_sign
+15:23:02 | INFO: Draco Decoder: Decode primitive Entry_sign
+15:23:02 | INFO: Blender create Mesh node Event_flag__blue
+15:23:02 | INFO: Draco Decoder: Decode primitive Event_flag__blue
+15:23:02 | INFO: Blender create Mesh node EXR_BARCLAYS CENTER.001
+15:23:02 | INFO: Draco Decoder: Decode primitive EXR_BARCLAYS CENTER.001
+15:23:02 | INFO: Blender create Mesh node EXR_Belt light fixtures.001
+15:23:02 | INFO: Draco Decoder: Decode primitive EXR_Belt light fixtures.001
+15:23:02 | INFO: Blender create Mesh node EXR_Belt vertical mullions.001
+15:23:02 | INFO: Draco Decoder: Decode primitive EXR_Belt vertical mullions.001
+15:23:02 | INFO: Blender create Mesh node EXR_Canopy fascia backing.001
+15:23:02 | INFO: Draco Decoder: Decode primitive EXR_Canopy fascia backing.001
+Decoded 103672 vertices, 411768 indices
+DracoDecoder | Decoded 16328 vertices, 62784 indices
+DracoDecoder | Decoded 149304 vertices, 596448 indices
+DracoDecoder | Decoded 720 vertices, 1080 indices
+DracoDecoder | Decoded 6840 vertices, 10260 indices
+DracoDecoder | Decoded 720 vertices, 1080 indices
+DracoDecoder | Decoded 6840 vertices, 10260 indices
+DracoDecoder | Decoded 3840 vertices, 5640 indices
+DracoDecoder | Decoded 3840 vertices, 5640 indices
+DracoDecoder | Decoded 3840 vertices, 5640 indices
+DracoDecoder | Decoded 36480 vertices, 53580 indices
+DracoDecoder | Decoded 36480 vertices, 53580 indices
+DracoDecoder | Decoded 36480 vertices, 53580 indices
+DracoDecoder | Decoded 288 vertices, 648 indices
+DracoDecoder | Decoded 2736 vertices, 6156 indices
+DracoDecoder | Decoded 144 vertices, 216 indices
+DracoDecoder | Decoded 1368 vertices, 2052 indices
+DracoDecoder | Decoded 144 vertices, 216 indices
+DracoDecoder | Decoded 2280 vertices, 3420 indices
+DracoDecoder | Decoded 6288 vertices, 15732 indices
+DracoDecoder | Decoded 4440 vertices, 10260 indices
+DracoDecoder | Decoded 43734 vertices, 86868 indices
+DracoDecoder | Decoded 192 vertices, 432 indices
+DracoDecoder | Decoded 1824 vertices, 4104 indices
+DracoDecoder | Decoded 360 vertices, 672 indices
+DracoDecoder | Decoded 3320 vertices, 6384 indices
+DracoDecoder | Decoded 96 vertices, 144 indices
+DracoDecoder | Decoded 1824 vertices, 2736 indices
+DracoDecoder | Decoded 8208 vertices, 12312 indices
+DracoDecoder | Decoded 1536 vertices, 2256 indices
+DracoDecoder | Decoded 14592 vertices, 21432 indices
+DracoDecoder | Decoded 17040 vertices, 25560 indices
+DracoDecoder | Decoded 323760 vertices, 485640 indices
+DracoDecoder | Decoded 48 vertices, 72 indices
+DracoDecoder | Decoded 456 vertices, 684 indices
+DracoDecoder | Decoded 288 vertices, 432 indices
+DracoDecoder | Decoded 192 vertices, 288 indices
+DracoDecoder | Decoded 144 vertices, 216 indices
+DracoDecoder | Decoded 624 vertices, 936 indices
+DracoDecoder | Decoded 1152 vertices, 1728 indices
+DracoDecoder | Decoded 4160 vertices, 6240 indices
+DracoDecoder | Decoded 528 vertices, 792 indices
+DracoDecoder | Decoded 432 vertices, 648 indices
+DracoDecoder | Decoded 24 vertices, 36 indices
+DracoDecoder | Decoded 4560 vertices, 6840 indices
+DracoDecoder | Decoded 120 vertices, 180 indices
+DracoDecoder | Decoded 528 vertices, 792 indices
+DracoDecoder | Decoded 480 vertices, 720 indices
+DracoDecoder | Decoded 72 vertices, 108 indices
+DracoDecoder | Decoded 480 vertices, 720 indices
+DracoDecoder | Decoded 192 vertices, 288 indices
+DracoDecoder | Decoded 144 vertices, 216 indices
+DracoDecoder | Decoded 312 vertices, 468 indices
+DracoDecoder | Decoded 96 vertices, 144 indices
+DracoDecoder | Decoded 192 vertices, 288 indices
+DracoDecoder | Decoded 864 vertices, 1296 indices
+DracoDecoder | Decoded 4320 vertices, 6912 indices
+DracoDecoder | Decoded 8640 vertices, 13824 indices
+DracoDecoder | Decoded 576 vertices, 864 indices
+DracoDecoder | Decoded 53544 vertices, 80316 indices
+DracoDecoder | Decoded 31056 vertices, 46584 indices
+DracoDecoder | Decoded 93192 vertices, 139788 indices
+DracoDecoder | Decoded 3840 vertices, 5760 indices
+DracoDecoder | Decoded 216 vertices, 324 indices
+DracoDecoder | Decoded 72 vertices, 108 indices
+DracoDecoder | Decoded 24 vertices, 36 indices
+DracoDecoder | Decoded 144 vertices, 216 indices
+DracoDecoder | Decoded 24 vertices, 36 indices
+DracoDecoder | Decoded 48 vertices, 72 indices
+DracoDecoder | Decoded 2280 vertices, 4104 indices
+DracoDecoder | Decoded 5568 vertices, 8352 indices
+DracoDecoder | Decoded 1152 vertices, 2112 indices
+DracoDecoder | Decoded 18 vertices, 24 indices
+DracoDecoder | Decoded 384 vertices, 528 indices
+DracoDecoder | Decoded 672 vertices, 1008 indices
+DracoDecoder | Decoded 216 vertices, 324 indices
+DracoDecoder | Decoded 1564 vertices, 4368 indices
+DracoDecoder | Decoded 48 vertices, 72 indices
+DracoDecoder | Decoded 7226 vertices, 35832 indices
+DracoDecoder | Decoded 2112 vertices, 3168 indices
+DracoDecoder | Decoded 4224 vertices, 6336 indices
+DracoDecoder | Decoded 6144 vertic15:23:02 | INFO: Blender create Mesh node EXR_Canopy fascia louvers.001
+15:23:02 | INFO: Draco Decoder: Decode primitive EXR_Canopy fascia louvers.001
+15:23:02 | INFO: Draco Decoder: Decode primitive EXR_Canopy fascia louvers.001
+15:23:02 | INFO: Draco Decoder: Decode primitive EXR_Canopy fascia louvers.001
+15:23:02 | INFO: Draco Decoder: Decode primitive EXR_Canopy fascia louvers.001
+15:23:02 | INFO: Draco Decoder: Decode primitive EXR_Canopy fascia louvers.001
+15:23:02 | INFO: Draco Decoder: Decode primitive EXR_Canopy fascia louvers.001
+15:23:02 | INFO: Draco Decoder: Decode primitive EXR_Canopy fascia louvers.001
+15:23:02 | INFO: Draco Decoder: Decode primitive EXR_Canopy fascia louvers.001
+15:23:02 | INFO: Draco Decoder: Decode primitive EXR_Canopy fascia louvers.001
+15:23:02 | INFO: Blender create Mesh node EXR_Canopy recessed downlights.001
+15:23:02 | INFO: Draco Decoder: Decode primitive EXR_Canopy recessed downlights.001
+15:23:02 | INFO: Blender create Mesh node EXR_Canopy soffit panels.001
+15:23:02 | INFO: Draco Decoder: Decode primitive EXR_Canopy soffit panels.001
+15:23:02 | INFO: Draco Decoder: Decode primitive EXR_Canopy soffit panels.001
+15:23:02 | INFO: Draco Decoder: Decode primitive EXR_Canopy soffit panels.001
+15:23:02 | INFO: Draco Decoder: Decode primitive EXR_Canopy soffit panels.001
+15:23:02 | INFO: Draco Decoder: Decode primitive EXR_Canopy soffit panels.001
+15:23:02 | INFO: Draco Decoder: Decode primitive EXR_Canopy soffit panels.001
+15:23:02 | INFO: Draco Decoder: Decode primitive EXR_Canopy soffit panels.001
+15:23:02 | INFO: Draco Decoder: Decode primitive EXR_Canopy soffit panels.001
+15:23:02 | INFO: Draco Decoder: Decode primitive EXR_Canopy soffit panels.001
+15:23:03 | INFO: Blender create Mesh node EXR_Canopy upper panels.001
+15:23:03 | INFO: Draco Decoder: Decode primitive EXR_Canopy upper panels.001
+15:23:03 | INFO: Draco Decoder: Decode primitive EXR_Canopy upper panels.001
+15:23:03 | INFO: Draco Decoder: Decode primitive EXR_Canopy upper panels.001
+15:23:03 | INFO: Draco Decoder: Decode primitive EXR_Canopy upper panels.001
+15:23:03 | INFO: Draco Decoder: Decode primitive EXR_Canopy upper panels.001
+15:23:03 | INFO: Draco Decoder: Decode primitive EXR_Canopy upper panels.001
+15:23:03 | INFO: Draco Decoder: Decode primitive EXR_Canopy upper panels.001
+15:23:03 | INFO: Draco Decoder: Decode primitive EXR_Canopy upper panels.001
+15:23:03 | INFO: Draco Decoder: Decode primitive EXR_Canopy upper panels.001
+15:23:03 | INFO: Blender create Mesh node EXR_Continuous glass belt.001
+15:23:03 | INFO: Draco Decoder: Decode primitive EXR_Continuous glass belt.001
+15:23:03 | INFO: Blender create Mesh node EXR_Dark rainscreen backing.001
+15:23:03 | INFO: Draco Decoder: Decode primitive EXR_Dark rainscreen backing.001
+15:23:03 | INFO: Blender create Mesh node Eagle sign.001
+15:23:03 | INFO: Draco Decoder: Decode primitive Eagle sign.001
+15:23:03 | INFO: Blender create Mesh node EXR_Entrance glazing.001
+15:23:03 | INFO: Draco Decoder: Decode primitive EXR_Entrance glazing.001
+15:23:03 | INFO: Blender create Mesh node EXR_Entrance mullions.001
+15:23:03 | INFO: Draco Decoder: Decode primitive EXR_Entrance mullions.001
+15:23:03 | INFO: Blender create Mesh node EXR_Entrance transoms.001
+15:23:03 | INFO: Draco Decoder: Decode primitive EXR_Entrance transoms.001
+15:23:03 | INFO: Blender create Mesh node EXR_Folded corten facade.001
+15:23:03 | INFO: Draco Decoder: Decode primitive EXR_Folded corten facade.001
+15:23:03 | INFO: Draco Decoder: Decode primitive EXR_Folded corten facade.001
+15:23:03 | INFO: Draco Decoder: Decode primitive EXR_Folded corten facade.001
+15:23:03 | INFO: Draco Decoder: Decode primitive EXR_Folded corten facade.001
+15:23:03 | INFO: Draco Decoder: Decode primitive EXR_Folded corten facade.001
+15:23:03 | INFO: Draco Decoder: Decode primitive EXR_Folded corten facade.001
+15:23:03 | INFO: Draco Decoder: Decode primitive EXR_Folded corten facade.001
+15:23:03 | INFO: Draco Decoder: Decode primitive EXR_Folded corten facade.001
+15:23:03 | INFO: Draco Decoder: Decode primitive EXR_Folded corten facade.001
+15:23:04 | INFO: Blender create Mesh node EXR_Front return glazing
+15:23:04 | INFO: Draco Decoder: Decode primitive EXR_Front return glazing
+15:23:04 | INFO: Blender create Mesh node EXR_Oculus inner LED ribbon.001
+15:23:04 | INFO: Draco Decoder: Decode primitive EXR_Oculus inner LED ribbon.001
+15:23:04 | INFO: Blender create Mesh node EXR_Recessed light apertures
+15:23:04 | INFO: Draco Decoder: Decode primitive EXR_Recessed light apertures
+15:23:04 | INFO: Blender create Mesh node EXR_Roof perimeter coping.001
+15:23:04 | INFO: Draco Decoder: Decode primitive EXR_Roof perimeter coping.001
+15:23:04 | INFO: Blender create Mesh node EXR_Roof standing seams.001
+15:23:04 | INFO: Draco Decoder: Decode primitive EXR_Roof standing seams.001
+15:23:04 | INFO: Blender create Mesh node EXR_Sedum roof.001
+15:23:04 | INFO: Draco Decoder: Decode primitive EXR_Sedum roof.001
+15:23:04 | INFO: Blender create Mesh node Turquoise shield.001
+15:23:04 | INFO: Draco Decoder: Decode primitive Turquoise shield.001
+15:23:04 | INFO: Blender create Mesh node Facade_mullions__silver
+15:23:04 | INFO: Draco Decoder: Decode primitive Facade_mullions__silver
+15:23:04 | INFO: Blender create Mesh node Fix_PCFeet__black
+15:23:04 | INFO: Draco Decoder: Decode primitive Fix_PCFeet__black
+15:23:04 | INFO: Blender create Mesh node Fix_SeatBases__steel
+15:23:04 | INFO: Draco Decoder: Decode primitive Fix_SeatBases__steel
+15:23:04 | INFO: Blender create Mesh node Fix_TierBeams__concrete
+15:23:04 | INFO: Draco Decoder: Decode primitive Fix_TierBeams__concrete
+15:23:04 | INFO: Blender create Mesh node Fix_TierFascia__concrete
+15:23:04 | INFO: Draco Decoder: Decode primitive Fix_TierFascia__concrete
+15:23:04 | INFO: Blender create Mesh node Fix_TierRisers__concrete
+15:23:04 | INFO: Draco Decoder: Decode primitive Fix_TierRisers__concrete
+15:23:05 | INFO: Blender create Mesh node Fix_TierSoffits__concrete
+15:23:05 | INFO: Draco Decoder: Decode primitive Fix_TierSoffits__concrete
+15:23:05 | INFO: Blender create Mesh node Fix_UpperWestTreads__concrete
+15:23:05 | INFO: Draco Decoder: Decode primitive Fix_UpperWestTreads__concrete
+15:23:05 | INFO: Blender create Mesh node Fixture_lens__cyan
+15:23:05 | INFO: Draco Decoder: Decode primitive Fixture_lens__cyan
+15:23:05 | INFO: Blender create Mesh node Flag_pole__silver
+15:23:05 | INFO: Draco Decoder: Decode primitive Flag_pole__silver
+15:23:05 | INFO: Blender create Mesh node Flag_text
+15:23:05 | INFO: Draco Decoder: Decode primitive Flag_text
+15:23:05 | INFO: Blender create Mesh node Flag_text.001
+15:23:05 | INFO: Draco Decoder: Decode primitive Flag_text.001
+15:23:05 | INFO: Blender create Mesh node Gate_reader__cyan
+15:23:05 | INFO: Draco Decoder: Decode primitive Gate_reader__cyan
+15:23:05 | INFO: Blender create Mesh node Hanging_speakers__black
+15:23:05 | INFO: Draco Decoder: Decode primitive Hanging_speakers__black
+15:23:05 | INFO: Blender create Mesh node InteriorDetail_Fixture_clamps__black
+15:23:05 | INFO: Draco Decoder: Decode primitive InteriorDetail_Fixture_clamps__black
+15:23:05 | INFO: Blender create Mesh node InteriorDetail_Fixture_safety_wire__steel
+15:23:05 | INFO: Draco Decoder: Decode primitive InteriorDetail_Fixture_safety_wire__steel
+15:23:05 | INFO: Blender create Mesh node InteriorDetail_Fixture_yokes__steel
+15:23:05 | INFO: Draco Decoder: Decode primitive InteriorDetail_Fixture_yokes__steel
+15:23:05 | INFO: Blender create Mesh node InteriorDetail_Lighting_boxtruss_chords__silver
+15:23:05 | INFO: Draco Decoder: Decode primitive InteriorDetail_Lighting_boxtruss_chords__silver
+15:23:05 | INFO: Blender create Mesh node InteriorDetail_Lighting_boxtruss_diagonals__steel
+15:23:05 | INFO: Draco Decoder: Decode primitive InteriorDetail_Lighting_boxtruss_diagonals__steel
+15:23:05 | INFO: Blender create Mesh node InteriorDetail_Lighting_boxtruss_uprights__silver
+15:23:05 | INFO: Draco Decoder: Decode primitive InteriorDetail_Lighting_boxtruss_uprights__silver
+15:23:05 | INFO: Blender create Mesh node InteriorDetail_Speaker_grille__steel
+15:23:05 | INFO: Draco Decoder: Decode primitive InteriorDetail_Speaker_grille__steel
+15:23:05 | INFO: Blender create Mesh node InteriorDetail_Speaker_rigging__steel
+15:23:05 | INFO: Draco Decoder: Decode primitive InteriorDetail_Speaker_rigging__steel
+15:23:05 | INFO: Blender create Mesh node InteriorDetail_Speaker_side_rails__silver
+15:23:05 | INFO: Draco Decoder: Decode primitive InteriorDetail_Speaker_side_rails__silver
+15:23:05 | INFO: Blender create Mesh node Lighting_truss__silver
+15:23:05 | INFO: Draco Decoder: Decode primitive Lighting_truss__silver
+15:23:05 | INFO: Blender create Mesh node Lobby_stripLights__whiteLED
+15:23:05 | INFO: Draco Decoder: Decode primitive Lobby_stripLights__whiteLED
+15:23:05 | INFO: Blender create Mesh node Moving_head_lights__black
+15:23:05 | INFO: Draco Decoder: Decode primitive Moving_head_lights__black
+15:23:05 | INFO: Blender create Mesh node Plaza_bench__wood
+15:23:05 | INFO: Draco Decoder: Decode primitive Plaza_bench__wood
+15:23:05 | INFO: Blender create Mesh node Portal_header__black
+15:23:05 | INFO: Draco Decoder: Decode primitive Portal_header__black
+15:23:05 | INFO: Blender create Mesh node Portal_sign
+15:23:05 | INFO: Draco Decoder: Decode primitive Portal_sign
+15:23:05 | INFO: Blender create Mesh node Ramp_posts__silver
+15:23:05 | INFO: Draco Decoder: Decode primitive Ramp_posts__silver
+es, 9216 indices
+DracoDecoder | Decoded 5256 vertices, 7884 indices
+DracoDecoder | Decoded 5736 vertices, 8604 indices
+DracoDecoder | Decoded 5352 vertices, 8028 indices
+DracoDecoder | Decoded 5712 vertices, 8568 indices
+DracoDecoder | Decoded 5760 vertices, 8640 indices
+DracoDecoder | Decoded 5232 vertices, 7848 indices
+DracoDecoder | Decoded 4968 vertices, 7452 indices
+DracoDecoder | Decoded 5400 vertices, 8100 indices
+DracoDecoder | Decoded 5736 vertices, 8604 indices
+DracoDecoder | Decoded 1536 vertices, 2304 indices
+DracoDecoder | Decoded 8640 vertices, 12960 indices
+DracoDecoder | Decoded 8136 vertices, 12204 indices
+DracoDecoder | Decoded 7536 vertices, 11304 indices
+DracoDecoder | Decoded 8544 vertices, 12816 indices
+DracoDecoder | Decoded 8016 vertices, 12024 indices
+DracoDecoder | Decoded 8160 vertices, 12240 indices
+DracoDecoder | Decoded 8448 vertices, 12672 indices
+DracoDecoder | Decoded 8400 vertices, 12600 indices
+DracoDecoder | Decoded 7848 vertices, 11772 indices
+DracoDecoder | Decoded 8352 vertices, 12528 indices
+DracoDecoder | Decoded 8640 vertices, 12960 indices
+DracoDecoder | Decoded 8064 vertices, 12096 indices
+DracoDecoder | Decoded 7632 vertices, 11448 indices
+DracoDecoder | Decoded 8208 vertices, 12312 indices
+DracoDecoder | Decoded 8184 vertices, 12276 indices
+DracoDecoder | Decoded 8328 vertices, 12492 indices
+DracoDecoder | Decoded 7680 vertices, 11520 indices
+DracoDecoder | Decoded 8640 vertices, 12960 indices
+DracoDecoder | Decoded 8448 vertices, 12672 indices
+DracoDecoder | Decoded 14448 vertices, 21672 indices
+DracoDecoder | Decoded 13 vertices, 33 indices
+DracoDecoder | Decoded 7944 vertices, 11916 indices
+DracoDecoder | Decoded 1032 vertices, 1548 indices
+DracoDecoder | Decoded 8064 vertices, 12096 indices
+DracoDecoder | Decoded 26232 vertices, 39348 indices
+DracoDecoder | Decoded 26784 vertices, 40176 indices
+DracoDecoder | Decoded 27576 vertices, 41364 indices
+DracoDecoder | Decoded 25824 vertices, 38736 indices
+DracoDecoder | Decoded 25704 vertices, 38556 indices
+DracoDecoder | Decoded 27384 vertices, 41076 indices
+DracoDecoder | Decoded 27432 vertices, 41148 indices
+DracoDecoder | Decoded 26232 vertices, 39348 indices
+DracoDecoder | Decoded 25344 vertices, 38016 indices
+DracoDecoder | Decoded 2448 vertices, 3672 indices
+DracoDecoder | Decoded 6144 vertices, 9216 indices
+DracoDecoder | Decoded 9824 vertices, 14736 indices
+DracoDecoder | Decoded 8448 vertices, 12672 indices
+DracoDecoder | Decoded 40320 vertices, 60480 indices
+DracoDecoder | Decoded 106560 vertices, 159552 indices
+DracoDecoder | Decoded 5 vertices, 9 indices
+DracoDecoder | Decoded 64416 vertices, 92400 indices
+DracoDecoder | Decoded 240 vertices, 360 indices
+DracoDecoder | Decoded 44160 vertices, 79488 indices
+DracoDecoder | Decoded 672 vertices, 1008 indices
+DracoDecoder | Decoded 2376 vertices, 3564 indices
+DracoDecoder | Decoded 44352 vertices, 66528 indices
+DracoDecoder | Decoded 8072 vertices, 12108 indices
+DracoDecoder | Decoded 1656 vertices, 2484 indices
+DracoDecoder | Decoded 2304 vertices, 4224 indices
+DracoDecoder | Decoded 72 vertices, 120 indices
+DracoDecoder | Decoded 954 vertices, 2712 indices
+DracoDecoder | Decoded 954 vertices, 2712 indices
+DracoDecoder | Decoded 96 vertices, 144 indices
+DracoDecoder | Decoded 1152 vertices, 1728 indices
+DracoDecoder | Decoded 768 vertices, 1152 indices
+DracoDecoder | Decoded 1496 vertices, 1920 indices
+DracoDecoder | Decoded 1536 vertices, 2304 indices
+DracoDecoder | Decoded 7760 vertices, 11520 indices
+DracoDecoder | Decoded 4384 vertices, 5760 indices
+DracoDecoder | Decoded 3456 vertices, 5760 indices
+DracoDecoder | Decoded 8064 vertices, 12096 indices
+DracoDecoder | Decoded 504 vertices, 672 indices
+DracoDecoder | Decoded 2304 vertices, 3456 indices
+DracoDecoder | Decoded 1188 vertices, 1920 indices
+DracoDecoder | Decoded 192 vertices, 288 indices
+DracoDecoder | Decoded 768 vertices, 1152 indices
+DracoDecoder | Decoded 96 vertices, 144 indices
+DracoDecoder | Decoded 24 vertices, 36 indices
+DracoDecoder | Decoded 866 vertices, 2388 indices
+DracoDecoder | Decoded 122415:23:05 | INFO: Blender create Mesh node Ramp_rail__silver
+15:23:05 | INFO: Draco Decoder: Decode primitive Ramp_rail__silver
+15:23:05 | INFO: Blender create Mesh node REF_BackdropArtwork_1
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_BackdropArtwork_1
+15:23:05 | INFO: Blender create Mesh node REF_BackdropArtwork_-1
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_BackdropArtwork_-1
+15:23:05 | INFO: Blender create Mesh node REF_BackstageCable__Rubber
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_BackstageCable__Rubber
+15:23:05 | INFO: Blender create Mesh node REF_BackstageCase__Rubber
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_BackstageCase__Rubber
+15:23:05 | INFO: Blender create Mesh node REF_BeamFixture__Rubber
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_BeamFixture__Rubber
+15:23:05 | INFO: Blender create Mesh node REF_BeamLens__Cyan
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_BeamLens__Cyan
+15:23:05 | INFO: Blender create Mesh node REF_BeamLens__Gold
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_BeamLens__Gold
+15:23:05 | INFO: Blender create Mesh node REF_BeamLens__Pink
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_BeamLens__Pink
+15:23:05 | INFO: Blender create Mesh node REF_CenterBackdrop__Obsidian.002
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_CenterBackdrop__Obsidian.002
+15:23:05 | INFO: Blender create Mesh node REF_CenterBackdropTrim__GoldMetal
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_CenterBackdropTrim__GoldMetal
+15:23:05 | INFO: Blender create Mesh node REF_CenterStair__Obsidian
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_CenterStair__Obsidian
+15:23:05 | INFO: Blender create Mesh node REF_CenterStairNosing__Gold
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_CenterStairNosing__Gold
+15:23:05 | INFO: Blender create Mesh node REF_ChairBrand_1_0
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_ChairBrand_1_0
+15:23:05 | INFO: Blender create Mesh node REF_ChairBrand_1_1
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_ChairBrand_1_1
+15:23:05 | INFO: Blender create Mesh node REF_ChairBrand_1_2
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_ChairBrand_1_2
+15:23:05 | INFO: Blender create Mesh node REF_ChairBrand_1_3
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_ChairBrand_1_3
+15:23:05 | INFO: Blender create Mesh node REF_ChairBrand_1_4
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_ChairBrand_1_4
+15:23:05 | INFO: Blender create Mesh node REF_ChairBrand_-1_0
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_ChairBrand_-1_0
+15:23:05 | INFO: Blender create Mesh node REF_ChairBrand_-1_1
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_ChairBrand_-1_1
+15:23:05 | INFO: Blender create Mesh node REF_ChairBrand_-1_2
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_ChairBrand_-1_2
+15:23:05 | INFO: Blender create Mesh node REF_ChairBrand_-1_3
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_ChairBrand_-1_3
+15:23:05 | INFO: Blender create Mesh node REF_ChairBrand_-1_4
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_ChairBrand_-1_4
+15:23:05 | INFO: Blender create Mesh node REF_CircularStage__Deck
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_CircularStage__Deck
+15:23:05 | INFO: Blender create Mesh node REF_DeckSeams__Rubber
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_DeckSeams__Rubber
+15:23:05 | INFO: Blender create Mesh node REF_DeskBody__Obsidian.003
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_DeskBody__Obsidian.003
+15:23:05 | INFO: Blender create Mesh node REF_DeskFace_1
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_DeskFace_1
+15:23:05 | INFO: Blender create Mesh node REF_DeskFace_-1
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_DeskFace_-1
+15:23:05 | INFO: Blender create Mesh node REF_DeskLEDOutline__Cyan
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_DeskLEDOutline__Cyan
+15:23:05 | INFO: Blender create Mesh node REF_DeskLEDOutline__Gold
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_DeskLEDOutline__Gold
+15:23:05 | INFO: Blender create Mesh node REF_DeskWorktop__Steel
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_DeskWorktop__Steel
+15:23:05 | INFO: Blender create Mesh node REF_FanLightsticks__Cyan
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_FanLightsticks__Cyan
+15:23:05 | INFO: Blender create Mesh node REF_FanLightsticks__Gold
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_FanLightsticks__Gold
+15:23:05 | INFO: Blender create Mesh node REF_FanLightsticks__Pink
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_FanLightsticks__Pink
+15:23:05 | INFO: Blender create Mesh node REF_FlightCaseCorners__Silver
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_FlightCaseCorners__Silver
+15:23:05 | INFO: Blender create Mesh node REF_GrandFinal
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_GrandFinal
+15:23:05 | INFO: Blender create Mesh node REF_GrandFinalFascia__ScreenBlack
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_GrandFinalFascia__ScreenBlack
+15:23:05 | INFO: Blender create Mesh node REF_GrandFinalTrim__Gold
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_GrandFinalTrim__Gold
+15:23:05 | INFO: Blender create Mesh node REF_HeaderCrest_0
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_HeaderCrest_0
+15:23:05 | INFO: Blender create Mesh node REF_HeaderCrest_1
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_HeaderCrest_1
+15:23:05 | INFO: Blender create Mesh node REF_HeaderCrest_2
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_HeaderCrest_2
+15:23:05 | INFO: Blender create Mesh node REF_HeaderCrest_3
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_HeaderCrest_3
+15:23:05 | INFO: Blender create Mesh node REF_HeaderLight__Cyan
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_HeaderLight__Cyan
+15:23:05 | INFO: Blender create Mesh node REF_HeaderLight__Gold
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_HeaderLight__Gold
+15:23:05 | INFO: Blender create Mesh node REF_Jumbotron_0
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_Jumbotron_0
+15:23:05 | INFO: Blender create Mesh node REF_Jumbotron_1
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_Jumbotron_1
+15:23:05 | INFO: Blender create Mesh node REF_Jumbotron_2
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_Jumbotron_2
+15:23:05 | INFO: Blender create Mesh node REF_Jumbotron_3
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_Jumbotron_3
+15:23:05 | INFO: Blender create Mesh node REF_JumbotronTrim__Cyan
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_JumbotronTrim__Cyan
+15:23:05 | INFO: Blender create Mesh node REF_JumbotronTrim__Gold
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_JumbotronTrim__Gold
+15:23:05 | INFO: Blender create Mesh node REF_Pedestal__Obsidian.002
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_Pedestal__Obsidian.002
+15:23:05 | INFO: Blender create Mesh node REF_PedestalCrest
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_PedestalCrest
+15:23:05 | INFO: Blender create Mesh node REF_PedestalFoot__Silver
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_PedestalFoot__Silver
+15:23:05 | INFO: Blender create Mesh node REF_PedestalRibs__GoldMetal
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_PedestalRibs__GoldMetal
+15:23:05 | INFO: Blender create Mesh node REF_PedestalTrim__Gold
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_PedestalTrim__Gold
+15:23:05 | INFO: Blender create Mesh node REF_PlayerBoomMics__Rubber
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_PlayerBoomMics__Rubber
+15:23:05 | INFO: Blender create Mesh node REF_PlayerBrows__Hair
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_PlayerBrows__Hair
+15:23:05 | INFO: Blender create Mesh node REF_PlayerEars__PlayerSkin0
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_PlayerEars__PlayerSkin0
+15:23:05 | INFO: Blender create Mesh node REF_PlayerEars__PlayerSkin1
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_PlayerEars__PlayerSkin1
+15:23:05 | INFO: Blender create Mesh node REF_PlayerEars__PlayerSkin2
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_PlayerEars__PlayerSkin2
+15:23:05 | INFO: Blender create Mesh node REF_PlayerElbows__PlayerSkin0
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_PlayerElbows__PlayerSkin0
+15:23:05 | INFO: Blender create Mesh node REF_PlayerElbows__PlayerSkin1
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_PlayerElbows__PlayerSkin1
+15:23:05 | INFO: Blender create Mesh node REF_PlayerElbows__PlayerSkin2
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_PlayerElbows__PlayerSkin2
+15:23:05 | INFO: Blender create Mesh node REF_PlayerEyes__Eyes
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_PlayerEyes__Eyes
+15:23:05 | INFO: Blender create Mesh node REF_PlayerForearms__PlayerSkin0
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_PlayerForearms__PlayerSkin0
+15:23:05 | INFO: Blender create Mesh node REF_PlayerForearms__PlayerSkin1
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_PlayerForearms__PlayerSkin1
+15:23:05 | INFO: Blender create Mesh node REF_PlayerForearms__PlayerSkin2
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_PlayerForearms__PlayerSkin2
+15:23:05 | INFO: Blender create Mesh node REF_PlayerHair__Hair
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_PlayerHair__Hair
+15:23:05 | INFO: Blender create Mesh node REF_PlayerHands__PlayerSkin0
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_PlayerHands__PlayerSkin0
+15:23:05 | INFO: Blender create Mesh node REF_PlayerHands__PlayerSkin1
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_PlayerHands__PlayerSkin1
+15:23:05 | INFO: Blender create Mesh node REF_PlayerHands__PlayerSkin2
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_PlayerHands__PlayerSkin2
+15:23:05 | INFO: Blender create Mesh node REF_PlayerHeadbands__Rubber
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_PlayerHeadbands__Rubber
+15:23:05 | INFO: Blender create Mesh node REF_PlayerHeads__PlayerSkin0
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_PlayerHeads__PlayerSkin0
+15:23:05 | INFO: Blender create Mesh node REF_PlayerHeads__PlayerSkin1
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_PlayerHeads__PlayerSkin1
+15:23:05 | INFO: Blender create Mesh node REF_PlayerHeads__PlayerSkin2
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_PlayerHeads__PlayerSkin2
+15:23:05 | INFO: Blender create Mesh node REF_PlayerHeadset__Rubber
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_PlayerHeadset__Rubber
+15:23:05 | INFO: Blender create Mesh node REF_PlayerHeadsetLED__Cyan
+15:23:05 | INFO: Draco Decoder: Decode primitive REF_PlayerHeadsetLED__Cyan
+15:23:06 | INFO: Blender create Mesh node REF_PlayerHeadsetLED__Gold
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_PlayerHeadsetLED__Gold
+15:23:06 | INFO: Blender create Mesh node REF_PlayerJersey_1_0
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_PlayerJersey_1_0
+15:23:06 | INFO: Blender create Mesh node REF_PlayerJersey_1_1
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_PlayerJersey_1_1
+15:23:06 | INFO: Blender create Mesh node REF_PlayerJersey_1_2
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_PlayerJersey_1_2
+15:23:06 | INFO: Blender create Mesh node REF_PlayerJersey_1_3
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_PlayerJersey_1_3
+15:23:06 | INFO: Blender create Mesh node REF_PlayerJersey_1_4
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_PlayerJersey_1_4
+ vertices, 2040 indices
+DracoDecoder | Decoded 80 vertices, 120 indices
+DracoDecoder | Decoded 2048 vertices, 3072 indices
+DracoDecoder | Decoded 2048 vertices, 3072 indices
+DracoDecoder | Decoded 576 vertices, 960 indices
+DracoDecoder | Decoded 192 vertices, 288 indices
+DracoDecoder | Decoded 384 vertices, 576 indices
+DracoDecoder | Decoded 360 vertices, 660 indices
+DracoDecoder | Decoded 576 vertices, 1056 indices
+DracoDecoder | Decoded 216 vertices, 396 indices
+DracoDecoder | Decoded 216 vertices, 324 indices
+DracoDecoder | Decoded 1296 vertices, 1968 indices
+DracoDecoder | Decoded 168 vertices, 252 indices
+DracoDecoder | Decoded 252 vertices, 420 indices
+DracoDecoder | Decoded 766 vertices, 2256 indices
+DracoDecoder | Decoded 766 vertices, 2256 indices
+DracoDecoder | Decoded 766 vertices, 2256 indices
+DracoDecoder | Decoded 766 vertices, 2256 indices
+DracoDecoder | Decoded 766 vertices, 2256 indices
+DracoDecoder | Decoded 738 vertices, 2124 indices
+DracoDecoder | Decoded 738 vertices, 2124 indices
+DracoDecoder | Decoded 738 vertices, 2124 indices
+DracoDecoder | Decoded 738 vertices, 2124 indices
+DracoDecoder | Decoded 738 vertices, 2124 indices
+DracoDecoder | Decoded 1920 vertices, 3444 indices
+DracoDecoder | Decoded 744 vertices, 1116 indices
+DracoDecoder | Decoded 432 vertices, 648 indices
+DracoDecoder | Decoded 1024 vertices, 1536 indices
+DracoDecoder | Decoded 1024 vertices, 1536 indices
+DracoDecoder | Decoded 144 vertices, 240 indices
+DracoDecoder | Decoded 144 vertices, 240 indices
+DracoDecoder | Decoded 432 vertices, 648 indices
+DracoDecoder | Decoded 62430 vertices, 99888 indices
+DracoDecoder | Decoded 92430 vertices, 147888 indices
+DracoDecoder | Decoded 31050 vertices, 49680 indices
+DracoDecoder | Decoded 384 vertices, 576 indices
+DracoDecoder | Decoded 1168 vertices, 3348 indices
+DracoDecoder | Decoded 24 vertices, 36 indices
+DracoDecoder | Decoded 144 vertices, 240 indices
+DracoDecoder | Decoded 81 vertices, 384 indices
+DracoDecoder | Decoded 81 vertices, 384 indices
+DracoDecoder | Decoded 81 vertices, 384 indices
+DracoDecoder | Decoded 81 vertices, 384 indices
+DracoDecoder | Decoded 192 vertices, 336 indices
+DracoDecoder | Decoded 192 vertices, 336 indices
+DracoDecoder | Decoded 2304 vertices, 3456 indices
+DracoDecoder | Decoded 2304 vertices, 3456 indices
+DracoDecoder | Decoded 2304 vertices, 3456 indices
+DracoDecoder | Decoded 2304 vertices, 3456 indices
+DracoDecoder | Decoded 288 vertices, 480 indices
+DracoDecoder | Decoded 288 vertices, 480 indices
+DracoDecoder | Decoded 528 vertices, 804 indices
+DracoDecoder | Decoded 99 vertices, 384 indices
+DracoDecoder | Decoded 80 vertices, 132 indices
+DracoDecoder | Decoded 288 vertices, 480 indices
+DracoDecoder | Decoded 576 vertices, 960 indices
+DracoDecoder | Decoded 160 vertices, 840 indices
+DracoDecoder | Decoded 240 vertices, 1200 indices
+DracoDecoder | Decoded 416 vertices, 2400 indices
+DracoDecoder | Decoded 416 vertices, 2400 indices
+DracoDecoder | Decoded 208 vertices, 1200 indices
+DracoDecoder | Decoded 496 vertices, 2880 indices
+DracoDecoder | Decoded 496 vertices, 2880 indices
+DracoDecoder | Decoded 248 vertices, 1440 indices
+DracoDecoder | Decoded 1240 vertices, 7200 indices
+DracoDecoder | Decoded 192 vertices, 1056 indices
+DracoDecoder | Decoded 192 vertices, 1056 indices
+DracoDecoder | Decoded 96 vertices, 528 indices
+DracoDecoder | Decoded 1420 vertices, 8400 indices
+DracoDecoder | Decoded 496 vertices, 2880 indices
+DracoDecoder | Decoded 496 vertices, 2880 indices
+DracoDecoder | Decoded 248 vertices, 1440 indices
+DracoDecoder | Decoded 2560 vertices, 13440 indices
+DracoDecoder | Decoded 888 vertices, 5280 indices
+DracoDecoder | Decoded 888 vertices, 5280 indices
+DracoDecoder | Decoded 444 vertices, 2640 indices
+DracoDecoder | Decoded 2000 vertices, 11760 indices
+DracoDecoder | Decoded 860 vertices, 5040 indices
+DracoDecoder | Decoded 860 vertices, 5040 indices
+DracoDecoder | Decoded 4 vertices, 6 indices
+DracoDecoder | Decoded 4 vertices, 6 indices
+DracoDecoder | Decoded 4 vertices, 6 indices
+DracoDecoder | Decoded 4 vertices, 6 indices
+DracoD15:23:06 | INFO: Blender create Mesh node REF_PlayerJersey_-1_0
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_PlayerJersey_-1_0
+15:23:06 | INFO: Blender create Mesh node REF_PlayerJersey_-1_1
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_PlayerJersey_-1_1
+15:23:06 | INFO: Blender create Mesh node REF_PlayerJersey_-1_2
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_PlayerJersey_-1_2
+15:23:06 | INFO: Blender create Mesh node REF_PlayerJersey_-1_3
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_PlayerJersey_-1_3
+15:23:06 | INFO: Blender create Mesh node REF_PlayerJersey_-1_4
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_PlayerJersey_-1_4
+15:23:06 | INFO: Blender create Mesh node REF_PlayerMouths__Hair
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_PlayerMouths__Hair
+15:23:06 | INFO: Blender create Mesh node REF_PlayerNecks__PlayerSkin0
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_PlayerNecks__PlayerSkin0
+15:23:06 | INFO: Blender create Mesh node REF_PlayerNecks__PlayerSkin1
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_PlayerNecks__PlayerSkin1
+15:23:06 | INFO: Blender create Mesh node REF_PlayerNecks__PlayerSkin2
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_PlayerNecks__PlayerSkin2
+15:23:06 | INFO: Blender create Mesh node REF_PlayerNoses__PlayerSkin0
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_PlayerNoses__PlayerSkin0
+15:23:06 | INFO: Blender create Mesh node REF_PlayerNoses__PlayerSkin1
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_PlayerNoses__PlayerSkin1
+15:23:06 | INFO: Blender create Mesh node REF_PlayerNoses__PlayerSkin2
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_PlayerNoses__PlayerSkin2
+15:23:06 | INFO: Blender create Mesh node REF_PlayerPelvis__Rubber
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_PlayerPelvis__Rubber
+15:23:06 | INFO: Blender create Mesh node REF_PlayerPupils__Pupil
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_PlayerPupils__Pupil
+15:23:06 | INFO: Blender create Mesh node REF_PlayerShins__Rubber
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_PlayerShins__Rubber
+15:23:06 | INFO: Blender create Mesh node REF_PlayerShoes__Rubber
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_PlayerShoes__Rubber
+15:23:06 | INFO: Blender create Mesh node REF_PlayerSleeves__Eyes
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_PlayerSleeves__Eyes
+15:23:06 | INFO: Blender create Mesh node REF_PlayerSleeves__Rubber
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_PlayerSleeves__Rubber
+15:23:06 | INFO: Blender create Mesh node REF_PlayerThighs__Rubber
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_PlayerThighs__Rubber
+15:23:06 | INFO: Blender create Mesh node REF_PlayerTorso__Eyes
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_PlayerTorso__Eyes
+15:23:06 | INFO: Blender create Mesh node REF_PlayerTorso__Rubber
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_PlayerTorso__Rubber
+15:23:06 | INFO: Blender create Mesh node REF_RearBraces__Steel
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RearBraces__Steel
+15:23:06 | INFO: Blender create Mesh node Chair_base__steel.001
+15:23:06 | INFO: Draco Decoder: Decode primitive Chair_base__steel.001
+15:23:06 | INFO: Blender create Mesh node Chair_pedestal__silver.001
+15:23:06 | INFO: Draco Decoder: Decode primitive Chair_pedestal__silver.001
+15:23:06 | INFO: Blender create Mesh node InteriorDetail_Chair_bolsters__black.001
+15:23:06 | INFO: Draco Decoder: Decode primitive InteriorDetail_Chair_bolsters__black.001
+15:23:06 | INFO: Blender create Mesh node InteriorDetail_Chair_casters__black.001
+15:23:06 | INFO: Draco Decoder: Decode primitive InteriorDetail_Chair_casters__black.001
+15:23:06 | INFO: Blender create Mesh node InteriorDetail_Chair_piping__ivory.001
+15:23:06 | INFO: Draco Decoder: Decode primitive InteriorDetail_Chair_piping__ivory.001
+15:23:06 | INFO: Blender create Mesh node InteriorDetail_Headset_accents__blue.001
+15:23:06 | INFO: Draco Decoder: Decode primitive InteriorDetail_Headset_accents__blue.001
+15:23:06 | INFO: Blender create Mesh node InteriorDetail_Headset_band__steel.001
+15:23:06 | INFO: Draco Decoder: Decode primitive InteriorDetail_Headset_band__steel.001
+15:23:06 | INFO: Blender create Mesh node InteriorDetail_Headset_cups__black.001
+15:23:06 | INFO: Draco Decoder: Decode primitive InteriorDetail_Headset_cups__black.001
+15:23:06 | INFO: Blender create Mesh node InteriorDetail_Monitor_bezel_screws__silver.001
+15:23:06 | INFO: Draco Decoder: Decode primitive InteriorDetail_Monitor_bezel_screws__silver.001
+15:23:06 | INFO: Blender create Mesh node InteriorDetail_Monitor_foot__steel.001
+15:23:06 | INFO: Draco Decoder: Decode primitive InteriorDetail_Monitor_foot__steel.001
+15:23:06 | INFO: Blender create Mesh node InteriorDetail_Monitor_status__whiteLED.001
+15:23:06 | INFO: Draco Decoder: Decode primitive InteriorDetail_Monitor_status__whiteLED.001
+15:23:06 | INFO: Blender create Mesh node InteriorDetail_Monitor_vents__steel.001
+15:23:06 | INFO: Draco Decoder: Decode primitive InteriorDetail_Monitor_vents__steel.001
+15:23:06 | INFO: Blender create Mesh node InteriorDetail_Mouse__black.001
+15:23:06 | INFO: Draco Decoder: Decode primitive InteriorDetail_Mouse__black.001
+15:23:06 | INFO: Blender create Mesh node InteriorDetail_Mouse_lead__black.001
+15:23:06 | INFO: Draco Decoder: Decode primitive InteriorDetail_Mouse_lead__black.001
+15:23:06 | INFO: Blender create Mesh node InteriorDetail_Mouse_split__silver.001
+15:23:06 | INFO: Draco Decoder: Decode primitive InteriorDetail_Mouse_split__silver.001
+15:23:06 | INFO: Blender create Mesh node InteriorDetail_PC_corner_rails__silver.001
+15:23:06 | INFO: Draco Decoder: Decode primitive InteriorDetail_PC_corner_rails__silver.001
+15:23:06 | INFO: Blender create Mesh node InteriorDetail_PC_grille__steel.001
+15:23:06 | INFO: Draco Decoder: Decode primitive InteriorDetail_PC_grille__steel.001
+15:23:06 | INFO: Blender create Mesh node Keyboard__black.001
+15:23:06 | INFO: Draco Decoder: Decode primitive Keyboard__black.001
+15:23:06 | INFO: Blender create Mesh node Keyboard_keys__silver.001
+15:23:06 | INFO: Draco Decoder: Decode primitive Keyboard_keys__silver.001
+15:23:06 | INFO: Blender create Mesh node Monitor_housing__black.003
+15:23:06 | INFO: Draco Decoder: Decode primitive Monitor_housing__black.003
+15:23:06 | INFO: Blender create Mesh node Monitor_pixels__cyan.001
+15:23:06 | INFO: Draco Decoder: Decode primitive Monitor_pixels__cyan.001
+15:23:06 | INFO: Blender create Mesh node Monitor_stand__steel.001
+15:23:06 | INFO: Draco Decoder: Decode primitive Monitor_stand__steel.001
+15:23:06 | INFO: Blender create Mesh node Mousepad__black.001
+15:23:06 | INFO: Draco Decoder: Decode primitive Mousepad__black.001
+15:23:06 | INFO: Blender create Mesh node PC_LED__cyan.001
+15:23:06 | INFO: Draco Decoder: Decode primitive PC_LED__cyan.001
+15:23:06 | INFO: Blender create Mesh node Player_chair__black.003
+15:23:06 | INFO: Draco Decoder: Decode primitive Player_chair__black.003
+15:23:06 | INFO: Blender create Mesh node Player_chair_back__blue.003
+15:23:06 | INFO: Draco Decoder: Decode primitive Player_chair_back__blue.003
+15:23:06 | INFO: Blender create Mesh node Player_PC__black.003
+15:23:06 | INFO: Draco Decoder: Decode primitive Player_PC__black.003
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_0_0
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_0_0
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_0_1
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_0_1
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_0_2
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_0_2
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_0_3
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_0_3
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_0_4
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_0_4
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_0_5
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_0_5
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_0_6
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_0_6
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_0_7
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_0_7
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_0_8
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_0_8
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_0_9
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_0_9
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_0_10
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_0_10
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_0_11
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_0_11
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_0_12
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_0_12
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_0_13
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_0_13
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_0_14
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_0_14
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_0_15
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_0_15
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_0_16
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_0_16
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_0_17
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_0_17
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_0_18
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_0_18
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_0_19
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_0_19
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_0_20
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_0_20
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_0_21
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_0_21
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_0_22
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_0_22
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_0_23
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_0_23
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_0_24
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_0_24
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_0_25
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_0_25
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_0_26
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_0_26
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_0_27
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_0_27
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_0_28
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_0_28
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_0_29
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_0_29
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_0_30
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_0_30
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_0_31
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_0_31
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_1_0
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_1_0
+ecoder | Decoded 4 vertices, 6 indices
+DracoDecoder | Decoded 4 vertices, 6 indices
+DracoDecoder | Decoded 4 vertices, 6 indices
+DracoDecoder | Decoded 4 vertices, 6 indices
+DracoDecoder | Decoded 4 vertices, 6 indices
+DracoDecoder | Decoded 4 vertices, 6 indices
+DracoDecoder | Decoded 160 vertices, 840 indices
+DracoDecoder | Decoded 96 vertices, 528 indices
+DracoDecoder | Decoded 96 vertices, 528 indices
+DracoDecoder | Decoded 48 vertices, 264 indices
+DracoDecoder | Decoded 344 vertices, 2016 indices
+DracoDecoder | Decoded 344 vertices, 2016 indices
+DracoDecoder | Decoded 172 vertices, 1008 indices
+DracoDecoder | Decoded 1140 vertices, 6720 indices
+DracoDecoder | Decoded 1040 vertices, 6000 indices
+DracoDecoder | Decoded 400 vertices, 2160 indices
+DracoDecoder | Decoded 1240 vertices, 7200 indices
+DracoDecoder | Decoded 240 vertices, 1320 indices
+DracoDecoder | Decoded 240 vertices, 1320 indices
+DracoDecoder | Decoded 480 vertices, 2640 indices
+DracoDecoder | Decoded 730 vertices, 4320 indices
+DracoDecoder | Decoded 730 vertices, 4320 indices
+DracoDecoder | Decoded 768 vertices, 1344 indices
+DracoDecoder | Decoded 1800 vertices, 3000 indices
+DracoDecoder | Decoded 360 vertices, 600 indices
+DracoDecoder | Decoded 960 vertices, 1680 indices
+DracoDecoder | Decoded 3000 vertices, 5400 indices
+DracoDecoder | Decoded 720 vertices, 1200 indices
+DracoDecoder | Decoded 1200 vertices, 2160 indices
+DracoDecoder | Decoded 4320 vertices, 7200 indices
+DracoDecoder | Decoded 1200 vertices, 2160 indices
+DracoDecoder | Decoded 1440 vertices, 2400 indices
+DracoDecoder | Decoded 240 vertices, 360 indices
+DracoDecoder | Decoded 240 vertices, 360 indices
+DracoDecoder | Decoded 2640 vertices, 3960 indices
+DracoDecoder | Decoded 240 vertices, 360 indices
+DracoDecoder | Decoded 360 vertices, 600 indices
+DracoDecoder | Decoded 240 vertices, 360 indices
+DracoDecoder | Decoded 480 vertices, 720 indices
+DracoDecoder | Decoded 2880 vertices, 4320 indices
+DracoDecoder | Decoded 240 vertices, 360 indices
+DracoDecoder | Decoded 2880 vertices, 4320 indices
+DracoDecoder | Decoded 3840 vertices, 5640 indices
+DracoDecoder | Decoded 240 vertices, 360 indices
+DracoDecoder | Decoded 360 vertices, 600 indices
+DracoDecoder | Decoded 240 vertices, 360 indices
+DracoDecoder | Decoded 240 vertices, 360 indices
+DracoDecoder | Decoded 3840 vertices, 5640 indices
+DracoDecoder | Decoded 3840 vertices, 5640 indices
+DracoDecoder | Decoded 3840 vertices, 5640 indices
+DracoDecoder | Decoded 738 vertices, 2124 indices
+DracoDecoder | Decoded 738 vertices, 2124 indices
+DracoDecoder | Decoded 738 vertices, 2124 indices
+DracoDecoder | Decoded 738 vertices, 2124 indices
+DracoDecoder | Decoded 738 vertices, 2124 indices
+DracoDecoder | Decoded 738 vertices, 2124 indices
+DracoDecoder | Decoded 738 vertices, 2124 indices
+DracoDecoder | Decoded 738 vertices, 2124 indices
+DracoDecoder | Decoded 738 vertices, 2124 indices
+DracoDecoder | Decoded 738 vertices, 2124 indices
+DracoDecoder | Decoded 738 vertices, 2124 indices
+DracoDecoder | Decoded 738 vertices, 2124 indices
+DracoDecoder | Decoded 738 vertices, 2124 indices
+DracoDecoder | Decoded 738 vertices, 2124 indices
+DracoDecoder | Decoded 738 vertices, 2124 indices
+DracoDecoder | Decoded 738 vertices, 2124 indices
+DracoDecoder | Decoded 766 vertices, 2256 indices
+DracoDecoder | Decoded 766 vertices, 2256 indices
+DracoDecoder | Decoded 766 vertices, 2256 indices
+DracoDecoder | Decoded 766 vertices, 2256 indices
+DracoDecoder | Decoded 766 vertices, 2256 indices
+DracoDecoder | Decoded 766 vertices, 2256 indices
+DracoDecoder | Decoded 766 vertices, 2256 indices
+DracoDecoder | Decoded 766 vertices, 2256 indices
+DracoDecoder | Decoded 766 vertices, 2256 indices
+DracoDecoder | Decoded 766 vertices, 2256 indices
+DracoDecoder | Decoded 766 vertices, 2256 indices
+DracoDecoder | Decoded 766 vertices, 2256 indices
+DracoDecoder | Decoded 766 vertices, 2256 indices
+DracoDecoder | Decoded 766 vertices, 2256 indices
+DracoDecoder | Decoded 766 vertices, 2256 indices
+DracoDecoder | Decoded 766 vertices, 2256 indices
+DracoDecoder | Decoded 738 vertices15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_1_1
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_1_1
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_1_2
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_1_2
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_1_3
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_1_3
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_1_4
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_1_4
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_1_5
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_1_5
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_1_6
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_1_6
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_1_7
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_1_7
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_1_8
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_1_8
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_1_9
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_1_9
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_1_10
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_1_10
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_1_11
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_1_11
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_1_12
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_1_12
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_1_13
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_1_13
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_1_14
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_1_14
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_1_15
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_1_15
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_1_16
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_1_16
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_1_17
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_1_17
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_1_18
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_1_18
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_1_19
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_1_19
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_1_20
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_1_20
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_1_21
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_1_21
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_1_22
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_1_22
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_1_23
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_1_23
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_1_24
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_1_24
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_1_25
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_1_25
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_1_26
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_1_26
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_1_27
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_1_27
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_1_28
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_1_28
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_1_29
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_1_29
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_1_30
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_1_30
+15:23:06 | INFO: Blender create Mesh node REF_RibbonBrand_1_31
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonBrand_1_31
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_0
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_0
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_1
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_1
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_2
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_2
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_3
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_3
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_4
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_4
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_5
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_5
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_6
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_6
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_7
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_7
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_8
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_8
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_9
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_9
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_10
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_10
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_11
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_11
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_12
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_12
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_13
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_13
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_14
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_14
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_15
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_15
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_16
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_16
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_17
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_17
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_18
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_18
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_19
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_19
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_20
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_20
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_21
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_21
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_22
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_22
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_23
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_23
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_24
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_24
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_25
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_25
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_26
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_26
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_27
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_27
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_28
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_28
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_29
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_29
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_30
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_30
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_31
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_31
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_32
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_32
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_33
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_33
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_34
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_34
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_35
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_35
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_36
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_36
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_37
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_37
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_38
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_38
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_39
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_39
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_40
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_40
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_41
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_41
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_42
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_42
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_43
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_43
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_44
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_44
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_45
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_45
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_46
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_46
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_47
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_47
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_48
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_48
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_49
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_49
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_50
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_50
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_51
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_51
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_52
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_52
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_53
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_53
+, 2124 indices
+DracoDecoder | Decoded 738 vertices, 2124 indices
+DracoDecoder | Decoded 738 vertices, 2124 indices
+DracoDecoder | Decoded 738 vertices, 2124 indices
+DracoDecoder | Decoded 738 vertices, 2124 indices
+DracoDecoder | Decoded 738 vertices, 2124 indices
+DracoDecoder | Decoded 738 vertices, 2124 indices
+DracoDecoder | Decoded 738 vertices, 2124 indices
+DracoDecoder | Decoded 738 vertices, 2124 indices
+DracoDecoder | Decoded 738 vertices, 2124 indices
+DracoDecoder | Decoded 738 vertices, 2124 indices
+DracoDecoder | Decoded 738 vertices, 2124 indices
+DracoDecoder | Decoded 738 vertices, 2124 indices
+DracoDecoder | Decoded 738 vertices, 2124 indices
+DracoDecoder | Decoded 738 vertices, 2124 indices
+DracoDecoder | Decoded 738 vertices, 2124 indices
+DracoDecoder | Decoded 766 vertices, 2256 indices
+DracoDecoder | Decoded 766 vertices, 2256 indices
+DracoDecoder | Decoded 766 vertices, 2256 indices
+DracoDecoder | Decoded 766 vertices, 2256 indices
+DracoDecoder | Decoded 766 vertices, 2256 indices
+DracoDecoder | Decoded 766 vertices, 2256 indices
+DracoDecoder | Decoded 766 vertices, 2256 indices
+DracoDecoder | Decoded 766 vertices, 2256 indices
+DracoDecoder | Decoded 766 vertices, 2256 indices
+DracoDecoder | Decoded 766 vertices, 2256 indices
+DracoDecoder | Decoded 766 vertices, 2256 indices
+DracoDecoder | Decoded 766 vertices, 2256 indices
+DracoDecoder | Decoded 766 vertices, 2256 indices
+DracoDecoder | Decoded 766 vertices, 2256 indices
+DracoDecoder | Decoded 766 vertices, 2256 indices
+DracoDecoder | Decoded 766 vertices, 2256 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 40 vertices, 60 indices
+DracoDecoder | Decoded 40 vertices, 60 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 i15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_54
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_54
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_55
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_55
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_56
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_56
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_57
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_57
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_58
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_58
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_59
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_59
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_60
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_60
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_61
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_61
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_62
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_62
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_0_63
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_0_63
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_0
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_0
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_1
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_1
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_2
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_2
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_3
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_3
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_4
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_4
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_5
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_5
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_6
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_6
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_7
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_7
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_8
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_8
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_9
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_9
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_10
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_10
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_11
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_11
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_12
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_12
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_13
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_13
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_14
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_14
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_15
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_15
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_16
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_16
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_17
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_17
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_18
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_18
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_19
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_19
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_20
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_20
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_21
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_21
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_22
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_22
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_23
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_23
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_24
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_24
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_25
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_25
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_26
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_26
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_27
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_27
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_28
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_28
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_29
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_29
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_30
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_30
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_31
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_31
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_32
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_32
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_33
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_33
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_34
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_34
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_35
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_35
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_36
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_36
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_37
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_37
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_38
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_38
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_39
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_39
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_40
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_40
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_41
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_41
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_42
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_42
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_43
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_43
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_44
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_44
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_45
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_45
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_46
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_46
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_47
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_47
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_48
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_48
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_49
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_49
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_50
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_50
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_51
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_51
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_52
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_52
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_53
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_53
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_54
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_54
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_55
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_55
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_56
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_56
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_57
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_57
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_58
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_58
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_59
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_59
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_60
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_60
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_61
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_61
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_62
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_62
+15:23:06 | INFO: Blender create Mesh node REF_RibbonProgram_1_63
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RibbonProgram_1_63
+15:23:06 | INFO: Blender create Mesh node REF_RunwayEdge__Gold
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RunwayEdge__Gold
+15:23:06 | INFO: Blender create Mesh node REF_RunwayInset__White
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RunwayInset__White
+15:23:06 | INFO: Blender create Mesh node REF_RunwaySeams__Rubber
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RunwaySeams__Rubber
+15:23:06 | INFO: Blender create Mesh node REF_RunwayTransition
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_RunwayTransition
+15:23:06 | INFO: Blender create Mesh node REF_ScenicBlade__Obsidian.002
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_ScenicBlade__Obsidian.002
+15:23:06 | INFO: Blender create Mesh node REF_ScenicBladeEdge__Cyan
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_ScenicBladeEdge__Cyan
+15:23:06 | INFO: Blender create Mesh node REF_ScenicBladeEdge__Gold
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_ScenicBladeEdge__Gold
+15:23:06 | INFO: Blender create Mesh node REF_ScenicBladeEdge__Pink
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_ScenicBladeEdge__Pink
+15:23:06 | INFO: Blender create Mesh node REF_ScenicBladeRim__Silver
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_ScenicBladeRim__Silver
+15:23:06 | INFO: Blender create Mesh node REF_ScoreboardCorner__Steel
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_ScoreboardCorner__Steel
+15:23:06 | INFO: Blender create Mesh node REF_ScoreboardHoist__Rubber
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_ScoreboardHoist__Rubber
+15:23:06 | INFO: Blender create Mesh node REF_ScoreboardStructure__Obsidian
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_ScoreboardStructure__Obsidian
+15:23:06 | INFO: Blender create Mesh node REF_ScoreboardSuspension__Steel
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_ScoreboardSuspension__Steel
+ndices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 288 vertices, 480 indices
+DracoDecoder | Decoded 288 vertices, 480 indices
+DracoDecoder | Decoded 192 vertices, 288 indices
+DracoDecoder | Decoded 24 vertices, 36 indices
+DracoDecoder | Decoded 1296 vertices, 1944 indices
+DracoDecoder | Decoded 72 vertices, 120 indices
+DracoDecoder | Decoded 108 vertices, 180 indices
+DracoDecoder | Decoded 36 vertices, 60 indices
+DracoDecoder | Decoded 216 vertices, 360 indices
+DracoDecoder | Decoded 192 vertices, 336 indices
+DracoDecoder | Decoded 96 vertices, 144 indices
+DracoDecoder | Decoded 24 vertices, 36 indices
+DracoDecoder | Decoded 192 ve15:23:06 | INFO: Blender create Mesh node REF_ScoreboardTopRail__Steel
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_ScoreboardTopRail__Steel
+15:23:06 | INFO: Blender create Mesh node REF_ScoreboardTopTruss__Steel
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_ScoreboardTopTruss__Steel
+15:23:06 | INFO: Blender create Mesh node REF_ScoreboardUndersideGrid
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_ScoreboardUndersideGrid
+15:23:06 | INFO: Blender create Mesh node REF_ScreenUndersideLamps__Cyan
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_ScreenUndersideLamps__Cyan
+15:23:06 | INFO: Blender create Mesh node REF_ScreenUndersideLamps__Gold
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_ScreenUndersideLamps__Gold
+15:23:06 | INFO: Blender create Mesh node REF_ScreenUndersideLamps__White
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_ScreenUndersideLamps__White
+15:23:06 | INFO: Blender create Mesh node REF_StageEdge__Cyan
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_StageEdge__Cyan
+15:23:06 | INFO: Blender create Mesh node REF_StageEdge__Gold
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_StageEdge__Gold
+15:23:06 | INFO: Blender create Mesh node REF_StageFascia_lamps__Cyan
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_StageFascia_lamps__Cyan
+15:23:06 | INFO: Blender create Mesh node REF_StageFascia_lamps__Gold
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_StageFascia_lamps__Gold
+15:23:06 | INFO: Blender create Mesh node REF_StageFascia_lamps__Pink
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_StageFascia_lamps__Pink
+15:23:06 | INFO: Blender create Mesh node REF_StageFascia_panels__Obsidian
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_StageFascia_panels__Obsidian
+15:23:06 | INFO: Blender create Mesh node REF_StageFascia_vents__Steel
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_StageFascia_vents__Steel
+15:23:06 | INFO: Blender create Mesh node REF_StageRigChords__Steel
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_StageRigChords__Steel
+15:23:06 | INFO: Blender create Mesh node REF_StageRigCrossbeams__Steel
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_StageRigCrossbeams__Steel
+15:23:06 | INFO: Blender create Mesh node REF_StageRigDiagonals__Silver
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_StageRigDiagonals__Silver
+15:23:06 | INFO: Blender create Mesh node REF_SuiteBrand_0
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_SuiteBrand_0
+15:23:06 | INFO: Blender create Mesh node REF_SuiteBrand_2
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_SuiteBrand_2
+15:23:06 | INFO: Blender create Mesh node REF_SuiteBrand_4
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_SuiteBrand_4
+15:23:06 | INFO: Blender create Mesh node REF_SuiteBrand_6
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_SuiteBrand_6
+15:23:06 | INFO: Blender create Mesh node REF_SuiteBrand_8
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_SuiteBrand_8
+15:23:06 | INFO: Blender create Mesh node REF_SuiteBrand_10
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_SuiteBrand_10
+15:23:06 | INFO: Blender create Mesh node REF_SuiteBrand_12
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_SuiteBrand_12
+15:23:06 | INFO: Blender create Mesh node REF_SuiteBrand_14
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_SuiteBrand_14
+15:23:06 | INFO: Blender create Mesh node REF_SuiteBrand_16
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_SuiteBrand_16
+15:23:06 | INFO: Blender create Mesh node REF_SuiteBrand_18
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_SuiteBrand_18
+15:23:06 | INFO: Blender create Mesh node REF_SuiteBrand_20
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_SuiteBrand_20
+15:23:06 | INFO: Blender create Mesh node REF_SuiteBrand_22
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_SuiteBrand_22
+15:23:06 | INFO: Blender create Mesh node REF_SuiteBrand_24
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_SuiteBrand_24
+15:23:06 | INFO: Blender create Mesh node REF_SuiteBrand_26
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_SuiteBrand_26
+15:23:06 | INFO: Blender create Mesh node REF_SuiteBrand_28
+15:23:06 | INFO: Draco Decoder: Decode primitive REF_SuiteBrand_28
+15:23:07 | INFO: Blender create Mesh node REF_SuiteBrand_30
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteBrand_30
+15:23:07 | INFO: Blender create Mesh node REF_SuiteBrand_32
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteBrand_32
+15:23:07 | INFO: Blender create Mesh node REF_SuiteBrand_34
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteBrand_34
+15:23:07 | INFO: Blender create Mesh node REF_SuiteBrand_36
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteBrand_36
+15:23:07 | INFO: Blender create Mesh node REF_SuiteBrand_38
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteBrand_38
+15:23:07 | INFO: Blender create Mesh node REF_SuiteBrand_40
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteBrand_40
+15:23:07 | INFO: Blender create Mesh node REF_SuiteBrand_42
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteBrand_42
+15:23:07 | INFO: Blender create Mesh node REF_SuiteBrand_44
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteBrand_44
+15:23:07 | INFO: Blender create Mesh node REF_SuiteBrand_46
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteBrand_46
+15:23:07 | INFO: Blender create Mesh node REF_SuiteBrand_48
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteBrand_48
+15:23:07 | INFO: Blender create Mesh node REF_SuiteBrand_50
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteBrand_50
+15:23:07 | INFO: Blender create Mesh node REF_SuiteBrand_52
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteBrand_52
+15:23:07 | INFO: Blender create Mesh node REF_SuiteBrand_54
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteBrand_54
+15:23:07 | INFO: Blender create Mesh node REF_SuiteBrand_56
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteBrand_56
+15:23:07 | INFO: Blender create Mesh node REF_SuiteBrand_58
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteBrand_58
+15:23:07 | INFO: Blender create Mesh node REF_SuiteBrand_60
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteBrand_60
+15:23:07 | INFO: Blender create Mesh node REF_SuiteBrand_62
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteBrand_62
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_0
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_0
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_1
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_1
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_2
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_2
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_3
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_3
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_4
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_4
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_5
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_5
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_6
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_6
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_7
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_7
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_8
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_8
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_9
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_9
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_10
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_10
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_11
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_11
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_12
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_12
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_13
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_13
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_14
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_14
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_15
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_15
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_16
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_16
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_17
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_17
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_18
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_18
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_19
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_19
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_20
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_20
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_21
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_21
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_22
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_22
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_23
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_23
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_24
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_24
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_25
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_25
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_26
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_26
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_27
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_27
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_28
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_28
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_29
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_29
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_30
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_30
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_31
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_31
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_32
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_32
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_33
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_33
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_34
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_34
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_35
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_35
+rtices, 336 indices
+DracoDecoder | Decoded 288 vertices, 480 indices
+DracoDecoder | Decoded 1728 vertices, 2880 indices
+DracoDecoder | Decoded 480 vertices, 840 indices
+DracoDecoder | Decoded 600 vertices, 1080 indices
+DracoDecoder | Decoded 600 vertices, 1080 indices
+DracoDecoder | Decoded 1920 vertices, 3456 indices
+DracoDecoder | Decoded 3456 vertices, 5760 indices
+DracoDecoder | Decoded 3456 vertices, 5760 indices
+DracoDecoder | Decoded 288 vertices, 432 indices
+DracoDecoder | Decoded 432 vertices, 648 indices
+DracoDecoder | Decoded 144 vertices, 216 indices
+DracoDecoder | Decoded 1728 vertices, 2592 indices
+DracoDecoder | Decoded 2304 vertices, 3456 indices
+DracoDecoder | Decoded 864 vertices, 1512 indices
+DracoDecoder | Decoded 240 vertices, 420 indices
+DracoDecoder | Decoded 5184 vertices, 8640 indices
+DracoDecoder | Decoded 766 vertices, 2256 indices
+DracoDecoder | Decoded 766 vertices, 2256 indices
+DracoDecoder | Decoded 766 vertices, 2256 indices
+DracoDecoder | Decoded 766 vertices, 2256 indices
+DracoDecoder | Decoded 766 vertices, 2256 indices
+DracoDecoder | Decoded 766 vertices, 2256 indices
+DracoDecoder | Decoded 766 vertices, 2256 indices
+DracoDecoder | Decoded 766 vertices, 2256 indices
+DracoDecoder | Decoded 738 vertices, 2124 indices
+DracoDecoder | Decoded 738 vertices, 2124 indices
+DracoDecoder | Decoded 738 vertices, 2124 indices
+DracoDecoder | Decoded 738 vertices, 2124 indices
+DracoDecoder | Decoded 738 vertices, 2124 indices
+DracoDecoder | Decoded 738 vertices, 2124 indices
+DracoDecoder | Decoded 738 vertices, 2124 indices
+DracoDecoder | Decoded 738 vertices, 2124 indices
+DracoDecoder | Decoded 738 vertices, 2124 indices
+DracoDecoder | Decoded 738 vertices, 2124 indices
+DracoDecoder | Decoded 738 vertices, 2124 indices
+DracoDecoder | Decoded 738 vertices, 2124 indices
+DracoDecoder | Decoded 738 vertices, 2124 indices
+DracoDecoder | Decoded 738 vertices, 2124 indices
+DracoDecoder | Decoded 738 vertices, 2124 indices
+DracoDecoder | Decoded 738 vertices, 2124 indices
+DracoDecoder | Decoded 766 vertices, 2256 indices
+DracoDecoder | Decoded 766 vertices, 2256 indices
+DracoDecoder | Decoded 766 vertices, 2256 indices
+DracoDecoder | Decoded 766 vertices, 2256 indices
+DracoDecoder | Decoded 766 vertices, 2256 indices
+DracoDecoder | Decoded 766 vertices, 2256 indices
+DracoDecoder | Decoded 766 vertices, 2256 indices
+DracoDecoder | Decoded 766 vertices, 2256 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vert15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_36
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_36
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_37
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_37
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_38
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_38
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_39
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_39
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_40
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_40
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_41
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_41
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_42
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_42
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_43
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_43
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_44
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_44
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_45
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_45
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_46
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_46
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_47
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_47
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_48
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_48
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_49
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_49
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_50
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_50
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_51
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_51
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_52
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_52
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_53
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_53
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_54
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_54
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_55
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_55
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_56
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_56
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_57
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_57
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_58
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_58
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_59
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_59
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_60
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_60
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_61
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_61
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_62
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_62
+15:23:07 | INFO: Blender create Mesh node REF_SuiteRibbon_63
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_SuiteRibbon_63
+15:23:07 | INFO: Blender create Mesh node REF_TeamRiser__Obsidian.002
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_TeamRiser__Obsidian.002
+15:23:07 | INFO: Blender create Mesh node REF_TeamRiserEdge__Cyan
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_TeamRiserEdge__Cyan
+15:23:07 | INFO: Blender create Mesh node REF_TeamRiserEdge__Gold
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_TeamRiserEdge__Gold
+15:23:07 | INFO: Blender create Mesh node REF_TeamRiserEdge__Pink
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_TeamRiserEdge__Pink
+15:23:07 | INFO: Blender create Mesh node REF_Trophy__Silver
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_Trophy__Silver
+15:23:07 | INFO: Blender create Mesh node REF_TrophyCrown__Silver
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_TrophyCrown__Silver
+15:23:07 | INFO: Blender create Mesh node REF_TrophyCyanAccent__Cyan
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_TrophyCyanAccent__Cyan
+15:23:07 | INFO: Blender create Mesh node REF_TrophyHandles__Silver
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_TrophyHandles__Silver
+15:23:07 | INFO: Blender create Mesh node REF_TrophyIsland__Obsidian
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_TrophyIsland__Obsidian
+15:23:07 | INFO: Blender create Mesh node REF_WingFixture__Rubber
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_WingFixture__Rubber
+15:23:07 | INFO: Blender create Mesh node REF_WingLED__BlueWaves
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_WingLED__BlueWaves
+15:23:07 | INFO: Blender create Mesh node REF_WingLED__GoldWaves
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_WingLED__GoldWaves
+15:23:07 | INFO: Blender create Mesh node REF_WingLEDTrim__Cyan
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_WingLEDTrim__Cyan
+15:23:07 | INFO: Blender create Mesh node REF_WingLEDTrim__Gold
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_WingLEDTrim__Gold
+15:23:07 | INFO: Blender create Mesh node REF_WingMainFrame__Obsidian.002
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_WingMainFrame__Obsidian.002
+15:23:07 | INFO: Blender create Mesh node REF_WorldsCrest
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_WorldsCrest
+15:23:07 | INFO: Blender create Mesh node REF_WorldsHeader_0
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_WorldsHeader_0
+15:23:07 | INFO: Blender create Mesh node REF_WorldsHeader_1
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_WorldsHeader_1
+15:23:07 | INFO: Blender create Mesh node REF_WorldsHeader_2
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_WorldsHeader_2
+15:23:07 | INFO: Blender create Mesh node REF_WorldsHeader_3
+15:23:07 | INFO: Draco Decoder: Decode primitive REF_WorldsHeader_3
+15:23:07 | INFO: Blender create Mesh node Road__asphalt
+15:23:07 | INFO: Draco Decoder: Decode primitive Road__asphalt
+15:23:07 | INFO: Blender create Mesh node Road_markings__ivory
+15:23:07 | INFO: Draco Decoder: Decode primitive Road_markings__ivory
+15:23:07 | INFO: Blender create Mesh node Roof_lateral__steel
+15:23:07 | INFO: Draco Decoder: Decode primitive Roof_lateral__steel
+15:23:07 | INFO: Blender create Mesh node Roof_soffit
+15:23:07 | INFO: Draco Decoder: Decode primitive Roof_soffit
+15:23:07 | INFO: Blender create Mesh node Roof_truss_chords__steel
+15:23:07 | INFO: Draco Decoder: Decode primitive Roof_truss_chords__steel
+15:23:07 | INFO: Blender create Mesh node Roof_truss_web__silver
+15:23:07 | INFO: Draco Decoder: Decode primitive Roof_truss_web__silver
+15:23:07 | INFO: Blender create Mesh node Roof_truss_web__steel
+15:23:07 | INFO: Draco Decoder: Decode primitive Roof_truss_web__steel
+15:23:07 | INFO: Blender create Mesh node Seat_armrests__steel
+15:23:07 | INFO: Draco Decoder: Decode primitive Seat_armrests__steel
+15:23:10 | INFO: Blender create Mesh node Seats__seat
+15:23:10 | INFO: Draco Decoder: Decode primitive Seats__seat
+15:23:13 | INFO: Blender create Mesh node Seats__seat2
+15:23:13 | INFO: Draco Decoder: Decode primitive Seats__seat2
+15:23:13 | INFO: Blender create Mesh node Section_number
+15:23:14 | INFO: Draco Decoder: Decode primitive Section_number
+15:23:14 | INFO: Blender create Mesh node Section_number.001
+15:23:14 | INFO: Draco Decoder: Decode primitive Section_number.001
+15:23:14 | INFO: Blender create Mesh node Section_number.002
+15:23:14 | INFO: Draco Decoder: Decode primitive Section_number.002
+15:23:14 | INFO: Blender create Mesh node Section_number.003
+15:23:14 | INFO: Draco Decoder: Decode primitive Section_number.003
+15:23:14 | INFO: Blender create Mesh node Section_number.004
+15:23:14 | INFO: Draco Decoder: Decode primitive Section_number.004
+15:23:14 | INFO: Blender create Mesh node Section_number.005
+15:23:14 | INFO: Draco Decoder: Decode primitive Section_number.005
+15:23:14 | INFO: Blender create Mesh node Section_number.006
+15:23:14 | INFO: Draco Decoder: Decode primitive Section_number.006
+15:23:14 | INFO: Blender create Mesh node Section_number.007
+15:23:14 | INFO: Draco Decoder: Decode primitive Section_number.007
+15:23:14 | INFO: Blender create Mesh node Section_number.008
+15:23:14 | INFO: Draco Decoder: Decode primitive Section_number.008
+15:23:14 | INFO: Blender create Mesh node Section_number.009
+15:23:14 | INFO: Draco Decoder: Decode primitive Section_number.009
+15:23:14 | INFO: Blender create Mesh node Section_number.010
+15:23:14 | INFO: Draco Decoder: Decode primitive Section_number.010
+15:23:14 | INFO: Blender create Mesh node Section_number.011
+15:23:14 | INFO: Draco Decoder: Decode primitive Section_number.011
+15:23:14 | INFO: Blender create Mesh node Section_number.012
+15:23:14 | INFO: Draco Decoder: Decode primitive Section_number.012
+15:23:14 | INFO: Blender create Mesh node Section_number.013
+15:23:14 | INFO: Draco Decoder: Decode primitive Section_number.013
+15:23:14 | INFO: Blender create Mesh node Section_number.014
+15:23:14 | INFO: Draco Decoder: Decode primitive Section_number.014
+15:23:14 | INFO: Blender create Mesh node Section_number.015
+15:23:14 | INFO: Draco Decoder: Decode primitive Section_number.015
+15:23:14 | INFO: Blender create Mesh node Section_number.016
+15:23:14 | INFO: Draco Decoder: Decode primitive Section_number.016
+15:23:14 | INFO: Blender create Mesh node Section_number.017
+15:23:14 | INFO: Draco Decoder: Decode primitive Section_number.017
+15:23:14 | INFO: Blender create Mesh node Section_number.018
+15:23:14 | INFO: Draco Decoder: Decode primitive Section_number.018
+15:23:14 | INFO: Blender create Mesh node Section_number.019
+15:23:14 | INFO: Draco Decoder: Decode primitive Section_number.019
+15:23:14 | INFO: Blender create Mesh node Section_number.020
+15:23:14 | INFO: Draco Decoder: Decode primitive Section_number.020
+15:23:14 | INFO: Blender create Mesh node Section_number.021
+15:23:14 | INFO: Draco Decoder: Decode primitive Section_number.021
+15:23:14 | INFO: Blender create Mesh node Section_number.022
+15:23:14 | INFO: Draco Decoder: Decode primitive Section_number.022
+15:23:14 | INFO: Blender create Mesh node Section_number.023
+15:23:14 | INFO: Draco Decoder: Decode primitive Section_number.023
+15:23:14 | INFO: Blender create Mesh node Section_number.024
+15:23:14 | INFO: Draco Decoder: Decode primitive Section_number.024
+15:23:14 | INFO: Blender create Mesh node Section_number.025
+15:23:14 | INFO: Draco Decoder: Decode primitive Section_number.025
+ices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 64 vertices, 96 indices
+DracoDecoder | Decoded 1688 vertices, 2568 indices
+DracoDecoder | Decoded 432 vertices, 720 indices
+DracoDecoder | Decoded 648 vertices, 1080 indices
+DracoDecoder | Decoded 216 vertices, 360 indices
+DracoDecoder | Decoded 896 vertices, 5364 indices
+DracoDecoder | Decoded 288 vertices, 480 indices
+DracoDecoder | Decoded 72 vertices, 120 indices
+DracoDecoder | Decoded 96 vertices, 480 indices
+DracoDecoder | Decoded 48 vertices, 84 indices
+DracoDecoder | Decoded 240 vertices, 360 indices
+DracoDecoder | Decoded 24 vertices, 36 indices
+DracoDecoder | Decoded 24 vertices, 36 indices
+DracoDecoder | Decoded 144 vertices, 240 indices
+DracoDecoder | Decoded 144 vertices, 240 indices
+DracoDecoder | Decoded 432 vertices, 648 indices
+DracoDecoder | Decoded 81 vertices, 384 indices
+DracoDecoder | Decoded 2698 vertices, 7944 indices
+DracoDecoder | Decoded 2698 vertices, 7944 indices
+DracoDecoder | Decoded 2698 vertices, 7944 indices
+DracoDecoder | Decoded 2698 vertices, 7944 indices
+DracoDecoder | Decoded 24 vertices, 36 indices
+DracoDecoder | Decoded 504 vertices, 756 indices
+DracoDecoder | Decoded 540 vertices, 900 indices
+DracoDecoder | Decoded 480 vertices, 480 indices
+DracoDecoder | Decoded 1400 vertices, 2160 indices
+DracoDecoder | Decoded 28090 vertices, 39720 indices
+DracoDecoder | Decoded 27926 vertices, 39720 indices
+DracoDecoder | Decoded 930432 vertices, 1395648 indices
+DracoDecoder | Decoded 813936 vertices, 1220904 indices
+DracoDecoder | Decoded 116496 vertices, 174744 indices
+DracoDecoder | Decoded 136 vertices, 360 indices
+DracoDecoder | Decoded 224 vertices, 624 indices
+DracoDecoder | Decoded 276 vertices, 780 indices
+DracoDecoder | Decoded 182 vertices, 504 indices
+DracoDecoder | Decoded 216 vertices, 600 indices
+DracoDecoder | Decoded 246 vertices, 696 indices
+DracoDecoder | Decoded 144 vertices, 384 indices
+DracoDecoder | Decoded 316 vertices, 912 indices
+DracoDecoder | Decoded 258 vertices, 732 indices
+DracoDecoder | Decoded 136 vertices, 360 indices
+DracoDecoder | Decoded 54 vertices, 108 indices
+DracoDecoder | Decoded 142 vertices, 372 indices
+DracoDecoder | Decoded 194 vertices, 528 indices
+DracoDecoder | Decoded 100 vertices, 252 indices
+DracoDecoder | Decoded 134 vertices, 348 indices
+DracoDecoder | Decoded 164 vertices, 444 indices
+DracoDecoder | Decoded 224 vertices, 624 indices
+DracoDecoder | Decoded 312 vertices, 888 indices
+DracoDecoder | Decoded 364 vertices, 1044 indices
+DracoDecoder | Decoded 270 vertices, 768 indices
+DracoDecoder | Decoded 304 vertices, 864 indices
+DracoDecoder | Decoded 334 vertices, 960 indices
+DracoDecoder | Decoded 232 vertices, 648 indices
+DracoDecoder | Decoded 404 vertices, 1176 indices
+DracoDecoder | Decoded 346 vertices, 996 indices
+DracoDecoder | Decoded 224 vertices,15:23:14 | INFO: Blender create Mesh node Section_number.026
+15:23:14 | INFO: Draco Decoder: Decode primitive Section_number.026
+15:23:14 | INFO: Blender create Mesh node Section_number.027
+15:23:14 | INFO: Draco Decoder: Decode primitive Section_number.027
+15:23:14 | INFO: Blender create Mesh node Section_number.028
+15:23:14 | INFO: Draco Decoder: Decode primitive Section_number.028
+15:23:14 | INFO: Blender create Mesh node Section_number.029
+15:23:14 | INFO: Draco Decoder: Decode primitive Section_number.029
+15:23:14 | INFO: Blender create Mesh node Section_number.030
+15:23:14 | INFO: Draco Decoder: Decode primitive Section_number.030
+15:23:14 | INFO: Blender create Mesh node Section_number.031
+15:23:14 | INFO: Draco Decoder: Decode primitive Section_number.031
+15:23:14 | INFO: Blender create Mesh node Suite_fascia__ivory.002
+15:23:14 | INFO: Draco Decoder: Decode primitive Suite_fascia__ivory.002
+15:23:14 | INFO: Blender create Mesh node Suite_piers__ivory.002
+15:23:14 | INFO: Draco Decoder: Decode primitive Suite_piers__ivory.002
+15:23:14 | INFO: Blender create Mesh node Suite_windows__glass
+15:23:14 | INFO: Draco Decoder: Decode primitive Suite_windows__glass
+15:23:14 | INFO: Blender create Mesh node Suites_floor__concrete.002
+15:23:14 | INFO: Draco Decoder: Decode primitive Suites_floor__concrete.002
+15:23:14 | INFO: Blender create Mesh node Tier_ribbon__blue.003
+15:23:14 | INFO: Draco Decoder: Decode primitive Tier_ribbon__blue.003
+15:23:14 | INFO: Draco Decoder: Decode primitive Tier_ribbon__blue.003
+15:23:14 | INFO: Blender create Mesh node Tier_ribbon_light__cyan.003
+15:23:14 | INFO: Draco Decoder: Decode primitive Tier_ribbon_light__cyan.003
+15:23:14 | INFO: Draco Decoder: Decode primitive Tier_ribbon_light__cyan.003
+15:23:14 | INFO: Draco Decoder: Decode primitive Tier_ribbon_light__cyan.003
+15:23:14 | INFO: Blender create Mesh node Walk_ArenaFloor__black
+15:23:14 | INFO: Draco Decoder: Decode primitive Walk_ArenaFloor__black
+15:23:14 | INFO: Blender create Mesh node Walk_Atrium__concrete.002
+15:23:14 | INFO: Draco Decoder: Decode primitive Walk_Atrium__concrete.002
+15:23:14 | INFO: Blender create Mesh node Walk_Concourse__concrete.002
+15:23:14 | INFO: Draco Decoder: Decode primitive Walk_Concourse__concrete.002
+15:23:14 | INFO: Blender create Mesh node Walk_EntryBridge__concrete.002
+15:23:14 | INFO: Draco Decoder: Decode primitive Walk_EntryBridge__concrete.002
+15:23:14 | INFO: Blender create Mesh node Walk_EntryRamp__concrete
+15:23:14 | INFO: Draco Decoder: Decode primitive Walk_EntryRamp__concrete
+15:23:14 | INFO: Blender create Mesh node Plaza_with_open_arena
+15:23:14 | INFO: Draco Decoder: Decode primitive Plaza_with_open_arena
+15:23:14 | INFO: Blender create Mesh node Walk_Tier0__concrete
+15:23:14 | INFO: Draco Decoder: Decode primitive Walk_Tier0__concrete
+15:23:14 | INFO: Blender create Mesh node Walk_Tier1__concrete
+15:23:14 | INFO: Draco Decoder: Decode primitive Walk_Tier1__concrete
+15:23:15 | INFO: Blender create Mesh node Welcome
+15:23:15 | INFO: Draco Decoder: Decode primitive Welcome
+15:23:15 | INFO: glTF import finished in 26.08s
+T32_REOPEN {"mesh_objects": 793, "materials": 120, "bounds_blender": [[-290.0, 310.0], [-248.76197814941406, 268.6517639160156], [-10.59000015258789, 120.0]], "new_meshes": ["Fix_SeatBases__steel", "Fix_TierRisers__concrete", "Fix_TierSoffits__concrete", "Fix_TierFascia__concrete", "Fix_UpperWestTreads__concrete", "Collide_RampInfill__concrete", "Fix_PCFeet__black", "Collide_TierColumns__concrete", "Fix_TierBeams__concrete"], "screens": ["REF_Jumbotron_0", "REF_Jumbotron_1", "REF_Jumbotron_2", "REF_Jumbotron_3"]}
+ 624 indices
+DracoDecoder | Decoded 142 vertices, 372 indices
+DracoDecoder | Decoded 230 vertices, 636 indices
+DracoDecoder | Decoded 282 vertices, 792 indices
+DracoDecoder | Decoded 188 vertices, 516 indices
+DracoDecoder | Decoded 222 vertices, 612 indices
+DracoDecoder | Decoded 252 vertices, 708 indices
+DracoDecoder | Decoded 15360 vertices, 21120 indices
+DracoDecoder | Decoded 11856 vertices, 15504 indices
+DracoDecoder | Decoded 1824 vertices, 2736 indices
+DracoDecoder | Decoded 2544 vertices, 3816 indices
+DracoDecoder | Decoded 1924 vertices, 3828 indices
+DracoDecoder | Decoded 1932 vertices, 3840 indices
+DracoDecoder | Decoded 1924 vertices, 3828 indices
+DracoDecoder | Decoded 1610 vertices, 2886 indices
+DracoDecoder | Decoded 322 vertices, 954 indices
+DracoDecoder | Decoded 360 vertices, 360 indices
+DracoDecoder | Decoded 24 vertices, 36 indices
+DracoDecoder | Decoded 3696 vertices, 5544 indices
+DracoDecoder | Decoded 24 vertices, 36 indices
+DracoDecoder | Decoded 24 vertices, 36 indices
+DracoDecoder | Decoded 1024 vertices, 1536 indices
+DracoDecoder | Decoded 136896 vertices, 205344 indices
+DracoDecoder | Decoded 139104 vertices, 208656 indices
+DracoDecoder | Decoded 892 vertices, 2388 indices
+
+Blender quit

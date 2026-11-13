@@ -1,0 +1,1482 @@
+{
+  "source": "D:\\Projects\\lorldcup-metaverse\\art\\environment\\arena\\barclays-arena-v2.blend",
+  "added": [
+    "Fix_SeatBases__steel",
+    "Fix_TierRisers__concrete",
+    "Fix_TierSoffits__concrete",
+    "Fix_TierFascia__concrete",
+    "Fix_UpperWestTreads__concrete",
+    "Collide_RampInfill__concrete",
+    "Fix_PCFeet__black",
+    "Collide_TierColumns__concrete",
+    "Fix_TierBeams__concrete",
+    "EXR_MoonLight"
+  ],
+  "materials": {
+    "asphalt": {
+      "images": [
+        {
+          "name": "asphalt-color.png",
+          "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\asphalt-color.png",
+          "packed": true,
+          "size": [
+            512,
+            512
+          ]
+        },
+        {
+          "name": "asphalt-rough.png",
+          "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\asphalt-rough.png",
+          "packed": true,
+          "size": [
+            512,
+            512
+          ]
+        },
+        {
+          "name": "asphalt-normal.png",
+          "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\asphalt-normal.png",
+          "packed": true,
+          "size": [
+            512,
+            512
+          ]
+        }
+      ],
+      "objects": [
+        "Road__asphalt"
+      ]
+    },
+    "ivory": {
+      "images": [
+        {
+          "name": "ivory-color.png",
+          "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\ivory-color.png",
+          "packed": true,
+          "size": [
+            512,
+            512
+          ]
+        },
+        {
+          "name": "stage-rough.png",
+          "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\stage-rough.png",
+          "packed": true,
+          "size": [
+            512,
+            512
+          ]
+        },
+        {
+          "name": "stage-normal.png",
+          "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\stage-normal.png",
+          "packed": true,
+          "size": [
+            512,
+            512
+          ]
+        }
+      ],
+      "objects": [
+        "Road_markings__ivory",
+        "Crosswalk__ivory",
+        "Suite_piers__ivory",
+        "Suite_fascia__ivory"
+      ]
+    },
+    "glass_Exterior_W4": {
+      "images": [
+        {
+          "name": "glass-color.png",
+          "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\glass-color.png",
+          "packed": true,
+          "size": [
+            512,
+            512
+          ]
+        },
+        {
+          "name": "glass-rough.png",
+          "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\glass-rough.png",
+          "packed": true,
+          "size": [
+            512,
+            512
+          ]
+        },
+        {
+          "name": "glass-normal.png",
+          "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\glass-normal.png",
+          "packed": true,
+          "size": [
+            512,
+            512
+          ]
+        }
+      ],
+      "objects": [
+        "Collide_CurtainWall__glass"
+      ]
+    },
+    "silver_Exterior_W4": {
+      "images": [
+        {
+          "name": "silver-color.png",
+          "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\silver-color.png",
+          "packed": true,
+          "size": [
+            512,
+            512
+          ]
+        },
+        {
+          "name": "silver-rough.png",
+          "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\silver-rough.png",
+          "packed": true,
+          "size": [
+            512,
+            512
+          ]
+        },
+        {
+          "name": "silver-normal.png",
+          "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\silver-normal.png",
+          "packed": true,
+          "size": [
+            512,
+            512
+          ]
+        }
+      ],
+      "objects": [
+        "Facade_mullions__silver"
+      ]
+    },
+    "black": {
+      "images": [
+        {
+          "name": "black-color.png",
+          "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\black-color.png",
+          "packed": true,
+          "size": [
+            512,
+            512
+          ]
+        },
+        {
+          "name": "black-rough.png",
+          "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\black-rough.png",
+          "packed": true,
+          "size": [
+            512,
+            512
+          ]
+        },
+        {
+          "name": "black-normal.png",
+          "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\black-normal.png",
+          "packed": true,
+          "size": [
+            512,
+            512
+          ]
+        }
+      ],
+      "objects": [
+        "Collide_Arena_shell__black",
+        "Portal_header__black",
+        "Moving_head_lights__black",
+        "Hanging_speakers__black",
+        "Roof_soffit",
+        "AudienceDetail_Aisle_nosing",
+        "InteriorDetail_Fixture_clamps__black"
+      ]
+    },
+    "silver": {
+      "images": [
+        {
+          "name": "silver-color.png",
+          "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\silver-color.png",
+          "packed": true,
+          "size": [
+            512,
+            512
+          ]
+        },
+        {
+          "name": "silver-rough.png",
+          "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\silver-rough.png",
+          "packed": true,
+          "size": [
+            512,
+            512
+          ]
+        },
+        {
+          "name": "silver-normal.png",
+          "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\silver-normal.png",
+          "packed": true,
+          "size": [
+            512,
+            512
+          ]
+        }
+      ],
+      "objects": [
+        "Bollards__silver",
+        "Flag_pole__silver",
+        "Collide_TicketGate__silver",
+        "Ramp_rail__silver",
+        "Ramp_posts__silver",
+        "Aisle_handrails__silver",
+        "Roof_truss_web__silver",
+        "Lighting_truss__silver",
+        "AudienceDetail_Aisle_supports",
+        "InteriorDetail_Lighting_boxtruss_chords__silver",
+        "InteriorDetail_Lighting_boxtruss_uprights__silver",
+        "InteriorDetail_Speaker_side_rails__silver"
+      ]
+    },
+    "wood": {
+      "images": [
+        {
+          "name": "wood-color.png",
+          "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\wood-color.png",
+          "packed": true,
+          "size": [
+            512,
+            512
+          ]
+        },
+        {
+          "name": "wood-rough.png",
+          "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\wood-rough.png",
+          "packed": true,
+          "size": [
+            512,
+            512
+          ]
+        },
+        {
+          "name": "wood-normal.png",
+          "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\wood-normal.png",
+          "packed": true,
+          "size": [
+            512,
+            512
+          ]
+        }
+      ],
+      "objects": [
+        "Plaza_bench__wood"
+      ]
+    },
+    "steel": {
+      "images": [
+        {
+          "name": "steel-color.png",
+          "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\steel-color.png",
+          "packed": true,
+          "size": [
+            512,
+            512
+          ]
+        },
+        {
+          "name": "steel-rough.png",
+          "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\steel-rough.png",
+          "packed": true,
+          "size": [
+            512,
+            512
+          ]
+        },
+        {
+          "name": "steel-normal.png",
+          "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\steel-normal.png",
+          "packed": true,
+          "size": [
+            512,
+            512
+          ]
+        }
+      ],
+      "objects": [
+        "Bench_legs__steel",
+        "Seat_armrests__steel",
+        "Roof_truss_chords__steel",
+        "Roof_truss_web__steel",
+        "Roof_lateral__steel",
+        "Catwalk__steel",
+        "AudienceDetail_Aisle_mounts",
+        "Fix_SeatBases__steel",
+        "InteriorDetail_Lighting_boxtruss_diagonals__steel",
+        "InteriorDetail_Fixture_yokes__steel",
+        "InteriorDetail_Fixture_safety_wire__steel",
+        "InteriorDetail_Speaker_grille__steel",
+        "InteriorDetail_Speaker_rigging__steel"
+      ]
+    },
+    "blue": {
+      "images": [
+        {
+          "name": "blue-color.png",
+          "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\blue-color.png",
+          "packed": true,
+          "size": [
+            512,
+            512
+          ]
+        },
+        {
+          "name": "stage-rough.png",
+          "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\stage-rough.png",
+          "packed": true,
+          "size": [
+            512,
+            512
+          ]
+        },
+        {
+          "name": "stage-normal.png",
+          "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\stage-normal.png",
+          "packed": true,
+          "size": [
+            512,
+            512
+          ]
+        }
+      ],
+      "objects": [
+        "Event_flag__blue"
+      ]
+    },
+    "concrete": {
+      "images": [
+        {
+          "name": "concrete-color.png",
+          "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\concrete-color.png",
+          "packed": true,
+          "size": [
+            512,
+            512
+          ]
+        },
+        {
+          "name": "concrete-rough.png",
+          "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\concrete-rough.png",
+          "packed": true,
+          "size": [
+            512,
+            512
+          ]
+        },
+        {
+          "name": "concrete-normal.png",
+          "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\concrete-normal.png",
+          "packed": true,
+          "size": [
+            512,
+            512
+          ]
+        }
+      ],
+      "objects": [
+        "Walk_EntryRamp__concrete",
+        "Walk_Tier0__concrete",
+        "Walk_Tier1__concrete",
+        "Suites_floor__concrete",
+        "Fix_TierRisers__concrete",
+        "Fix_TierSoffits__concrete",
+        "Fix_TierFascia__concrete",
+        "Fix_UpperWestTreads__concrete",
+        "Collide_RampInfill__concrete",
+        "Collide_TierColumns__concrete",
+        "Fix_TierBeams__concrete"
+      ]
+    },
+    "seat": {
+      "images": [
+        {
+          "name": "seat-color.png",
+          "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\seat-color.png",
+          "packed": true,
+          "size": [
+            512,
+            512
+          ]
+        },
+        {
+          "name": "seat-rough.png",
+          "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\seat-rough.png",
+          "packed": true,
+          "size": [
+            512,
+            512
+          ]
+        },
+        {
+          "name": "seat-normal.png",
+          "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\seat-normal.png",
+          "packed": true,
+          "size": [
+            512,
+            512
+          ]
+        }
+      ],
+      "objects": [
+        "Seats__seat"
+      ]
+    },
+    "AudienceDetail_GEN.G": {
+      "images": [
+        {
+          "name": "audience-jersey-geng.png",
+          "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\interior-detail\\audience-jersey-geng.png",
+          "packed": true,
+          "size": [
+            512,
+            512
+          ]
+        }
+      ],
+      "objects": [
+        "Audience_torsos__crowd4",
+        "Audience_heads__crowd4",
+        "Audience_torsos__crowd1",
+        "Audience_heads__skin",
+        "Audience_heads__crowd1",
+        "Audience_torsos__crowd3",
+        "Audience_heads__crowd3",
+        "Audience_torsos__crowd0",
+        "Audience_heads__crowd0",
+        "Audience_torsos__crowd2",
+        "Audience_heads__crowd2"
+      ]
+    },
+    "AudienceDetail_BLG": {
+      "images": [
+        {
+          "name": "audience-jersey-blg.png",
+          "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\interior-detail\\audience-jersey-blg.png",
+          "packed": true,
+          "size": [
+            512,
+            512
+          ]
+        }
+      ],
+      "objects": [
+        "Audience_torsos__crowd4",
+        "Audience_heads__crowd4",
+        "Audience_torsos__crowd1",
+        "Audience_heads__skin",
+        "Audience_heads__crowd1",
+        "Audience_torsos__crowd3",
+        "Audience_heads__crowd3",
+        "Audience_torsos__crowd0",
+        "Audience_heads__crowd0",
+        "Audience_torsos__crowd2",
+        "Audience_heads__crowd2"
+      ]
+    },
+    "AudienceDetail_Face0": {
+      "images": [
+        {
+          "name": "audience-face-0.png",
+          "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\interior-detail\\audience-face-0.png",
+          "packed": true,
+          "size": [
+            512,
+            512
+          ]
+        }
+      ],
+      "objects": [
+        "Audience_torsos__crowd4",
+        "Audience_heads__crowd4",
+        "Audience_torsos__crowd1",
+        "Audience_heads__skin",
+        "Audience_heads__crowd1",
+        "Audience_torsos__crowd3",
+        "Audience_heads__crowd3",
+        "Audience_torsos__crowd0",
+        "Audience_heads__crowd0",
+        "Audience_torsos__crowd2",
+        "Audience_heads__crowd2"
+      ]
+    },
+    "AudienceDetail_Face1": {
+      "images": [
+        {
+          "name": "audience-face-1.png",
+          "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\interior-detail\\audience-face-1.png",
+          "packed": true,
+          "size": [
+            512,
+            512
+          ]
+        }
+      ],
+      "objects": [
+        "Audience_torsos__crowd4",
+        "Audience_heads__crowd4",
+        "Audience_torsos__crowd1",
+        "Audience_heads__skin",
+        "Audience_heads__crowd1",
+        "Audience_torsos__crowd3",
+        "Audience_heads__crowd3",
+        "Audience_torsos__crowd0",
+        "Audience_heads__crowd0",
+        "Audience_torsos__crowd2",
+        "Audience_heads__crowd2"
+      ]
+    },
+    "AudienceDetail_Face2": {
+      "images": [
+        {
+          "name": "audience-face-2.png",
+          "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\interior-detail\\audience-face-2.png",
+          "packed": true,
+          "size": [
+            512,
+            512
+          ]
+        }
+      ],
+      "objects": [
+        "Audience_torsos__crowd4",
+        "Audience_heads__crowd4",
+        "Audience_torsos__crowd1",
+        "Audience_heads__skin",
+        "Audience_heads__crowd1",
+        "Audience_torsos__crowd3",
+        "Audience_heads__crowd3",
+        "Audience_torsos__crowd0",
+        "Audience_heads__crowd0",
+        "Audience_torsos__crowd2",
+        "Audience_heads__crowd2"
+      ]
+    },
+    "seat2": {
+      "images": [
+        {
+          "name": "seat2-color.png",
+          "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\seat2-color.png",
+          "packed": true,
+          "size": [
+            512,
+            512
+          ]
+        },
+        {
+          "name": "seat-rough.png",
+          "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\seat-rough.png",
+          "packed": true,
+          "size": [
+            512,
+            512
+          ]
+        },
+        {
+          "name": "seat-normal.png",
+          "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\seat-normal.png",
+          "packed": true,
+          "size": [
+            512,
+            512
+          ]
+        }
+      ],
+      "objects": [
+        "Seats__seat2"
+      ]
+    },
+    "glass": {
+      "images": [
+        {
+          "name": "glass-color.png",
+          "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\glass-color.png",
+          "packed": true,
+          "size": [
+            512,
+            512
+          ]
+        },
+        {
+          "name": "glass-rough.png",
+          "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\glass-rough.png",
+          "packed": true,
+          "size": [
+            512,
+            512
+          ]
+        },
+        {
+          "name": "glass-normal.png",
+          "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\glass-normal.png",
+          "packed": true,
+          "size": [
+            512,
+            512
+          ]
+        }
+      ],
+      "objects": [
+        "Suite_windows__glass"
+      ]
+    },
+    "paving": {
+      "images": [
+        {
+          "name": "paving-color.png",
+          "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\paving-color.png",
+          "packed": true,
+          "size": [
+            512,
+            512
+          ]
+        },
+        {
+          "name": "paving-rough.png",
+          "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\paving-rough.png",
+          "packed": true,
+          "size": [
+            512,
+            512
+          ]
+        },
+        {
+          "name": "paving-normal.png",
+          "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\paving-normal.png",
+          "packed": true,
+          "size": [
+            512,
+            512
+          ]
+        }
+      ],
+      "objects": [
+        "Walk_Plaza"
+      ]
+    },
+    "REF_Artwork_Crest": {
+      "images": [
+        {
+          "name": "Final Arena.png",
+          "path": "D:\\Blender\\Blender\\references\\barclays-center\\references\\Arena\\Final Arena.png",
+          "packed": true,
+          "size": [
+            1672,
+            941
+          ]
+        }
+      ],
+      "objects": [
+        "REF_WorldsCrest",
+        "REF_PedestalCrest",
+        "REF_HeaderCrest_0",
+        "REF_HeaderCrest_1",
+        "REF_HeaderCrest_2",
+        "REF_HeaderCrest_3"
+      ]
+    },
+    "REF_Artwork_DeskG": {
+      "images": [
+        {
+          "name": "Final Arena.png",
+          "path": "D:\\Blender\\Blender\\references\\barclays-center\\references\\Arena\\Final Arena.png",
+          "packed": true,
+          "size": [
+            1672,
+            941
+          ]
+        }
+      ],
+      "objects": [
+        "REF_DeskFace_-1"
+      ]
+    },
+    "REF_Artwork_DeskB": {
+      "images": [
+        {
+          "name": "Final Arena.png",
+          "path": "D:\\Blender\\Blender\\references\\barclays-center\\references\\Arena\\Final Arena.png",
+          "packed": true,
+          "size": [
+            1672,
+            941
+          ]
+        }
+      ],
+      "objects": [
+        "REF_DeskFace_1"
+      ]
+    },
+    "REF_Artwork_B": {
+      "images": [
+        {
+          "name": "Final Arena.png",
+          "path": "D:\\Blender\\Blender\\references\\barclays-center\\references\\Arena\\Final Arena.png",
+          "packed": true,
+          "size": [
+            1672,
+            941
+          ]
+        }
+      ],
+      "objects": [
+        "REF_Jumbotron_0",
+        "REF_Jumbotron_1"
+      ]
+    },
+    "REF_Artwork_G": {
+      "images": [
+        {
+          "name": "Final Arena.png",
+          "path": "D:\\Blender\\Blender\\references\\barclays-center\\references\\Arena\\Final Arena.png",
+          "packed": true,
+          "size": [
+            1672,
+            941
+          ]
+        }
+      ],
+      "objects": [
+        "REF_Jumbotron_2",
+        "REF_Jumbotron_3"
+      ]
+    },
+    "REF_PlayerGEN": {
+      "images": [
+        {
+          "name": "audience-jersey-geng.png",
+          "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\interior-detail\\audience-jersey-geng.png",
+          "packed": true,
+          "size": [
+            512,
+            512
+          ]
+        }
+      ],
+      "objects": [
+        "REF_PlayerJersey_-1_0",
+        "REF_PlayerJersey_-1_1",
+        "REF_PlayerJersey_-1_2",
+        "REF_PlayerJersey_-1_3",
+        "REF_PlayerJersey_-1_4"
+      ]
+    },
+    "REF_PlayerBLG": {
+      "images": [
+        {
+          "name": "audience-jersey-blg.png",
+          "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\interior-detail\\audience-jersey-blg.png",
+          "packed": true,
+          "size": [
+            512,
+            512
+          ]
+        }
+      ],
+      "objects": [
+        "REF_PlayerJersey_1_0",
+        "REF_PlayerJersey_1_1",
+        "REF_PlayerJersey_1_2",
+        "REF_PlayerJersey_1_3",
+        "REF_PlayerJersey_1_4"
+      ]
+    },
+    "REF_RearGoldArt": {
+      "images": [
+        {
+          "name": "\uc6d4\ub4dc 2026 GEN.G\u00b7BLG \uc544\ub808\ub098 \ud1b1\ubdf0.png",
+          "path": "D:\\Blender\\Blender\\references\\barclays-center\\references\\Arena\\\uc6d4\ub4dc 2026 GEN.G\u00b7BLG \uc544\ub808\ub098 \ud1b1\ubdf0.png",
+          "packed": true,
+          "size": [
+            1672,
+            941
+          ]
+        }
+      ],
+      "objects": [
+        "REF_BackdropArtwork_-1",
+        "REF_RibbonProgram_0_16",
+        "REF_RibbonProgram_0_17",
+        "REF_RibbonProgram_0_18",
+        "REF_RibbonProgram_0_19",
+        "REF_RibbonProgram_0_20",
+        "REF_RibbonProgram_0_21",
+        "REF_RibbonProgram_0_22",
+        "REF_RibbonProgram_0_23",
+        "REF_RibbonProgram_0_24",
+        "REF_RibbonProgram_0_25",
+        "REF_RibbonProgram_0_26",
+        "REF_RibbonProgram_0_27",
+        "REF_RibbonProgram_0_28",
+        "REF_RibbonProgram_0_29",
+        "REF_RibbonProgram_0_30",
+        "REF_RibbonProgram_0_31",
+        "REF_RibbonProgram_0_32",
+        "REF_RibbonProgram_0_33",
+        "REF_RibbonProgram_0_34",
+        "REF_RibbonProgram_0_35",
+        "REF_RibbonProgram_0_36",
+        "REF_RibbonProgram_0_37",
+        "REF_RibbonProgram_0_38",
+        "REF_RibbonProgram_0_39",
+        "REF_RibbonProgram_0_40",
+        "REF_RibbonProgram_0_41",
+        "REF_RibbonProgram_0_42",
+        "REF_RibbonProgram_0_43",
+        "REF_RibbonProgram_0_44",
+        "REF_RibbonProgram_0_45",
+        "REF_RibbonProgram_0_46",
+        "REF_RibbonProgram_0_47",
+        "REF_RibbonProgram_1_16",
+        "REF_RibbonProgram_1_17",
+        "REF_RibbonProgram_1_18",
+        "REF_RibbonProgram_1_19",
+        "REF_RibbonProgram_1_20",
+        "REF_RibbonProgram_1_21",
+        "REF_RibbonProgram_1_22",
+        "REF_RibbonProgram_1_23",
+        "REF_RibbonProgram_1_24",
+        "REF_RibbonProgram_1_25",
+        "REF_RibbonProgram_1_26",
+        "REF_RibbonProgram_1_27",
+        "REF_RibbonProgram_1_28",
+        "REF_RibbonProgram_1_29",
+        "REF_RibbonProgram_1_30",
+        "REF_RibbonProgram_1_31",
+        "REF_RibbonProgram_1_32",
+        "REF_RibbonProgram_1_33",
+        "REF_RibbonProgram_1_34",
+        "REF_RibbonProgram_1_35",
+        "REF_RibbonProgram_1_36",
+        "REF_RibbonProgram_1_37",
+        "REF_RibbonProgram_1_38",
+        "REF_RibbonProgram_1_39",
+        "REF_RibbonProgram_1_40",
+        "REF_RibbonProgram_1_41",
+        "REF_RibbonProgram_1_42",
+        "REF_RibbonProgram_1_43",
+        "REF_RibbonProgram_1_44",
+        "REF_RibbonProgram_1_45",
+        "REF_RibbonProgram_1_46",
+        "REF_RibbonProgram_1_47",
+        "REF_SuiteRibbon_16",
+        "REF_SuiteRibbon_17",
+        "REF_SuiteRibbon_18",
+        "REF_SuiteRibbon_19",
+        "REF_SuiteRibbon_20",
+        "REF_SuiteRibbon_21",
+        "REF_SuiteRibbon_22",
+        "REF_SuiteRibbon_23",
+        "REF_SuiteRibbon_24",
+        "REF_SuiteRibbon_25",
+        "REF_SuiteRibbon_26",
+        "REF_SuiteRibbon_27",
+        "REF_SuiteRibbon_28",
+        "REF_SuiteRibbon_29",
+        "REF_SuiteRibbon_30",
+        "REF_SuiteRibbon_31",
+        "REF_SuiteRibbon_32",
+        "REF_SuiteRibbon_33",
+        "REF_SuiteRibbon_34",
+        "REF_SuiteRibbon_35",
+        "REF_SuiteRibbon_36",
+        "REF_SuiteRibbon_37",
+        "REF_SuiteRibbon_38",
+        "REF_SuiteRibbon_39",
+        "REF_SuiteRibbon_40",
+        "REF_SuiteRibbon_41",
+        "REF_SuiteRibbon_42",
+        "REF_SuiteRibbon_43",
+        "REF_SuiteRibbon_44",
+        "REF_SuiteRibbon_45",
+        "REF_SuiteRibbon_46",
+        "REF_SuiteRibbon_47"
+      ]
+    },
+    "REF_RearBlueArt": {
+      "images": [
+        {
+          "name": "\uc6d4\ub4dc 2026 GEN.G\u00b7BLG \uc544\ub808\ub098 \ud1b1\ubdf0.png",
+          "path": "D:\\Blender\\Blender\\references\\barclays-center\\references\\Arena\\\uc6d4\ub4dc 2026 GEN.G\u00b7BLG \uc544\ub808\ub098 \ud1b1\ubdf0.png",
+          "packed": true,
+          "size": [
+            1672,
+            941
+          ]
+        }
+      ],
+      "objects": [
+        "REF_BackdropArtwork_1",
+        "REF_RibbonProgram_0_0",
+        "REF_RibbonProgram_0_1",
+        "REF_RibbonProgram_0_2",
+        "REF_RibbonProgram_0_3",
+        "REF_RibbonProgram_0_4",
+        "REF_RibbonProgram_0_5",
+        "REF_RibbonProgram_0_6",
+        "REF_RibbonProgram_0_7",
+        "REF_RibbonProgram_0_8",
+        "REF_RibbonProgram_0_9",
+        "REF_RibbonProgram_0_10",
+        "REF_RibbonProgram_0_11",
+        "REF_RibbonProgram_0_12",
+        "REF_RibbonProgram_0_13",
+        "REF_RibbonProgram_0_14",
+        "REF_RibbonProgram_0_15",
+        "REF_RibbonProgram_0_48",
+        "REF_RibbonProgram_0_49",
+        "REF_RibbonProgram_0_50",
+        "REF_RibbonProgram_0_51",
+        "REF_RibbonProgram_0_52",
+        "REF_RibbonProgram_0_53",
+        "REF_RibbonProgram_0_54",
+        "REF_RibbonProgram_0_55",
+        "REF_RibbonProgram_0_56",
+        "REF_RibbonProgram_0_57",
+        "REF_RibbonProgram_0_58",
+        "REF_RibbonProgram_0_59",
+        "REF_RibbonProgram_0_60",
+        "REF_RibbonProgram_0_61",
+        "REF_RibbonProgram_0_62",
+        "REF_RibbonProgram_0_63",
+        "REF_RibbonProgram_1_0",
+        "REF_RibbonProgram_1_1",
+        "REF_RibbonProgram_1_2",
+        "REF_RibbonProgram_1_3",
+        "REF_RibbonProgram_1_4",
+        "REF_RibbonProgram_1_5",
+        "REF_RibbonProgram_1_6",
+        "REF_RibbonProgram_1_7",
+        "REF_RibbonProgram_1_8",
+        "REF_RibbonProgram_1_9",
+        "REF_RibbonProgram_1_10",
+        "REF_RibbonProgram_1_11",
+        "REF_RibbonProgram_1_12",
+        "REF_RibbonProgram_1_13",
+        "REF_RibbonProgram_1_14",
+        "REF_RibbonProgram_1_15",
+        "REF_RibbonProgram_1_48",
+        "REF_RibbonProgram_1_49",
+        "REF_RibbonProgram_1_50",
+        "REF_RibbonProgram_1_51",
+        "REF_RibbonProgram_1_52",
+        "REF_RibbonProgram_1_53",
+        "REF_RibbonProgram_1_54",
+        "REF_RibbonProgram_1_55",
+        "REF_RibbonProgram_1_56",
+        "REF_RibbonProgram_1_57",
+        "REF_RibbonProgram_1_58",
+        "REF_RibbonProgram_1_59",
+        "REF_RibbonProgram_1_60",
+        "REF_RibbonProgram_1_61",
+        "REF_RibbonProgram_1_62",
+        "REF_RibbonProgram_1_63",
+        "REF_SuiteRibbon_0",
+        "REF_SuiteRibbon_1",
+        "REF_SuiteRibbon_2",
+        "REF_SuiteRibbon_3",
+        "REF_SuiteRibbon_4",
+        "REF_SuiteRibbon_5",
+        "REF_SuiteRibbon_6",
+        "REF_SuiteRibbon_7",
+        "REF_SuiteRibbon_8",
+        "REF_SuiteRibbon_9",
+        "REF_SuiteRibbon_10",
+        "REF_SuiteRibbon_11",
+        "REF_SuiteRibbon_12",
+        "REF_SuiteRibbon_13",
+        "REF_SuiteRibbon_14",
+        "REF_SuiteRibbon_15",
+        "REF_SuiteRibbon_48",
+        "REF_SuiteRibbon_49",
+        "REF_SuiteRibbon_50",
+        "REF_SuiteRibbon_51",
+        "REF_SuiteRibbon_52",
+        "REF_SuiteRibbon_53",
+        "REF_SuiteRibbon_54",
+        "REF_SuiteRibbon_55",
+        "REF_SuiteRibbon_56",
+        "REF_SuiteRibbon_57",
+        "REF_SuiteRibbon_58",
+        "REF_SuiteRibbon_59",
+        "REF_SuiteRibbon_60",
+        "REF_SuiteRibbon_61",
+        "REF_SuiteRibbon_62",
+        "REF_SuiteRibbon_63"
+      ]
+    }
+  },
+  "images": [
+    {
+      "name": "asphalt-color.png",
+      "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\asphalt-color.png",
+      "packed": true,
+      "exists": true
+    },
+    {
+      "name": "asphalt-normal.png",
+      "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\asphalt-normal.png",
+      "packed": true,
+      "exists": true
+    },
+    {
+      "name": "asphalt-rough.png",
+      "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\asphalt-rough.png",
+      "packed": true,
+      "exists": true
+    },
+    {
+      "name": "audience-face-0.png",
+      "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\interior-detail\\audience-face-0.png",
+      "packed": true,
+      "exists": true
+    },
+    {
+      "name": "audience-face-1.png",
+      "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\interior-detail\\audience-face-1.png",
+      "packed": true,
+      "exists": true
+    },
+    {
+      "name": "audience-face-2.png",
+      "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\interior-detail\\audience-face-2.png",
+      "packed": true,
+      "exists": true
+    },
+    {
+      "name": "audience-jersey-blg.png",
+      "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\interior-detail\\audience-jersey-blg.png",
+      "packed": true,
+      "exists": true
+    },
+    {
+      "name": "audience-jersey-geng.png",
+      "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\interior-detail\\audience-jersey-geng.png",
+      "packed": true,
+      "exists": true
+    },
+    {
+      "name": "black-color.png",
+      "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\black-color.png",
+      "packed": true,
+      "exists": true
+    },
+    {
+      "name": "black-normal.png",
+      "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\black-normal.png",
+      "packed": true,
+      "exists": true
+    },
+    {
+      "name": "black-rough.png",
+      "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\black-rough.png",
+      "packed": true,
+      "exists": true
+    },
+    {
+      "name": "blue-color.png",
+      "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\blue-color.png",
+      "packed": true,
+      "exists": true
+    },
+    {
+      "name": "city-sky.jpg",
+      "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\web\\city-sky.jpg",
+      "packed": true,
+      "exists": true
+    },
+    {
+      "name": "concrete-color.png",
+      "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\concrete-color.png",
+      "packed": true,
+      "exists": true
+    },
+    {
+      "name": "concrete-normal.png",
+      "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\concrete-normal.png",
+      "packed": true,
+      "exists": true
+    },
+    {
+      "name": "concrete-rough.png",
+      "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\concrete-rough.png",
+      "packed": true,
+      "exists": true
+    },
+    {
+      "name": "corten-normal.png",
+      "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\corten-normal.png",
+      "packed": true,
+      "exists": true
+    },
+    {
+      "name": "corten-rough.png",
+      "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\corten-rough.png",
+      "packed": true,
+      "exists": true
+    },
+    {
+      "name": "corten0-color.png",
+      "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\corten0-color.png",
+      "packed": true,
+      "exists": true
+    },
+    {
+      "name": "corten1-color.png",
+      "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\corten1-color.png",
+      "packed": true,
+      "exists": true
+    },
+    {
+      "name": "corten2-color.png",
+      "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\corten2-color.png",
+      "packed": true,
+      "exists": true
+    },
+    {
+      "name": "corten3-color.png",
+      "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\corten3-color.png",
+      "packed": true,
+      "exists": true
+    },
+    {
+      "name": "corten4-color.png",
+      "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\corten4-color.png",
+      "packed": true,
+      "exists": true
+    },
+    {
+      "name": "corten5-color.png",
+      "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\corten5-color.png",
+      "packed": true,
+      "exists": true
+    },
+    {
+      "name": "corten6-color.png",
+      "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\corten6-color.png",
+      "packed": true,
+      "exists": true
+    },
+    {
+      "name": "corten7-color.png",
+      "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\corten7-color.png",
+      "packed": true,
+      "exists": true
+    },
+    {
+      "name": "Final Arena.png",
+      "path": "D:\\Blender\\Blender\\references\\barclays-center\\references\\Arena\\Final Arena.png",
+      "packed": true,
+      "exists": true
+    },
+    {
+      "name": "finish-menu-atlas.png",
+      "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\concourse-reference\\finish-menu-atlas.png",
+      "packed": true,
+      "exists": true
+    },
+    {
+      "name": "glass-color.png",
+      "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\glass-color.png",
+      "packed": true,
+      "exists": true
+    },
+    {
+      "name": "glass-normal.png",
+      "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\glass-normal.png",
+      "packed": true,
+      "exists": true
+    },
+    {
+      "name": "glass-rough.png",
+      "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\glass-rough.png",
+      "packed": true,
+      "exists": true
+    },
+    {
+      "name": "green-color.png",
+      "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\green-color.png",
+      "packed": true,
+      "exists": true
+    },
+    {
+      "name": "green-normal.png",
+      "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\green-normal.png",
+      "packed": true,
+      "exists": true
+    },
+    {
+      "name": "green-rough.png",
+      "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\green-rough.png",
+      "packed": true,
+      "exists": true
+    },
+    {
+      "name": "ivory-color.png",
+      "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\ivory-color.png",
+      "packed": true,
+      "exists": true
+    },
+    {
+      "name": "paving-color.png",
+      "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\paving-color.png",
+      "packed": true,
+      "exists": true
+    },
+    {
+      "name": "paving-normal.png",
+      "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\paving-normal.png",
+      "packed": true,
+      "exists": true
+    },
+    {
+      "name": "paving-rough.png",
+      "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\paving-rough.png",
+      "packed": true,
+      "exists": true
+    },
+    {
+      "name": "seat-color.png",
+      "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\seat-color.png",
+      "packed": true,
+      "exists": true
+    },
+    {
+      "name": "seat-normal.png",
+      "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\seat-normal.png",
+      "packed": true,
+      "exists": true
+    },
+    {
+      "name": "seat-rough.png",
+      "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\seat-rough.png",
+      "packed": true,
+      "exists": true
+    },
+    {
+      "name": "seat2-color.png",
+      "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\seat2-color.png",
+      "packed": true,
+      "exists": true
+    },
+    {
+      "name": "silver-color.png",
+      "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\silver-color.png",
+      "packed": true,
+      "exists": true
+    },
+    {
+      "name": "silver-normal.png",
+      "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\silver-normal.png",
+      "packed": true,
+      "exists": true
+    },
+    {
+      "name": "silver-rough.png",
+      "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\silver-rough.png",
+      "packed": true,
+      "exists": true
+    },
+    {
+      "name": "stage-normal.png",
+      "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\stage-normal.png",
+      "packed": true,
+      "exists": true
+    },
+    {
+      "name": "stage-rough.png",
+      "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\stage-rough.png",
+      "packed": true,
+      "exists": true
+    },
+    {
+      "name": "steel-color.png",
+      "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\steel-color.png",
+      "packed": true,
+      "exists": true
+    },
+    {
+      "name": "steel-normal.png",
+      "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\steel-normal.png",
+      "packed": true,
+      "exists": true
+    },
+    {
+      "name": "steel-rough.png",
+      "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\steel-rough.png",
+      "packed": true,
+      "exists": true
+    },
+    {
+      "name": "wide-menu-atlas.png",
+      "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\concourse-reference\\wide-menu-atlas.png",
+      "packed": true,
+      "exists": true
+    },
+    {
+      "name": "wood-color.png",
+      "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\wood-color.png",
+      "packed": true,
+      "exists": true
+    },
+    {
+      "name": "wood-normal.png",
+      "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\wood-normal.png",
+      "packed": true,
+      "exists": true
+    },
+    {
+      "name": "wood-rough.png",
+      "path": "D:\\Blender\\Blender\\barclays-worlds-2026\\materials\\wood-rough.png",
+      "packed": true,
+      "exists": true
+    },
+    {
+      "name": "\uc6d4\ub4dc 2026 GEN.G\u00b7BLG \uc544\ub808\ub098 \ud1b1\ubdf0.png",
+      "path": "D:\\Blender\\Blender\\references\\barclays-center\\references\\Arena\\\uc6d4\ub4dc 2026 GEN.G\u00b7BLG \uc544\ub808\ub098 \ud1b1\ubdf0.png",
+      "packed": true,
+      "exists": true
+    }
+  ],
+  "original_sha256": {
+    "barclays-worlds-2026.blend": "526457ce925749a84b87e628ace73d51a5bdd055fad245b4e410197a9c851ffa",
+    "web/arena.glb": "f4111faa444b517ecc1f0c4dcd9546fb2e309649b5312948ecefa54adeca165a",
+    "web/lightmaps/bowl.png": "dc1a8cfcfb4cd0523a26e663b765aaff2ccf568c45f26e3f21c4e13ad334ad47",
+    "web/lightmaps/city.png": "430b5310185f3b3ccea0b1cbaf437f6708269dd264abda9b4a388238f08e9c47",
+    "web/lightmaps/concourse.png": "7e5a00f36e7a221b70e10baec65a217282763ae7ddeb1c1699c747af47ac82c1",
+    "web/lightmaps/exterior.png": "c393b43866c9304805f4070ac758f2d336e39d61cf30a3d7a8b2018bf2c7265c",
+    "web/lightmaps/interior.png": "d84e4f61a0b79a4642ebdee80ce4974076333f09d7539cf41245c8b353c30b80",
+    "web/lightmaps/seats.png": "5e1ba1662c022d2223d8a6e4db119abd8c106bc275a62c23aec1492d5b58b1d1",
+    "web/lightmaps/stage.png": "64a68f8545eaae9ea4f1685dc4c5f66490c3cf12f113d8cdac1786be18afa244"
+  },
+  "export_properties": [
+    "rna_type",
+    "filepath",
+    "check_existing",
+    "export_import_convert_lighting_mode",
+    "gltf_export_id",
+    "export_use_gltfpack",
+    "export_gltfpack_tc",
+    "export_gltfpack_tq",
+    "export_gltfpack_si",
+    "export_gltfpack_sa",
+    "export_gltfpack_slb",
+    "export_gltfpack_vp",
+    "export_gltfpack_vt",
+    "export_gltfpack_vn",
+    "export_gltfpack_vc",
+    "export_gltfpack_vpi",
+    "export_gltfpack_noq",
+    "export_gltfpack_kn",
+    "export_format",
+    "ui_tab",
+    "export_copyright",
+    "export_image_format",
+    "export_image_add_webp",
+    "export_image_webp_fallback",
+    "export_texture_dir",
+    "export_jpeg_quality",
+    "export_image_quality",
+    "export_keep_originals",
+    "export_texcoords",
+    "export_normals",
+    "export_gn_mesh",
+    "export_meshopt_compression_enable",
+    "export_meshopt_extension",
+    "export_draco_mesh_compression_enable",
+    "export_draco_mesh_compression_level",
+    "export_draco_position_quantization",
+    "export_draco_normal_quantization",
+    "export_draco_texcoord_quantization",
+    "export_draco_color_quantization",
+    "export_draco_generic_quantization",
+    "export_tangents",
+    "export_materials",
+    "export_unused_images",
+    "export_unused_textures",
+    "export_vertex_color",
+    "export_vertex_color_name",
+    "export_all_vertex_colors",
+    "export_active_vertex_color_when_no_material",
+    "export_attributes",
+    "use_mesh_edges",
+    "use_mesh_vertices",
+    "export_cameras",
+    "use_selection",
+    "use_visible",
+    "use_renderable",
+    "use_active_collection_with_nested",
+    "use_active_collection",
+    "use_active_scene",
+    "collection",
+    "at_collection_center",
+    "export_extras",
+    "export_yup",
+    "export_apply",
+    "export_shared_accessors",
+    "export_animations",
+    "export_frame_range",
+    "export_frame_step",
+    "export_force_sampling",
+    "export_sampling_interpolation_fallback",
+    "export_pointer_animation",
+    "export_animation_mode",
+    "export_nla_strips_merged_animation_name",
+    "export_def_bones",
+    "export_hierarchy_flatten_bones",
+    "export_hierarchy_flatten_objs",
+    "export_armature_object_remove",
+    "export_leaf_bone",
+    "export_optimize_animation_size",
+    "export_optimize_animation_keep_anim_armature",
+    "export_optimize_animation_keep_anim_object",
+    "export_optimize_disable_viewport",
+    "export_negative_frame",
+    "export_anim_slide_to_zero",
+    "export_bake_animation",
+    "export_merge_animation",
+    "export_anim_single_armature",
+    "export_reset_pose_bones",
+    "export_current_frame",
+    "export_rest_position_armature",
+    "export_anim_scene_split_object",
+    "export_skins",
+    "export_influence_nb",
+    "export_all_influences",
+    "export_morph",
+    "export_morph_normal",
+    "export_morph_tangent",
+    "export_morph_animation",
+    "export_morph_reset_sk_data",
+    "export_lights",
+    "export_try_sparse_sk",
+    "export_try_omit_sparse_sk",
+    "export_gpu_instances",
+    "export_action_filter",
+    "export_convert_animation_pointer",
+    "export_nla_strips",
+    "export_original_specular",
+    "will_save_settings",
+    "export_hierarchy_full_collections",
+    "export_extra_animations",
+    "export_loglevel",
+    "filter_glob"
+  ],
+  "world": [
+    [
+      "\ubc30\uacbd",
+      0.008999999612569809
+    ],
+    [
+      "\ubc30\uacbd.001",
+      0.008999999612569809
+    ]
+  ]
+}
