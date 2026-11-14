@@ -1,0 +1,103 @@
+<title>LorldCup 하네스 조직도</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* 위에서 아래로: 사용자 → 창구 → 코디네이터 → 팀 6개 카드 격자 */
+:root{
+  --bg:#f5f6f8; --surface:#ffffff; --fg:#17202b; --muted:#5b6675; --line:#d5dae1;
+  --accent:#1f5fbf; --accent-soft:#e3ecfa; --lead:#b4530a; --lead-soft:#fbeadb;
+  --sans:"IBM Plex Sans KR",system-ui,"Malgun Gothic",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#11161d; --surface:#19212b; --fg:#e6ebf1; --muted:#9aa6b4; --line:#2c3644;
+  --accent:#7fb0ff; --accent-soft:#1d2d47; --lead:#f0a35e; --lead-soft:#3a2716; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#11161d; --surface:#19212b; --fg:#e6ebf1; --muted:#9aa6b4; --line:#2c3644;
+  --accent:#7fb0ff; --accent-soft:#1d2d47; --lead:#f0a35e; --lead-soft:#3a2716; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font:15px/1.55 var(--sans)}
+.wrap{max-width:1180px;margin:0 auto;padding-block:32px 48px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  display:flex;flex-direction:column;gap:20px}
+h1{margin:0;font-size:26px;text-wrap:balance}
+.sub{margin:0;color:var(--muted)}
+code,.mono{font-family:var(--mono);font-size:12.5px}
+.tier{display:flex;flex-wrap:wrap;justify-content:center;gap:14px}
+.node{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px 16px;min-width:0;text-align:center}
+.node b{display:block}
+.node span{color:var(--muted);font-size:13px}
+.node.top{border-color:var(--accent);background:var(--accent-soft)}
+.arrow{text-align:center;color:var(--muted);font-size:13px;letter-spacing:.04em}
+.teams{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.team{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:14px 16px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.team h2{margin:0;font-size:17px;display:flex;justify-content:space-between;gap:8px;align-items:baseline;flex-wrap:wrap}
+.team h2 .mono{color:var(--muted);font-weight:500}
+.lbl{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.members{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-family:var(--mono);font-size:12px;padding:3px 8px;border-radius:5px;border:1px solid var(--line)}
+.chip.lead{background:var(--lead-soft);border-color:var(--lead);color:var(--fg)}
+.scope{margin:0;color:var(--muted);font-size:13px;overflow-wrap:anywhere}
+ul.notes{margin:0;padding-left:18px;color:var(--muted);display:flex;flex-direction:column;gap:4px}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:13px;color:var(--muted);align-items:center}
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>LorldCup 하네스 조직도</h1>
+    <p class="sub">기준: <code>docs/harness/team-org.md</code>. 계층은 코디네이터 아래 두 단(팀장 → 팀원)까지다.</p>
+  </header>
+
+  <div class="tier"><div class="node top"><b>사용자</b><span>결정과 승인</span></div></div>
+  <div class="arrow">↓</div>
+  <div class="tier"><div class="node top"><b>창구 (사용자 세션)</b><span>설문·승인·요청 분류·최종 보고</span></div></div>
+  <div class="arrow">↓ 띄움</div>
+  <div class="tier">
+    <div class="node"><b class="mono">planner</b><span>설계서·계획서·DAG (팀 소속 없음)</span></div>
+    <div class="node"><b>코디네이터</b><span>워커 기동·정산·장부 갱신</span></div>
+  </div>
+  <div class="arrow">↓ 팀 spec</div>
+
+  <div class="legend"><span class="chip lead">팀장</span> 팀장이 되는 에이전트 <span class="chip">팀원</span> 팀원 에이전트</div>
+
+  <section class="teams">
+    <article class="team">
+      <h2>기획 <span class="mono">product</span></h2>
+      <div class="members"><span class="chip lead">product-manager</span><span class="chip">ux-designer</span></div>
+      <div><div class="lbl">편집 범위</div><p class="scope">docs/backlog.md·backlog-archive.md(PM만), docs/live/product/ux/(UX), _workspace/product/</p></div>
+    </article>
+    <article class="team">
+      <h2>검증 <span class="mono">qa</span></h2>
+      <div class="members"><span class="chip lead">qa-inspector</span><span class="chip">code-reviewer</span></div>
+      <div><div class="lbl">편집 범위</div><p class="scope">테스트 파일(qa-inspector만), _workspace/qa/</p></div>
+    </article>
+    <article class="team">
+      <h2>하네스 <span class="mono">harness</span></h2>
+      <div class="members"><span class="chip lead">harness-engineer</span></div>
+      <div><div class="lbl">편집 범위</div><p class="scope">.claude/, AGENTS.md, CLAUDE.md, docs/harness/(모델 표 제외), _workspace/harness/</p></div>
+    </article>
+    <article class="team">
+      <h2>그래픽 <span class="mono">graphicmodel</span></h2>
+      <div class="members"><span class="chip lead">graphic-leader</span><span class="chip">graphic-model-designer</span><span class="chip">graphic-character-designer</span><span class="chip">graphic-effect-vfx-designer</span><span class="chip">graphic-performance-verifier</span><span class="chip">ui-designer</span></div>
+      <div><div class="lbl">편집 범위</div><p class="scope">art/, web/assets/, docs/live/graphicmodel/(ui-designer는 ui/만), _workspace/graphicmodel/</p></div>
+    </article>
+    <article class="team">
+      <h2>웹 개발 <span class="mono">web-metaverse-develop</span></h2>
+      <div class="members"><span class="chip lead">metaverse-develop-leader</span><span class="chip">metaverse-3d-developer</span><span class="chip">metaverse-web-developer</span></div>
+      <div><div class="lbl">편집 범위</div><p class="scope">web/(assets 제외), 루트 설정 파일, tests/, docs/live/web-metaverse-develop/, _workspace/web-metaverse-develop/</p></div>
+    </article>
+    <article class="team">
+      <h2>법무검토 <span class="mono">legal-review</span></h2>
+      <div class="members"><span class="chip lead">legal-leader</span><span class="chip">riot-policy-reviewer</span><span class="chip">legal-reviewer</span></div>
+      <div><div class="lbl">편집 범위</div><p class="scope">docs/live/legal-review/, _workspace/legal-review/ (리포트만, 고치지 않음)</p></div>
+    </article>
+  </section>
+
+  <section>
+    <div class="lbl">운영 규칙</div>
+    <ul class="notes">
+      <li>그래픽 팀의 Blender Task는 동시에 하나만 돈다(Blender 하나를 함께 씀).</li>
+      <li>권리자 자산·공개 문구·이용자 정보에 닿는 phase는 법무검토 앞 검토와 끝 검토를 넣는다.</li>
+      <li>화면·조작에 닿는 phase는 계획 전에 UX 명세, 웹 구현 전에 UI 명세를 둔다.</li>
+    </ul>
+  </section>
+</div>
