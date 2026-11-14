@@ -45,7 +45,7 @@ async function fakeYouTube(page, { api = false } = {}) {
   await page.route('https://www.youtube.com/embed/**', route => route.fulfill({ contentType: 'text/html', body: '<body style="margin:0;background:#146ca4">YouTube test double</body>' }));
 }
 
-async function harness(page, { fake = true, source = 'vod', live = config.live, room = null, schedule = [], settings = true } = {}) {
+async function harness(page, { fake = true, source = 'vod', live = config.live, room = null, schedule = [], settings = true, broadcast = null } = {}) {
   if (fake) await fakeYouTube(page);
   await page.clock.setFixedTime(now);
   await page.route('**/screen-video-harness', route => route.fulfill({ contentType: 'text/html', body: `<!doctype html>
@@ -68,10 +68,10 @@ async function harness(page, { fake = true, source = 'vod', live = config.live, 
       document.body.insertBefore(renderer.domElement,document.getElementById('ui-root'));
       const events=new EventTarget();window.screenEvents=[];events.addEventListener('screen:state',e=>screenEvents.push(e.detail));
       const settings=${JSON.stringify({ ...config, source, live, schedule })};
-      const ctx={THREE,scene,root,camera,renderer,cssLayer:document.getElementById('css-layer'),uiRoot:document.getElementById('ui-root'),events,config:()=>settings,player:{position:new THREE.Vector3(0,0,32)},multiplayer:{room:${JSON.stringify(room)}}};
+      const ctx={THREE,scene,root,camera,renderer,cssLayer:document.getElementById('css-layer'),uiRoot:document.getElementById('ui-root'),events,config:name=>name==='broadcasts'?{broadcasts:${JSON.stringify(broadcast ? [broadcast] : [])}}:settings,player:{position:new THREE.Vector3(0,0,32)},multiplayer:{room:${JSON.stringify(room)}}};
       window.arena={};window.testContext=ctx;window.roundPosition=roundPosition;
       window.screenModule=create(ctx);
-      document.querySelector('#enter').onclick=()=>{events.dispatchEvent(new CustomEvent('app:enter',{detail:{broadcastId:'final',showtime:null,roomKey:null}}));document.querySelector('#enter').hidden=true;};
+      document.querySelector('#enter').onclick=()=>{events.dispatchEvent(new CustomEvent('app:enter',{detail:{broadcastId:${JSON.stringify(broadcast?.id ?? 'final')},showtime:null,roomKey:null}}));document.querySelector('#enter').hidden=true;};
       function frame(t){screenModule.update?.(.016,t);renderer.render(scene,camera);window.frame=requestAnimationFrame(frame)}
       frame(0);window.harnessReady=true;
     </script>` }));
@@ -446,6 +446,18 @@ test('VOD uses start, room join seeks the same iframe, drift corrects every five
   expect(await page.evaluate(() => screenEvents.at(-1))).toMatchObject({ source: 'live', playing: true, muted: false, userVolume: config.volume });
   await page.evaluate(() => {ytPlayer.pauseVideo();screenModule.update(.016,performance.now()+6000);});
   expect(await page.evaluate(() => arena.screen.state.playing)).toBe(true);
+});
+
+test('a match VOD start second is the timeline origin: start URL, drift correction and room join all add it', async ({ page }) => {
+  await harness(page, { broadcast: { id: 'sf-t1-blg', vod: 'https://www.youtube.com/watch?v=mNk51Z-okD4', vodStart: 1158 } });
+  await playing(page);
+  // 270 s into the round, from 19:18 of the match video.
+  await expect(page.locator('#arena-screen-player iframe')).toHaveAttribute('src', /mNk51Z-okD4.*start=1428/);
+  await page.evaluate(() => { ytPlayer.time = 12; ytCalls.length = 0; });
+  await expect.poll(() => page.evaluate(() => ytCalls.filter(c => c[0] === 'seek').length), { timeout: 7000 }).toBe(1);
+  expect(await page.evaluate(() => ytPlayer.time)).toBe(1428);
+  await page.evaluate(start => testContext.events.dispatchEvent(new CustomEvent('room:joined', { detail: { roundStart: start } })), roundStart - 600_000);
+  expect(await page.evaluate(() => ytPlayer.time)).toBe(870 + 1158);
 });
 
 test('A-H-1: asynchronous source cues play both sources and retry recovers a playback timeout', async ({ page }) => {

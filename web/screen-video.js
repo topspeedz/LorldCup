@@ -2,8 +2,9 @@ import {CSS3DObject,CSS3DRenderer} from './vendor/CSS3DRenderer.js';
 import {createScreenMesh} from './screen-mesh.js';
 import {APP_ENTER,SCREEN_STATE,ROOM_JOINED,ROOM_LEFT,ROOM_ROUND,SEAT_ENTER,SEAT_EXIT,FULLMODE_ENTER,FULLMODE_EXIT} from './events.js';
 
-export function roundPosition(nowMs,roundStartMs,durationSec){
- const seconds=(nowMs-roundStartMs)/1000;
+// offsetSec: where the round starts in the video (a match's vodStart); the round then plays from there.
+export function roundPosition(nowMs,roundStartMs,durationSec,offsetSec=0){
+ const seconds=(nowMs-roundStartMs)/1000+offsetSec;
  return {seconds,ended:durationSec>0&&seconds>=durationSec};
 }
 
@@ -69,6 +70,7 @@ export function create(ctx){
  let seated=false,sourceStarted=false,effectiveVolume=config.volume,broadcast=null;
  const waitLimit=config.retry.waitLimitSeconds*1000;
  const isWaiting=()=>entered&&source==='vod'&&roundPosition(Date.now(),roundStart,0).seconds<0;
+ const vodStart=()=>broadcast?.vod&&broadcast.vodStart||0; // the match's own VOD starts its rounds at this second
  const state=()=>({source,playing:ready&&status==='playing',time:ready?player.getCurrentTime():0,muted,status,error,volume:effectiveVolume,userVolume:Number(volume.value)});
  const emit=()=>{
   label();const value=state(),serialized=JSON.stringify(value);
@@ -234,7 +236,7 @@ export function create(ctx){
  function sync(force=false){
   if(isWaiting()){waitForRound();return false;}
   if(!ready||cueing||source!=='vod')return true;
-  const position=roundPosition(Date.now(),roundStart,player.getDuration());
+  const position=roundPosition(Date.now(),roundStart,player.getDuration(),vodStart());
   if(position.ended){endRound();return false;}
   // start/cue already carries the offset; defer correction until the first PLAYING event.
   if(!sourceStarted)return true;
@@ -312,7 +314,7 @@ export function create(ctx){
   if(retryFailures)showRetryNotice();else{notice.textContent='유튜브 연결 중…';notice.hidden=isWaiting();}emit();
   try{
    const YT=await loadYouTube();if(disposed||version!==sourceVersion)return;
-   const seconds=source==='vod'?Math.max(0,Math.floor(roundPosition(Date.now(),roundStart,0).seconds))+(broadcast?.vod&&broadcast.vodStart||0):0;
+   const seconds=source==='vod'?Math.max(0,Math.floor(roundPosition(Date.now(),roundStart,0).seconds))+vodStart():0;
    loadTimer=setTimeout(()=>retry('유튜브를 불러오지 못했습니다. 네트워크 연결을 확인해 주세요.',playbackTimeouts>0),15000);
    if(ready&&info.id){player.cueVideoById({videoId:info.id,startSeconds:seconds});return;}
    if(player)player.destroy();ready=false;
