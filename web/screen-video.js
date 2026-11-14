@@ -66,7 +66,7 @@ export function create(ctx){
  let player=null,ready=false,cueing=false,starting=false,eligible=false,inView=false,hasImage=false,status='loading',error=null;
  let muted=config.muted,face=null,lastSync=0,lastState='',loadTimer,playTimer,retryTimer,startFrame,retryDelay=3000,playbackTimeouts=0,sourceVersion=0;
  let waitStarted=null,retryFailures=0,retryNoticeTimer,lastFailure='';
- let seated=false,sourceStarted=false,effectiveVolume=config.volume;
+ let seated=false,sourceStarted=false,effectiveVolume=config.volume,broadcast=null;
  const waitLimit=config.retry.waitLimitSeconds*1000;
  const isWaiting=()=>entered&&source==='vod'&&roundPosition(Date.now(),roundStart,0).seconds<0;
  const state=()=>({source,playing:ready&&status==='playing',time:ready?player.getCurrentTime():0,muted,status,error,volume:effectiveVolume,userVolume:Number(volume.value)});
@@ -304,7 +304,7 @@ export function create(ctx){
  }
  async function loadSource(){
   if(!entered||disposed)return;
-  const version=++sourceVersion,info=sourceInfo(config[source]);
+  const version=++sourceVersion,info=sourceInfo(source==='vod'&&broadcast?.vod||config[source]);
   cancelAnimationFrame(startFrame);clearTimeout(retryTimer);
   clearTimeout(playTimer);playTimer=null;clearTimeout(loadTimer);cueing=true;starting=false;sourceStarted=false;hasImage=false;error=null;status=isWaiting()?'waiting':'loading';display();
   waitStarted??=performance.now();
@@ -312,7 +312,7 @@ export function create(ctx){
   if(retryFailures)showRetryNotice();else{notice.textContent='유튜브 연결 중…';notice.hidden=isWaiting();}emit();
   try{
    const YT=await loadYouTube();if(disposed||version!==sourceVersion)return;
-   const seconds=source==='vod'?Math.max(0,Math.floor(roundPosition(Date.now(),roundStart,0).seconds)):0;
+   const seconds=source==='vod'?Math.max(0,Math.floor(roundPosition(Date.now(),roundStart,0).seconds))+(broadcast?.vod&&broadcast.vodStart||0):0;
    loadTimer=setTimeout(()=>retry('유튜브를 불러오지 못했습니다. 네트워크 연결을 확인해 주세요.',playbackTimeouts>0),15000);
    if(ready&&info.id){player.cueVideoById({videoId:info.id,startSeconds:seconds});return;}
    if(player)player.destroy();ready=false;
@@ -349,6 +349,7 @@ export function create(ctx){
  sound.onclick=()=>{if(muted&&Number(volume.value)===0){volume.value=config.volume;applyVolume();}setMuted(!muted);resumeFromGesture();};
  const enter=event=>{
   if(entered||disposed)return;entered=true;
+  broadcast=(ctx.config('broadcasts')?.broadcasts??[]).find(b=>b.id===event.detail?.broadcastId)??null; // its own vod and start second, else screen.json
   if(!inRoom)roundStart=Number.isSafeInteger(event.detail?.showtime)?event.detail.showtime:currentRound();
   if(config.unmuteOnEnter)setMuted(false);
   if(isWaiting())waitForRound();

@@ -1,1 +1,23 @@
-{"broadcasts":[{"id":"final","name":"결승전","image":"./assets/broadcasts/final.webp"}]}
+{
+ "broadcasts": [
+  {
+   "id": "final",
+   "name": "결승전",
+   "image": "./assets/broadcasts/final.webp"
+  },
+  {
+   "id": "sf-t1-blg",
+   "name": "4강전 T1 vs BLG",
+   "image": "./assets/broadcasts/sf-t1-blg.webp",
+   "vod": "https://www.youtube.com/watch?v=mNk51Z-okD4",
+   "vodStart": 1158
+  },
+  {
+   "id": "sf-ig-geng",
+   "name": "4강전 IG vs Gen.G",
+   "image": "./assets/broadcasts/sf-ig-geng.webp",
+   "vod": "https://www.youtube.com/watch?v=9-dgMb2EPKo",
+   "vodStart": 707
+  }
+ ]
+}

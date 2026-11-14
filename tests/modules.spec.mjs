@@ -71,7 +71,7 @@ test('module and config files match the architecture and approved defaults', asy
   expect(config('network')).toMatchObject({ capacity: 16, fullMessage: '방이 가득 찼습니다(16명)', nickname: { prefix: '팬', digits: 4, collisionExtraDigits: 1 } });
   expect(config('network')).not.toHaveProperty('roundOffsets'); // T32: decision 9, no round picker
   expect(config('controls')).not.toHaveProperty('menu'); // mouse-first: Esc releases nothing
-  expect(config('broadcasts')).toEqual({ broadcasts: [{ id: 'final', name: '결승전', image: './assets/broadcasts/final.webp' }] });
+  expect(config('broadcasts').broadcasts.map(b => b.id)).toEqual(['final', 'sf-t1-blg', 'sf-ig-geng']);
 });
 
 test('registry, lifecycle, ctx and window.arena retain the architecture contract', async ({ page }) => {
