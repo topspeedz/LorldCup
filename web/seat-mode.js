@@ -1,4 +1,4 @@
-import {INPUT_ACTION,SEAT_ENTER,SEAT_EXIT,WORLD_CLICK,HUD_TOAST} from './events.js';
+import {INPUT_ACTION,SEAT_ENTER,SEAT_EXIT,WORLD_CLICK,HUD_TOAST,PEER_STATE} from './events.js';
 
 // Seat UI: docs/live/product/ux/seat.md, docs/live/graphicmodel/ui/seat.md (T30). Seat search and the seated camera are T30s (BL-0033).
 export function create(ctx){
@@ -50,9 +50,13 @@ body.touch #seat-toggle{min-height:var(--size-target-touch);bottom:calc(var(--ti
  document.querySelector('#hud-keys')?.prepend(hint);
  const canvas=ctx.renderer.domElement,cursor=canvas.style.cursor,raycaster=new THREE.Raycaster(),pointer=new THREE.Vector2();
  const screenPlane=new THREE.Plane(),screenHit=new THREE.Vector3(),screenRight=new THREE.Vector3(),screenUp=new THREE.Vector3();
- let seated=null,flying=null,hovered=null,returnPose=null,returnZoom=1,temporaryPose=[],disposed=false,shown='';
- function occupied(seat,peers){return peers.some(p=>Math.abs(p[1]-seat.point.y)<1&&Math.hypot(p[0]-seat.point.x,p[2]-seat.point.z)<.55);}
- function nearest(peers=ctx.multiplayer.positions,distance=config.interactionDistance**2){
+ let seated=null,flying=null,claimed=null,automatic=false,hovered=null,returnPose=null,returnZoom=1,temporaryPose=[],disposed=false,shown='';
+ const positions=()=>ctx.multiplayer.unclaimedPositions??ctx.multiplayer.positions;
+ function claim(seat){claimed=seat;ctx.multiplayer.claimSeat?.(seat?.id??null);}
+ // Concurrent claims converge on the smaller peer id, regardless of message arrival order.
+ function claimedByOther(seat){return (ctx.multiplayer.peers??[]).some(p=>p.seatClaim===seat.id&&(claimed!==seat||p.peerId<ctx.multiplayer.peerId));}
+ function occupied(seat,peers){return claimedByOther(seat)||peers.some(p=>Math.abs(p[1]-seat.point.y)<1&&Math.hypot(p[0]-seat.point.x,p[2]-seat.point.z)<.55);}
+ function nearest(peers=positions(),distance=config.interactionDistance**2){
   if(!faces.length)return null;
   let result=null;
   for(const seat of seats){
@@ -64,7 +68,7 @@ body.touch #seat-toggle{min-height:var(--size-target-touch);bottom:calc(var(--ti
  }
  // P-L-2: runs every frame, but touches markers and DOM only when what they show changes.
  function prompt(){
-  const peers=ctx.multiplayer.positions,near=nearest(peers);
+  const peers=positions(),near=nearest(peers);
   const free=seats.map(seat=>!seated&&!flying&&faces.length>0&&!occupied(seat,peers));
   if(hovered&&!free[seats.indexOf(hovered)])hovered=null;
   const next=[seated?.id,flying?.id,near?.id,hovered?.id,...free].join();
@@ -83,9 +87,8 @@ body.touch #seat-toggle{min-height:var(--size-target-touch);bottom:calc(var(--ti
   button.setAttribute('aria-pressed',String(!!seated));
  }
  function sit(seat){
-  if(occupied(seat,ctx.multiplayer.positions)){
-   events.dispatchEvent(new CustomEvent(HUD_TOAST,{detail:{text:'다른 사람이 먼저 앉았어요',tone:'warning'}}));prompt();return;
-  }
+  if(occupied(seat,positions())){missed();return;}
+  claim(seat);
   let face=faces[0],score=-Infinity;
   for(const candidate of faces){
    const facing=direction.subVectors(seat.point,candidate.position).normalize().dot(candidate.normal);
@@ -127,7 +130,7 @@ body.touch #seat-toggle{min-height:var(--size-target-touch);bottom:calc(var(--ti
    if(!free){events.dispatchEvent(new CustomEvent(HUD_TOAST,{detail:{text:'일어설 통로가 막혀 있어요',tone:'warning'}}));return false;}
    returnPose=[...free,returnPose[3]];
   }
-  seated=null;
+  seated=null;automatic=false;
   for(const {part,position,rotation,scale} of temporaryPose){part.position.copy(position);part.rotation.copy(rotation);part.scale.copy(scale);}
   temporaryPose=[];
   if(restore){
@@ -136,7 +139,7 @@ body.touch #seat-toggle{min-height:var(--size-target-touch);bottom:calc(var(--ti
   }
   returnPose=null;player.setLocked(false);ctx.camera.zoom=returnZoom;cameraRig.setOverride(null);player.avatar.visible=true;
   if(!disposed&&!window.arena.screen.fullMode)input.capturePointer();
-  events.dispatchEvent(new CustomEvent(SEAT_EXIT));prompt();
+  events.dispatchEvent(new CustomEvent(SEAT_EXIT));claim(null);prompt();
   return true;
  }
  function toggle(){
@@ -155,7 +158,7 @@ body.touch #seat-toggle{min-height:var(--size-target-touch);bottom:calc(var(--ti
  function hitSeat(){
   markers.updateMatrixWorld(true);raycaster.camera=ctx.camera;
   const hit=raycaster.intersectObjects(markers.children.filter(marker=>marker.visible),false)[0];
-  return seats.find(seat=>seat.marker===hit?.object&&!occupied(seat,ctx.multiplayer.positions))??null;
+  return seats.find(seat=>seat.marker===hit?.object&&!occupied(seat,positions()))??null;
  }
  function hitScreen(){
   for(const face of faces){
@@ -167,18 +170,31 @@ body.touch #seat-toggle{min-height:var(--size-target-touch);bottom:calc(var(--ti
   }
   return false;
  }
+ function fly(seat,fromScreen){
+  automatic=fromScreen;flying=seat;claim(seat);prompt();
+  player.flyTo([...seat.position,Math.atan2(seat.point.x-target.x,seat.point.z-target.z)],config.clickSit.flightSeconds).then(landed=>{
+   if(disposed)return;
+   flying=null;
+   if(landed!==false)sit(seat);else{automatic=false;claim(null);prompt();}
+  });
+ }
+ function missed(){
+  const retry=automatic;
+  if(seated)stand(false);
+  automatic=false;claim(null);
+  const next=retry?nearest(positions(),Infinity):null;
+  if(next){fly(next,true);return;}
+  events.dispatchEvent(new CustomEvent(HUD_TOAST,{detail:retry?{text:'빈 좌석이 없어요',tone:'warning',ms:2000}:{text:'다른 사람이 먼저 앉았어요',tone:'warning'}}));prompt();
+ }
+ const reconcile=()=>{if(!disposed&&seated&&claimedByOther(seated))missed();};
  function click(e){
   if(disposed||seated||flying||!input.walking||window.arena.screen.fullMode)return;
   raycaster.ray.origin.fromArray(e.detail.ray.origin);raycaster.ray.direction.fromArray(e.detail.ray.direction);
-  let seat=hitSeat();
-  if(!seat){if(!hitScreen())return;seat=nearest(ctx.multiplayer.positions,Infinity);}
+  let seat=hitSeat();const fromScreen=!seat;
+  if(!seat){if(!hitScreen())return;seat=nearest(positions(),Infinity);}
   e.preventDefault();
   if(!seat){events.dispatchEvent(new CustomEvent(HUD_TOAST,{detail:{text:'빈 좌석이 없어요',tone:'warning',ms:2000}}));return;}
-  flying=seat;prompt();
-  player.flyTo([...seat.position,Math.atan2(seat.point.x-target.x,seat.point.z-target.z)],config.clickSit.flightSeconds).then(landed=>{
-   if(disposed)return;
-   flying=null;if(landed!==false)sit(seat);else prompt();
-  });
+  fly(seat,fromScreen);
  }
  const hover=e=>{
   hovered=null;
@@ -191,6 +207,7 @@ body.touch #seat-toggle{min-height:var(--size-target-touch);bottom:calc(var(--ti
  const leave=()=>{hovered=null;prompt();};
  events.addEventListener(WORLD_CLICK,click);canvas.addEventListener('pointermove',hover);canvas.addEventListener('pointerleave',leave);
  events.addEventListener(INPUT_ACTION,action);button.addEventListener('click',toggle);document.addEventListener('keydown',key);
+ events.addEventListener(PEER_STATE,reconcile);
  const api={get seatId(){return seated?.id??null;}};window.arena.seat=api;
  prompt();
  return {
@@ -204,7 +221,7 @@ body.touch #seat-toggle{min-height:var(--size-target-touch);bottom:calc(var(--ti
   },
   dispose(){
    if(disposed)return;
-   disposed=true;stand();events.removeEventListener(INPUT_ACTION,action);button.removeEventListener('click',toggle);document.removeEventListener('keydown',key);
+   disposed=true;stand();claim(null);events.removeEventListener(PEER_STATE,reconcile);events.removeEventListener(INPUT_ACTION,action);button.removeEventListener('click',toggle);document.removeEventListener('keydown',key);
    events.removeEventListener(WORLD_CLICK,click);canvas.removeEventListener('pointermove',hover);canvas.removeEventListener('pointerleave',leave);canvas.style.cursor=cursor;
    button.remove();hint.remove();style.remove();
    markers.removeFromParent();texture.dispose();nearTexture.dispose();markerMaterial.dispose();nearMaterial.dispose();

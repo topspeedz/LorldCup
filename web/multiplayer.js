@@ -17,7 +17,7 @@ export function createMultiplayer(scene,getPose,ctx){
  const net=ctx.config('network'),intervalMs=ctx.config('screen').roundIntervalMinutes*60000,bus=ctx.events;
  const connections=new Map(),poses=new Map(),avatars=new Map(),states=new Map(),names=new Map(),emitted=new Map(),waits=new Map(),arrived=new Map();
  const random=n=>String(Math.floor(Math.random()*10**n)).padStart(n,'0');
- const mine={team:null,character:null,nickname:net.nickname.prefix+random(net.nickname.digits),emote:null,emoteSeq:0,seated:false};
+ const mine={team:null,character:null,nickname:net.nickname.prefix+random(net.nickname.digits),emote:null,emoteSeq:0,seated:false,seatClaim:null};
  // Room keys are counted per broadcast: host peer id = roomKeyPrefix + broadcast id + '-' + key (BL-0035).
  let broadcast='',showtime=null;
  const prefix=()=>net.roomKeyPrefix+broadcast+'-',pad=n=>String(n).padStart(net.roomKeyDigits,'0'),keyId=k=>prefix()+k;
@@ -42,7 +42,8 @@ export function createMultiplayer(scene,getPose,ctx){
  // Untrusted input from other peers: copy only the known fields after checking their shape.
  function cleanState(s){
   if(!s||typeof s!=='object'||!text(s.team,40)||!text(s.character,40)||!validNickname(s.nickname)||!text(s.emote,40)||!Number.isInteger(s.emoteSeq)||s.emoteSeq<0||typeof s.seated!=='boolean')return null;
-  return {team:s.team,character:s.character,nickname:s.nickname,emote:s.emote,emoteSeq:s.emoteSeq,seated:s.seated};
+  if(s.seatClaim!==undefined&&!text(s.seatClaim,80))return null;
+  return {team:s.team,character:s.character,nickname:s.nickname,emote:s.emote,emoteSeq:s.emoteSeq,seated:s.seated,seatClaim:s.seatClaim??null};
  }
  function setState(id,s){
   states.set(id,s);const key=JSON.stringify(s);
@@ -53,8 +54,8 @@ export function createMultiplayer(scene,getPose,ctx){
  bus.addEventListener(TEAM_CHANGED,e=>changed({team:e.detail?.teamId??null}));
  bus.addEventListener(CHARACTER_CHANGED,e=>changed({character:e.detail?.characterId??null}));
  bus.addEventListener(EMOTE_PLAYED,e=>changed({emote:e.detail?.id??null,emoteSeq:mine.emoteSeq+1}));
- bus.addEventListener(SEAT_ENTER,()=>changed({seated:true}));
- bus.addEventListener(SEAT_EXIT,()=>changed({seated:false}));
+ bus.addEventListener(SEAT_ENTER,e=>changed({seated:true,seatClaim:e.detail?.seatId??null}));
+ bus.addEventListener(SEAT_EXIT,()=>changed({seated:false,seatClaim:null}));
  function joined(roomCode,host,roundStart){room={code:roomCode,host,roundStart};emit(ROOM_JOINED,{...room});}
  // 회차 넘김: the host moves the room to the round just started; guests follow the larger roundStart in `room`.
  function nextRound(r){room.roundStart=r;dirty=true;emit(ROOM_ROUND,{roundStart:r});}
@@ -303,6 +304,8 @@ export function createMultiplayer(scene,getPose,ctx){
   }
  }
  return {join,leave:()=>leave(),get count(){return avatars.size+1;},get positions(){return [...avatars.values()].map(a=>a.position.toArray());},get connected(){return !!peer?.open;},
+  get unclaimedPositions(){const ids=[...avatars.keys()];return this.positions.filter((_,i)=>!states.get(ids[i])?.seatClaim);},
+  claimSeat(seatId){if(mine.seatClaim===seatId)return;changed({seatClaim:seatId});if(peer?.open&&room&&(isHost||phase==='room'))sendStates(performance.now());},
   get room(){return room&&{...room};},get roomState(){return lastState?{...lastState}:{key:null,count:1,host:false,phase:'idle'};},get nickname(){return mine.nickname;},get peerId(){return peer?.id??null;},get members(){return [...members];},
   get peers(){return [...states].map(([peerId,s])=>({peerId,...s}));},avatarOf(id){return avatars.get(id)??null;},
   update:tick};
