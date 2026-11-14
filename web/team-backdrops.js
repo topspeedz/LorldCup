@@ -1,10 +1,12 @@
-export async function createTeamBackdrops({THREE,root}){
+export async function createTeamBackdrops({THREE,root,config}){
+ const teams=config('teams').teams,bySlot=slot=>teams.find(t=>t.slot===slot);
  const surfaces=[],loader=new THREE.TextureLoader();
  try{
-  for(const [name,team] of [['REF_BackdropArtwork_-1','geng'],['REF_BackdropArtwork_1','blg']]){
+  for(const [name,slot] of [['REF_BackdropArtwork_-1','GEN.G'],['REF_BackdropArtwork_1','BLG']]){
+   const team=bySlot(slot);
    const mesh=root.getObjectByName(name);
    if(!mesh?.isMesh)throw new Error(`Missing team backdrop: ${name}`);
-   const map=await loader.loadAsync(`./assets/screen/team-backdrop-${team}.png`);
+   const map=await loader.loadAsync(team?.backdrop??`./assets/screen/team-backdrop-${slot==='BLG'?'blg':'geng'}.png`);
    map.colorSpace=THREE.SRGBColorSpace;
    const geometry=mesh.geometry,material=mesh.material,copy=geometry.clone(),paint=material.clone();
    paint.onBeforeCompile=material.onBeforeCompile;paint.customProgramCacheKey=material.customProgramCacheKey;

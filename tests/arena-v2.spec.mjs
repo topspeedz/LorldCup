@@ -19,8 +19,19 @@ const required = /^(REF_Jumbotron_|REF_Reused_Monitor_pixels__cyan|REF_Player|Wa
 const blockers = /Player_desks|Player_PC|Player_chair|Plaza_bench|Bollards|REF_DeskBody|REF_CenterBackdrop|REF_WingMainFrame|CCR_(Counter|Timber|Refrigerator|Lounge|Banquette)/;
 const names = glb('arena.glb').nodes.map(node => node.name).filter(name => required.test(name) || blockers.test(name));
 
+const CROWD = /^(Audience_(heads|torsos)|REF_FanLightsticks)/;
+test('the crowd lives in crowd-v2.glb, each node with its arena parent and child index; the arena file holds none of it', () => {
+  const arena = glb('arena-v2.glb'), crowd = glb('crowd-v2.glb');
+  expect(arena.nodes.filter(node => CROWD.test(node.name))).toEqual([]);
+  const parts = crowd.nodes.filter(node => CROWD.test(node.name));
+  expect(parts.length).toBe(14);
+  for (const node of parts) expect(Number.isInteger(node.extras.arenaIndex), node.name).toBe(true);
+  const parents = new Set(arena.nodes.map(node => node.name));
+  for (const node of parts) if (node.extras.arenaParent !== null) expect(parents.has(node.extras.arenaParent), node.name).toBe(true);
+});
+
 test('v2 preserves GLB names and metadata; T39 beam sources remain in the lighting config', () => {
-  const model = glb('arena-v2.glb'), byName = new Map(model.nodes.map(node => [node.name, node]));
+  const arena = glb('arena-v2.glb'), model = { ...arena, nodes: [...arena.nodes, ...glb('crowd-v2.glb').nodes] }, byName = new Map(model.nodes.map(node => [node.name, node]));
   expect(names.filter(name => !byName.has(name))).toEqual([]);
   for (const prefix of ['Seats__', 'Seat_armrests__', 'AudienceDetail_']) {
     expect([...byName.keys()].filter(name => name?.startsWith(prefix)).length, prefix).toBeGreaterThan(0);
@@ -85,7 +96,14 @@ test('the app loads v2 and renders the support columns and stair infill with v2 
   await page.setViewportSize({ width: 960, height: 640 });
   const { errors, loaded } = await openArena(page);
   expect(loaded).toContain('/arena-v2.glb');
+  expect(loaded).toContain('/crowd-v2.glb');
   expect(loaded).not.toContain('/arena.glb');
+  // The crowd is back at the parent and child index it had before the split.
+  const crowdNodes = glb('crowd-v2.glb').nodes.filter(node => CROWD.test(node.name)).map(node => [node.name, node.extras.arenaParent, node.extras.arenaIndex]);
+  expect(await page.evaluate(nodes => nodes.filter(([name, parent, index]) => {
+    const { root } = arenaV2Probe.ctx, host = parent ? root.getObjectByName(parent) : root;
+    return host?.children[index]?.name !== name;
+  }), crowdNodes)).toEqual([]);
   expect([...new Set(loaded.filter(path => path.startsWith('/lightmaps/')))].sort())
     .toEqual(Object.keys(served).map(path => path.slice(1)).sort());
   const result = await page.evaluate(({ names, lightmaps, beamSources }) => {

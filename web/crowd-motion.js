@@ -343,7 +343,7 @@ function* selectCrowd(meshes,config,uniformFrame){
 function createBlockCrowd(root,seats,config,motionUniforms,screenCenter=root.getWorldPosition(new THREE.Vector3())){
  const group=new THREE.Group();group.name='Audience_Blocks';group.visible=false;root.add(group);
  const inverse=root.matrixWorld.clone().invert(),matrix=new THREE.Matrix4(),rotation=new THREE.Quaternion(),up=new THREE.Vector3(0,1,0),scale=new THREE.Vector3();
- const settings=config.lightsticks,colors={Gold:[1,.47,.075],Cyan:[.008,.68,1],Pink:[1,.012,.3]};
+ const settings=config.lightsticks,colors=settings.colors??{Gold:[1,.47,.075],Cyan:[.008,.68,1],Pink:[1,.012,.3]};
  const sideAxis=new THREE.Vector3().fromArray(settings.sideAxis);
  const make=(name,entries,material,lightstick=false)=>{
   const geometry=new THREE.BoxGeometry(1,1,1),origins=[],upper=[],grips=[],poses=[],forwards=[],seeds=[],zones=[];
@@ -418,7 +418,7 @@ function createBlockCrowd(root,seats,config,motionUniforms,screenCenter=root.get
   mesh.computeBoundingSphere();mesh.boundingSphere.radius+=lightstick?2:.2;group.add(mesh);
  };
  const bodies=[],sticks={Gold:[],Cyan:[],Pink:[]};
- const shirts={'GEN.G':new THREE.Color('#443b22'),BLG:new THREE.Color('#739097')},skin=new THREE.Color('#76513a');
+ const shirts={'GEN.G':new THREE.Color(config.shirts?.['GEN.G']??'#443b22'),BLG:new THREE.Color(config.shirts?.BLG??'#739097')},skin=new THREE.Color('#76513a');
  for(const seat of seats){
   if(seat.upper||config.impostor.representation==='blocks'){
    bodies.push({seat,position:seat.position.clone().add(new THREE.Vector3(0,.77,0)),size:[.38,.48,.27],color:shirts[seat.team]??seat.bodyColor});

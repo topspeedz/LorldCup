@@ -4,6 +4,7 @@
 import {events,APP_READY,APP_ENTER} from '../events.js';
 import {scheduledSource,upcomingRounds} from '../screen-video.js';
 import {parseInvite} from '../room-keys.js';
+import {pickBroadcast} from '../team-theme.js';
 
 const SHOWTIME_COUNT=3; // UI D1: three next round boundaries, after the one running cell (T88)
 const cover=document.querySelector('#loading'),text=cover.querySelector('[role=status]'),bar=cover.querySelector('progress');
@@ -85,7 +86,9 @@ const pad=n=>String(n).padStart(2,'0');
 const clock=ms=>{const d=new Date(ms);return `${pad(d.getHours())}:${pad(d.getMinutes())}`;};
 
 function firstPage(broadcasts,screen){
- let broadcastId=broadcasts[0].id,showtime=null,live=false;
+ // The arena is themed for the match in ?b= (team-theme.js pickBroadcast); another match reloads with its ?b=.
+ const loaded=pickBroadcast(broadcasts,location.search).id,picked=new URLSearchParams(location.search).has('b');
+ let broadcastId=loaded,showtime=null,live=false;
  const cards=broadcasts.map(b=>{
   const card=document.createElement('button');
   card.type='button';card.dataset.broadcast=b.id;
@@ -93,7 +96,7 @@ function firstPage(broadcasts,screen){
   card.querySelector('.name').textContent=b.name;
   if(b.image){const img=document.createElement('img');img.src=b.image;img.alt='';card.classList.add('banner');card.prepend(img);}
   // A banner opens its showtimes: the .when step scrolls in and 들어가기 takes focus (Enter, Enter goes in).
-  card.addEventListener('click',()=>{broadcastId=b.id;render();when.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'});enter.focus({preventScroll:true});});
+  card.addEventListener('click',()=>{if(b.id!==loaded){location.assign(`./?b=${encodeURIComponent(b.id)}`);return;}broadcastId=b.id;render();when.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'});enter.focus({preventScroll:true});});
   broadcastsBox.append(card);return card;
  });
  const slots=Array.from({length:SHOWTIME_COUNT+1},()=>{
@@ -123,7 +126,8 @@ function firstPage(broadcasts,screen){
  }
  render();tick=setInterval(render,1000);
  choice=()=>({broadcastId,showtime:live?null:showtime,roomKey:null});
- panel.hidden=false;cards[0].focus();
+ panel.hidden=false;
+ if(picked){when.scrollIntoView();enter.focus({preventScroll:true});}else cards[0].focus();
 }
 
 async function start(){

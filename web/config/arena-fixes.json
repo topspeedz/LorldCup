@@ -1,4 +1,5 @@
 {
+  "materialRoughness": { "CCR_Charcoal stone floor with 1200mm joints": 0.62 },
   "bridgeGaps": [
     { "x": [-65, -61], "zMin": [-6.11155, -5.7975], "zMax": [-3.377719, -3.377719] },
     { "x": [-65, -61], "zMin": [3.38846, 3.38846], "zMax": [6.122291, 5.80824] }

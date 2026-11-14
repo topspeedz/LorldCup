@@ -63,8 +63,12 @@ export function create(ctx){
    item.flipped=flipped;
   }
  }
+ // Matte overrides (by material name): the concourse stone mirrored the LED ribbons at roughness 0.21.
+ const matte=[];
+ root.traverse(o=>{for(const m of o.isMesh?[o.material].flat():[]){const r=config.materialRoughness?.[m.name];if(r!==undefined&&!matte.some(x=>x[0]===m)){matte.push([m,m.roughness]);m.roughness=r;}}});
  update();
  return {update,dispose(){
+  for(const [m,r] of matte)m.roughness=r;
   player.removeBlocker(wall);wall.geometry.dispose();wall.material.dispose();
   for(const blocker of edgeWalls){player.removeBlocker(blocker);blocker.geometry.dispose();}
   for(const floor of floors){player.floorMeshes.splice(player.floorMeshes.indexOf(floor),1);floor.geometry.dispose();}

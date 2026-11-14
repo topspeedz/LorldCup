@@ -13,6 +13,7 @@ import {createCameraRig} from './camera-rig.js';
 import {createRenderBatches} from './render-batch.js';
 import {createArenaLod} from './arena-lod.js';
 import {createTeamBackdrops} from './team-backdrops.js';
+import {pickBroadcast,broadcastTeams,themeCrowdConfig,applyTeamTheme} from './team-theme.js';
 
 const scene=new THREE.Scene();scene.background=new THREE.Color('#1a2c45');
 const camera=new THREE.PerspectiveCamera(68,innerWidth/innerHeight,.08,650);
@@ -37,6 +38,10 @@ async function start(){
   if(!response.ok)throw Error('설정을 불러오지 못했습니다: '+name);
   return [name,await response.json()];
  })));
+ // The match (?b=, else the first) picks the two teams every module sees as config('teams').teams (team-theme.js).
+ const broadcast=pickBroadcast(configs.broadcasts.broadcasts,location.search);
+ configs.teams={...configs.teams,teams:broadcastTeams(configs.teams,broadcast)};
+ configs.crowd=themeCrowdConfig(configs.crowd,configs.teams.teams);
  const config=name=>configs[name];
  const avatar=createAvatar(0x45bfff);scene.add(avatar);
  const input=createInput({canvas:renderer.domElement,events,controls:config('controls'),isReady:()=>ready,
@@ -94,10 +99,20 @@ async function start(){
   input.dispose();window.removeEventListener('resize',resize);renderer.dispose();
  });
  const draco=new DRACOLoader().setDecoderPath('./vendor/draco/').setDecoderConfig({type:'wasm'}).setWorkerLimit(2);
- const g=await new GLTFLoader().setDRACOLoader(draco).loadAsync('./arena-v2.glb',e=>{
-  if(e.total)status.textContent='경기장 불러오는 중 '+Math.round(e.loaded/e.total*100)+'%';
- });
+ // The crowd is its own file (art/environment/arena/split-crowd.mjs); both load together and the crowd goes back where it sat.
+ const loads={},loader=new GLTFLoader().setDRACOLoader(draco),track=name=>e=>{
+  loads[name]=e;const all=Object.values(loads);
+  if(all.length===2&&all.every(x=>x.total))status.textContent='경기장 불러오는 중 '+Math.round(all.reduce((s,x)=>s+x.loaded,0)/all.reduce((s,x)=>s+x.total,0)*100)+'%';
+ };
+ const [g,crowdFile]=await Promise.all([loader.loadAsync('./arena-v2.glb',track('arena')),loader.loadAsync('./crowd-v2.glb',track('crowd'))]);
+ const parts=[];crowdFile.scene.traverse(o=>{if(Number.isInteger(o.userData.arenaIndex))parts.push(o);});
+ for(const o of parts.sort((a,b)=>a.userData.arenaIndex-b.userData.arenaIndex)){
+  const parent=o.userData.arenaParent?g.scene.getObjectByName(o.userData.arenaParent):g.scene;
+  if(!parent)throw new Error(`crowd parent missing: ${o.userData.arenaParent}`);
+  o.removeFromParent();parent.children.splice(o.userData.arenaIndex,0,o);o.parent=parent;
+ }
  // Keep the unsplit crowd off the GPU until its distance-based representation is ready.
+ await applyTeamTheme(g.scene,configs.teams.teams,THREE);
  g.scene.visible=false;scene.add(g.scene);g.scene.updateMatrixWorld(true);ctx.root=g.scene;
  g.scene.traverse(o=>{if(!o.isMesh)return;
   o.geometry.computeBoundingBox();o.geometry.computeBoundingSphere();

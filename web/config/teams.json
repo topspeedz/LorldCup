@@ -5,14 +5,80 @@
       "name": "GEN.G",
       "color": "#10131a",
       "accent": "#d6b45a",
-      "uniform": "./assets/characters/uniform-geng.png"
+      "uniform": "./assets/characters/uniform-geng.png",
+      "slot": "GEN.G",
+      "backdrop": "./assets/screen/team-backdrop-geng.png",
+      "crowdShirt": "#443b22",
+      "lightsticks": [
+        [
+          1,
+          0.47,
+          0.075
+        ]
+      ]
     },
     {
       "id": "blg",
       "name": "BLG",
       "color": "#e9f1f4",
       "accent": "#00bcd4",
-      "uniform": "./assets/characters/uniform-blg.png"
+      "uniform": "./assets/characters/uniform-blg.png",
+      "slot": "BLG",
+      "backdrop": "./assets/screen/team-backdrop-blg.png",
+      "crowdShirt": "#739097",
+      "lightsticks": [
+        [
+          0.008,
+          0.68,
+          1
+        ],
+        [
+          1,
+          0.012,
+          0.3
+        ]
+      ]
+    }
+  ],
+  "extraTeams": [
+    {
+      "id": "t1",
+      "name": "T1",
+      "color": "#0d0e12",
+      "accent": "#e2012d",
+      "uniform": "./assets/characters/uniform-t1.png",
+      "slot": "GEN.G",
+      "backdrop": "./assets/screen/team-backdrop-t1.jpg",
+      "crowdShirt": "#3a1418",
+      "lightsticks": [
+        [
+          1,
+          0.012,
+          0.04
+        ]
+      ]
+    },
+    {
+      "id": "ig",
+      "name": "IG",
+      "color": "#eef0f2",
+      "accent": "#111317",
+      "uniform": "./assets/characters/uniform-ig.png",
+      "slot": "BLG",
+      "backdrop": "./assets/screen/team-backdrop-ig.jpg",
+      "crowdShirt": "#a3a8ad",
+      "lightsticks": [
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          0.75,
+          0.78,
+          0.85
+        ]
+      ]
     }
   ]
 }
