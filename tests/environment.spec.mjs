@@ -39,6 +39,29 @@ test('T90 CPU: atlas intensity scales preserve RGBM range and default atlases, i
   }
 });
 
+test('CPU: WebP lightmaps load like PNG, other extensions are rejected', async () => {
+  const source = readFileSync(new URL('../web/baked-lighting.js', import.meta.url), 'utf8')
+    .replace("'three'", JSON.stringify(new URL('../web/vendor/three.module.js', import.meta.url).href));
+  const { applyBakedLightmaps } = await import('data:text/javascript;base64,' + Buffer.from(source).toString('base64'));
+  const load = THREE.TextureLoader.prototype.loadAsync, paths = [];
+  THREE.TextureLoader.prototype.loadAsync = async path => { paths.push(path);return new THREE.Texture(); };
+  const arena = texture => {
+    const geometry = new THREE.PlaneGeometry(), mesh = new THREE.Mesh(geometry, new THREE.MeshStandardMaterial());
+    geometry.setAttribute('_lightmap_uv', geometry.getAttribute('uv'));
+    mesh.userData.bakedLighting = { texture, range: 8, uvAttribute: '_lightmap_uv' };
+    return new THREE.Group().add(mesh);
+  };
+  try {
+    const root = arena('./lightmaps/seats-v2.webp');
+    await applyBakedLightmaps(root, { './lightmaps/seats-v2.webp': .5 });
+    expect(paths).toEqual(['./lightmaps/seats-v2.webp']);
+    expect(root.children[0].material.lightMapIntensity / Math.PI).toBe(.5);
+    await expect(applyBakedLightmaps(arena('./lightmaps/seats-v2.jpg'))).rejects.toThrow('Invalid baked lighting metadata');
+  } finally {
+    THREE.TextureLoader.prototype.loadAsync = load;
+  }
+});
+
 test('T90 exposure, per-atlas intensity and configured light count reach the arena without dimming photos', async ({ page }) => {
   await openArena(page);
   await page.waitForFunction(() => {
