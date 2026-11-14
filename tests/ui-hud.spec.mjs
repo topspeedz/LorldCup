@@ -131,7 +131,7 @@ const seatBar = page => page.evaluate(() => {
   const under = b.top >= r.bottom - 1;
   return {
     keys: [key('#full-mode-open'), key('#seat-toggle'), key('#emote-open')],
-    order: ['#full-mode-open', '#seat-toggle', '#emote-open', '#seat-volume'].map(sel => Math.round(document.querySelector(sel).getBoundingClientRect().x)),
+    order: ['#full-mode-open', '#seat-volume', '#chat-open', '#emote-open', '#team-select-open', '#seat-toggle'].map(sel => Math.round(document.querySelector(sel).getBoundingClientRect().x)),
     clear: !(Math.min(b.right, r.right) > Math.max(b.left, r.left) && Math.min(b.bottom, r.bottom) > Math.max(b.top, r.top)),
     placed: under ? Math.abs((b.left + b.right) / 2 - centre) <= 2 && b.top - r.bottom <= 16 : Math.abs(innerHeight - b.bottom - parseFloat(getComputedStyle(dock).bottom)) <= 2 && Math.abs((b.left + b.right) / 2 - innerWidth / 2) <= 2,
     inside: b.left >= 0 && b.right <= innerWidth && b.bottom <= innerHeight,
@@ -149,7 +149,7 @@ test('T67: seated, the bar under the screen holds F Full Mode, E / Esc 일어나
     keys: ['F', 'E / Esc', 'Ctrl'], order: expect.any(Array), clear: true, placed: true, inside: true, tall: true, keyBox: false, settingsVolume: false,
   });
   const { order } = await seatBar(page);
-  expect([...order].sort((a, b) => a - b)).toEqual(order); // F, E, 감정표현, 볼륨 from left to right
+  expect([...order].sort((a, b) => a - b)).toEqual(order); // 사용자 2026-11-15 "UX중심으로 올바르게 나열": 영상(Full Mode, 볼륨) → 함께(채팅, 감정표현, 팀·캐릭터) → 일어나기
   const dock = page.locator('#dock');
   await expect(dock.getByRole('button', { name: /Full Mode/ })).toBeVisible();
   await expect(dock.getByRole('button', { name: /일어나기/ })).toBeVisible();

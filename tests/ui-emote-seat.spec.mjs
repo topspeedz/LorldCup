@@ -135,8 +135,8 @@ test('S-W3/S-W4/S-W8/E-W7/E-W8: seated frees the cursor, shows the action group,
   // T67: seated, E shows once — as the "E / Esc" keycap on the bar's 일어나기 — and the top-right key box hides.
   await expect(page.locator('#hud-keys')).toBeHidden();
   expect(await page.locator('#seat-toggle').evaluate(el => getComputedStyle(el, '::before').content)).toBe('"E / Esc"');
-  // T67 bar order: Full Mode, 일어나기, 감정표현.
-  const order = await page.evaluate(() => [document.querySelector('#seat-toggle'), document.querySelector('#emote-open')].map(b => b.getBoundingClientRect().x));
+  // Bar order (2026-11-15): 감정표현 comes before 일어나기, which closes the bar.
+  const order = await page.evaluate(() => [document.querySelector('#emote-open'), document.querySelector('#seat-toggle')].map(b => b.getBoundingClientRect().x));
   expect(order[0]).toBeLessThan(order[1]);
   await page.locator('#dock #emote-open').click();
   // T102: seated, the menu is one low row of the four emotes (placement: ui-hud.spec.mjs E-W8).

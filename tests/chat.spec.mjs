@@ -48,3 +48,15 @@ test('Ctrl+C does not open the chat', async ({ page }) => {
   await page.keyboard.press('Control+KeyC');
   await expect(page.locator('#yt-chat')).toBeHidden();
 });
+
+test('the 채팅 button opens and closes the chat like C', async ({ page }) => {
+  await harness(page, { source: 'live', videoId: 'abcdefghijk' });
+  const button = page.getByRole('button', { name: '채팅' });
+  await expect(button).toHaveAttribute('aria-expanded', 'false');
+  await button.click();
+  await expect(page.locator('#yt-chat iframe')).toBeVisible();
+  await expect(button).toHaveAttribute('aria-expanded', 'true');
+  await page.keyboard.press('KeyC');
+  await expect(page.locator('#yt-chat')).toBeHidden();
+  await expect(button).toHaveAttribute('aria-expanded', 'false');
+});
