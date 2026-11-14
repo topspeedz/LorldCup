@@ -98,7 +98,7 @@ function firstPage(broadcasts,screen){
   if(b.soon){card.disabled=true;card.classList.add('soon');card.insertAdjacentHTML('beforeend','<span class="soon-badge">곧 시작합니다</span>');}
   if(b.image){const img=document.createElement('img');img.src=b.image;img.alt='';card.classList.add('banner');card.prepend(img);}
   // A banner opens its showtimes: the .when step scrolls in and 들어가기 takes focus (Enter, Enter goes in).
-  card.addEventListener('click',()=>{if(b.id!==loaded){location.assign(`./?b=${encodeURIComponent(b.id)}`);return;}broadcastId=b.id;render();when.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'});enter.focus({preventScroll:true});});
+  card.addEventListener('click',()=>{if(b.id!==loaded){location.assign(`./?b=${encodeURIComponent(b.id)}`);return;}broadcastId=b.id;render();if(b.liveOn){enter.click();return;} /* a live match has one LIVE!! showtime, so its banner goes straight in */when.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'});enter.focus({preventScroll:true});});
   broadcastsBox.append(card);return card;
  });
  const slots=Array.from({length:SHOWTIME_COUNT+1},()=>{
