@@ -155,7 +155,7 @@ export function create(ctx){
   setText(sound,muted?'🔇':'🔊');if(sound.getAttribute('aria-label')!==(muted?'소리 켜기':'소리 끄기'))sound.setAttribute('aria-label',muted?'소리 켜기':'소리 끄기');
   setText(sourceLabel,source==='live'?'지금: 생방송':'지금: 재방');
  }
- const occluded=new Set(),moved=new Set(),KEEP='#arena-screen-controls,#panel,#dock,#emote-menu,#team-select',FREE='#yt-chat,#gallery,#gallery-tools'; // FREE: side panels that size themselves beside the video; never moved or hidden here
+ const occluded=new Set(),moved=new Set(),KEEP='#arena-screen-controls,#panel,#dock,#emote-menu,#team-select',FREE='#yt-chat'; // FREE: the chat panel sits beside the video; never moved or hidden here
  let candidates=[],kept=[];
  const collect=()=>{
   candidates=[...document.body.children,...uiRoot.querySelectorAll('*')].filter(el=>el!==cssLayer&&el!==renderer.domElement&&el!==uiRoot&&!['SCRIPT','STYLE','LINK','OPTION'].includes(el.tagName)&&!el.closest(FREE));
