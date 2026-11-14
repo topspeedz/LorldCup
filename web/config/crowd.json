@@ -7,7 +7,20 @@
   "seatedMotion": { "amplitude": 2.2, "tempoVariation": 0.35 },
   "motionZone": { "halfAngleDegrees": 60, "hysteresisDegrees": 10, "centerRadius": 2 },
   "uniformSides": { "favoredFraction": 0.6, "centerBandWidth": 12 },
-  "density": { "upperKeepFraction": 0.4, "lowerEmptyFraction": 0.3, "rearKeepMultiplier": 0.5, "rearMinX": 30 },
+  "lightsticks": { "sideAxis": [0, 0, 1], "sideBoundary": 0, "leftGoldFraction": 0.75, "rightGoldFraction": 0.3333333333333333, "pinkFraction": 0.2, "handHeight": 1, "length": 0.38, "width": 0.035, "intensity": 2.2, "elevationDegrees": 45, "yawRangeDegrees": 25, "pitchRangeDegrees": 20,
+    "motion": {
+      "classes": [
+        { "fraction": 0.25, "yawDegrees": 55, "pitchDegrees": 40, "speedHz": [1.6, 2.8] },
+        { "fraction": 0.4, "yawDegrees": 25, "pitchDegrees": 18, "speedHz": [0.8, 1.5] },
+        { "fraction": 0.35, "yawDegrees": 4, "pitchDegrees": 4, "speedHz": [0.2, 0.5] }
+      ],
+      "stateSeconds": [2, 9], "transitionSeconds": 0.65,
+      "classChangeSeconds": [30, 60], "classChangeFraction": 0.35, "classTransitionSeconds": 3,
+      "zone": { "cellSize": 4, "strength": 0.12 }, "trembleMultiplier": 3,
+      "limits": { "yawDegrees": 85, "elevationDegrees": [-20, 85] }
+    }
+  },
+  "density": { "upperKeepFraction": 0.6, "lowerEmptyFraction": 0.3, "rearKeepMultiplier": 0.5, "rearMinX": 30 },
   "clearZones": [
     { "min": [-56, -0.55, -46], "max": [56, -0.33, 46] },
     { "min": [-55.4, -2.3, -7.5], "max": [-49, -0.65, 7.5] },
@@ -620,5 +633,5 @@
     { "min": [-46.166712, -4.08, 4.045371], "max": [-45.366712, -3.68, 4.845371] },
     { "min": [-46.749632, -4.08, 3.375371], "max": [-45.949632, -3.68, 4.175371] }
   ],
-  "impostor": { "nearDistance": 24, "farDistance": 30, "cellSize": 8 }
+  "impostor": { "representation": "upper-blocks", "nearDistance": 24, "farDistance": 30, "cellSize": 8 }
 }

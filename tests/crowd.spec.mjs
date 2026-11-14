@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { readFileSync } from 'node:fs';
+import assert from 'node:assert/strict';
 import * as THREE from '../web/vendor/three.module.js';
 
 async function cpuCrowd(run, preload = false) {
@@ -93,7 +94,7 @@ test('T86 CPU: upper density increases and both tiers follow the configured frac
     expect(config.density.upperKeepFraction).toBeGreaterThan(1 / 3);
     expect(crowd.density.original).toEqual({ lower: 40, upper: 40 });
     for (const group of Object.values(crowd.density.groups)) {
-      const fraction = (group.upper ? config.density.upperKeepFraction : 1 - config.density.lowerEmptyFraction) * (group.rear ? config.density.rearKeepMultiplier : 1);
+      const fraction = (group.upper ? config.density.upperKeepFraction : 1 - config.density.lowerEmptyFraction) * (group.rear && !group.upper ? config.density.rearKeepMultiplier : 1);
       expect(group.kept).toBe(Math.round(group.original * fraction) - group.cleared);
     }
     for (const upper of [false, true]) expect(crowd.stats[upper ? 'upperSpectators' : 'lowerSpectators']).toBe(Object.values(crowd.density.groups).filter(group => group.upper === upper).reduce((sum, group) => sum + group.kept, 0));
@@ -256,6 +257,143 @@ test('T77 CPU: seated motion settings reach the shader only through seat events 
   }
 });
 
+function stickFunctions(shader) {
+  const scalar = shader.vertexShader.slice(shader.vertexShader.indexOf('float stickHash'), shader.vertexShader.indexOf('vec3 stickVertex'))
+    .replace(/float (\w+)\(([^)]*)\)/g, (_, name, args) => `function ${name}(${args.replaceAll('float ', '')})`)
+    .replace(/\bfloat /g, 'let ').replace(/\bint\(/g, 'Math.trunc(');
+  const fract = x => x - Math.floor(x), mix = (a, b, t) => a + (b - a) * t;
+  const clamp = (x, a, b) => Math.max(a, Math.min(b, x));
+  const smoothstep = (a, b, x) => { const t = clamp((x - a) / (b - a), 0, 1); return t * t * (3 - 2 * t); };
+  const values = { fract, mix, clamp, smoothstep, sin: Math.sin, floor: Math.floor, min: Math.min, CM_PI: Math.PI,
+    ...Object.fromEntries(Object.entries(shader.uniforms).map(([name, uniform]) => [name, uniform.value])) };
+  return new Function(...Object.keys(values), scalar + '\nreturn {stickHash,stickState,stickClass,stickRate,stickWave,stickClassWave,stickAngle};')(...Object.values(values));
+}
+
+test('T104b CPU: sticks keep their hand anchors with mixed classes and continuous five-state motion', async () => {
+  const config = JSON.parse(readFileSync(new URL('../web/config/crowd.json', import.meta.url), 'utf8'));
+  const source = readFileSync(new URL('../web/crowd-motion.js', import.meta.url), 'utf8')
+    .replace("'three'", JSON.stringify(new URL('../web/vendor/three.module.js', import.meta.url).href))
+    .replace("'./events.js'", JSON.stringify(new URL('../web/events.js', import.meta.url).href));
+  expect(config.lightsticks.motion.classes).toHaveLength(3);
+  const { createBlockCrowd, lightstickZone } = await import('data:text/javascript;base64,' + Buffer.from(source + '\nexport {createBlockCrowd,lightstickZone};').toString('base64'));
+  const root = new THREE.Group(), screen = new THREE.Vector3(-5, 0, -5);
+  const seats = Array.from({ length: 64 }, (_, i) => ({
+    position: new THREE.Vector3(12 + i, i < 32 ? 0 : 8, i - 32), front: new THREE.Vector3(0, 0, 1),
+    upper: i >= 32, seed: (i + .5) / 64, lightstick: true,
+    grip: { origin: new THREE.Vector3(12 + i, 0, i - 32), right: new THREE.Vector3(1, 0, 0), front: new THREE.Vector3(0, 0, 1), up: new THREE.Vector3(0, 1, 0),
+      bounds: new THREE.Box3(new THREE.Vector3(.16, .32, .66), new THREE.Vector3(.19, .35, .94)), side: 1, seed: (i + .5) / 64, style: 0 }
+  }));
+  const uniforms = { crowdStickTime: { value: 0 } };
+  const blocks = createBlockCrowd(root, seats, config, uniforms, screen);
+  let repeated;
+  try {
+    const sticks = blocks.group.children.filter(m => m.name.startsWith('Audience_Lightsticks_'));
+    expect(sticks).toHaveLength(3);expect(sticks.reduce((n, m) => n + m.count, 0)).toBe(64);
+    const shader = { uniforms: {}, vertexShader: '#include <project_vertex>', fragmentShader: '' };
+    sticks[0].material.onBeforeCompile(shader);
+    expect(sticks[0].geometry.attributes.crowdGrip).toBeDefined();
+    expect(shader.vertexShader).toContain('cmPose(');
+    expect(shader.uniforms.crowdStickTime).toBe(uniforms.crowdStickTime);
+    const mix = (a, b, t) => a + (b - a) * t, radians = Math.PI / 180;
+    const timing = shader.uniforms.stickTiming.value, classTiming = shader.uniforms.stickClassTiming.value;
+    const { stickHash, stickState, stickClass, stickRate, stickWave, stickClassWave, stickAngle } = stickFunctions(shader);
+    const settings = config.lightsticks, motion = settings.motion, states = new Set(), periods = new Set(), rates = new Set(), phases = new Set(), directions = new Set();
+    expect(timing.toArray()).toEqual([...motion.stateSeconds, motion.transitionSeconds]);
+    expect(classTiming.toArray()).toEqual([...motion.classChangeSeconds, motion.classTransitionSeconds, motion.classChangeFraction]);
+    expect(shader.uniforms.stickZoneStrength.value).toBe(motion.zone.strength);
+    expect(shader.uniforms.stickTremble.value).toBe(motion.trembleMultiplier);
+    expect(shader.uniforms.stickLimits.value.toArray()).toEqual([motion.limits.yawDegrees, ...motion.limits.elevationDegrees].map(n => n * radians));
+    motion.classes.forEach((entry, i) => expect(shader.uniforms.stickClasses.value[i].toArray()).toEqual([entry.yawDegrees * radians, entry.pitchDegrees * radians, ...entry.speedHz]));
+    for (const seed of [.13, .47, .82]) {
+      const phase = stickHash(seed + 37) * 2 * Math.PI, rate = stickRate(0, seed) * 2 * Math.PI;
+      // Both lobes must pass through the center, regardless of the spectator's phase.
+      for (const turn of [0, Math.PI]) for (const axis of [0, 1]) expect(Math.abs(stickWave(2, (turn - phase) / rate, seed, 0, axis))).toBeLessThan(1e-10);
+    }
+    const matrix = new THREE.Matrix4(), anchor = new THREE.Vector3(), forward = new THREE.Vector3(), direction = new THREE.Vector3();
+    for (const mesh of sticks) {
+      const a = mesh.geometry.attributes;
+      for (let i = 0; i < mesh.count; i++) {
+        const seed = a.crowdStickSeed.getX(i), zone = a.crowdStickZone.getX(i), duration = mix(timing.x, timing.y, stickHash(seed + 23)), offset = stickHash(seed + 11) * 60;
+        const classDuration = mix(classTiming.x, classTiming.y, stickHash(seed + 83)), classOffset = stickHash(seed + 97) * classTiming.y;
+        periods.add(duration);rates.add(stickRate(0, seed));phases.add(stickHash(seed + 37));
+        expect(zone).toBeCloseTo(lightstickZone(new THREE.Vector3().fromBufferAttribute(a.crowdSeat, i), motion.zone.cellSize), 6);
+        assert(duration >= motion.stateSeconds[0] && duration <= motion.stateSeconds[1]);
+        assert(classDuration >= motion.classChangeSeconds[0] && classDuration <= motion.classChangeSeconds[1]);
+        if (a.crowdUpper.getX(i) < .5) {
+          expect(a.crowdGrip.getX(i)).toBeCloseTo(.175);expect(a.crowdGrip.getY(i)).toBeCloseTo(.335);expect(a.crowdGrip.getZ(i)).toBeCloseTo(.66);
+          expect(a.crowdPoseData.getX(i)).toBe(1);
+          mesh.getMatrixAt(i, matrix);anchor.set(.175, .66, .335).applyMatrix4(matrix);
+          expect(anchor.y).toBeCloseTo(.66);
+          const seat = seats.find(s => Math.abs(s.position.x - a.crowdSeat.getX(i)) < .001);
+          expect(seat.lightstickLod.attribute).toBe(a.crowdDetail);expect(seat.lightstickLod.index).toBe(i);
+        }
+        forward.set(a.crowdForward.getX(i), 0, a.crowdForward.getY(i));
+        expect(forward.dot(screen.clone().sub(new THREE.Vector3().fromBufferAttribute(a.crowdSeat, i)).setY(0).normalize())).toBeCloseTo(1);
+        for (let step = 0; step < 360; step++) {
+          const t = step * .51, yaw = stickAngle(t, seed, zone, 0), elevation = stickAngle(t, seed, zone, 1);
+          assert(Math.abs(yaw) <= motion.limits.yawDegrees * radians + 1e-6);
+          assert(elevation >= motion.limits.elevationDegrees[0] * radians - 1e-6 && elevation <= motion.limits.elevationDegrees[1] * radians + 1e-6);
+          direction.copy(forward).applyAxisAngle(new THREE.Vector3(0, 1, 0), yaw).multiplyScalar(Math.cos(elevation));direction.y = Math.sin(elevation);
+          assert(direction.dot(forward) > 0);
+          states.add(stickState(Math.floor((t + offset) / duration), seed));
+          if (step === 0) directions.add(yaw.toFixed(5) + '/' + elevation.toFixed(5));
+        }
+        for (let segment = 1; segment < 24; segment++) {
+          const boundary = segment * duration - offset;
+          const classBoundary = segment * classDuration - classOffset;
+          for (const edge of [boundary, boundary + timing.z, classBoundary, classBoundary + classTiming.z, 30]) for (const axis of [0, 1]) {
+            assert(Math.abs(stickAngle(edge - 1e-5, seed, zone, axis) - stickAngle(edge + 1e-5, seed, zone, axis)) < .002);
+          }
+          if (stickState(segment, seed) === 4) for (let energy = 0; energy < 3; energy++) for (const axis of [0, 1]) {
+            assert.equal(stickClassWave(boundary + timing.z + .1, seed, energy, axis), 0);
+            assert.equal(stickClassWave(boundary + duration - .1, seed, energy, axis), 0);
+          }
+        }
+      }
+    }
+    expect([...states].sort()).toEqual([0, 1, 2, 3, 4]);
+    for (const values of [periods, rates, phases, directions]) expect(values.size).toBeGreaterThan(32);
+    const counts = [0, 0, 0], hot = [0, 0, 0], cold = [0, 0, 0], extrema = motion.classes.map(() => [0, 0]);
+    let changed = 0, nearbyDifference = 0, distantDifference = 0;
+    for (let i = 0; i < 8192; i++) {
+      const seed = Math.fround((i + .5) / 8192), initial = stickClass(0, seed, 0);
+      counts[initial]++;hot[stickClass(0, seed, 1)]++;cold[stickClass(0, seed, -1)]++;
+      if ([1, 2, 3, 4].some(epoch => stickClass(epoch, seed, 0) !== initial)) changed++;
+      for (let energy = 0; energy < 3; energy++) {
+        const entry = motion.classes[energy], rate = stickRate(energy, seed);
+        assert(rate >= entry.speedHz[0] && rate <= entry.speedHz[1]);
+        for (const axis of [0, 1]) {
+          const value = Math.abs(stickClassWave(i * .173, seed, energy, axis));
+          assert(value <= (axis ? entry.pitchDegrees : entry.yawDegrees) * radians + 1e-6);
+          extrema[energy][axis] = Math.max(extrema[energy][axis], value);
+        }
+      }
+      const p = new THREE.Vector3(i % 97 * .73, 0, Math.floor(i / 97) * .61), zone = lightstickZone(p, motion.zone.cellSize);
+      assert(Math.abs(zone) <= 1);
+      nearbyDifference += Math.abs(zone - lightstickZone(p.clone().add(new THREE.Vector3(.5, 0, 0)), motion.zone.cellSize));
+      distantDifference += Math.abs(zone - lightstickZone(p.clone().add(new THREE.Vector3(19, 0, 0)), motion.zone.cellSize));
+    }
+    const totalFraction = motion.classes.reduce((n, entry) => n + entry.fraction, 0);
+    motion.classes.forEach((entry, i) => {
+      expect(Math.abs(counts[i] / 8192 - entry.fraction / totalFraction)).toBeLessThan(.025);
+      expect(extrema[i][0]).toBeGreaterThan(entry.yawDegrees * radians * .95);
+      expect(extrema[i][1]).toBeGreaterThan(entry.pitchDegrees * radians * .95);
+    });
+    expect(changed / 8192).toBeGreaterThan(motion.classChangeFraction * .8);
+    expect(changed / 8192).toBeLessThan(motion.classChangeFraction + .025);
+    expect(hot[0]).toBeGreaterThan(counts[0]);expect(cold[2]).toBeGreaterThan(counts[2]);
+    expect(nearbyDifference).toBeLessThan(distantDifference * .25);
+    const vertex = shader.vertexShader.slice(shader.vertexShader.indexOf('vec3 stickVertex'));
+    expect(vertex).toContain('crowdUpper<.5');
+    expect(vertex).not.toContain('bool moving=crowdUpper<.5||crowdAcross');
+    const snapshot = group => group.children.map(m => [m.name, [...m.instanceMatrix.array], Object.fromEntries(Object.entries(m.geometry.attributes).filter(([name]) => name.startsWith('crowd')).map(([name, a]) => [name, [...a.array]]))]);
+    const before = snapshot(blocks.group);blocks.update();expect(snapshot(blocks.group)).toEqual(before);
+    repeated = createBlockCrowd(root, seats, config, uniforms, screen);expect(snapshot(repeated.group)).toEqual(before);
+    const body = { uniforms: {}, vertexShader: '#include <project_vertex>', fragmentShader: '' };
+    blocks.group.children[0].material.onBeforeCompile(body);expect(body.vertexShader).toContain('bool moving=crowdUpper<.5||crowdAcross');
+  } finally { repeated?.dispose();blocks.dispose(); }
+});
+
 async function openArena(page) {
   const errors = [];
   page.on('pageerror', error => errors.push(error.message));
@@ -312,7 +450,7 @@ test('upper spectators use simpler instances and retain the lower crowd', async 
   expect(result.upperCount).toBeGreaterThan(0);
   expect(result.lowerCount).toBeGreaterThan(0);
   expect(result.upperCount + result.lowerCount).toBeGreaterThan(4000);
-  expect(result.upperCount + result.lowerCount).toBeLessThan(7100);
+  expect(result.upperCount + result.lowerCount).toBeLessThan(9000);
   expect(result.removedUpper).toBe(true);
   expect(result.positiveTransforms).toBe(true);
   expect(result.upperTriangles / result.upperCount).toBeLessThan(result.lowerTriangles / result.lowerCount);
@@ -441,7 +579,7 @@ test('crowd density is repeatable and preloaded models display only inside the c
   expect(result.density.original).toEqual({ lower: 3943, upper: 7919 });
   for (const group of Object.values(result.density.groups)) {
     const rate = (group.upper ? result.config.density.upperKeepFraction : 1 - result.config.density.lowerEmptyFraction)
-      * (group.rear ? result.config.density.rearKeepMultiplier : 1);
+      * (group.rear && !group.upper ? result.config.density.rearKeepMultiplier : 1);
     expect(group.kept).toBe(Math.round(group.original * rate) - group.cleared);
   }
   expect(Object.values(result.density.groups).reduce((sum, group) => sum + group.cleared, 0)).toBeGreaterThan(0);

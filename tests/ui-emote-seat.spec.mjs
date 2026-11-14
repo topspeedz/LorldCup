@@ -139,16 +139,13 @@ test('S-W3/S-W4/S-W8/E-W7/E-W8: seated frees the cursor, shows the action group,
   const order = await page.evaluate(() => [document.querySelector('#seat-toggle'), document.querySelector('#emote-open')].map(b => b.getBoundingClientRect().x));
   expect(order[0]).toBeLessThan(order[1]);
   await page.locator('#dock #emote-open').click();
-  // E-W8 (coordinator msg_4beded3d8634): seated, the menu is one column so it fits beside the screen player.
+  // T102: seated, the menu is one low row of the four emotes (placement: ui-hud.spec.mjs E-W8).
   await expect(menu(page)).toBeVisible();
   const box = await page.evaluate(() => {
-    const r = document.querySelector('#emote-menu').getBoundingClientRect();
-    const xs = [...document.querySelectorAll('#emote-menu .emote')].map(b => Math.round(b.getBoundingClientRect().x));
-    return { width: r.width, height: r.height, columns: new Set(xs).size };
+    const ys = [...document.querySelectorAll('#emote-menu .emote')].map(b => Math.round(b.getBoundingClientRect().y));
+    return { rows: new Set(ys).size };
   });
-  expect(box.columns).toBe(1);
-  expect(box.width).toBeLessThanOrEqual(230);
-  expect(box.height).toBeLessThanOrEqual(460);
+  expect(box).toEqual({ rows: 1 });
   await menu(page).getByRole('button', { name: '하트' }).click();
   await expect(page.locator('#hud-toast')).toContainText('하트를 보냈어요');
   expect(await page.evaluate(() => arena.seat.seatId)).toBe(seats.seats[0].id);

@@ -1,0 +1,2123 @@
+{
+ "title": "UX·동작·방 계획 DAG",
+ "heading": "BL-0025~0033 · BL-0015·0016 남은 것 — Task 흐름 (검증 전략 변경 뒤)",
+ "sub": "11-14 사용자 지시 작업까지 갱신 — 캐릭터는 손작업 방식을 접고 이미지→3D 생성으로 다시 시작(도구 선택 대기)",
+ "aria": "시간 순 열 21개. 계획 승인과 기동 뒤 W0에서 백로그 연결, 아키텍처·규약, 아트 디렉션, UX 명세 둘, 법무 앞 검토, Mixamo 내려받기, 먼 관중 대조, U-H-10 재현이 함께 돈다. 이어서 스크린·방·이펙트 로직과 UI 명세가 나란히 가고, 공용 틀 뒤 화면 적용 넷과 UX 동행 둘이 함께 돈 다음 끝 리뷰, 끝 QA, 성능, 수정, 재검, 전체 시험, 완료 처리, 회고, 커밋으로 이어진다.",
+ "columns": [
+  "t0 · 계획 승인",
+  "t1 · 기동",
+  "t2 · W0 명세·토대",
+  "t3",
+  "t4 · W1 로직·명세",
+  "t5",
+  "t6 · 공용 틀",
+  "t7 · 화면 적용",
+  "t8 · 방 수정·재검",
+  "t9 · 머지 확인·끝 리뷰",
+  "t10 · QA 한 줄 ① 전체 시험",
+  "t11 · QA ②",
+  "t12 · QA ③",
+  "t13 · QA ④",
+  "t14 · 성능·아트",
+  "t15 · 대기 화면 UI",
+  "t15 · 수정 1 (모아서)",
+  "t16 · 재검 1",
+  "t17 · 재검 1",
+  "t18 · 수정 2 (조건부)",
+  "t19 · 재검 2 (조건부)",
+  "t21 · 사용자 지시 추가 1",
+  "t22 · 사용자 지시 추가 2",
+  "t20 · 재검 2 (조건부)",
+  "t21 · 완료 처리",
+  "t22 · 회고",
+  "t23 · 하네스 수정",
+  "t24 · 커밋 승인",
+  "t25 · 커밋",
+  "t26 · 11-14 사용자 지시 ①",
+  "t27 · ②",
+  "t28 · ③",
+  "t29 · ④",
+  "t30 · ⑤ 16명 시험",
+  "t31 · ⑥",
+  "t32 · ⑦ 좌표 측정",
+  "t33 · ⑧",
+  "t34 · ⑨ 캐릭터 정리",
+  "t35 · 도구·비용 승인",
+  "t36 · 이미지→3D 생성"
+ ],
+ "lanes": [
+  {
+   "id": "coord",
+   "name": "창구·코디네이터",
+   "tone": "coord",
+   "roles": [
+    "승인 둘은 창구 대행(위임) · coordinator가 기동·전체 시험·커밋"
+   ]
+  },
+  {
+   "id": "product",
+   "name": "기획 팀",
+   "tone": "plan",
+   "roles": [
+    "행0 product-manager(연결 → 완료 처리)",
+    "행1·2 ux-designer: UX 명세 (가)(나) → UX 동행 (가)(나)"
+   ]
+  },
+  {
+   "id": "web",
+   "name": "웹 개발 팀",
+   "tone": "dev",
+   "roles": [
+    "행0 leader 문서 → web-developer 틀·입장·팀·티켓 → 수정 · 행1 규약 → 감정표현·좌석",
+    "행2 U-H-10 · 행3 스크린 → HUD·Full Mode → 수정 · 행4 RM 팀장",
+    "행5·6 방 팀원(T13~T16) → 방 초대 · 행7 이펙트 → Mixamo 연결"
+   ]
+  },
+  {
+   "id": "graphic",
+   "name": "그래픽 팀",
+   "tone": "dev",
+   "roles": [
+    "행0 graphic-leader·ui-designer: 아트 디렉션 → 토큰 → UI (가) → 대조 → 끝 아트 → 성능",
+    "행1 UI (나) · 행2 이펙트 명세 · 행3 Mixamo(브라우저 → Blender) · 행4 먼 관중"
+   ]
+  },
+  {
+   "id": "legal",
+   "name": "법무검토팀",
+   "tone": "verify",
+   "roles": [
+    "legal-reviewer(앞 검토 → 끝 검토)"
+   ]
+  },
+  {
+   "id": "qa",
+   "name": "검증 팀",
+   "tone": "verify",
+   "roles": [
+    "행0~2 code-reviewer(중간·끝 리뷰) → qa-inspector 재검",
+    "행3 QA 팀장 · 행4~7 qa-inspector A·B·C·U"
+   ]
+  },
+  {
+   "id": "harness",
+   "name": "하네스 팀",
+   "tone": "harness",
+   "roles": [
+    "harness-engineer(회고 → 수정)"
+   ]
+  }
+ ],
+ "nodes": [
+  {
+   "id": "G1",
+   "lane": "coord",
+   "col": 0,
+   "row": 0,
+   "title": "G1 계획 승인",
+   "sub": "창구 대행(위임) · 브리프에 원문",
+   "status": "done"
+  },
+  {
+   "id": "C01",
+   "lane": "coord",
+   "col": 1,
+   "row": 0,
+   "title": "C01 코디네이터 기동",
+   "sub": "실행 Run·spec·등록, 첫 묶음 기동",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "high"
+  },
+  {
+   "id": "T01",
+   "lane": "product",
+   "col": 2,
+   "row": 0,
+   "title": "T01 백로그 연결",
+   "sub": "계획 Task를 행에 연결, 채택 결정을 수락 기준 문장에",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T02",
+   "lane": "web",
+   "col": 2,
+   "row": 0,
+   "bl": "BL-0032",
+   "title": "T02 아키텍처 갱신",
+   "sub": "방 구조 E·이벤트·화면 API·설정 키·고정 ID·index.html 예외",
+   "status": "done",
+   "agent": "claude",
+   "model": "fable",
+   "effort": "high"
+  },
+  {
+   "id": "T03",
+   "lane": "web",
+   "col": 2,
+   "row": 1,
+   "bl": "BL-0025",
+   "title": "T03 자산 규약 갱신",
+   "sub": "fan-anim-v2.glb·클립 표·이펙트 런타임 예산 2 MiB",
+   "status": "done",
+   "agent": "claude",
+   "model": "fable",
+   "effort": "high"
+  },
+  {
+   "id": "T04",
+   "lane": "graphic",
+   "col": 2,
+   "row": 0,
+   "bl": "BL-0030",
+   "title": "T04 아트 디렉션 보강",
+   "sub": "화면 UI와 이펙트의 톤·색 절",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "medium"
+  },
+  {
+   "id": "T05",
+   "lane": "product",
+   "col": 2,
+   "row": 1,
+   "bl": "BL-0030",
+   "title": "T05 UX 명세 (가)",
+   "sub": "입장·로딩, 팀·캐릭터 선택, 티켓, 방 초대",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T06",
+   "lane": "product",
+   "col": 2,
+   "row": 2,
+   "bl": "BL-0030",
+   "title": "T06 UX 명세 (나)",
+   "sub": "HUD·조작 막대, 감정표현 메뉴, 좌석, Full Mode",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T07",
+   "lane": "legal",
+   "col": 2,
+   "row": 0,
+   "bl": "BL-0025",
+   "title": "T07 법무 앞 검토",
+   "sub": "Mixamo 조건·자동 연결 고지·계란 자국·운영자 화면 정보",
+   "status": "done",
+   "agent": "claude",
+   "model": "fable",
+   "effort": "high"
+  },
+  {
+   "id": "T08",
+   "lane": "graphic",
+   "col": 2,
+   "row": 3,
+   "bl": "BL-0025",
+   "title": "T08 Mixamo 내려받기",
+   "sub": "사용자 브라우저로 동작 8개 FBX, 10분 안에 못 닿으면 blocked",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T09",
+   "lane": "graphic",
+   "col": 2,
+   "row": 4,
+   "bl": "BL-0015",
+   "title": "T09 먼 관중 화면 대조",
+   "sub": "관람 위치 4곳, 낮은 텍스처 켬·끔 같은 카메라",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "medium"
+  },
+  {
+   "id": "T10",
+   "lane": "web",
+   "col": 2,
+   "row": 2,
+   "bl": "BL-0016",
+   "title": "T10 U-H-10 원인 가르기",
+   "sub": "앱과 단독 임베드 페이지 5회씩, 시간대를 나눠 재현",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T11",
+   "lane": "web",
+   "col": 3,
+   "row": 3,
+   "bl": "BL-0026",
+   "title": "T11 스크린 편성",
+   "sub": "선택 상자 제거, 편성 시간표, 반복 실패 안내와 60초 상한",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T12",
+   "lane": "web",
+   "col": 4,
+   "row": 3,
+   "bl": "BL-0027",
+   "title": "T12 스크린 소리·무중단",
+   "sub": "거리 음량, 경기장 경계 설정, 방 전환에 위치 고정, U-H-10 제품 원인이면 수정",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "RM",
+   "lane": "web",
+   "col": 3,
+   "row": 4,
+   "bl": "BL-0032",
+   "title": "RM 방 묶음 팀장",
+   "sub": "팀원 넷 기동·정산·통합 보고",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "high"
+  },
+  {
+   "id": "T13",
+   "lane": "web",
+   "col": 3,
+   "row": 5,
+   "bl": "BL-0032",
+   "title": "T13 순번 방 키",
+   "sub": "room-keys.js: 앞 번호부터 두드리기, 빈 번호 잡기, 경쟁·시간 넘김",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T14",
+   "lane": "web",
+   "col": 3,
+   "row": 6,
+   "bl": "BL-0032",
+   "title": "T14 방장 넘기기·혼자 시청",
+   "sub": "members·handoff·hello/info, 방 키 다시 잡기, 혼자 시청, 모양 검사, network.json 새 키",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T15",
+   "lane": "web",
+   "col": 4,
+   "row": 5,
+   "bl": "BL-0032",
+   "title": "T15 자동 배치 잇기",
+   "sub": "입장 뒤 자동 배치, 무작위 코드 방·회차 상자 제거, 방 키 초대",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T16",
+   "lane": "web",
+   "col": 4,
+   "row": 6,
+   "bl": "BL-0032",
+   "title": "T16 운영자 화면",
+   "sub": "ops.html·ops.js: 방 키 목록과 개수, 30초 갱신",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T17",
+   "lane": "graphic",
+   "col": 3,
+   "row": 2,
+   "bl": "BL-0028",
+   "title": "T17 이펙트 연출 명세",
+   "sub": "감정표현 4종·계란 명중의 연출 명세와 큐 표",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T18",
+   "lane": "web",
+   "col": 4,
+   "row": 7,
+   "bl": "BL-0028",
+   "title": "T18 이펙트·계란 명중",
+   "sub": "런타임 입자·그림, 계란이 스크린 면에 맞고 깨짐, 큐 프레임 설정화",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T19",
+   "lane": "graphic",
+   "col": 3,
+   "row": 3,
+   "bl": "BL-0025",
+   "title": "T19 Mixamo 리타깃",
+   "sub": "EC2 Blender — FanRig에 굽기·제자리·30fps → fan-anim-v2.glb와 클립 표",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T20",
+   "lane": "graphic",
+   "col": 3,
+   "row": 0,
+   "bl": "BL-0030",
+   "title": "T20 UI 토큰 표",
+   "sub": "색·글꼴·간격·움직임·겹침 토큰",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T21",
+   "lane": "graphic",
+   "col": 4,
+   "row": 0,
+   "bl": "BL-0030",
+   "title": "T21 UI 명세 (가)",
+   "sub": "입장·로딩, 팀·캐릭터, 티켓, 방 초대의 화면 명세와 시안",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T22",
+   "lane": "graphic",
+   "col": 4,
+   "row": 1,
+   "bl": "BL-0030",
+   "title": "T22 UI 명세 (나)",
+   "sub": "HUD·조작 막대, 감정표현, 좌석, Full Mode의 화면 명세와 시안",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T23",
+   "lane": "web",
+   "col": 5,
+   "row": 0,
+   "bl": "BL-0031",
+   "title": "T23 아키텍처 보강",
+   "sub": "UI 명세가 요구한 모듈·이벤트·고정 ID 반영(없으면 변경 없음)",
+   "status": "done",
+   "agent": "claude",
+   "model": "fable",
+   "effort": "high"
+  },
+  {
+   "id": "T24",
+   "lane": "graphic",
+   "col": 5,
+   "row": 0,
+   "bl": "BL-0030",
+   "title": "T24 아트 대조: UI",
+   "sub": "UI 명세·토큰·시안이 아트 디렉션 안인가",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "medium"
+  },
+  {
+   "id": "T25",
+   "lane": "qa",
+   "col": 5,
+   "row": 0,
+   "bl": "BL-0026",
+   "title": "T25 중간 리뷰: 스크린",
+   "sub": "screen-video.js 편성·대기 상한·음량·무중단",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T26",
+   "lane": "qa",
+   "col": 5,
+   "row": 1,
+   "bl": "BL-0032",
+   "title": "T26 중간 리뷰: 방",
+   "sub": "자동 배치·자리 경쟁·넘기기·메시지 모양 검사·운영자 화면",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "high"
+  },
+  {
+   "id": "T27",
+   "lane": "web",
+   "col": 6,
+   "row": 0,
+   "bl": "BL-0031",
+   "title": "T27 UI 공용 틀",
+   "sub": "index.html 정적 요소, tokens.css, HUD 자리, 화면 글자",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T28",
+   "lane": "web",
+   "col": 5,
+   "row": 7,
+   "bl": "BL-0025",
+   "title": "T28 Mixamo 클립 연결",
+   "sub": "characters.json 경로·큐 프레임, 교체 전·후 화면, 앉기·점프 시험",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T29",
+   "lane": "web",
+   "col": 7,
+   "row": 0,
+   "bl": "BL-0031",
+   "title": "T29 적용: 입장·팀·티켓",
+   "sub": "loading·team-select·ticket 모양과 상태, B-M-1·B-M-2·T21u",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T30",
+   "lane": "web",
+   "col": 7,
+   "row": 1,
+   "bl": "BL-0031",
+   "title": "T30 적용: 감정표현·좌석",
+   "sub": "emote-menu·seat-mode 모양과 상태, P-L-2",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T31",
+   "lane": "web",
+   "col": 7,
+   "row": 3,
+   "bl": "BL-0031",
+   "title": "T31 적용: HUD·Full Mode",
+   "sub": "조작 막대·Full Mode 버튼, 앉아도 보이는 Full Mode, R-2",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T32",
+   "lane": "web",
+   "col": 8,
+   "row": 5,
+   "bl": "BL-0031",
+   "title": "T32 적용: 방 초대",
+   "sub": "방 초대 화면 적용 — 게이트: T26 High 수정·재검(T26f·T26r) 뒤",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T33",
+   "lane": "product",
+   "col": 7,
+   "row": 1,
+   "bl": "BL-0031",
+   "title": "T33 UX 동행 (가)",
+   "sub": "T29·T32를 상태별 확인 표대로 걷기",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T34",
+   "lane": "product",
+   "col": 7,
+   "row": 2,
+   "bl": "BL-0031",
+   "title": "T34 UX 동행 (나)",
+   "sub": "T30·T31을 걷고 T27 틀 줄을 다시 걷기",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T35",
+   "lane": "qa",
+   "col": 6,
+   "row": 0,
+   "bl": "BL-0028",
+   "title": "T35 끝 리뷰 A: 이펙트·캐릭터",
+   "sub": "character.js·characters.json, Mixamo 연결",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T36",
+   "lane": "qa",
+   "col": 9,
+   "row": 1,
+   "bl": "BL-0031",
+   "title": "T36 끝 리뷰 B: 틀·화면 (가)",
+   "sub": "T27 틀과 T29·T32 화면의 변경",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T37",
+   "lane": "qa",
+   "col": 9,
+   "row": 2,
+   "bl": "BL-0031",
+   "title": "T37 끝 리뷰 C: 화면 (나)",
+   "sub": "T30·T31 화면의 변경(screen-video.js 화면 부분 포함)",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T38",
+   "lane": "legal",
+   "col": 9,
+   "row": 0,
+   "bl": "BL-0025",
+   "title": "T38 법무 끝 검토",
+   "sub": "바뀐 문구·고지, 원본 위치, 계란 자국 시간, 운영자 화면",
+   "status": "done",
+   "agent": "claude",
+   "model": "fable",
+   "effort": "high"
+  },
+  {
+   "id": "T39",
+   "lane": "graphic",
+   "col": 14,
+   "row": 1,
+   "bl": "BL-0031",
+   "title": "T39 끝 아트 리뷰",
+   "sub": "적용된 화면·이펙트·새 클립의 모양 · QA 걷기 그림으로(GPU 안 씀)",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "medium"
+  },
+  {
+   "id": "QA",
+   "lane": "qa",
+   "col": 10,
+   "row": 3,
+   "bl": "BL-0032",
+   "title": "QA 끝 QA 팀장",
+   "sub": "네 영역 기동·정산·통합 보고",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "high"
+  },
+  {
+   "id": "T40",
+   "lane": "qa",
+   "col": 11,
+   "row": 4,
+   "bl": "BL-0026",
+   "title": "T40 QA A: 스크린·소리",
+   "sub": "② 편성·U-H-10 상한·거리 음량·영상 안 끊김",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T41",
+   "lane": "qa",
+   "col": 12,
+   "row": 4,
+   "bl": "BL-0032",
+   "title": "T41 QA B: 방",
+   "sub": "③ 자동 배치·16명·넘기기·혼자 시청·운영자 화면·적대 데이터",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T42",
+   "lane": "qa",
+   "col": 13,
+   "row": 4,
+   "bl": "BL-0028",
+   "title": "T42 QA C: 캐릭터·이펙트",
+   "sub": "④ 사용자가 직접 걷기(시나리오는 QA 팀장이 줌) — 감정표현 이펙트, 계란 명중, Mixamo 클립",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T43",
+   "lane": "qa",
+   "col": 10,
+   "row": 4,
+   "bl": "BL-0030",
+   "title": "T43 QA U: 화면·횡단",
+   "sub": "① 전체 시험 npm test 1회(계획의 T53 몫) → 상태별 조작 표 대조, 키보드·접근성·콘솔 오류",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T44",
+   "lane": "graphic",
+   "col": 14,
+   "row": 0,
+   "bl": "BL-0028",
+   "title": "T44 성능 점검",
+   "sub": "FPS 60(이펙트 켬)·텍스처 500 MiB·fan-anim-v2 예산 · QA 줄 뒤 차례로(GPU) — 수정 1회차 뒤 최종 코드에서 1회",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T45",
+   "lane": "web",
+   "col": 16,
+   "row": 3,
+   "bl": "BL-0026",
+   "title": "T45 수정 1: 3D 쪽",
+   "sub": "FIX1 팀장 묶음: 3D 쪽 High·좌석 점프·바닥 클릭 걷기·스크린 재생",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T46",
+   "lane": "web",
+   "col": 16,
+   "row": 0,
+   "bl": "BL-0031",
+   "title": "T46 수정 1: 화면·방 쪽",
+   "sub": "FIX1 팀장 묶음: 화면·방 High·B-H-1 방 갈림",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T47",
+   "lane": "qa",
+   "col": 17,
+   "row": 0,
+   "bl": "BL-0026",
+   "title": "T47 재검 1: 3D 쪽",
+   "sub": "재검 1회차(T48과 묶음) + npm test 1회(최종 시험 겸)",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T48",
+   "lane": "qa",
+   "col": 18,
+   "row": 0,
+   "bl": "BL-0031",
+   "title": "T48 재검 1: 화면·방 쪽",
+   "sub": "T47과 묶음: 재검 1회차 + 최종 전체 시험 1회 + RW1 마우스 18단계 재걷기",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T49",
+   "lane": "web",
+   "col": 19,
+   "row": 3,
+   "bl": "BL-0026",
+   "title": "T49 수정 2: 3D 쪽",
+   "sub": "FIX2 팀장 묶음: 열린 High 6(RW-H-1·2, T47-H-1, U-H-11, A-H-1, 시험 40개)",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T50",
+   "lane": "web",
+   "col": 19,
+   "row": 0,
+   "bl": "BL-0031",
+   "title": "T50 수정 2: 화면·방 쪽",
+   "sub": "FIX2 팀장 묶음: 열린 High 6(RW-H-1·2, T47-H-1, U-H-11, A-H-1, 시험 40개)",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T51",
+   "lane": "qa",
+   "col": 20,
+   "row": 0,
+   "bl": "BL-0026",
+   "title": "T51 재검 2: 3D 쪽",
+   "sub": "High 4 해결 · 전체 시험 사용자 지시로 중단",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T52",
+   "lane": "qa",
+   "col": 23,
+   "row": 0,
+   "bl": "BL-0031",
+   "title": "T52 재검 2: 화면·방 쪽",
+   "sub": "수정 3회차 안 함 — 남은 확인은 사용자 직접",
+   "status": "wait",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T54",
+   "lane": "product",
+   "col": 24,
+   "row": 0,
+   "title": "T54 완료 처리",
+   "sub": "done 보관, Medium 이하와 blocked를 인박스로",
+   "status": "done",
+   "agent": "claude",
+   "model": "sonnet",
+   "effort": "medium"
+  },
+  {
+   "id": "T55",
+   "lane": "harness",
+   "col": 25,
+   "row": 0,
+   "title": "T55 하네스 회고",
+   "sub": "측정: 폭, 깬 횟수, 수정 루프, UX 동행의 자리",
+   "status": "done",
+   "agent": "claude",
+   "model": "fable",
+   "effort": "high"
+  },
+  {
+   "id": "T56",
+   "lane": "harness",
+   "col": 26,
+   "row": 0,
+   "title": "T56 하네스 수정",
+   "sub": "회고의 근거 있는 항목만, changelog 한 줄씩",
+   "status": "wait",
+   "agent": "claude",
+   "model": "fable",
+   "effort": "high"
+  },
+  {
+   "id": "G2",
+   "lane": "coord",
+   "col": 27,
+   "row": 0,
+   "title": "G2 커밋 승인",
+   "sub": "창구 대행(위임) · 로컬 브랜치만",
+   "status": "done"
+  },
+  {
+   "id": "T57",
+   "lane": "coord",
+   "col": 28,
+   "row": 0,
+   "title": "T57 로컬 커밋",
+   "sub": "제품·하네스 두 커밋, push 없음",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "high"
+  },
+  {
+   "id": "T26f",
+   "lane": "web",
+   "col": 6,
+   "row": 5,
+   "bl": "BL-0032",
+   "title": "T26f 방 줄 수정",
+   "sub": "T26 High R-1 손님 ICE 끊김으로 방 갈라짐 · R-2 입장 전 방 버튼 연결",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium",
+   "status": "done"
+  },
+  {
+   "id": "T26r",
+   "lane": "qa",
+   "col": 7,
+   "row": 1,
+   "bl": "BL-0032",
+   "title": "T26r 방 줄 재검",
+   "sub": "R-1·R-2 재현 확인",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "high",
+   "status": "done"
+  },
+  {
+   "id": "TMC",
+   "lane": "qa",
+   "col": 9,
+   "row": 0,
+   "bl": "BL-0031",
+   "title": "TMC 머지 확인",
+   "sub": "GPU 없는 코드 테스트 1회: 문법·설정 파싱·import 이름",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T58",
+   "lane": "product",
+   "col": 10,
+   "row": 0,
+   "bl": "BL-0034",
+   "title": "T58 BL-0034 항목화",
+   "sub": "사용자 UI 의견 원문을 수락 기준으로",
+   "status": "run",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T59",
+   "lane": "product",
+   "col": 10,
+   "row": 1,
+   "bl": "BL-0034",
+   "title": "T59 마우스 걷기·UX 갱신",
+   "sub": "처음 온 사람이 마우스만으로 실제 화면 걷기 → 어디서 막혔나 표 → 박스·문구 줄인 UX 명세",
+   "status": "run",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T60",
+   "lane": "graphic",
+   "col": 11,
+   "row": 1,
+   "bl": "BL-0034",
+   "title": "T60 UI 명세 갱신",
+   "sub": "상자·문구 줄인 마우스 우선 화면, 같이 보기 버튼 하나",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T61",
+   "lane": "web",
+   "col": 11,
+   "row": 0,
+   "bl": "BL-0034",
+   "title": "T61 아키텍처 갱신",
+   "sub": "#quick·관중 소리 토글 등 고정 ID 제거, 소리 기본 켬",
+   "status": "done",
+   "agent": "claude",
+   "model": "fable",
+   "effort": "high"
+  },
+  {
+   "id": "T62",
+   "lane": "legal",
+   "col": 12,
+   "row": 0,
+   "bl": "BL-0034",
+   "title": "T62 법무 확인: 고지",
+   "sub": "줄인 문구에서 자동 연결 고지 등이 빠지지 않았나",
+   "status": "run",
+   "agent": "claude",
+   "model": "fable",
+   "effort": "high"
+  },
+  {
+   "id": "T46b",
+   "lane": "web",
+   "col": 16,
+   "row": 1,
+   "bl": "BL-0034",
+   "title": "T46b 구현: 단순 UI",
+   "sub": "FIX1 팀장 묶음: BL-0034·0035 단순 UI·첫 페이지·대기 화면",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T59b",
+   "lane": "product",
+   "col": 13,
+   "row": 1,
+   "bl": "BL-0034",
+   "title": "T59b 고지 UX 명세",
+   "sub": "고지 문구·자리 법무 반영, (IP) 뺌",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T60b",
+   "lane": "graphic",
+   "col": 13,
+   "row": 1,
+   "bl": "BL-0034",
+   "title": "T60b 영상 가림 UI",
+   "sub": "LG-H-4 복사 안내 영상 겹침 고침",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T59c",
+   "lane": "product",
+   "col": 14,
+   "row": 1,
+   "bl": "BL-0035",
+   "title": "T59c 대기 화면 UX",
+   "sub": "다음 시각만, 대기 화면, R 키 없앰",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T60c",
+   "lane": "graphic",
+   "col": 15,
+   "row": 2,
+   "bl": "BL-0035",
+   "title": "T60c 대기 화면 UI",
+   "sub": "상영 시각 칩·대기 화면 모양·시안",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "FX1",
+   "lane": "graphic",
+   "col": 16,
+   "row": 3,
+   "bl": "BL-0028",
+   "title": "FX1 이펙트 크게·소리",
+   "sub": "감정표현 4종 크게, 하트 → 스크린, 모두 효과음",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T63b",
+   "lane": "web",
+   "col": 21,
+   "row": 0,
+   "bl": "BL-0033",
+   "title": "T63b 좌석·계단·입구 바닥",
+   "sub": "좌석을 입구 근처로, 계단 통로 넓히기, 입구 틈 메우기, 뒤집힌 글자",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T65s",
+   "lane": "web",
+   "col": 22,
+   "row": 0,
+   "title": "T65s 개찰구·직원",
+   "sub": "티켓 받는 곳에 개찰구와 직원 캐릭터",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T64",
+   "lane": "web",
+   "col": 21,
+   "row": 3,
+   "title": "T64 티켓 팝업",
+   "sub": "가운데 큰 팀 고르기 팝업, 응원하기 단계 없앰, HUD 겹침 확인",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T67",
+   "lane": "web",
+   "col": 22,
+   "row": 3,
+   "title": "T67 앉은 조작 막대",
+   "sub": "스크린 아래 F·E/Esc·감정표현·볼륨",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "PM1",
+   "lane": "product",
+   "col": 21,
+   "row": 0,
+   "title": "PM1 11-14 지시 백로그",
+   "sub": "사용자 지시를 백로그 항목으로",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T66",
+   "lane": "graphic",
+   "col": 21,
+   "row": 3,
+   "title": "T66 여성 캐릭터",
+   "sub": "여성 팬 2종 다시 만들기(로컬 Blender)",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T84b",
+   "lane": "web",
+   "col": 29,
+   "row": 0,
+   "title": "T84b 바닥 점무늬",
+   "sub": "카메라 가림 효과가 바닥까지 지우던 것 수정",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T85",
+   "lane": "web",
+   "col": 29,
+   "row": 1,
+   "title": "T85 전광판 3면",
+   "sub": "앞면 영상 + 나머지 3면 현장 사진, 좌석별 영상 면",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T86",
+   "lane": "web",
+   "col": 29,
+   "row": 2,
+   "title": "T86 2층 관중",
+   "sub": "2층 관중 늘리고 건너편만 움직임",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T87",
+   "lane": "graphic",
+   "col": 29,
+   "row": 0,
+   "title": "T87 유니폼 뒷면",
+   "sub": "팬 캐릭터 등판 UV를 관중과 같게",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T88",
+   "lane": "web",
+   "col": 30,
+   "row": 0,
+   "title": "T88 직전 회차",
+   "sub": "이미 상영 중인 직전 회차 방 입장",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T89",
+   "lane": "web",
+   "col": 30,
+   "row": 1,
+   "title": "T89 1층 유니폼 비율",
+   "sub": "왼쪽 GEN.G·오른쪽 BLG 60%",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T90",
+   "lane": "web",
+   "col": 30,
+   "row": 2,
+   "title": "T90 경기장 어둡게",
+   "sub": "노출·라이트맵 값만 낮춤",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T91c",
+   "lane": "graphic",
+   "col": 30,
+   "row": 0,
+   "title": "T91c AJ 4종 제작",
+   "sub": "승인 시트로 Blender 제작(보관됨)",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T92",
+   "lane": "web",
+   "col": 31,
+   "row": 0,
+   "title": "T92 관중 미리 준비",
+   "sub": "경기장 밖에서부터 조금씩 준비",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T94",
+   "lane": "web",
+   "col": 31,
+   "row": 1,
+   "title": "T94 전광판 클릭",
+   "sub": "클릭하면 빈 좌석으로 날아가 앉기",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T95",
+   "lane": "web",
+   "col": 31,
+   "row": 2,
+   "title": "T95 감정표현 Ctrl",
+   "sub": "Ctrl 단독 탭으로 메뉴",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T96",
+   "lane": "web",
+   "col": 31,
+   "row": 3,
+   "title": "T96 계란던지기",
+   "sub": "1인칭 팔·큰 계란·같은 방 동기화",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T92b",
+   "lane": "web",
+   "col": 32,
+   "row": 0,
+   "title": "T92b 티켓팅 중 준비",
+   "sub": "티켓팅 중... 동안 관중·셰이더 준비",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T97a",
+   "lane": "web",
+   "col": 32,
+   "row": 1,
+   "title": "T97a 빈 좌석 16석",
+   "sub": "108·109 계단 옆 16석, 시야 가림 수정",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T98",
+   "lane": "web",
+   "col": 32,
+   "row": 2,
+   "title": "T98 선수단 뒤 로고",
+   "sub": "무대 뒤 패널을 팀 로고로",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T91d",
+   "lane": "web",
+   "col": 32,
+   "row": 3,
+   "title": "T91d 캐릭터 연결",
+   "sub": "AJ 모델을 앱 플레이어에 연결(보관됨)",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T91e",
+   "lane": "graphic",
+   "col": 32,
+   "row": 0,
+   "title": "T91e AJ 다듬기 1",
+   "sub": "시트와 비교해 다듬기(보관됨)",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T93",
+   "lane": "graphic",
+   "col": 32,
+   "row": 1,
+   "title": "T93 경기장 형상",
+   "sub": "계단 옆 좌석·뒤 테두리·램프 마감(Blender 9877)",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T99",
+   "lane": "web",
+   "col": 33,
+   "row": 0,
+   "title": "T99 램프 틈 막기",
+   "sub": "입구 통로 열기·떨어짐 안전망",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "QA16",
+   "lane": "qa",
+   "col": 33,
+   "row": 0,
+   "title": "QA16 16명 동시 시험",
+   "sub": "동시 클릭 좌석 겹침 1건 발견",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T91g",
+   "lane": "graphic",
+   "col": 33,
+   "row": 0,
+   "title": "T91g AJ 다듬기 2",
+   "sub": "몸·얼굴·옷 메시(보관됨)",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T93b",
+   "lane": "graphic",
+   "col": 33,
+   "row": 1,
+   "title": "T93b 벽 통로 자르기",
+   "sub": "GLB에서 출입구 충돌 벽 제거",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "C1",
+   "lane": "coord",
+   "col": 33,
+   "row": 0,
+   "title": "C1 커밋·푸시·배포",
+   "sub": "c480868 → GitHub·Vercel 운영",
+   "status": "done"
+  },
+  {
+   "id": "T103",
+   "lane": "web",
+   "col": 34,
+   "row": 0,
+   "title": "T103 응원봉·블록 관중",
+   "sub": "2층 블록형, 응원봉 좌우 색",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T100",
+   "lane": "web",
+   "col": 34,
+   "row": 1,
+   "title": "T100 동시 착석",
+   "sub": "좌석 예약 신호로 겹침 해소",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T102",
+   "lane": "web",
+   "col": 34,
+   "row": 2,
+   "title": "T102 감정표현 위치",
+   "sub": "조작 막대 바로 아래",
+   "status": "done",
+   "agent": "claude",
+   "model": "opus",
+   "effort": "medium"
+  },
+  {
+   "id": "T91h",
+   "lane": "graphic",
+   "col": 34,
+   "row": 0,
+   "title": "T91h AJ 얼굴·머리",
+   "sub": "얼굴 확대 비교로 다듬기(보관됨)",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T101",
+   "lane": "graphic",
+   "col": 34,
+   "row": 1,
+   "title": "T101 떠 있는 글자",
+   "sub": "글자 144개를 띠·난간에 다시 붙임",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T103b",
+   "lane": "web",
+   "col": 35,
+   "row": 0,
+   "title": "T103b 응원봉 경계",
+   "sub": "통로 시점 좌우, 2층 밀도",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T104",
+   "lane": "web",
+   "col": 35,
+   "row": 1,
+   "title": "T104 응원봉 손·각도",
+   "sub": "손에 쥐기·각도·움직임",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T91j1",
+   "lane": "graphic",
+   "col": 35,
+   "row": 0,
+   "title": "T91j 좌표 측정",
+   "sub": "시트 경계 점 3,268개 + 사용자 편집기 수정",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T103c",
+   "lane": "web",
+   "col": 36,
+   "row": 0,
+   "title": "T103c 1층 복원",
+   "sub": "1층 예전 모습, 2층 60%, 색 섞기",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T104b",
+   "lane": "web",
+   "col": 36,
+   "row": 1,
+   "title": "T104b 응원봉 역동",
+   "sub": "격렬·보통·정지 등급 섞기",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T91j2",
+   "lane": "graphic",
+   "col": 36,
+   "row": 0,
+   "title": "T91j 좌표 맞춤 모델",
+   "sub": "평균 오차 절반으로(보관됨)",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "T106a",
+   "lane": "graphic",
+   "col": 36,
+   "row": 1,
+   "title": "T106a 쵸비 닮은 측정",
+   "sub": "OpenCV 좌표 측정 — 방식 변경으로 중단",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "C2",
+   "lane": "coord",
+   "col": 36,
+   "row": 0,
+   "title": "C2 커밋·푸시",
+   "sub": "7ff0d43 → GitHub main·Vercel",
+   "status": "done"
+  },
+  {
+   "id": "T107",
+   "lane": "web",
+   "col": 37,
+   "row": 0,
+   "title": "T107 캐릭터 되돌리기",
+   "sub": "기존 팬 모델 복귀, AJ 파일 _archive",
+   "status": "done",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  },
+  {
+   "id": "G3",
+   "lane": "coord",
+   "col": 38,
+   "row": 0,
+   "title": "G3 생성 도구·비용",
+   "sub": "Tripo 크레딧 0 → 무료 TRELLIS·Hunyuan3D 검토",
+   "status": "run"
+  },
+  {
+   "id": "GEN",
+   "lane": "graphic",
+   "col": 39,
+   "row": 0,
+   "title": "GEN 이미지→3D 생성",
+   "sub": "시트로 5종 생성 → 다듬기 → 리깅 → 좌표 검증",
+   "status": "wait",
+   "agent": "codex",
+   "model": "gpt-6-astra",
+   "effort": "max"
+  }
+ ],
+ "groups": [
+  {
+   "id": "gRM",
+   "nodes": [
+    "RM",
+    "T13",
+    "T14",
+    "T15",
+    "T16"
+   ]
+  },
+  {
+   "id": "gQA",
+   "nodes": [
+    "QA",
+    "T43",
+    "T40",
+    "T41",
+    "T42"
+   ]
+  }
+ ],
+ "edges": [
+  {
+   "from": "G1",
+   "to": "C01"
+  },
+  {
+   "from": "C01",
+   "to": "T01"
+  },
+  {
+   "from": "C01",
+   "to": "T02"
+  },
+  {
+   "from": "C01",
+   "to": "T03"
+  },
+  {
+   "from": "C01",
+   "to": "T04"
+  },
+  {
+   "from": "C01",
+   "to": "T05"
+  },
+  {
+   "from": "C01",
+   "to": "T06"
+  },
+  {
+   "from": "C01",
+   "to": "T07"
+  },
+  {
+   "from": "C01",
+   "to": "T08"
+  },
+  {
+   "from": "C01",
+   "to": "T09"
+  },
+  {
+   "from": "C01",
+   "to": "T10"
+  },
+  {
+   "from": "T02",
+   "to": "T11"
+  },
+  {
+   "from": "T10",
+   "to": "T12"
+  },
+  {
+   "from": "T11",
+   "to": "T12"
+  },
+  {
+   "from": "T02",
+   "to": "gRM"
+  },
+  {
+   "from": "T02",
+   "to": "T17"
+  },
+  {
+   "from": "T03",
+   "to": "T17"
+  },
+  {
+   "from": "T04",
+   "to": "T17"
+  },
+  {
+   "from": "T17",
+   "to": "T18"
+  },
+  {
+   "from": "T03",
+   "to": "T19"
+  },
+  {
+   "from": "T08",
+   "to": "T19"
+  },
+  {
+   "from": "T04",
+   "to": "T20"
+  },
+  {
+   "from": "T05",
+   "to": "T21"
+  },
+  {
+   "from": "T20",
+   "to": "T21"
+  },
+  {
+   "from": "T06",
+   "to": "T22"
+  },
+  {
+   "from": "T20",
+   "to": "T22"
+  },
+  {
+   "from": "T02",
+   "to": "T23"
+  },
+  {
+   "from": "T21",
+   "to": "T23"
+  },
+  {
+   "from": "T22",
+   "to": "T23"
+  },
+  {
+   "from": "T21",
+   "to": "T24"
+  },
+  {
+   "from": "T22",
+   "to": "T24"
+  },
+  {
+   "from": "T12",
+   "to": "T25"
+  },
+  {
+   "from": "gRM",
+   "to": "T26"
+  },
+  {
+   "from": "T23",
+   "to": "T27"
+  },
+  {
+   "from": "T24",
+   "to": "T27"
+  },
+  {
+   "from": "T07",
+   "to": "T28"
+  },
+  {
+   "from": "T18",
+   "to": "T28"
+  },
+  {
+   "from": "T19",
+   "to": "T28"
+  },
+  {
+   "from": "T27",
+   "to": "T29"
+  },
+  {
+   "from": "T27",
+   "to": "T30"
+  },
+  {
+   "from": "T25",
+   "to": "T31"
+  },
+  {
+   "from": "T27",
+   "to": "T31"
+  },
+  {
+   "from": "T07",
+   "to": "T32"
+  },
+  {
+   "from": "T27",
+   "to": "T32"
+  },
+  {
+   "from": "T27",
+   "to": "T33"
+  },
+  {
+   "from": "T27",
+   "to": "T34"
+  },
+  {
+   "from": "T28",
+   "to": "T35"
+  },
+  {
+   "from": "T29",
+   "to": "T36"
+  },
+  {
+   "from": "T32",
+   "to": "T36"
+  },
+  {
+   "from": "T30",
+   "to": "T37"
+  },
+  {
+   "from": "T31",
+   "to": "T37"
+  },
+  {
+   "from": "T28",
+   "to": "T38"
+  },
+  {
+   "from": "T29",
+   "to": "T38"
+  },
+  {
+   "from": "T30",
+   "to": "T38"
+  },
+  {
+   "from": "T31",
+   "to": "T38"
+  },
+  {
+   "from": "T32",
+   "to": "T38"
+  },
+  {
+   "from": "T13",
+   "to": "T15"
+  },
+  {
+   "from": "T14",
+   "to": "T15"
+  },
+  {
+   "from": "T13",
+   "to": "T16"
+  },
+  {
+   "from": "T14",
+   "to": "T16"
+  },
+  {
+   "from": "T26",
+   "to": "T26f",
+   "label": "High 2"
+  },
+  {
+   "from": "T26f",
+   "to": "T26r"
+  },
+  {
+   "from": "T26r",
+   "to": "T32",
+   "label": "재검 통과"
+  },
+  {
+   "from": "T35",
+   "to": "gQA"
+  },
+  {
+   "from": "T36",
+   "to": "gQA"
+  },
+  {
+   "from": "T37",
+   "to": "gQA"
+  },
+  {
+   "from": "TMC",
+   "to": "gQA"
+  },
+  {
+   "from": "T43",
+   "to": "T40"
+  },
+  {
+   "from": "T40",
+   "to": "T41"
+  },
+  {
+   "from": "T41",
+   "to": "T42"
+  },
+  {
+   "from": "gQA",
+   "to": "T44"
+  },
+  {
+   "from": "gQA",
+   "to": "T39"
+  },
+  {
+   "from": "T44",
+   "to": "T45"
+  },
+  {
+   "from": "T44",
+   "to": "T46"
+  },
+  {
+   "from": "T39",
+   "to": "T46"
+  },
+  {
+   "from": "T45",
+   "to": "T47"
+  },
+  {
+   "from": "T46",
+   "to": "T47"
+  },
+  {
+   "from": "T47",
+   "to": "T48"
+  },
+  {
+   "from": "T48",
+   "to": "T49",
+   "label": "High 남음"
+  },
+  {
+   "from": "T48",
+   "to": "T50",
+   "label": "High 남음"
+  },
+  {
+   "from": "T49",
+   "to": "T51"
+  },
+  {
+   "from": "T50",
+   "to": "T51"
+  },
+  {
+   "from": "T51",
+   "to": "T52"
+  },
+  {
+   "from": "T52",
+   "to": "T54"
+  },
+  {
+   "from": "T54",
+   "to": "T55"
+  },
+  {
+   "from": "T55",
+   "to": "T56"
+  },
+  {
+   "from": "T56",
+   "to": "G2"
+  },
+  {
+   "from": "G2",
+   "to": "T57"
+  },
+  {
+   "from": "T59",
+   "to": "T60"
+  },
+  {
+   "from": "T59",
+   "to": "T61"
+  },
+  {
+   "from": "T60",
+   "to": "T62"
+  },
+  {
+   "from": "T61",
+   "to": "T46b"
+  },
+  {
+   "from": "T46b",
+   "to": "T48"
+  },
+  {
+   "from": "T62",
+   "to": "T59b"
+  },
+  {
+   "from": "T62",
+   "to": "T60b"
+  },
+  {
+   "from": "T59b",
+   "to": "T59c"
+  },
+  {
+   "from": "T59c",
+   "to": "T60c"
+  },
+  {
+   "from": "T60b",
+   "to": "T60c"
+  },
+  {
+   "from": "T60c",
+   "to": "T46b"
+  },
+  {
+   "from": "FX1",
+   "to": "T47",
+   "label": "이펙트"
+  },
+  {
+   "from": "T63b",
+   "to": "T65s",
+   "label": "편집 겹침"
+  },
+  {
+   "from": "T64",
+   "to": "T67",
+   "label": "편집 겹침"
+  },
+  {
+   "from": "T92",
+   "to": "T92b"
+  },
+  {
+   "from": "T103",
+   "to": "T103b"
+  },
+  {
+   "from": "T103b",
+   "to": "T103c"
+  },
+  {
+   "from": "T104",
+   "to": "T104b"
+  },
+  {
+   "from": "T91c",
+   "to": "T91e"
+  },
+  {
+   "from": "T91e",
+   "to": "T91g"
+  },
+  {
+   "from": "T91g",
+   "to": "T91h"
+  },
+  {
+   "from": "T91h",
+   "to": "T91j1"
+  },
+  {
+   "from": "T91j1",
+   "to": "T91j2"
+  },
+  {
+   "from": "T93",
+   "to": "T93b"
+  },
+  {
+   "from": "T93b",
+   "to": "T101"
+  },
+  {
+   "from": "QA16",
+   "to": "T100"
+  },
+  {
+   "from": "T91j2",
+   "to": "T107"
+  },
+  {
+   "from": "T107",
+   "to": "G3"
+  },
+  {
+   "from": "G3",
+   "to": "GEN"
+  }
+ ],
+ "notes": [
+  {
+   "title": "읽는 법",
+   "body": "열 = 시간 순, 같은 열 = 동시에 돈 작업. 레인 안 한 줄 = 워커 한 명."
+  },
+  {
+   "title": "지금",
+   "body": "도는 워커 없음. <b>G3</b>: Tripo API 크레딧이 0이라 무료 생성(TRELLIS·Hunyuan3D 웹 데모) 쪽을 검토 중."
+  },
+  {
+   "title": "보관됨",
+   "body": "AJ 4종(T91c~T91j)은 결과가 시트와 멀어 <b>_archive/2026-11-14-characters</b>로 옮기고 플레이어는 기존 팬 모델로 복귀(T107)."
+  },
+  {
+   "title": "주의",
+   "body": "확인은 사용자 지시로 코드 시험만. 화면·FPS 확인은 사용자가 직접."
+  }
+ ]
+}

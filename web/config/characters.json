@@ -12,8 +12,8 @@
     "fan_m2": "남성 팬 2"
   },
   "default": "fan_f1",
-  "modelFile": "./assets/characters/fan-aj.glb",
-  "clipFile": "./assets/characters/fan-aj-anim.glb",
+  "modelFile": "./assets/characters/fan.glb",
+  "clipFile": "./assets/characters/fan-anim-v2.glb",
   "staffClipFile": "./assets/characters/fan-anim-v2.glb",
   "clipFps": 30,
   "cues": {

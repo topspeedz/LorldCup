@@ -61,7 +61,7 @@ async function fixturePage(page, waitForReady = true) {
 }
 
 test('AJ clip path and all eleven named cues are connected together', () => {
-  expect(characters.clipFile).toBe('./assets/characters/fan-aj-anim.glb');
+  expect(characters.clipFile).toBe('./assets/characters/fan-anim-v2.glb');
   expect(characters.clipFps).toBe(30);
   expect(characters.cues).toEqual({
     Emote_CheerClap: { cheer_windup: 2, cheer_raise: 14, clap_contact: [26, 38, 50, 62, 74] },
@@ -318,7 +318,7 @@ test('one team click earns one ticket, the HUD cheer starts the real clip; actua
 });
 
 test('before and after captures show eight actions at identical clip times and camera settings', async ({ page }) => {
-  expect(characters.clipFile).toBe('./assets/characters/fan-aj-anim.glb');
+  expect(characters.clipFile).toBe('./assets/characters/fan-anim-v2.glb');
   const directory = new URL('../_workspace/web-metaverse-develop/2026-11-13-ux-motion-rooms/b25i/', import.meta.url);
   mkdirSync(directory, { recursive: true });
   const samples = [['Walk', 6], ['Run', 6], ['Jump', 10.8], ['Sit', 24],

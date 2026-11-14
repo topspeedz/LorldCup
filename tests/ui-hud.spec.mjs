@@ -110,8 +110,13 @@ test('E-W8: seated, the emote menu is visible clear of the player and an emote c
   });
   console.log('E-W8 geometry', JSON.stringify(await page.evaluate(() => ({ menu: document.querySelector('#emote-menu').getBoundingClientRect().toJSON(), player: arena.screen.element.getBoundingClientRect().toJSON(), playerVisibility: getComputedStyle(arena.screen.element).visibility }))));
   await expect.poll(read).toEqual({ visible: true, clear: true, inside: true });
-  // 사용자 2026-11-14 "화면에서 가운데 가리면안돼 화면 우측에 나오도록해줘": the menu sits on the right half, never over the centre.
-  expect(await page.evaluate(() => document.querySelector('#emote-menu').getBoundingClientRect().left)).toBeGreaterThan(await page.evaluate(() => innerWidth / 2));
+  // T102 (사용자 2026-11-14 "감정표현 버튼클릭하거나 ctrl 누르면 그 아래에 띄우도록 하자"): the menu hangs just under the seated bar,
+  // centred on it, one --space-2 (8px) below its bottom edge — or just above the bar when there is no room below.
+  const place = await page.evaluate(() => {
+    const m = document.querySelector('#emote-menu').getBoundingClientRect(), d = document.querySelector('#dock').getBoundingClientRect();
+    return { gap: Math.round(m.top - d.bottom) === 8 || Math.round(d.top - m.bottom) === 8, centre: Math.abs((m.left + m.right) / 2 - (d.left + d.right) / 2) <= 2 };
+  });
+  expect(place).toEqual({ gap: true, centre: true });
   await menu.locator('.emote').first().click();
   await expect(menu).toBeHidden();
 });

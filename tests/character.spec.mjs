@@ -123,7 +123,7 @@ test('teams without a uniform keep their plain team-colour PNG', async ({ page }
 
 test('early selections and state-before-pose survive loading; peers have independent rigs and uniforms', async ({ page }) => {
   let release; const gate = new Promise(resolve => { release = resolve; });
-  await page.route('**/assets/characters/fan-aj.glb', async route => { await gate; await route.continue(); });
+  await page.route('**/assets/characters/fan.glb', async route => { await gate; await route.continue(); });
   await fixturePage(page);
   await emit(page, 'character:changed', { characterId: 'fan_m1' });
   await emit(page, 'team:changed', { teamId: 'blg' });
@@ -186,7 +186,7 @@ test('three create/dispose cycles release model resources and restore the origin
 
 test('failed model loading leaves the existing avatar usable without an unhandled rejection', async ({ page }) => {
   const errors = []; page.on('pageerror', e => errors.push(e.message));
-  await page.route('**/assets/characters/fan-aj.glb', route => route.abort());
+  await page.route('**/assets/characters/fan.glb', route => route.abort());
   await fixturePage(page);
   await expect.poll(() => page.evaluate(() => !!arena.character?.error)).toBe(true);
   expect(await page.evaluate(() => ({ ready: arena.character.ready, visible: fixture.original.every(o => o.visible), children: arena.avatar.children.length })))
