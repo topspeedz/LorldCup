@@ -26,7 +26,7 @@ export async function applyBakedLightmaps(root,intensities={},screenIntensity=1)
   if(!owner)return;
   const info=owner.userData.bakedLighting;
   if(mesh.geometry.getAttribute('_cm_part'))throw new Error(`Moving crowd cannot use a lightmap: ${mesh.name}`);
-  if(!/^\.\/lightmaps\/[a-zA-Z0-9._-]+\.png$/.test(info.texture)||!Number.isFinite(info.range)||info.range<=0)
+  if(!/^\.\/lightmaps\/[a-zA-Z0-9._-]+\.(png|webp)$/.test(info.texture)||!Number.isFinite(info.range)||info.range<=0)
    throw new Error(`Invalid baked lighting metadata: ${mesh.name}`);
   const uv=mesh.geometry.getAttribute(info.uvAttribute),position=mesh.geometry.getAttribute('position');
   if(!uv||uv.itemSize!==2||uv.count!==position?.count)throw new Error(`Missing lightmap UVs: ${mesh.name}`);

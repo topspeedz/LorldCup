@@ -13,6 +13,8 @@ const beamSources = json('web/lighting-config.json').lights.filter(light => /^RE
 const shoutFiles = [1, 2, 3].map(i => `./assets/audio/sfx/pro-shout_0${i}.mp3`);
 const ranges = { stage: 128, bowl: 16, seats: 8, concourse: 64, interior: 32, exterior: 8, city: 2 }; // T75 rebaked interior peaks at 17.934, above the previous RGBM range.
 const lightmaps = Object.fromEntries(Object.entries(ranges).map(([name, range]) => [`./lightmaps/${name}-v2${name === 'exterior' ? '-2k' : ''}.png`, range]));
+const lightmapFiles = json('web/lighting-config.json').lightmapFiles;
+const served = Object.fromEntries(Object.entries(lightmaps).map(([path, range]) => [lightmapFiles[path] ?? path, range]));
 const required = /^(REF_Jumbotron_|REF_Reused_Monitor_pixels__cyan|REF_Player|Walk_|Collide_|Roof|Atrium_ceiling|Audience_|REF_FanLightsticks|REF_(CircularStage|TrophyIsland|RunwayTransition|CenterStairs|TeamRiser)|Seats__|Seat_armrests__|REF_OverheadBeam|REF_WingUplight|AudienceDetail_)/;
 const blockers = /Player_desks|Player_PC|Player_chair|Plaza_bench|Bollards|REF_DeskBody|REF_CenterBackdrop|REF_WingMainFrame|CCR_(Counter|Timber|Refrigerator|Lounge|Banquette)/;
 const names = glb('arena.glb').nodes.map(node => node.name).filter(name => required.test(name) || blockers.test(name));
@@ -85,7 +87,7 @@ test('the app loads v2 and renders the support columns and stair infill with v2 
   expect(loaded).toContain('/arena-v2.glb');
   expect(loaded).not.toContain('/arena.glb');
   expect([...new Set(loaded.filter(path => path.startsWith('/lightmaps/')))].sort())
-    .toEqual(Object.keys(lightmaps).map(path => path.slice(1)).sort());
+    .toEqual(Object.keys(served).map(path => path.slice(1)).sort());
   const result = await page.evaluate(({ names, lightmaps, beamSources }) => {
     const { ctx } = arenaV2Probe, { THREE, root, scene } = ctx, actual = new Set(), invalid = [];
     root.traverse(object => {
@@ -113,7 +115,7 @@ test('the app loads v2 and renders the support columns and stair infill with v2 
       missingBeams, paletteMatches: skyBeams.every((beam, i) =>
         beam.material.uniforms.beamColor.value.equals(scene.getObjectByName(beamSources[i].name + '_WebBeam').material.uniforms.beamColor.value)),
       crowdBaked: arena.crowd.meshes.some(o => (Array.isArray(o.material) ? o.material : [o.material]).some(m => m.lightMap)) };
-  }, { names, lightmaps, beamSources });
+  }, { names, lightmaps: served, beamSources });
   expect(result.missing).toEqual([]);
   expect(result.invalid).toEqual([]);
   expect(result.baked).toEqual({ meshes: 468, materials: 468, textures: 7 }); // T75 adds 5 ramp/curb primitives and 38 baked __lod10 primitives.

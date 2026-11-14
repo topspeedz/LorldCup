@@ -69,9 +69,11 @@ test('T90 exposure, per-atlas intensity and configured light count reach the are
     return photos.length === 3 && photos.every(mesh => mesh.material.map?.image?.width > 0);
   });
   const result = await page.evaluate(() => {
-    const { ctx } = environmentProbe, { renderer, root, THREE } = ctx, intensities = {}, photos = [], posters = [];
+    const { ctx } = environmentProbe, { renderer, root, THREE } = ctx, intensities = {}, photos = [], posters = [], envByReflection = {};
+    const reflections = { interior: arena.lighting.interiorReflection, concourse: arena.lighting.concourseReflection, exterior: arena.lighting.exteriorReflection };
     root.traverse(mesh => {
       for (const material of Array.isArray(mesh.material) ? mesh.material : [mesh.material]) {
+        for (const [name, texture] of Object.entries(reflections)) if (material?.envMap === texture) (envByReflection[name] ??= new Set()).add(material.envMapIntensity);
         if (material?.lightMap) intensities['./lightmaps/' + material.lightMap.image.src.split('/').pop()] = material.lightMapIntensity / Math.PI;
       }
       if (mesh.userData.screenFace) (mesh.material?.isMeshBasicMaterial ? photos : posters).push(mesh);
@@ -102,15 +104,22 @@ test('T90 exposure, per-atlas intensity and configured light count reach the are
     return { exposure, intensities, lights: arena.lighting.dynamicLights.map(light => light.name),
       photoCount: photos.length, photoToneMapped: photos.map(photo => photo.material.toneMapped), mismatches, maxChanges, photoPixels,
       posters: posters.map(mesh => ({ intensity: mesh.material.emissiveIntensity, color: mesh.material.color.toArray() })),
-      videoFilter: getComputedStyle(ctx.cssLayer).filter };
+      videoFilter: getComputedStyle(ctx.cssLayer).filter,
+      envByReflection: Object.fromEntries(Object.entries(envByReflection).map(([name, values]) => [name, [...values]])) };
   });
   expect(oldLighting.exposureEV).toBeLessThan(0);
   expect(result.exposure).toBe(2 ** oldLighting.exposureEV);
   for (const [path, intensity] of Object.entries(result.intensities)) expect(intensity).toBeCloseTo(oldLighting.lightMapIntensity[path] ?? 1, 8);
-  expect(result.intensities['./lightmaps/bowl-v2.png']).toBeLessThan(1);
-  expect(result.intensities['./lightmaps/seats-v2.png']).toBeLessThan(1);
+  expect(result.intensities['./lightmaps/bowl-v2.webp']).toBeLessThan(1);
+  expect(result.intensities['./lightmaps/seats-v2.webp']).toBeLessThan(1);
   expect(result.intensities['./lightmaps/stage-v2.png']).toBe(1);
   expect(result.intensities['./lightmaps/interior-v2.png']).toBe(1);
+  // Interior ambient reflection is dimmed to match the Blender look (darks were lifted ~3.5x); other areas keep full strength.
+  expect(oldLighting.interiorEnvIntensity).toBeGreaterThan(0);
+  expect(oldLighting.interiorEnvIntensity).toBeLessThan(1);
+  expect(result.envByReflection.interior).toEqual([oldLighting.interiorEnvIntensity]);
+  expect(result.envByReflection.concourse).toEqual([1]);
+  expect(result.envByReflection.exterior).toEqual([1]);
   expect(result.lights).toHaveLength(11);
   for (const name of oldLighting.disabledLights) expect(result.lights).not.toContain(name);
   expect(result.photoCount).toBeGreaterThan(0);

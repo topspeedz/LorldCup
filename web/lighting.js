@@ -9,6 +9,9 @@ export async function createHybridLighting(root,renderer,scene){
  if(!response.ok)throw new Error(`Lighting config HTTP ${response.status}`);
  const config=await response.json();
  if(!Number.isFinite(config.exposureEV)||!Number.isFinite(config.screenExposureEV)||!Number.isFinite(config.backgroundStrength)||config.backgroundStrength<0||!Array.isArray(config.lights)||!Array.isArray(config.disabledLights)||config.disabledLights.some(name=>typeof name!=='string'))throw new Error('Invalid lighting config');
+ // GLB metadata keeps the baked .png names (re-export writes them); serve the smaller files listed here.
+ const files=config.lightmapFiles??{};
+ root.traverse(object=>{const info=object.userData.bakedLighting;if(info&&files[info.texture])info.texture=files[info.texture];});
  renderer.toneMapping=THREE.AgXToneMapping;renderer.toneMappingExposure=2**config.exposureEV;
  renderer.outputColorSpace=THREE.SRGBColorSpace;
  renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
@@ -26,15 +29,17 @@ export async function createHybridLighting(root,renderer,scene){
   const exterior=/^(EXR_|City|Collide_City|Walk_Plaza|Road|Crosswalk|Plaza|Bollards|Bench|Event_)/.test(owner.name);
   const concourse=/^(CCR_|Walk_Concourse|Walk_Atrium|Walk_EntryBridge|Collide_Lobby|Collide_Columns|Atrium_ceiling)/.test(owner.name);
   const reflection=exterior?exteriorReflection:concourse?concourseReflection:interiorReflection;
+  // The interior HDR lifted baked shadows ~3.5x above the Blender render; 0.3 matches its median brightness.
+  const envIntensity=reflection===interiorReflection?config.interiorEnvIntensity??1:1;
   const assign=material=>{
    if(material.userData.bakedLighting){
     const key=material.userData.bakedSource+reflection.uuid;
-    if(!materials.has(key)){material.envMap=reflection;material.envMapIntensity=1;materials.set(key,material);}
+    if(!materials.has(key)){material.envMap=reflection;material.envMapIntensity=envIntensity;materials.set(key,material);}
     return materials.get(key);
    }
    const key=material.uuid+reflection.uuid;
    if(!materials.has(key)){
-    const copy=material.clone();copy.envMap=reflection;copy.envMapIntensity=1;
+    const copy=material.clone();copy.envMap=reflection;copy.envMapIntensity=envIntensity;
     if(copy.userData.thinGlassIOR){
      copy.transparent=true;copy.opacity=1;copy.depthWrite=false;
      const f0=((copy.userData.thinGlassIOR-1)/(copy.userData.thinGlassIOR+1))**2;
