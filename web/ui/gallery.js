@@ -15,11 +15,18 @@ export function create(ctx){
  const button=document.createElement('button');button.id='gallery-open';button.type='button';button.textContent='갤러리';
  button.title='게시판을 왼쪽에 열기';button.setAttribute('aria-expanded','false');
  uiRoot.append(style,panel);(document.querySelector('#dock')||uiRoot).append(button);
+ // Fit between the left edge and the video so the player is not covered; under 280px of room the panel keeps 280px.
+ let timer=0;
+ const fit=()=>{
+  const r=window.arena?.screen?.element?.getBoundingClientRect(),edge=parseFloat(getComputedStyle(panel).left)||0;
+  const room=r&&r.width>0&&getComputedStyle(window.arena.screen.element).visibility!=='hidden'?r.left-edge-8:Infinity;
+  panel.style.maxWidth=Number.isFinite(room)?`${Math.max(280,Math.round(room))}px`:'';
+ };
  function open(){
   const frame=document.createElement('iframe');frame.title='갤러리 게시판';frame.src=URL_;frame.referrerPolicy='no-referrer';
-  panel.replaceChildren(frame);panel.hidden=false;button.setAttribute('aria-expanded','true');
+  fit();timer=setInterval(fit,500);panel.replaceChildren(frame);panel.hidden=false;button.setAttribute('aria-expanded','true');
  }
- function close(){panel.hidden=true;panel.replaceChildren();button.setAttribute('aria-expanded','false');}
+ function close(){clearInterval(timer);panel.hidden=true;panel.replaceChildren();button.setAttribute('aria-expanded','false');}
  button.addEventListener('click',()=>panel.hidden?open():close());
- return {dispose(){panel.remove();button.remove();style.remove();}};
+ return {dispose(){clearInterval(timer);panel.remove();button.remove();style.remove();}};
 }
