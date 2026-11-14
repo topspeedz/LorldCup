@@ -6,7 +6,7 @@ const URL_='https://gall.dcinside.com/board/lists/?id=leagueoflegends6';
 export function create(ctx){
  const {uiRoot}=ctx;
  const style=document.createElement('style');
- style.textContent=`#gallery{position:fixed;left:var(--edge,12px);top:var(--edge,12px);bottom:var(--edge,12px);width:min(600px,calc(100vw - var(--edge,12px)*2));z-index:var(--z-hud,auto);background:#fff;border:var(--border-width,1px) solid var(--color-border-subtle,#345367);border-radius:var(--radius-md,6px);overflow:hidden}
+ style.textContent=`#gallery{position:fixed;left:var(--edge,12px);top:var(--edge,12px);bottom:var(--edge,12px);width:min(clamp(360px,21vw,600px),calc(100vw - var(--edge,12px)*2));z-index:var(--z-hud,auto);background:#fff;border:var(--border-width,1px) solid var(--color-border-subtle,#345367);border-radius:var(--radius-md,6px);overflow:hidden}
   #gallery[hidden]{display:none}#gallery iframe{width:100%;height:100%;border:0;display:block}
   #dock>#gallery-open{order:1}body[data-hud=seated] #dock>#gallery-open{order:3}
   body:not(.touch)[data-hud=seated] #dock>#gallery-open{margin-left:0}
