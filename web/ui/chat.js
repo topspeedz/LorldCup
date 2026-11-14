@@ -15,7 +15,7 @@ export function create(ctx){
  function open(){
   const screen=window.arena?.screen,id=screen?.videoId;
   if(!id)return;
-  const url=new URL(screen.source==='vod'?'https://www.youtube.com/live_chat_replay':'https://www.youtube.com/live_chat');
+  const url=new URL(screen.source==='vod'&&!screen.liveOn?'https://www.youtube.com/live_chat_replay':'https://www.youtube.com/live_chat');
   url.search=new URLSearchParams({v:id,embed_domain:location.hostname});
   const frame=document.createElement('iframe');frame.title='유튜브 채팅';frame.src=url.href;
   panel.replaceChildren(frame);panel.hidden=false;button.setAttribute('aria-expanded','true');

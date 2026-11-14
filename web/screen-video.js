@@ -431,7 +431,7 @@ export function create(ctx){
  }
  scene.onBeforeRender=beforeRender;
  // A hidden tab (Alt+Tab, another window on top) keeps playing: the picture and sound go on (사용자 2026-11-14).
- const api={get state(){return state();},get source(){return source;},get schedule(){return {source:playbackSource(),slot:slot?{...slot}:null,fallback:scheduledFallback};},get face(){return face;},get faces(){return faces.map(({name,position,normal,width,height})=>({name,position:position.toArray(),normal:normal.toArray(),width,height}));},get roundStart(){return roundStart;},get fullMode(){return fullMode;},get videoId(){return (ready&&player.getVideoData?.().video_id)||videoId;},element,fullModeElement:cssLayer,controlsElement:controls,enterFullMode,exitFullMode,setSource,play,pause,setMuted,setVolume};
+ const api={get state(){return state();},get source(){return source;},get liveOn(){return liveOn();},get schedule(){return {source:playbackSource(),slot:slot?{...slot}:null,fallback:scheduledFallback};},get face(){return face;},get faces(){return faces.map(({name,position,normal,width,height})=>({name,position:position.toArray(),normal:normal.toArray(),width,height}));},get roundStart(){return roundStart;},get fullMode(){return fullMode;},get videoId(){return (ready&&player.getVideoData?.().video_id)||videoId;},element,fullModeElement:cssLayer,controlsElement:controls,enterFullMode,exitFullMode,setSource,play,pause,setMuted,setVolume};
  window.arena.screen=api;
  emit();
  return {
