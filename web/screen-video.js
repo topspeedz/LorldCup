@@ -69,7 +69,9 @@ export function create(ctx){
  let videoId=null,waitStarted=null,retryFailures=0,retryNoticeTimer,lastFailure='';
  let seated=false,sourceStarted=false,effectiveVolume=config.volume,broadcast=null;
  const waitLimit=config.retry.waitLimitSeconds*1000;
- const isWaiting=()=>entered&&source==='vod'&&roundPosition(Date.now(),roundStart,0).seconds<0;
+ // broadcasts.json liveOn: the match's video is a YouTube live stream — play at its live edge, with no round offset and no seeking.
+ const liveOn=()=>source==='vod'&&!!broadcast?.liveOn;
+ const isWaiting=()=>entered&&source==='vod'&&!liveOn()&&roundPosition(Date.now(),roundStart,0).seconds<0;
  const vodStart=()=>broadcast?.vod&&broadcast.vodStart||0; // the match's own VOD starts its rounds at this second
  const state=()=>({source,playing:ready&&status==='playing',time:ready?player.getCurrentTime():0,muted,status,error,volume:effectiveVolume,userVolume:Number(volume.value)});
  const emit=()=>{
@@ -235,7 +237,7 @@ export function create(ctx){
  }
  function sync(force=false){
   if(isWaiting()){waitForRound();return false;}
-  if(!ready||cueing||source!=='vod')return true;
+  if(!ready||cueing||source!=='vod'||liveOn())return true;
   const position=roundPosition(Date.now(),roundStart,player.getDuration(),vodStart());
   if(position.ended){endRound();return false;}
   // start/cue already carries the offset; defer correction until the first PLAYING event.
@@ -317,10 +319,10 @@ export function create(ctx){
    const YT=await loadYouTube();if(disposed||version!==sourceVersion)return;
    const seconds=source==='vod'?Math.max(0,Math.floor(roundPosition(Date.now(),roundStart,0).seconds))+vodStart():0;
    loadTimer=setTimeout(()=>retry('유튜브를 불러오지 못했습니다. 네트워크 연결을 확인해 주세요.',playbackTimeouts>0),15000);
-   if(ready&&info.id){player.cueVideoById({videoId:info.id,startSeconds:seconds});return;}
+   if(ready&&info.id){player.cueVideoById(liveOn()?{videoId:info.id}:{videoId:info.id,startSeconds:seconds});return;}
    if(player)player.destroy();ready=false;
    const target=document.createElement(info.channel?'iframe':'div');element.replaceChildren(target);
-   const playerVars={autoplay:0,controls:1,playsinline:1,enablejsapi:1,origin:location.origin,start:seconds};
+   const playerVars={autoplay:0,controls:1,playsinline:1,enablejsapi:1,origin:location.origin,...(liveOn()?{}:{start:seconds})};
    if(info.channel){
     const url=new URL('https://www.youtube.com/embed/live_stream');url.search=new URLSearchParams({...playerVars,channel:info.channel});target.src=url.href;
     target.allow='autoplay; encrypted-media; fullscreen; picture-in-picture';target.allowFullscreen=true;
