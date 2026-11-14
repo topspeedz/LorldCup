@@ -237,7 +237,9 @@ export function create(ctx){
  }
  function sync(force=false){
   if(isWaiting()){waitForRound();return false;}
-  if(!ready||cueing||source!=='vod'||liveOn())return true;
+  if(!ready||cueing||source!=='vod')return true;
+  // Live stream: stay at the live edge. A player that starts late or falls behind (buffering, pause) is jumped to the end.
+  if(liveOn()){const end=player.getDuration();if(sourceStarted&&end>0&&end-player.getCurrentTime()>15)player.seekTo(end,true);return true;}
   const position=roundPosition(Date.now(),roundStart,player.getDuration(),vodStart());
   if(position.ended){endRound();return false;}
   // start/cue already carries the offset; defer correction until the first PLAYING event.
