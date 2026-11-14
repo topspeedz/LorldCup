@@ -191,9 +191,8 @@ export function create(ctx){
   }
  }
  function display(){
-  // A picker may not fit beside the seated video; keep its controls usable and the video unobscured.
-  const pickerOpen=!!document.querySelector('#team-select:not([hidden])');
-  const show=entered&&eligible&&hasImage&&!error&&status!=='ended'&&status!=='waiting'&&!pickerOpen;
+  // The team picker sits above the video layer (#ui-root over #css-layer), so the video keeps playing behind it.
+  const show=entered&&eligible&&hasImage&&!error&&status!=='ended'&&status!=='waiting';
   aperture.visible=show&&!fullMode;element.style.visibility=show?'visible':'hidden';
   hideOverlaps(show&&inView);
  }

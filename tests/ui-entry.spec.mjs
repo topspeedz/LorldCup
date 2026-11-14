@@ -84,7 +84,7 @@ test('E14 at 360×640 the match banner opens a screen where the enter button and
   await page.locator('#broadcasts button[data-broadcast="final"]').click();
   await expect.poll(() => inViewport(page.locator('#enter'), page)).toBe(true);
   expect(await inViewport(page.locator('#enter'), page)).toBe(true);
-  expect(await inViewport(page.locator('#entry-notice > p'), page)).toBe(true);
+  expect(await inViewport(page.locator('#entry-notice summary'), page)).toBe(true);
 });
 
 // ---- team-select.md ----

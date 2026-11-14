@@ -11,6 +11,7 @@ const FIXED = Date.parse('2026-11-13T20:03:00+09:00'); // between round boundari
 // Legal T62 원문 (UX room-invite.md 6절, "(IP)" left out by user decision).
 const NOTICE = '들어가면 다른 사람과 자동으로 연결돼요. 이때 내 접속 주소가 연결을 돕는 외부 서비스와 상대에게 전해져요.';
 const DETAILS = [
+  NOTICE,
   '입장하면 다른 관람객과 자동으로 연결되며, 이때 내 IP 주소가 연결 중개 서버(PeerJS Cloud·Google STUN)와 연결 상대에게 전달됩니다.',
   '같은 방 사람에게는 자동으로 정해진 닉네임, 캐릭터의 위치와 동작, 응원팀이 보입니다. 빈자리를 찾는 동안 다른 방의 방장과, 방 현황을 확인하는 운영자 화면과도 잠깐 연결될 수 있습니다. 이 앱은 이 정보를 저장하지 않습니다. 영상은 각자의 브라우저가 YouTube에서 직접 받습니다.',
   '제공 사진을 참고한 공간 재현 · 실제 2026 행사 배치와 실측 치수를 검증한 모델은 아닙니다.',
@@ -60,11 +61,11 @@ test('BL-0035 first page: one chosen broadcast card, three next showtimes with t
   await page.locator(`#showtimes button[data-showtime="${first + INTERVAL}"]`).click();
   expect(await page.locator('#showtimes [aria-pressed=true]').count()).toBe(1);
   await expect(page.locator('#showtimes [aria-pressed=true]')).toHaveAttribute('data-showtime', String(first + INTERVAL));
-  // Legal T62: the line is the 원문, it sits right above 들어가기, "자세히" holds the three texts in order.
-  await expect(page.locator('#entry-notice > p')).toHaveText(NOTICE);
+  // 사용자 2026-11-15 "확장됐을떄 볼수있도록만": folded, only the '연결·개인정보 안내' line shows right above 들어가기; opened, the Legal T62 원문 and the three texts in order.
+  await expect(page.getByText(NOTICE)).toBeHidden();
   const notice = await box(page, '#entry-notice'), button = await box(page, '#enter');
   expect(notice.b).toBeLessThanOrEqual(button.t);
-  await page.getByText('자세히', { exact: true }).click();
+  await page.getByText('연결·개인정보 안내', { exact: true }).click();
   expect(await page.locator('#entry-notice details p').allTextContents()).toEqual(DETAILS);
   // Nothing in the arena is on screen yet: no key list, move buttons, team button or room panel.
   expect(await page.evaluate(() => ['#hud', '#dock', '#team-select-open'].filter(s => document.querySelector(s)?.checkVisibility()))).toEqual([]);
@@ -95,8 +96,8 @@ test('BL-0035 invite link skips the first page: invite line, notice, 들어가�
   await expect(page.locator('#panel h1')).toHaveText('친구가 부른 방으로 들어가요');
   await expect(page.locator('#broadcasts')).toBeHidden();
   await expect(page.locator('#showtimes')).toBeHidden();
-  await expect(page.locator('#entry-notice > p')).toHaveText(NOTICE);
-  await expect(page.getByText('자세히', { exact: true })).toBeVisible();
+  await expect(page.getByText(NOTICE)).toBeHidden();
+  await expect(page.getByText('연결·개인정보 안내', { exact: true })).toBeVisible();
   await page.locator('#enter').click();
   await expect.poll(() => page.evaluate(() => __enters)).toEqual([{ broadcastId: 'final', showtime: t, roomKey: '03' }]);
 });
