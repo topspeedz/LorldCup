@@ -94,6 +94,7 @@ function firstPage(broadcasts,screen){
   card.type='button';card.dataset.broadcast=b.id;
   card.innerHTML='<span class="name"></span><span class="source"></span>';
   card.querySelector('.name').textContent=b.name;
+  if(b.liveOn)card.querySelector('.source').classList.add('live-on'); // broadcasts.json liveOn: the card label reads LIVE ON instead of 재방/생방송
   if(b.soon){card.disabled=true;card.classList.add('soon');card.insertAdjacentHTML('beforeend','<span class="soon-badge">곧 시작합니다</span>');}
   if(b.image){const img=document.createElement('img');img.src=b.image;img.alt='';card.classList.add('banner');card.prepend(img);}
   // A banner opens its showtimes: the .when step scrolls in and 들어가기 takes focus (Enter, Enter goes in).
@@ -112,7 +113,7 @@ function firstPage(broadcasts,screen){
   live=scheduledSource(now,screen)==='live';
   for(const card of cards){
    card.setAttribute('aria-pressed',String(card.dataset.broadcast===broadcastId));
-   card.querySelector('.source').textContent=card.disabled?'COMING SOON':live?'생방송':'재방';
+   card.querySelector('.source').textContent=card.disabled?'COMING SOON':card.querySelector('.live-on')?'LIVE ON':live?'생방송':'재방';
   }
   showtimesLabel.textContent=`${broadcasts.find(b=>b.id===broadcastId).name} 상영 시각`;
   showtimesBox.hidden=live;
