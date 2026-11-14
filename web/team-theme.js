@@ -5,7 +5,9 @@
 
 export function pickBroadcast(broadcasts,search){
  const id=new URLSearchParams(search).get('b');
- return broadcasts.find(b=>b.id===id)??broadcasts[0];
+ // A soon match (broadcasts.json soon) cannot be entered yet.
+ const open=broadcasts.filter(b=>!b.soon);
+ return open.find(b=>b.id===id)??open[0]??broadcasts[0];
 }
 
 export function broadcastTeams(config,broadcast){
