@@ -24,7 +24,7 @@ test('first page comes first; clicking 들어가기 before ready shows the cover
   const cover = overlay(page), enter = page.getByRole('button', { name: '들어가기', exact: true });
   await expect(cover).toBeHidden();
   await expect(enter).toBeEnabled(); // clickable before the arena is ready (architecture #enter)
-  await expect(enter).toBeFocused();
+  await expect(page.locator('#broadcasts button[data-broadcast="final"]')).toBeFocused(); // focus starts on the match banner
   await enter.click();
   await expect(cover).toBeVisible();
   await expect(cover).toHaveAttribute('aria-busy', 'true');

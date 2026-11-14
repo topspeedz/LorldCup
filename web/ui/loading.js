@@ -9,7 +9,7 @@ const SHOWTIME_COUNT=3; // UI D1: three next round boundaries, after the one run
 const cover=document.querySelector('#loading'),text=cover.querySelector('[role=status]'),bar=cover.querySelector('progress');
 const panel=document.querySelector('#panel'),status=document.querySelector('#status'),enter=document.querySelector('#enter');
 const broadcastsBox=document.querySelector('#broadcasts'),showtimesBox=document.querySelector('#showtimes'),showtimeRow=showtimesBox.querySelector('.row');
-const title=document.querySelector('#panel-title');
+const title=document.querySelector('#panel-title'),when=panel.querySelector('.when'),showtimesLabel=document.querySelector('#showtimes-label');
 
 let choice=null,clicked=false,entered=false,failed=false,tick=0,invite=null;
 let characterSettled=false,characterWaiting=false;
@@ -91,7 +91,9 @@ function firstPage(broadcasts,screen){
   card.type='button';card.dataset.broadcast=b.id;
   card.innerHTML='<span class="name"></span><span class="source"></span>';
   card.querySelector('.name').textContent=b.name;
-  card.addEventListener('click',()=>{broadcastId=b.id;render();});
+  if(b.image){const img=document.createElement('img');img.src=b.image;img.alt='';card.classList.add('banner');card.prepend(img);}
+  // A banner opens its showtimes: the .when step scrolls in and 들어가기 takes focus (Enter, Enter goes in).
+  card.addEventListener('click',()=>{broadcastId=b.id;render();when.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'});enter.focus({preventScroll:true});});
   broadcastsBox.append(card);return card;
  });
  const slots=Array.from({length:SHOWTIME_COUNT+1},()=>{
@@ -108,6 +110,7 @@ function firstPage(broadcasts,screen){
    card.setAttribute('aria-pressed',String(card.dataset.broadcast===broadcastId));
    card.querySelector('.source').textContent=live?'생방송':'재방';
   }
+  showtimesLabel.textContent=`${broadcasts.find(b=>b.id===broadcastId).name} 상영 시각`;
   showtimesBox.hidden=live;
   if(live)return;
   const interval=screen.roundIntervalMinutes*60000,upcoming=upcomingRounds(now,screen.roundIntervalMinutes,SHOWTIME_COUNT);
@@ -120,7 +123,7 @@ function firstPage(broadcasts,screen){
  }
  render();tick=setInterval(render,1000);
  choice=()=>({broadcastId,showtime:live?null:showtime,roomKey:null});
- panel.hidden=false;enter.focus();
+ panel.hidden=false;cards[0].focus();
 }
 
 async function start(){

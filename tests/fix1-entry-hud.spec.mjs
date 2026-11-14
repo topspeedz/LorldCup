@@ -119,6 +119,22 @@ test('BL-0035 waiting: after 들어가기 with a later showtime, one "N분 뒤 �
   await page.keyboard.up('KeyW');
 });
 
+test('first page: the 결승전 banner image sits under "어떤 경기를 볼까요?"; clicking it scrolls to its showtimes with 들어가기 focused', async ({ page }) => {
+  await boot(page, { size: { width: 1280, height: 720 } });
+  const card = page.locator('#broadcasts button[data-broadcast="final"]');
+  await expect(card.locator('img')).toHaveAttribute('src', './assets/broadcasts/final.webp');
+  await expect.poll(() => card.locator('img').evaluate(img => img.complete && img.naturalWidth > 0)).toBe(true);
+  const title = await box(page, '#panel h1'), banner = await box(page, '#broadcasts button[data-broadcast="final"]');
+  expect(banner.t).toBeGreaterThanOrEqual(title.b);
+  const inView = sel => page.evaluate(s => { const r = document.querySelector(s).getBoundingClientRect(); return r.top >= 0 && r.bottom <= innerHeight + .5; }, sel);
+  expect(await inView('#showtimes')).toBe(false); // the showtimes are the next step, not on the first screen
+  await card.click();
+  await expect.poll(() => inView('#showtimes')).toBe(true);
+  await expect.poll(() => inView('#enter')).toBe(true);
+  await expect(page.locator('#showtimes-label')).toHaveText('결승전 상영 시각');
+  await expect(page.locator('#enter')).toBeFocused();
+});
+
 // ---- BL-0034: simple mouse-first frame ----
 
 test('BL-0034 after entry: none of the 14 removed IDs, key hints top-right without Esc/R, settings group holds the sound bar, sound on', async ({ page }) => {

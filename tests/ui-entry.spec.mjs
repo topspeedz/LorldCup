@@ -55,10 +55,12 @@ test('E3·E4 load failure: user-words cause, focused "다시 시도", no start.p
   await expect(page.getByText('경기장을 불러오지 못했습니다')).toHaveCount(0);
 });
 
-test('E5·E7·E9·E10 first page: focused "들어가기", Enter goes in, Esc changes nothing, no "다시 걷기"', async ({ page }) => {
+test('E5·E7·E9·E10 first page: focused match banner, Enter opens its showtimes with "들어가기" focused, Enter goes in, Esc changes nothing, no "다시 걷기"', async ({ page }) => {
   const errors = await open(page, { enter: false });
   await expect(cover(page)).toBeHidden();
   const enter = page.getByRole('button', { name: '들어가기', exact: true });
+  await expect(page.locator('#broadcasts button[data-broadcast="final"]')).toBeFocused();
+  await page.keyboard.press('Enter');
   await expect(enter).toBeFocused();
   await page.keyboard.press('Enter');
   await expect.poll(() => walking(page)).toBe(true);
@@ -77,9 +79,10 @@ test('E8·K1 walking first view shows the next task "입구로 가서 티켓 받
   await expect(page.locator('#hud-objective')).toBeVisible();
 });
 
-test('E14 at 360×640 the enter button and the notice line above it are on the first screen without scrolling', async ({ page }) => {
+test('E14 at 360×640 the match banner opens a screen where the enter button and the notice line above it both fit', async ({ page }) => {
   await open(page, { size: { width: 360, height: 640 }, enter: false });
-  await page.evaluate(() => scrollTo(0, 0));
+  await page.locator('#broadcasts button[data-broadcast="final"]').click();
+  await expect.poll(() => inViewport(page.locator('#enter'), page)).toBe(true);
   expect(await inViewport(page.locator('#enter'), page)).toBe(true);
   expect(await inViewport(page.locator('#entry-notice > p'), page)).toBe(true);
 });
@@ -245,7 +248,8 @@ const hit = (page, selector) => page.evaluate(s => {
 test('S13·K13·E14 touch at 360×640: the opener, the ticket buttons and the enter button take the tap', async ({ page }) => {
   await open(page, { size: { width: 360, height: 640 }, enter: false });
   await page.evaluate(() => document.body.classList.add('touch'));
-  expect(await hit(page, '#enter')).toBe(true);
+  await page.locator('#broadcasts button[data-broadcast="final"]').click(); // the showtimes step holds 들어가기
+  await expect.poll(() => hit(page, '#enter')).toBe(true);
   await page.locator('#enter').click();
   expect(await hit(page, '#team-select-open')).toBe(true);
   await toNearGate(page);
