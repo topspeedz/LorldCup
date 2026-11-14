@@ -4,6 +4,7 @@
    "id": "final",
    "name": "결승전",
    "image": "./assets/broadcasts/final.webp",
+   "vod": "https://www.youtube.com/watch?v=qQ4QqT20Ibs",
    "teams": [
     "geng",
     "blg"
