@@ -12,10 +12,10 @@ const { createPlayerController } = await import('data:text/javascript;base64,' +
 const edges = [
   { zone: 'entry', start: [-58.9, 0, 3.388], end: [-55.5, 0, 3.388] },
   { zone: 'entry', start: [-58.9, 0, -3.388], end: [-55.5, 0, -3.388] },
-  { zone: 'ramp-A', start: [-3.383, 0, -51], end: [-3.383, -10, -19] },
-  { zone: 'ramp-A', start: [3.383, 0, -51], end: [3.383, -10, -19] },
-  { zone: 'ramp-B', start: [-3.383, 0, 51], end: [-3.383, -10, 19] },
-  { zone: 'ramp-B', start: [3.383, 0, 51], end: [3.383, -10, 19] },
+  { zone: 'ramp-A', start: [-3.383, -0.625, -49], end: [-3.383, -10, -19] },
+  { zone: 'ramp-A', start: [3.383, -0.625, -49], end: [3.383, -10, -19] },
+  { zone: 'ramp-B', start: [-3.383, -0.625, 49], end: [-3.383, -10, 19] },
+  { zone: 'ramp-B', start: [3.383, -0.625, 49], end: [3.383, -10, 19] },
 ];
 const hash = value => createHash('sha256').update(JSON.stringify(value)).digest('hex');
 
@@ -89,6 +89,19 @@ test('A/B ramps allow both side lanes but retain seating limits beside and above
   tier.updateMatrixWorld(true);player.registerWorld(tier);
   player.teleport([4,-4,-35]);expect(player.attempt(.1,0)).toBe(false);
   player.teleport([2,-4,-35]);expect(player.attempt(.1,0)).toBe(false);
+});
+
+test('the entry side stairs can be walked end to end on the runtime entry gap floor', () => {
+  const { THREE: T, root, scene, camera, player } = fixture();
+  const bridge = new T.Mesh(new T.BoxGeometry(4,.2,6.8));bridge.name='Walk_EntryBridge__concrete';bridge.position.set(-63,-.1,0);root.add(bridge);
+  root.updateMatrixWorld(true);
+  const instance = create({ THREE: T, root, scene, camera, player, config: () => ({ ...config, edgeSegments: [], readableText: [] }) });
+  for (const z of [4.6,-4.6]) {
+    player.teleport([-60,0,z]);
+    for (let step=0;step<300;step++) expect(player.attempt(.1,0),`down ${z}, step ${step}`).toBe(true);
+    for (let step=0;step<300;step++) expect(player.attempt(-.1,0),`up ${z}, step ${step}`).toBe(true);
+  }
+  instance.dispose();
 });
 
 test('an overlapping runway above the allowed step does not hide the reachable ramp below', () => {

@@ -19,7 +19,7 @@ export function createPlayerController({avatar,input,getYaw,onTeleport,clickSit}
  function registerWorld(root){
   root.traverse(o=>{
    if(!o.isMesh)return;
-   if(/^Walk_Ramp[AB]__/.test(o.name))rampMeshes.push(o);
+   if(/^Walk_Ramp[AB]__|^Walk_EntryRampGap_/.test(o.name))rampMeshes.push(o);
    if(o.name.startsWith('Walk_Tier1')){restrictedMeshes.push(o);wallMeshes.push(o);return;}
    if(/^Seats__|^Seat_armrests__/.test(o.name)){seatMeshes.push(o);return;}
    if(/^Roof|^Atrium_ceiling/.test(o.name))ceilingMeshes.push(o);
