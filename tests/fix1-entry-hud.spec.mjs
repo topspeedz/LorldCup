@@ -135,6 +135,18 @@ test('first page: the 결승전 banner image sits under "어떤 경기를 볼까
   await expect(page.locator('#enter')).toBeFocused();
 });
 
+test('in the arena "나가기 · 다른 경기 보기" goes back to the match picker, dropping an invite link', async ({ page }) => {
+  const t = Math.ceil(FIXED / INTERVAL) * INTERVAL;
+  await boot(page, { url: `/?b=final&t=${t}&room=03` });
+  await enter(page);
+  const leave = page.getByRole('button', { name: '나가기 · 다른 경기 보기' });
+  await expect(leave).toBeVisible();
+  await Promise.all([page.waitForEvent('load'), leave.click()]);
+  expect(new URL(page.url()).search).toBe('');
+  await expect(page.locator('#panel h1')).toHaveText('어떤 경기를 볼까요?');
+  await expect(page.locator('#broadcasts button')).toHaveCount(3);
+});
+
 // ---- BL-0034: simple mouse-first frame ----
 
 test('BL-0034 after entry: none of the 14 removed IDs, key hints top-right without Esc/R, settings group holds the sound bar, sound on', async ({ page }) => {
