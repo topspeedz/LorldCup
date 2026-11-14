@@ -1,12 +1,18 @@
+import {isModelTeam,teamNameTexture} from './team-theme.js';
+
 export async function createTeamBackdrops({THREE,root,config}){
  const teams=config('teams').teams,bySlot=slot=>teams.find(t=>t.slot===slot);
  const surfaces=[],loader=new THREE.TextureLoader();
+ // Desk fronts keep the model's own artwork for its two teams; another team gets its name on a plate.
+ const desks=[['REF_DeskFace_-1','GEN.G'],['REF_DeskFace_1','BLG']].filter(([,slot])=>bySlot(slot)&&!isModelTeam(bySlot(slot)));
  try{
-  for(const [name,slot] of [['REF_BackdropArtwork_-1','GEN.G'],['REF_BackdropArtwork_1','BLG']]){
+  for(const [name,slot,desk] of [['REF_BackdropArtwork_-1','GEN.G'],['REF_BackdropArtwork_1','BLG'],...desks.map(d=>[...d,true])]){
    const team=bySlot(slot);
    const mesh=root.getObjectByName(name);
    if(!mesh?.isMesh)throw new Error(`Missing team backdrop: ${name}`);
-   const map=await loader.loadAsync(team?.backdrop??`./assets/screen/team-backdrop-${slot==='BLG'?'blg':'geng'}.png`);
+   mesh.geometry.computeBoundingBox();
+   const size=mesh.geometry.boundingBox.getSize(new THREE.Vector3());
+   const map=desk?teamNameTexture(team,size.x/size.y,THREE,true):await loader.loadAsync(team?.backdrop??`./assets/screen/team-backdrop-${slot==='BLG'?'blg':'geng'}.png`);
    map.colorSpace=THREE.SRGBColorSpace;
    const geometry=mesh.geometry,material=mesh.material,copy=geometry.clone(),paint=material.clone();
    paint.onBeforeCompile=material.onBeforeCompile;paint.customProgramCacheKey=material.customProgramCacheKey;
