@@ -28,6 +28,7 @@ h1{font-size:var(--font-size-xl);font-weight:var(--font-weight-bold);margin:calc
 #showtimes .row{display:grid;grid-template-columns:repeat(4,1fr);border:var(--border-width) solid var(--color-border);border-radius:var(--radius-sm);overflow:hidden}
 #showtimes button{border:0;border-radius:0;font-variant-numeric:tabular-nums}#showtimes button+button{border-left:var(--border-width) solid var(--color-border)}
 #showtimes button[aria-pressed=true]{background:var(--color-accent);color:var(--color-text-on-accent);font-weight:var(--font-weight-bold)}
+#showtimes button[hidden]{display:none}#showtimes.live-only .row{grid-template-columns:1fr}#showtimes.live-only button{font-weight:900;letter-spacing:.04em}#showtimes.live-only button:first-child::after{content:none}
 #showtimes button:first-child::after{content:'상영 중';display:block;font-size:var(--font-size-xs);color:var(--color-warning)}#showtimes button[aria-pressed=true]:first-child::after{color:inherit}
 #entry-notice{font-size:var(--font-size-xs);color:var(--color-text-muted)}#entry-notice p{margin:0}#entry-notice summary{cursor:pointer;color:var(--color-text-subtle);margin-top:var(--space-1)}#entry-notice details p{margin-top:var(--space-2)}
 #enter{width:100%;padding:var(--space-3) var(--space-4);background:var(--color-accent);border-color:var(--color-accent);color:var(--color-text-on-accent);font-weight:var(--font-weight-bold)}#enter:hover{border-color:var(--color-text)}#enter:active{border-color:var(--color-text-on-accent);transform:translateY(1px)}

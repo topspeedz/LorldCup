@@ -119,10 +119,14 @@ function firstPage(broadcasts,screen){
   showtimesBox.hidden=live;
   if(live)return;
   const interval=screen.roundIntervalMinutes*60000,upcoming=upcomingRounds(now,screen.roundIntervalMinutes,SHOWTIME_COUNT);
-  const times=[Math.floor(now/interval)*interval,...upcoming];
-  if(!times.includes(showtime))showtime=upcoming[0];
+  // liveOn (broadcasts.json): one cell only, the round running now, labelled LIVE!!
+  const only=!!broadcasts.find(b=>b.id===broadcastId).liveOn;
+  const times=[Math.floor(now/interval)*interval,...(only?[]:upcoming)];
+  showtimesBox.classList.toggle('live-only',only);
+  if(!times.includes(showtime))showtime=only?times[0]:upcoming[0];
   slots.forEach((b,i)=>{
-   b.dataset.showtime=String(times[i]);b.textContent=clock(times[i]);
+   b.hidden=i>=times.length;if(b.hidden)return;
+   b.dataset.showtime=String(times[i]);b.textContent=only?'LIVE!!':clock(times[i]);
    b.setAttribute('aria-pressed',String(times[i]===showtime));
   });
  }
