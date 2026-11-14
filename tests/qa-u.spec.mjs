@@ -151,7 +151,7 @@ test('U-7: seated on both sides of the entrance the screen is close: whole, play
     await page.setViewportSize({ width: 1920, height: 1080 });
     await page.evaluate(seat => {
       const { player } = uProbe.ctx, [x, y, z] = seat.position;
-      const approach = [x, y, z - Math.sign(z) * 1.2, Math.atan2(-x, -z)];
+      const approach = [...seat.standPosition, Math.atan2(-x, -z)];
       approach[1] = player.groundAt(approach[0], approach[2], y);
       player.teleport(approach);
     }, seat);
@@ -166,7 +166,7 @@ test('U-7: seated on both sides of the entrance the screen is close: whole, play
       results.push({ id, viewport: [w, h], rect: s.rect, playing: s.playing, inside: left >= -1 && top >= -1 && left + width <= w + 1 && top + height <= h + 1 });
       if (w === 1920) await page.screenshot({ path: shots + `T66-U-7-${id}-seated.png` });
     }
-    await page.getByRole('button', { name: /^일어나기/ }).click(); // T30 label '일어나기 (E)'
+    await page.getByRole('button', { name: /일어나기$/ }).click(); // T67 bar label 'E / Esc 일어나기'
     await expect.poll(() => page.evaluate(() => arena.seat.seatId)).toBe(null);
   }
   console.log('T66 U-7', JSON.stringify(results));

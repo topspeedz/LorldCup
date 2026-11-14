@@ -3,7 +3,7 @@ import {APP_ENTER,INPUT_ACTION} from './events.js';
 export function createInput({canvas,events,controls,isReady,onLook,onJump,onClick}){
  const keys=new Set(),listeners=new AbortController(),options={signal:listeners.signal},touchAction=canvas.style.touchAction;
  canvas.style.touchAction='none';
- let entered=false,walking=false,drag=null;
+ let entered=false,walking=false,drag=null,tap=null; // tap: emoteMenu key pressed alone so far (T95)
  const typing=target=>(target instanceof HTMLElement&&target.matches('input,textarea'))||document.activeElement?.matches('input,textarea');
  const bound=(action,code)=>controls[action].includes(code);
  const down=action=>!typing(document.activeElement)&&controls[action].some(code=>keys.has(code));
@@ -37,22 +37,27 @@ export function createInput({canvas,events,controls,isReady,onLook,onJump,onClic
   drag.lastX=e.clientX;drag.lastY=e.clientY;
  },options);
  document.addEventListener('keydown',e=>{
+  if(e.code!==tap)tap=null; // any other key makes it a combo (Ctrl+C, Ctrl+W): no menu
   if(!entered||typing(e.target))return;
+  if(bound('emoteMenu',e.code)){if(!e.repeat)tap=e.code;return;} // no preventDefault: Ctrl combos keep their browser default
   if(bound('jump',e.code)&&walking){e.preventDefault();if(isReady()&&!e.repeat)onJump();}
   if(walking&&['forward','backward','left','right','run'].some(action=>bound(action,e.code))){e.preventDefault();keys.add(e.code);}
-  for(const action of ['emoteMenu','sit','fullMode']){
+  for(const action of ['sit','fullMode']){
    if(bound(action,e.code)){e.preventDefault();if(!e.repeat)events.dispatchEvent(new CustomEvent(INPUT_ACTION,{detail:{action,down:true}}));}
   }
  },options);
  document.addEventListener('keyup',e=>{
   keys.delete(e.code);
+  const alone=tap===e.code;if(bound('emoteMenu',e.code))tap=null;
   if(!entered||typing(e.target))return;
-  for(const action of ['emoteMenu','sit','fullMode']){
+  if(bound('emoteMenu',e.code)){if(alone)for(const down of [true,false])events.dispatchEvent(new CustomEvent(INPUT_ACTION,{detail:{action:'emoteMenu',down}}));return;}
+  for(const action of ['sit','fullMode']){
    if(bound(action,e.code)){e.preventDefault();events.dispatchEvent(new CustomEvent(INPUT_ACTION,{detail:{action,down:false}}));}
   }
  },options);
+ document.addEventListener('pointerdown',()=>{tap=null;},{capture:true,signal:listeners.signal}); // Ctrl+click is not a tap
  document.addEventListener('focusin',e=>{if(typing(e.target))keys.clear();},options);
- window.addEventListener('blur',()=>{keys.clear();endDrag();},options);
+ window.addEventListener('blur',()=>{keys.clear();endDrag();tap=null;},options);
  if(matchMedia('(pointer:coarse)').matches)document.body.classList.add('touch');
  document.querySelectorAll('[data-key]').forEach(b=>{
   b.addEventListener('pointerdown',e=>{if(!entered||!isReady())return;e.preventDefault();capturePointer();keys.add(b.dataset.key);b.setPointerCapture(e.pointerId);},options);

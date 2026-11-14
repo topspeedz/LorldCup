@@ -10,7 +10,7 @@ const sounds={
  heart_send:{files:heartSounds,gain:.18,interval:.15},heart_pop:{files:heartSounds,gain:.3,interval:.15},
  angry_voice:{files:['angry-voice_01.mp3','angry-voice_02.mp3','angry-voice_03.mp3'],gain:.32,interval:.75},
  egg_scream:{files:['egg-scream_01.mp3'],gain:.25,interval:.05},
- egg_impact:{files:['egg-impact_01.mp3','egg-impact_02.mp3','egg-impact_03.mp3'],gain:.3,interval:.15}
+ egg_impact:{files:['egg-impact_01.mp3','egg-impact_02.mp3','egg-impact_03.mp3'],interval:.15}
 };
 
 export function remoteEmoteState(lastSeq,emoteSeq){
@@ -28,6 +28,8 @@ export function create(ctx){
   Object.entries(frames).flatMap(([event,values])=>[].concat(values).map((frame,eventIndex)=>({event,eventIndex,time:frame/chars.clipFps}))).sort((a,b)=>a.time-b.time)]));
  const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)');
  const transform=new THREE.Object3D(),point=new THREE.Vector3(),other=new THREE.Vector3(),up=new THREE.Vector3(0,1,0),cameraRotation=new THREE.Quaternion();
+ const firstPerson=new THREE.Group();firstPerson.name='EggFirstPerson';firstPerson.visible=false;
+ let firstPersonEgg=null,ownsCamera=false;
  let effectTime=0,lastNow=null;
  let source=null,neutral=null,uniformSource=null,local=null,ready=false,disposed=false,error=null;
  let character=chars.default,team=null,seated=false,animationSource=null,clips=[],eggSource=null,listener=null,skipFrame=false,soundMuted=true;
@@ -71,24 +73,52 @@ export function create(ctx){
   for(const id of ['cheer_clap','heart','angry'])batch(id,plane,new THREE.MeshBasicMaterial({
    map:effectTexture(id),color:fx[id].color,alphaTest:.5,depthWrite:false,toneMapped:false}),16*(fx[id].maxParticles+(id==='heart'?heartFx.burstParticles:0)));
   batches.heart.material.side=THREE.DoubleSide;batches.heart.renderOrder=heartFx.renderOrder;
-  batch('flight',eggSource.geometry,eggSource.material,16).renderOrder=eggFx.renderOrder;
+  batch('flight',eggSource.geometry,eggSource.material,eggFx.maxConcurrentEffects).renderOrder=eggFx.renderOrder;
   const triangle=new THREE.BufferGeometry();triangle.setAttribute('position',new THREE.Float32BufferAttribute([-.5,-.4,0,.5,-.4,0,0,.5,0],3));
-  batch('shells',triangle,new THREE.MeshBasicMaterial({color:eggFx.shellColor,side:THREE.DoubleSide,depthWrite:false,toneMapped:false}),16*eggFx.maxParticles).renderOrder=eggFx.renderOrder;
+  batch('shells',triangle,new THREE.MeshBasicMaterial({color:eggFx.shellColor,side:THREE.DoubleSide,depthWrite:false,toneMapped:false}),eggFx.maxConcurrentEffects*eggFx.maxParticles).renderOrder=eggFx.renderOrder;
   const map=effectTexture('splat');
+  batch('yolk',plane,new THREE.MeshBasicMaterial({map,color:eggFx.yolkColor,alphaTest:.5,side:THREE.DoubleSide,depthWrite:false,toneMapped:false}),eggFx.maxConcurrentEffects*eggFx.yolkParticles).renderOrder=eggFx.renderOrder;
   for(let i=0;i<4;i++){
    const mesh=new THREE.Mesh(plane,new THREE.MeshBasicMaterial({map,color:eggFx.yolkColor,transparent:true,depthWrite:false,toneMapped:false}));
    mesh.name='EmoteFX_splat';mesh.renderOrder=eggFx.renderOrder;mesh.visible=false;mesh.owner=null;
    ctx.scene.add(mesh);fxObjects.push(mesh);splats.push(mesh);
   }
+  const cfg=eggFx.firstPerson,skin=new THREE.MeshBasicMaterial({color:cfg.skinColor,depthTest:false,depthWrite:false,toneMapped:false});
+  const palm=new THREE.SphereGeometry(1,12,8);
+  const arm=new THREE.Mesh(new THREE.CylinderGeometry(.7,1,1,10),skin),hand=new THREE.Mesh(palm,skin),thumb=new THREE.Mesh(palm,skin);
+  arm.scale.fromArray(cfg.armSize);arm.position.y=-cfg.armSize[1]/2-cfg.handSize[1]/2;
+  hand.name='EggFirstPersonHand';hand.scale.fromArray(cfg.handSize);
+  thumb.scale.copy(hand.scale).multiplyScalar(.5);thumb.position.set(-cfg.handSize[0],0,cfg.handSize[2]);
+  firstPersonEgg=new THREE.Mesh(eggSource.geometry,new THREE.MeshBasicMaterial({color:eggFx.shellColor,depthTest:false,depthWrite:false,toneMapped:false}));firstPersonEgg.name='EggFirstPersonEgg';
+  firstPersonEgg.position.fromArray(cfg.eggOffset);firstPersonEgg.quaternion.copy(eggSource.quaternion);
+  for(const mesh of [arm,hand,thumb,firstPersonEgg]){mesh.renderOrder=eggFx.renderOrder+1;firstPerson.add(mesh);fxObjects.push(mesh);}
+  ownsCamera=!ctx.camera.parent;if(ownsCamera)ctx.scene.add(ctx.camera);
+  ctx.camera.add(firstPerson);
  }
  function disposeEffects(){
   const resources=new Set();
   for(const object of fxObjects){
    object.removeFromParent();if(object.isInstancedMesh)object.dispose();
    if(object===batches.flight)continue;
-   resources.add(object.geometry);resources.add(object.material);if(object.material.map)resources.add(object.material.map);
+   if(object.geometry!==eggSource.geometry)resources.add(object.geometry);
+   resources.add(object.material);if(object.material.map)resources.add(object.material.map);
   }
+  firstPerson.removeFromParent();if(ownsCamera)ctx.camera.removeFromParent();
   for(const resource of resources)resource.dispose();
+ }
+ function drawFirstPerson(at,hidden){
+  const cfg=eggFx.firstPerson,age=at-local.eggBorn;
+  firstPerson.visible=local.emote==='egg_throw'&&local.eggSeated&&local.seated&&!hidden&&age<cfg.seconds-1e-8&&(!reducedMotion.matches||!local.released);
+  if(!firstPerson.visible)return;
+  const throwing=age<=eggFx.seatedReleaseSeconds;
+  const from=throwing?cfg.start:cfg.release,to=throwing?cfg.release:cfg.finish;
+  let u=Math.max(0,Math.min(1,throwing?age/eggFx.seatedReleaseSeconds:(age-eggFx.seatedReleaseSeconds)/(cfg.seconds-eggFx.seatedReleaseSeconds)));
+  u=reducedMotion.matches?0:u*u*(3-2*u);
+  const height=cfg.depthMeters*Math.tan(THREE.MathUtils.degToRad(ctx.camera.fov)/2)/ctx.camera.zoom;
+  firstPerson.position.set(THREE.MathUtils.lerp(from[0],to[0],u)*height*ctx.camera.aspect,THREE.MathUtils.lerp(from[1],to[1],u)*height,-cfg.depthMeters);
+  firstPerson.scale.setScalar(height);firstPerson.rotation.z=THREE.MathUtils.lerp(cfg.tiltRadians[0],cfg.tiltRadians[1],throwing?u:1-u);
+  firstPersonEgg.scale.copy(eggSource.scale).multiplyScalar(eggFx.projectileScale/height);firstPersonEgg.visible=!local.released;
+  firstPerson.updateWorldMatrix(true,true);
  }
  function hands(record,target){
   record.model.updateWorldMatrix(true,true);record.handL.getWorldPosition(target);record.handR.getWorldPosition(other);target.add(other).multiplyScalar(.5);
@@ -114,9 +144,16 @@ export function create(ctx){
    faceRotation:new THREE.Quaternion().setFromRotationMatrix(new THREE.Matrix4().makeBasis(right,vertical,normal))};
  }
  function releaseEgg(record,at){
+  const held=record===local&&record.eggSeated&&record.seated?firstPersonEgg:record.egg;
+  if(held===firstPersonEgg)drawFirstPerson(at,false);
   record.released=true;record.egg.visible=false;record.model.updateWorldMatrix(true,true);
-  record.flight=screenFlight(record,at,record.egg.getWorldPosition(new THREE.Vector3()));
-  if(record.flight)Object.assign(record.flight,{rotation:record.egg.getWorldQuaternion(new THREE.Quaternion()),scale:record.egg.getWorldScale(new THREE.Vector3())});
+  const active=[local,...remotes.values()].filter(r=>r!==record&&r.eggEffectUntil>effectTime).length;
+  if(active>=eggFx.maxConcurrentEffects)return;
+  const flight=screenFlight(record,at,held.getWorldPosition(new THREE.Vector3()));
+  if(!flight)return;
+  record.shards=null;for(const splat of splats)if(splat.owner===record){splat.owner=null;splat.visible=false;}
+  record.flight=flight;record.eggEffectUntil=at+eggFx.flightSeconds+Math.max(eggFx.seconds,eggFx.splatSeconds);
+  Object.assign(flight,{rotation:held.getWorldQuaternion(new THREE.Quaternion()),scale:record.egg.getWorldScale(new THREE.Vector3())});
  }
  function releaseHeart(record,at){
   const origin=new THREE.Vector3();hands(record,origin);origin.y+=heartFx.handOffsetMeters;
@@ -187,7 +224,7 @@ export function create(ctx){
   }
  }
  function drawRecordEffects(record,hidden,suspended){
-   if(record.egg)record.egg.visible=record.emote==='egg_throw'&&!record.released&&!hidden;
+   if(record.egg)record.egg.visible=record.emote==='egg_throw'&&!record.released&&!hidden&&!(record===local&&record.eggSeated&&record.seated);
    if(record.flight&&effectTime-record.flight.born>=eggFx.flightSeconds-1e-8){
     if(!suspended&&effectTime-record.flight.born<eggFx.flightSeconds+eggFx.splatSeconds)impact(record,record.flight);
     record.flight=null;
@@ -210,6 +247,14 @@ export function create(ctx){
       .addScaledVector(s.right,Math.cos(angle)*eggFx.shardSpeedMetersPerSecond*t).addScaledVector(s.vertical,Math.sin(angle)*eggFx.shardSpeedMetersPerSecond*t);
      transform.position.y-=eggFx.shardGravityMetersPerSecondSquared*t*t/2;transform.quaternion.copy(s.faceRotation);transform.scale.setScalar(eggFx.size*(1-t/eggFx.seconds));put(batches.shells);
     }
+    const yolks=reducedMotion.matches?Math.min(eggFx.yolkParticles,eggFx.reducedMotionParticles):eggFx.yolkParticles;
+    for(let j=0;j<yolks;j++){
+     const angle=2*Math.PI*(j+.5)/yolks;
+     transform.position.copy(s.target).addScaledVector(s.normal,eggFx.surfaceOffsetMeters*2)
+      .addScaledVector(s.right,Math.cos(angle)*eggFx.shardSpeedMetersPerSecond*t).addScaledVector(s.vertical,Math.sin(angle)*eggFx.shardSpeedMetersPerSecond*t);
+     transform.position.y-=eggFx.shardGravityMetersPerSecondSquared*t*t/2;
+     transform.quaternion.copy(s.faceRotation);transform.scale.setScalar(eggFx.size*(1-t/eggFx.seconds));put(batches.yolk);
+    }
    }
  }
  function drawEffects(suspended=false){
@@ -217,6 +262,7 @@ export function create(ctx){
   for(const batch of batchList)batch.count=0;
   ctx.camera.getWorldQuaternion(cameraRotation);
   const hidden=window.arena?.screen?.fullMode===true||document.hidden;
+  drawFirstPerson(effectTime,hidden);
   drawRecordEffects(local,hidden,suspended);for(const record of remotes.values())drawRecordEffects(record,hidden,suspended);
   for(const batch of batchList){batch.visible=batch.count>0;batch.instanceMatrix.needsUpdate=true;}
   for(const splat of splats){
@@ -227,7 +273,7 @@ export function create(ctx){
   }
  }
  function clearReleased(record){
-  record.flight=null;record.shards=null;record.heart=null;
+  record.flight=null;record.shards=null;record.heart=null;record.eggEffectUntil=0;
   for(const splat of splats)if(splat.owner===record){splat.owner=null;splat.visible=false;}
  }
  function addSound(record){
@@ -264,6 +310,7 @@ export function create(ctx){
  };
  function clearEffect(record){
   stopSound(record);record.marker=null;
+  if(record===local)firstPerson.visible=false;
   if(record.egg){
    record.socket.add(record.egg);record.egg.position.copy(eggSource.position);
    record.egg.quaternion.copy(eggSource.quaternion);record.egg.scale.copy(eggSource.scale).multiplyScalar(eggFx.projectileScale);record.egg.visible=false;
@@ -282,6 +329,7 @@ export function create(ctx){
  function beginEmote(record,id,seq=record.emoteSeq+1){
   if(!record.mixer||!Object.hasOwn(emotes,id))return false;
   clearEffect(record);record.emote=id;record.emoteSeq=seq;record.cue=0;record.released=false;
+  record.eggSeated=id==='egg_throw'&&record.seated;record.eggBorn=effectTime;
   transition(record,emotes[id],true);record.egg.visible=id==='egg_throw'&&!window.arena?.screen?.fullMode;return true;
  }
  function attach(avatar){
@@ -358,7 +406,7 @@ export function create(ctx){
    stopSound(farthest);
   }
   const sound=record.sound,delay=sound.isPlaying?.02:0,now=listener.context.currentTime,gain=sound.gain.gain;
-  stopSound(record,delay);record.soundGain=cfg.gain;sound.setBuffer(buffer);
+  stopSound(record,delay);record.soundGain=cue.id==='egg_impact'?eggFx.impactGain:cfg.gain;sound.setBuffer(buffer);
   if(cue.position){ctx.scene.add(sound);sound.position.copy(cue.position);}
   else {record.head.add(sound);sound.position.set(0,0,0);}
   gain.cancelScheduledValues(now);gain.setValueAtTime(gain.value,now);gain.linearRampToValueAtTime(0,now+delay);gain.linearRampToValueAtTime(soundVolume(record),now+delay+.02);
@@ -389,18 +437,19 @@ export function create(ctx){
   if(!record.emote&&moving&&!record.seated&&!record.airborne)record.action.setEffectiveTimeScale(record.speed/(base==='Run'?8:4));
   if(record.emote){
    let remaining=elapsed;
+   let rate=record.eggSeated&&!record.released?chars.cues.Emote_EggThrow.egg_release/chars.clipFps/eggFx.seatedReleaseSeconds:1;
    const timeline=cues[emotes[record.emote]];
-   while(record.cue<timeline.length&&record.action.time+remaining>=timeline[record.cue].time-1e-8){
-    const {time,event,eventIndex}=timeline[record.cue++],step=Math.max(0,time-record.action.time);
-    advance(record,step);remaining=Math.max(0,remaining-step);const at=effectTime-remaining;
+   while(record.cue<timeline.length&&record.action.time+remaining*rate>=timeline[record.cue].time-1e-8){
+    const {time,event,eventIndex}=timeline[record.cue++],step=Math.max(0,time-record.action.time)/rate;
+    advance(record,step*rate);remaining=Math.max(0,remaining-step);const at=effectTime-remaining;
     if(event==='egg_scream')queueSound(record,'egg_scream',at);
-    else if(event==='egg_release')releaseEgg(record,at);
+    else if(event==='egg_release'){releaseEgg(record,at);rate=1;}
     else if(event==='heart_release')releaseHeart(record,at);
     else if(record.emote!=='egg_throw')mark(record,event,at);
     if(event==='clap_contact')queueSound(record,'cheer_clap',at,eventIndex,record.emoteSeq,record.marker.center.clone());
     if(event==='angry_swing'&&eventIndex===0)queueSound(record,'angry_voice',at);
    }
-   advance(record,remaining);
+   advance(record,remaining*rate);
   }else advance(record,dt);
   if(record.emote&&record.action.paused){record.emote=null;clearEffect(record);transition(record,base);}
   if(!soundEnabled()||document.hidden||window.arena?.screen?.fullMode)stopSound(record);
@@ -445,15 +494,15 @@ export function create(ctx){
  }
  async function load(){
   try{
-   source=(await new GLTFLoader().setDRACOLoader(draco).loadAsync('./assets/characters/fan.glb')).scene;
+   source=(await new GLTFLoader().setDRACOLoader(draco).loadAsync(chars.modelFile)).scene;
    if(disposed){releaseSource();return;}
    source.traverse(o=>{if(o.material?.name==='Uniform')uniformSource=o.material;});
-   if(!uniformSource?.map||!source.getObjectByName('FanRig')||chars.ids.some(id=>!source.getObjectByName(id)))throw Error('fan.glb 캐릭터 규약 불일치');
+   if(!uniformSource?.map||!source.getObjectByName('FanRig')||chars.ids.some(id=>!source.getObjectByName(id)))throw Error(`${chars.modelFile} 캐릭터 규약 불일치`);
    try{
     const animation=await new GLTFLoader().setDRACOLoader(draco).loadAsync(chars.clipFile);
     animationSource=animation.scene;eggSource=animationSource.getObjectByName('Prop_Egg');
     if(!eggSource||['prop_R','head','hand_L','hand_R'].some(name=>!source.getObjectByName(name))||
-     ['Idle','Walk','Run','Jump','Sit',...Object.values(emotes)].some(name=>!animation.animations.some(clip=>clip.name===name)))throw Error('fan-anim.glb 클립 규약 불일치');
+     ['Idle','Walk','Run','Jump','Sit',...Object.values(emotes)].some(name=>!animation.animations.some(clip=>clip.name===name)))throw Error(`${chars.clipFile} 클립 규약 불일치`);
     clips=animation.animations;
    }catch(reason){error=reason.message;console.warn('캐릭터 애니메이션을 불러오지 못해 응원 티켓을 발급할 수 없습니다.',reason);}
    if(disposed){releaseSource();return;}
@@ -484,5 +533,5 @@ export function create(ctx){
    if(listener){listener.gain.disconnect();listener.removeFromParent();}soundBuffers.clear();
   }};
  if(window.arena)window.arena.character=api;
- load();return api;
+ api.loaded=load();return api;
 }

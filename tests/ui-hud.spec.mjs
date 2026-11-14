@@ -11,10 +11,14 @@ async function openArena(page) {
   await page.goto('/');
   await page.waitForFunction(() => window.arena?.ready && window.arena.screen);
   await page.locator('#enter').click(); // into the arena
+  // T67: wait out the loading cover (T73 holds it until the character is ready); a teleport during it is overwritten by the spawn.
+  await expect(page.locator('#loading')).toBeHidden({ timeout: 90_000 });
+  await expect.poll(() => page.evaluate(() => document.body.dataset.hud)).toBe('walking');
 }
 
 async function sit(page) {
-  await page.evaluate(seat => arena.go([...seat.position, 0]), seats.seats[0]);
+  // T67: from the seat's standPosition (as ui-emote-seat/seat-back do); seat.position itself is no longer within reach after T63b/T83.
+  await page.evaluate(seat => arena.go([...seat.standPosition, 0]), seats.seats[0]);
   await page.keyboard.press('KeyE');
   await expect.poll(() => page.evaluate(() => arena.seat?.seatId)).toBe(seats.seats[0].id);
   await expect.poll(() => page.evaluate(() => document.body.dataset.hud)).toBe('seated');
@@ -32,10 +36,10 @@ test('F-W1~F-W3 / BL-0031 (3): right after sitting, with no other key, Full Mode
   await expect(open).toContainText('Full Mode');
   await expect(open.locator('kbd')).toHaveCount(0); // keys live in the #hud-keys box, not on dock buttons
   expect(await open.evaluate(el => el.parentElement.id)).toBe('dock');
-  // Seated: the Full Mode button is the emphasised button of the state (ui/full-mode.md).
+  // Seated: the Full Mode button wears the dock's default colour, not the accent (사용자 2026-11-14 "풀모드 켜져있는거같애 기본색으로칠해").
   const accent = await page.evaluate(() => getComputedStyle(document.documentElement).getPropertyValue('--color-accent').trim());
   const background = await open.evaluate(el => getComputedStyle(el).backgroundColor);
-  expect(await page.evaluate(c => { const e = document.createElement('i'); e.style.color = c; document.body.append(e); const v = getComputedStyle(e).color; e.remove(); return v; }, accent)).toBe(background);
+  expect(await page.evaluate(c => { const e = document.createElement('i'); e.style.color = c; document.body.append(e); const v = getComputedStyle(e).color; e.remove(); return v; }, accent)).not.toBe(background);
 
   await open.click();
   await expect.poll(() => page.evaluate(() => arena.screen.fullMode)).toBe(true);
@@ -48,12 +52,12 @@ test('F-W1~F-W3 / BL-0031 (3): right after sitting, with no other key, Full Mode
   await expect(open).toBeVisible();
 });
 
-test('F-W9: E, Alt and W do nothing in Full Mode entered from a seat', async ({ page }) => {
+test('F-W9: E, Ctrl and W do nothing in Full Mode entered from a seat', async ({ page }) => {
   await openArena(page);
   await sit(page);
   await openButton(page).click();
   await expect.poll(() => page.evaluate(() => arena.screen.fullMode)).toBe(true);
-  for (const key of ['KeyE', 'AltLeft', 'KeyW']) {
+  for (const key of ['KeyE', 'ControlLeft', 'KeyW']) {
     await page.keyboard.down(key);
     await page.waitForFunction(() => new Promise(requestAnimationFrame));
     await page.keyboard.up(key);
@@ -106,6 +110,97 @@ test('E-W8: seated, the emote menu is visible clear of the player and an emote c
   });
   console.log('E-W8 geometry', JSON.stringify(await page.evaluate(() => ({ menu: document.querySelector('#emote-menu').getBoundingClientRect().toJSON(), player: arena.screen.element.getBoundingClientRect().toJSON(), playerVisibility: getComputedStyle(arena.screen.element).visibility }))));
   await expect.poll(read).toEqual({ visible: true, clear: true, inside: true });
+  // 사용자 2026-11-14 "화면에서 가운데 가리면안돼 화면 우측에 나오도록해줘": the menu sits on the right half, never over the centre.
+  expect(await page.evaluate(() => document.querySelector('#emote-menu').getBoundingClientRect().left)).toBeGreaterThan(await page.evaluate(() => innerWidth / 2));
   await menu.locator('.emote').first().click();
   await expect(menu).toBeHidden();
+});
+
+// T67 (사용자 2026-11-14 "스크린 바로 아래에 크게 표시해줘 단축키를 F 풀모드 E일어나기 버튼 감정표현버튼 그리고 볼륨조절까지"):
+// seated, one big bar right under the projected screen (bottom centre when it does not fit) with the four controls, never over the
+// video, and no copy of them top-right or bottom-right.
+const seatBar = page => page.evaluate(() => {
+  const dock = document.querySelector('#dock'), b = dock.getBoundingClientRect(), r = arena.screen.element.getBoundingClientRect();
+  const key = sel => getComputedStyle(document.querySelector(sel), '::before').content.replace(/"/g, '');
+  const centre = Math.min(Math.max((r.left + r.right) / 2, b.width / 2 + 8), innerWidth - b.width / 2 - 8);
+  const under = b.top >= r.bottom - 1;
+  return {
+    keys: [key('#full-mode-open'), key('#seat-toggle'), key('#emote-open')],
+    order: ['#full-mode-open', '#seat-toggle', '#emote-open', '#seat-volume'].map(sel => Math.round(document.querySelector(sel).getBoundingClientRect().x)),
+    clear: !(Math.min(b.right, r.right) > Math.max(b.left, r.left) && Math.min(b.bottom, r.bottom) > Math.max(b.top, r.top)),
+    placed: under ? Math.abs((b.left + b.right) / 2 - centre) <= 2 && b.top - r.bottom <= 16 : Math.abs(innerHeight - b.bottom - parseFloat(getComputedStyle(dock).bottom)) <= 2 && Math.abs((b.left + b.right) / 2 - innerWidth / 2) <= 2,
+    inside: b.left >= 0 && b.right <= innerWidth && b.bottom <= innerHeight,
+    tall: Math.min(...[...dock.querySelectorAll('button')].filter(el => el.checkVisibility()).map(el => el.getBoundingClientRect().height)) >= 44,
+    keyBox: document.querySelector('#hud-keys').checkVisibility(),
+    settingsVolume: document.querySelector('#settings #arena-screen-controls input').checkVisibility(),
+    geometry: { bar: b.toJSON(), screen: r.toJSON() },
+  };
+});
+
+test('T67: seated, the bar under the screen holds F Full Mode, E / Esc 일어나기, Ctrl 감정표현 and the volume, clear of the video, with no copies', async ({ page }) => {
+  await openArena(page);
+  await sit(page);
+  await expect.poll(async () => { const v = await seatBar(page); console.log('T67 geometry', JSON.stringify(v.geometry)); delete v.geometry; return v; }).toEqual({
+    keys: ['F', 'E / Esc', 'Ctrl'], order: expect.any(Array), clear: true, placed: true, inside: true, tall: true, keyBox: false, settingsVolume: false,
+  });
+  const { order } = await seatBar(page);
+  expect([...order].sort((a, b) => a - b)).toEqual(order); // F, E, 감정표현, 볼륨 from left to right
+  const dock = page.locator('#dock');
+  await expect(dock.getByRole('button', { name: /Full Mode/ })).toBeVisible();
+  await expect(dock.getByRole('button', { name: /일어나기/ })).toBeVisible();
+  await expect(dock.getByRole('button', { name: /감정표현/ })).toBeVisible();
+  // 사용자 2026-11-14 "여기버튼을 일관되게 해줘 풀모드 켜져있는거같애 기본색으로칠해": Full Mode is not lit like an active toggle.
+  const look = sel => page.evaluate(s => { const c = getComputedStyle(document.querySelector(s)); return [c.backgroundColor, c.color, c.borderColor]; }, sel);
+  expect(await look('#full-mode-open')).toEqual(await look('#seat-toggle'));
+
+  // Volume: the bar slider drives the one existing volume (screen-video.js userVolume), both ways.
+  const slider = dock.getByRole('slider', { name: '영상 음량' });
+  await expect(slider).toHaveValue(String(await page.evaluate(() => arena.screen.state.userVolume)));
+  await slider.fill('30');
+  await expect.poll(() => page.evaluate(() => arena.screen.state.userVolume)).toBe(30);
+  await page.evaluate(() => arena.screen.setVolume(55));
+  await expect(slider).toHaveValue('55');
+
+  // 감정표현 opens the menu; Full Mode opens and closes back to the seat; 일어나기 stands.
+  await dock.getByRole('button', { name: /감정표현/ }).click();
+  await expect(page.locator('#emote-menu')).toBeVisible();
+  await page.locator('#emote-menu .emote').first().click();
+  await dock.getByRole('button', { name: /Full Mode/ }).click();
+  await expect.poll(() => page.evaluate(() => arena.screen.fullMode)).toBe(true);
+  await closeButton(page).click();
+  await expect.poll(() => page.evaluate(() => document.body.dataset.hud)).toBe('seated');
+  await dock.getByRole('button', { name: /일어나기/ }).click();
+  await expect.poll(() => page.evaluate(() => document.body.dataset.hud)).toBe('walking');
+  await expect(page.locator('#seat-volume')).toBeHidden();
+  await expect(page.locator('#hud-keys')).toBeVisible(); // walking HUD unchanged
+});
+
+test('T67: on a narrower window the bar stays inside, placed by the same rule, and never covers the video', async ({ page }) => {
+  await openArena(page);
+  await page.setViewportSize({ width: 900, height: 600 });
+  await sit(page);
+  await expect.poll(async () => { const v = await seatBar(page); console.log('T67 narrow', JSON.stringify(v.geometry));
+    return { clear: v.clear, placed: v.placed, inside: v.inside, tall: v.tall }; })
+    .toEqual({ clear: true, placed: true, inside: true, tall: true });
+});
+
+test('T67 memo 1: seated Esc stands up, but first closes Full Mode or the emote menu only', async ({ page }) => {
+  await openArena(page);
+  await sit(page);
+  await page.locator('#full-mode-open').click();
+  await expect.poll(() => page.evaluate(() => arena.screen.fullMode)).toBe(true);
+  await page.keyboard.press('Escape');
+  await expect.poll(() => page.evaluate(() => arena.screen.fullMode)).toBe(false);
+  await page.waitForFunction(() => new Promise(requestAnimationFrame));
+  expect(await page.evaluate(() => [document.body.dataset.hud, arena.seat?.seatId])).toEqual(['seated', seats.seats[0].id]);
+
+  await page.locator('#emote-open').click();
+  await expect(page.locator('#emote-menu')).toBeVisible();
+  await page.keyboard.press('Escape');
+  await expect(page.locator('#emote-menu')).toBeHidden();
+  await page.waitForFunction(() => new Promise(requestAnimationFrame));
+  expect(await page.evaluate(() => document.body.dataset.hud)).toBe('seated');
+
+  await page.keyboard.press('Escape');
+  await expect.poll(() => page.evaluate(() => document.body.dataset.hud)).toBe('walking');
 });

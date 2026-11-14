@@ -48,7 +48,7 @@ test('data-state: entry → walking → seated → full and back; key hints sit 
   await page.locator('#enter').click();
   await expect.poll(() => hudState(page)).toBe('walking');
   await expect(page.locator('body')).toHaveAttribute('data-hud', 'walking');
-  for (const key of ['WASD', 'Space', 'Shift', 'Alt', 'F']) expect(await keys()).toContain(key);
+  for (const key of ['WASD', 'Space', 'Shift', 'Ctrl', 'F']) expect(await keys()).toContain(key);
   expect(await keys()).not.toMatch(/Esc|\bR\b/);
   const box = await page.locator('#hud-keys').boundingBox();
   expect(box.x + box.width).toBeGreaterThan(1280 * .8);
@@ -60,8 +60,8 @@ test('data-state: entry → walking → seated → full and back; key hints sit 
 
   await emit(page, 'seat:enter', { seatId: 'probe' });
   await expect.poll(() => hudState(page)).toBe('seated');
-  // FIX1f: the E row is #seat-hint from seat-mode.js, which a bare seat:enter does not drive; the static seated rows are F and Alt.
-  await expect(page.locator('#hud-keys [data-for="seated"]')).toHaveText(/F.*Full Mode.*Alt.*감정표현/);
+  // T67: seated, the keys sit on the bar under the screen (#dock); the top-right key box hides so they do not repeat.
+  await expect(page.locator('#hud-keys')).toBeHidden();
   await emit(page, 'fullmode:enter');
   await expect.poll(() => hudState(page)).toBe('full');
   await expect(page.locator('#hud')).toBeHidden();

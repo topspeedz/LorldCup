@@ -59,11 +59,11 @@ async function harness(page, { fake = true, source = 'vod', live = config.live, 
       const root=new THREE.Group();scene.add(root);
       for(let i=0;i<4;i++){
         const face=new THREE.Mesh(new THREE.PlaneGeometry(13.6,4),new THREE.MeshBasicMaterial({color:'#ac6025'}));
-        face.name='REF_Jumbotron_'+i;face.rotation.y=i*Math.PI/2;
+        face.name='REF_Jumbotron_'+((i+${Number(config.videoFace.slice(-1))})%4);face.rotation.y=i*Math.PI/2;
         face.position.set(Math.sin(face.rotation.y)*5,0,Math.cos(face.rotation.y)*5);root.add(face);
       }
       root.updateMatrixWorld(true);
-      const camera=new THREE.PerspectiveCamera(50,innerWidth/innerHeight,.1,500);camera.position.set(0,0,32);camera.lookAt(0,0,0);
+      const camera=new THREE.PerspectiveCamera(50,innerWidth/innerHeight,.1,500);camera.position.set(0,${config.mesh.centerY},${config.mesh.width * 2.1});camera.lookAt(0,${config.mesh.centerY},0);
       const renderer=new THREE.WebGLRenderer({alpha:true});renderer.setSize(innerWidth,innerHeight);
       document.body.insertBefore(renderer.domElement,document.getElementById('ui-root'));
       const events=new EventTarget();window.screenEvents=[];events.addEventListener('screen:state',e=>screenEvents.push(e.detail));
@@ -279,7 +279,7 @@ test('T67: a pause emitted during an outstanding play request does not restart t
 
 test('T67: enlarged arena screen, matching cameras and unobstructed 16:9 faces', async ({ page }, testInfo) => {
   test.setTimeout(180_000);
-  const shots = '_workspace/_run/2026-11-12-requirements-build/screens';
+  const shots = testInfo.outputPath('screens');
   const phase = process.env.T67_CAPTURE_PHASE || 'after';
   mkdirSync(shots, { recursive: true });
   await page.setViewportSize({ width: 1280, height: 720 });
@@ -290,9 +290,11 @@ test('T67: enlarged arena screen, matching cameras and unobstructed 16:9 faces',
     await route.fulfill({ response, body: `${await response.text()}\nfor(const entry of modules){const original=entry.create;entry.create=ctx=>{window.testContext=ctx;return original(ctx)}}` });
   });
   await page.goto('/');
-  await page.waitForFunction(() => window.arena?.ready, null, { timeout: 120_000 });
+  await page.waitForFunction(() => window.arena?.ready && arena.character?.ready, null, { timeout: 120_000 });
+  const showtime = Number(await page.locator('#showtimes button[aria-pressed="true"]').getAttribute('data-showtime'));
   await page.locator('#enter').click();
-  await page.clock.setFixedTime(await page.evaluate(() => arena.screen.roundStart + 30_000));
+  expect(await page.evaluate(() => arena.screen.roundStart)).toBe(showtime);
+  await page.clock.setFixedTime(showtime + 30_000);
   await page.evaluate(() => {
     arena.crowd.update(0); arena.crowd.update = () => {};
     arena.go('arena');
@@ -328,8 +330,11 @@ test('T67: enlarged arena screen, matching cameras and unobstructed 16:9 faces',
   console.log('T67 view measurements', JSON.stringify(Object.fromEntries(Object.entries(measurements).map(([name, m]) => [name, { camera: m.camera, rect: m.rect, mask: m.mask, playing: m.playing }]))));
   await testInfo.attach(`T67-${phase}`, { body: JSON.stringify(measurements), contentType: 'application/json' });
   expect(measurements.default.faces).toHaveLength(4);
-  // Measured before T67 at the same 1280×720 default camera; no capture file is required to rerun.
-  expect(measurements.default.rect.height).toBeGreaterThan(158.38095092773438 * 1.5);
+  for (const face of measurements.default.faces) {
+    expect(face.width).toBeCloseTo(config.mesh.width, 2);
+    expect(face.height).toBeCloseTo(config.mesh.width * config.aspectRatio[1] / config.aspectRatio[0], 2);
+    expect(face.position[1]).toBeCloseTo(config.mesh.centerY, 2);
+  }
   for (const m of Object.values(measurements)) {
     expect(m.mask.width / m.mask.height).toBeCloseTo(16 / 9);
     expect(m.faces.every(face => Math.abs(face.width / face.height - 16 / 9) < .0001)).toBe(true);
@@ -343,9 +348,12 @@ test('T67: enlarged arena screen, matching cameras and unobstructed 16:9 faces',
     group.traverse(mesh => {
       if (!mesh.isMesh) return;
       const original = root.getObjectByName(mesh.name.replace('ScreenMesh_', ''));
-      shared.push(mesh.geometry === original.geometry && mesh.material === original.material);
+      // LOD and camera occlusion clone materials after creation while keeping geometry and textures shared.
+      const key = mesh.material.customProgramCacheKey(), originalKey = original.material.customProgramCacheKey();
+      const photo = testContext.config('screen').photos[original.name];
+      shared.push(photo ? mesh.material.map?.image?.src.endsWith(photo.slice(1)) && mesh.material.lightMap === null : mesh.geometry === original.geometry && mesh.material.map === original.material.map && mesh.material.lightMap === original.material.lightMap && (key === originalKey || key === originalKey + ':camera-occlusion-v2'));
       preserved.push(original.visible === false);
-      if (!/Suspension/.test(mesh.name)) {
+      if (!/Suspension|StageRig/.test(mesh.name)) {
         const points = mesh.geometry.attributes.position, matrix = toBody.clone().multiply(mesh.matrixWorld);
         for (let i=0;i<points.count;i++) body.expandByPoint(new THREE.Vector3().fromBufferAttribute(points,i).applyMatrix4(matrix));
       }
@@ -353,9 +361,10 @@ test('T67: enlarged arena screen, matching cameras and unobstructed 16:9 faces',
     const conflicts = [], point = new THREE.Vector3(), triangle = new THREE.Triangle();
     const tested = { crowd: 0, lighting: 0, stage: 0 };
     root.traverse(mesh => {
-      if (!mesh.isMesh || mesh.isInstancedMesh) return;
-      const category = mesh.geometry.attributes._cm_origin ? 'crowd' : /^(REF_StageRig|Roof_|Stage_light|REF_(Overhead|Bowl|TeamKey))/.test(mesh.name) ? 'lighting' : /^REF_(CircularStage|Trophy|TeamRiser|Desk|CenterBackdrop|Wing|Scenic|StageOrigin)/.test(mesh.name) ? 'stage' : null;
-      if (!category || mesh.name.startsWith('ScreenMesh_')) return;
+      if (!mesh.isMesh || mesh.isInstancedMesh || !mesh.visible) return;
+      const name = mesh.name.replace(/^ScreenMesh_/, '');
+      const category = mesh.geometry.attributes._cm_origin ? 'crowd' : /^(REF_StageRig|Roof_|Stage_light|REF_(Overhead|Bowl|TeamKey))/.test(name) ? 'lighting' : /^REF_(CircularStage|Trophy|TeamRiser|Desk|CenterBackdrop|Wing|Scenic|StageOrigin)/.test(name) ? 'stage' : null;
+      if (!category) return;
       tested[category]++;
       const bounds = new THREE.Box3().setFromObject(mesh).applyMatrix4(toBody);
       if (!body.intersectsBox(bounds)) return;
@@ -380,7 +389,7 @@ test('T67: enlarged arena screen, matching cameras and unobstructed 16:9 faces',
   for (const count of Object.values(clearance.tested)) expect(count).toBeGreaterThan(0);
   expect(clearance.conflicts).toEqual([]);
   await page.evaluate(() => {
-    const { THREE, cameraRig } = testContext, face = arena.screen.faces[0];
+    const { THREE, cameraRig } = testContext, face = arena.screen.faces.find(face => face.name === testContext.config('screen').videoFace);
     const center = new THREE.Vector3(...face.position), normal = new THREE.Vector3(...face.normal);
     cameraRig.setOverride(camera => { camera.fov=45;camera.updateProjectionMatrix();camera.position.copy(center).addScaledVector(normal,face.width*1.2);camera.lookAt(center); });
   });
@@ -716,7 +725,7 @@ test('T70: source changes and disposal cancel an error 5 retry', async ({ page }
   await expect(page.locator('#arena-screen-player')).toHaveCount(0);
 });
 
-test('CSS3D matches the projected 16:9 aperture, switches faces, and hides overlapping app DOM', async ({ page }) => {
+test('CSS3D matches the projected 16:9 aperture, stays on the configured front, and hides overlapping app DOM', async ({ page }) => {
   await harness(page);
   await playing(page);
   const geometry = await page.evaluate(() => {
@@ -731,15 +740,46 @@ test('CSS3D matches the projected 16:9 aperture, switches faces, and hides overl
   geometry.actual.forEach((v, i) => expect(Math.abs(v - geometry.projected[i])).toBeLessThan(1));
   expect(geometry.width / geometry.height).toBeCloseTo(16 / 9);
   expect(geometry.alpha).toBe(0); expect(geometry.pixelAlpha).toBe(0); expect(geometry.blend).toBe(0);
-  expect(geometry.face).toBe('REF_Jumbotron_0'); expect(geometry.cross).toBe('hidden');
+  expect(geometry.face).toBe(config.videoFace); expect(geometry.cross).toBe('hidden');
   await page.evaluate(() => {
     window.originalIframe=ytPlayer.getIframe();
     const layer=document.createElement('div'),label=document.createElement('div');label.id='late-nameplate';label.textContent='팬';label.style.cssText='position:fixed;left:49%;top:49%';layer.append(label);testContext.uiRoot.append(layer);
-    testContext.camera.position.set(32,0,0);testContext.camera.lookAt(0,0,0);
   });
-  await expect.poll(() => page.evaluate(() => arena.screen.face)).toBe('REF_Jumbotron_1');
   await expect(page.locator('#late-nameplate')).toHaveCSS('visibility', 'hidden');
+  await page.evaluate(() => {
+    const { width, centerY } = testContext.config().mesh;
+    testContext.camera.position.set(width*2.1,centerY,0);testContext.camera.lookAt(0,centerY,0);
+  });
+  await expect.poll(() => page.evaluate(() => arena.screen.face)).toBe(config.videoFace);
+  await expect(page.locator('#late-nameplate')).toHaveCSS('visibility', 'visible');
   expect(await page.evaluate(() => originalIframe === ytPlayer.getIframe())).toBe(true);
+});
+
+test('T85: a south seat moves the same playing video to face 0 and standing restores face 3 with three photos', async ({ page }) => {
+  await harness(page);await playing(page);
+  await page.evaluate(() => {
+    window.originalPlayer=ytPlayer;window.originalIframe=ytPlayer.getIframe();window.beforeSeeks=ytCalls.filter(call=>call[0]==='seek').length;
+    window.beforeTime=ytPlayer.getCurrentTime();ytPlayer.time+=1;
+    const {width,centerY}=testContext.config().mesh;
+    testContext.camera.position.set(width*2.1,centerY,0);testContext.camera.lookAt(0,centerY,0);
+    testContext.events.dispatchEvent(new CustomEvent('seat:enter',{detail:{seatId:'lower-entry-south-01'}}));
+  });
+  await expect.poll(() => page.evaluate(() => arena.screen.face)).toBe('REF_Jumbotron_0');
+  const seated = await page.evaluate(() => {
+    const faces=testContext.root.getObjectByName('ArenaScreenMesh').children;
+    const front=faces.find(mesh=>mesh.userData.screenFace==='REF_Jumbotron_3');
+    return { photo:front.material.map.image.src, photos:faces.filter(mesh=>mesh.material?.map).length,
+      samePlayer:originalPlayer===ytPlayer&&originalIframe===ytPlayer.getIframe(), playing:arena.screen.state.playing,
+      elapsed:ytPlayer.getCurrentTime()-beforeTime, seeks:ytCalls.filter(call=>call[0]==='seek').length-beforeSeeks };
+  });
+  expect(seated.photo).toContain(config.photos.REF_Jumbotron_0.slice(1));
+  expect(seated).toMatchObject({photos:3,samePlayer:true,playing:true,elapsed:1,seeks:0});
+  await page.evaluate(() => { ytPlayer.time+=1;testContext.events.dispatchEvent(new CustomEvent('seat:exit')); });
+  await expect.poll(() => page.evaluate(() => arena.screen.face)).toBe('REF_Jumbotron_3');
+  expect(await page.evaluate(() => ({ samePlayer:originalPlayer===ytPlayer&&originalIframe===ytPlayer.getIframe(), playing:arena.screen.state.playing,
+    elapsed:ytPlayer.getCurrentTime()-beforeTime, seeks:ytCalls.filter(call=>call[0]==='seek').length-beforeSeeks,
+    photo:testContext.root.getObjectByName('ScreenMesh_REF_Jumbotron_0').material.map.image.src
+  }))).toMatchObject({ samePlayer:true,playing:true,elapsed:2,seeks:0,photo:expect.stringContaining(config.photos.REF_Jumbotron_0.slice(1)) });
 });
 
 test('viewport nameplate layers keep non-overlapping tags visible and hide overlapping tags during playback', async ({ page }) => {
@@ -766,7 +806,7 @@ test('viewport nameplate layers keep non-overlapping tags visible and hide overl
 
 test('T72: default arena arrival plays with the screen mostly above the viewport', async ({ page }, testInfo) => {
   test.setTimeout(180_000);
-  const shots = '_workspace/_run/2026-11-12-requirements-build/screens';
+  const shots = testInfo.outputPath('screens');
   const phase = process.env.T72_CAPTURE_PHASE || 'after';
   await page.setViewportSize({ width: 1920, height: 1080 });
   await fakeYouTube(page);
@@ -803,10 +843,10 @@ for (const view of ['small', 'clipped', 'behind']) {
     await harness(page);
     await playing(page);
     await page.evaluate(view => {
-      const { camera } = testContext;
+      const { camera } = testContext, { centerY } = testContext.config().mesh;
       if (view === 'small') camera.position.z = 100;
       if (view === 'clipped') camera.setViewOffset(innerWidth, innerHeight, innerWidth * .6, 0, innerWidth, innerHeight);
-      camera.lookAt(0, 0, view === 'behind' ? 100 : 0);
+      camera.lookAt(0, centerY, view === 'behind' ? 100 : 0);
       ytCalls.length = 0;
     }, view);
     await page.waitForTimeout(300);
@@ -817,20 +857,20 @@ for (const view of ['small', 'clipped', 'behind']) {
     }
     expect(await page.evaluate(() => ytCalls.filter(([call]) => call === 'pause'))).toEqual([]);
     if (view === 'behind') await expect(page.locator('#overlap-probe')).toHaveCSS('visibility', 'visible');
-    await page.evaluate(() => { ytCalls.length = 0; testContext.camera.position.z = 32; testContext.camera.clearViewOffset(); testContext.camera.lookAt(0, 0, 0); });
+    await page.evaluate(() => { const { width, centerY } = testContext.config().mesh;ytCalls.length = 0;testContext.camera.position.z = width*2.1;testContext.camera.clearViewOffset();testContext.camera.lookAt(0, centerY, 0); });
     await page.waitForTimeout(300);
     expect(await page.evaluate(() => ytCalls.filter(([call]) => ['play', 'pause'].includes(call)))).toEqual([]);
   });
 }
 
-test('T72: outside the arena the existing visibility gate still applies; a hidden tab pauses and resynchronizes', async ({ page }) => {
+test('T72: outside the arena the existing visibility gate still applies; a hidden tab keeps playing', async ({ page }) => {
   await harness(page); await playing(page);
   for (const x of [-83, -139]) {
     await page.evaluate(x => { testContext.player.position.x=x;testContext.camera.position.z=100;testContext.camera.lookAt(0,0,0); }, x);
     await expect.poll(() => page.evaluate(() => arena.screen.state.playing)).toBe(false);
     expect(await page.evaluate(() => testContext.scene.getObjectByName('ScreenVideoAperture').visible)).toBe(false);
     await expect(page.locator('#overlap-probe')).toHaveCSS('visibility', 'visible');
-    await page.evaluate(() => { ytPlayer.time=0;testContext.camera.position.z=32;testContext.camera.lookAt(0,0,0); });
+    await page.evaluate(() => { const { width, centerY }=testContext.config().mesh;ytPlayer.time=0;testContext.camera.position.z=width*2.1;testContext.camera.lookAt(0,centerY,0); });
     await playing(page);
     expect(await page.evaluate(() => ytPlayer.time)).toBe(270);
     await page.evaluate(() => { testContext.camera.setViewOffset(innerWidth,innerHeight,innerWidth*.6,0,innerWidth,innerHeight);testContext.camera.updateProjectionMatrix(); });
@@ -840,10 +880,10 @@ test('T72: outside the arena the existing visibility gate still applies; a hidde
   }
   await page.evaluate(() => { testContext.player.position.x=0; });
   await page.evaluate(() => { Object.defineProperty(document,'hidden',{configurable:true,value:true});document.dispatchEvent(new Event('visibilitychange')); });
-  await expect.poll(() => page.evaluate(() => arena.screen.state.playing)).toBe(false);
-  await page.evaluate(() => { ytPlayer.time=0;delete document.hidden;document.dispatchEvent(new Event('visibilitychange')); });
+  // 사용자 2026-11-14 "알트탭으로 브라우저에서 바꾸더라도 영상계속나오게": a hidden tab keeps the video (and its sound) playing.
+  expect(await page.evaluate(() => arena.screen.state.playing)).toBe(true);
+  await page.evaluate(() => { delete document.hidden;document.dispatchEvent(new Event('visibilitychange')); });
   await playing(page);
-  expect(await page.evaluate(() => ytPlayer.time)).toBe(270);
 });
 
 test('video IDs and channel live URLs stay in the official player; entry and volume use its audio API', async ({ page }) => {
@@ -1000,14 +1040,16 @@ test('real arena and official YouTube player play the supplied VOD and inspect t
     await route.fulfill({response,body:`${await response.text()}\nfor(const entry of modules){const original=entry.create;entry.create=ctx=>{window.testContext=ctx;return original(ctx)}}`});
   });
   await page.goto('/');
-  await page.waitForFunction(()=>window.arena?.ready,{},{timeout:60_000});
+  await page.waitForFunction(()=>window.arena?.ready&&arena.character?.ready,{},{timeout:60_000});
+  const showtime = Number(await page.locator('#showtimes button[aria-pressed="true"]').getAttribute('data-showtime'));
   await page.locator('#enter').click();
-  await page.clock.setFixedTime(await page.evaluate(() => arena.screen.roundStart + 30_000));
+  expect(await page.evaluate(() => arena.screen.roundStart)).toBe(showtime);
+  await page.clock.setFixedTime(showtime + 30_000);
   await page.evaluate(() => {
-    const {THREE,root,cameraRig}=testContext;
-    const mesh=root.getObjectByName('REF_Jumbotron_0'),center=new THREE.Box3().setFromObject(mesh).getCenter(new THREE.Vector3());
-    const normal=new THREE.Vector3(center.x,0,center.z).normalize();
-    cameraRig.setOverride(camera=>{camera.fov=45;camera.updateProjectionMatrix();camera.position.copy(center).addScaledVector(normal,10);camera.lookAt(center);});
+    const {THREE,cameraRig}=testContext,face=arena.screen.faces.find(face=>face.name===testContext.config('screen').videoFace);
+    arena.go('arena');
+    const center=new THREE.Vector3(...face.position),normal=new THREE.Vector3(...face.normal);
+    cameraRig.setOverride(camera=>{camera.fov=45;camera.updateProjectionMatrix();camera.position.copy(center).addScaledVector(normal,face.width*1.2);camera.lookAt(center);});
   });
   const failures=[];
   for(const source of ['vod','live']){
@@ -1059,8 +1101,8 @@ test('T31 R-2: the control bar and #dock move off the player rectangle instead o
     const panel = document.createElement('section'); panel.id = 'dock'; panel.textContent = '행동 버튼';
     panel.style.cssText = 'position:fixed;left:28px;bottom:28px;width:300px;height:96px;background:#123';
     document.body.append(panel);
-    // Screen face 0 sits at z=5; look past it so the player fills the lower-left part of the viewport.
-    testContext.camera.position.set(5, 5, 20); testContext.camera.lookAt(5, 5, 0);
+    // Frame the enlarged screen at the lower left with space above it for the controls.
+    testContext.camera.position.set(5, 14, 40); testContext.camera.lookAt(5, 14, 0);
   });
   const read = () => page.evaluate(() => {
     const r = arena.screen.element.getBoundingClientRect();

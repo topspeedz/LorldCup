@@ -15,7 +15,9 @@ const staticEnd=THREE.ShaderChunk.lights_fragment_end.replace(/\tRE_IndirectSpec
 reflectedLight.indirectDiffuse *= getShadowMask();
 `;
 
-export async function applyBakedLightmaps(root){
+export async function applyBakedLightmaps(root,intensities={},screenIntensity=1){
+ if(Object.values(intensities).some(value=>!Number.isFinite(value)||value<0))throw new Error('Invalid lightmap intensity');
+ if(!Number.isFinite(screenIntensity)||screenIntensity<0)throw new Error('Invalid screen intensity');
  const entries=[],textures=new Map(),loader=new THREE.TextureLoader();
  root.traverse(mesh=>{
   if(!mesh.isMesh)return;
@@ -50,7 +52,9 @@ export async function applyBakedLightmaps(root){
    const material=original.clone();
    material.lightMap=textures.get(info.texture);
    // Cycles diffuse without COLOR stores outgoing radiance; Three expects irradiance.
-   material.lightMapIntensity=Math.PI;
+   material.lightMapIntensity=Math.PI*(intensities[info.texture]??1);
+   // shortcut: these posters have black base color; reassess compensation if the asset gains lit color.
+   if(/^REF_Jumbotron_[0-3]$/.test(mesh.name))material.emissiveIntensity*=screenIntensity;
    material.onBeforeCompile=(shader,renderer)=>{
     original.onBeforeCompile.call(material,shader,renderer);
     shader.uniforms.bakedLightRange={value:info.range};
@@ -63,7 +67,7 @@ export async function applyBakedLightmaps(root){
    };
    material.customProgramCacheKey=()=>`barclays-lightmap-r170:${original.customProgramCacheKey()}`;
    material.userData.bakedLighting=true;
-   material.userData.bakedSource=`${original.uuid}:${info.texture}:${info.range}`;materialCount++;
+   material.userData.bakedSource=`${original.uuid}:${info.texture}:${info.range}:${material.emissiveIntensity}`;materialCount++;
    return material;
   });
   mesh.material=Array.isArray(mesh.material)?materials:materials[0];

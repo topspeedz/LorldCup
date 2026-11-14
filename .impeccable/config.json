@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "web/ui/ticket.js"
+        ],
+        "createdAt": "2026-11-14T01:29:22.138Z",
+        "reason": "Project art specification docs/live/graphicmodel/ui/ticket.md:19 explicitly specifies the team button 8px accent; the ticket card and reopen rows specify 6px and 3px left accents; all three predate T92b as preserved in temp/T92b/before/ticket.js."
+      }
+    ]
+  }
+}

@@ -57,9 +57,9 @@ test('RW-H-2: floor clicks continue from the post-ticket entrance to the nearest
   await page.locator('#enter').click();
   await page.evaluate(async () => {
     const { events, player, config } = fixContext;
+    // T64: a team pick alone issues the ticket (no emote step).
     const issued = new Promise(resolve => events.addEventListener('ticket:issued', resolve, { once: true }));
     events.dispatchEvent(new CustomEvent('team:changed', { detail: { teamId: config('teams').teams[0].id } }));
-    events.dispatchEvent(new CustomEvent('emote:played', { detail: { id: 'cheer_clap' } }));
     await issued;player.teleport([-107, -.02, 0, -Math.PI / 2]);
     window.walkClicks = [];
     events.addEventListener('world:click', e => walkClicks.push({ point: e.detail.point, cancelled: e.defaultPrevented }));
@@ -73,7 +73,9 @@ test('RW-H-2: floor clicks continue from the post-ticket entrance to the nearest
     const at = await page.evaluate(() => {
       const { player, camera, config, THREE } = fixContext, p = player.position;
       const [x, , z] = config('seats').seats[0].position, d = Math.hypot(x - p.x, z - p.z);
-      for (const distance of [d, 12, 8, 5, 3]) {
+      // T63b moved the seats to the entrance, 54 m from the gate: a point that far lies behind walls and the click finds no
+      // floor (world:click point null). Click the floor a short way ahead on the line to the seat, like a user does.
+      for (const distance of [12, 8, 5, 3]) {
         if (distance > d) continue;
         const v = new THREE.Vector3(p.x + (x - p.x) * distance / d, p.y, p.z + (z - p.z) * distance / d).project(camera);
         const sx = (v.x + 1) * innerWidth / 2, sy = (1 - v.y) * innerHeight / 2;
@@ -134,19 +136,33 @@ async function fixture(page) {
   await page.route('**/__fix1-seat', route => route.fulfill({ contentType: 'text/html', body: `<!doctype html>
     <style>body{margin:0}canvas{width:800px;height:500px}#hud-keys{position:fixed;right:0;top:0}</style>
     <script type="importmap">{"imports":{"three":"/vendor/three.module.js"}}</script>
-    <canvas></canvas><div id="hud-keys"></div><div id="dock"></div><button id="close">닫기</button>` }));
+    <canvas></canvas><div id="hud"><div id="hud-keys"></div><div id="hud-toast" role="status"></div><div id="showtime-wait"></div><div id="dock"></div></div><button id="close">닫기</button>` }));
   await page.goto('/__fix1-seat');
   await page.evaluate(async () => {
     const THREE = await import('three');
     const { createInput } = await import('/input.js'), { createPlayerController } = await import('/player-controller.js');
     const { create } = await import('/seat-mode.js');
+    const { create: createHud } = await import('/ui/hud.js');
     const seats = await (await fetch('/config/seats.json')).json(), controls = await (await fetch('/config/controls.json')).json();
     const scene = new THREE.Scene(), root = new THREE.Group(), camera = new THREE.PerspectiveCamera(68, 1.6, .08, 650);
     const events = new EventTarget(), canvas = document.querySelector('canvas'), peers = [];
-    const screen = { fullMode: false, faces: [{ position: [0, 3.1, 0], normal: [-1, 0, 0], width: 12, height: 6.75 }] };
+    const screen = { fullMode: false, faces: [[-1,0,0],[0,0,1],[1,0,0],[0,0,-1]].map((normal, i) => ({
+      name: 'face-' + i, position: [normal[0] * 6, 3.1, normal[2] * 6], normal, width: 12, height: 6.75,
+    })) };
     window.arena = { screen };let lockCalls = 0;canvas.requestPointerLock = () => { lockCalls++; };
-    const input = createInput({ canvas, events, controls, isReady: () => true, onLook() {}, onJump: () => player.jump(), onClick() {} });
+    const clicks = [], walkTargets = [], flights = [];
+    function worldClick(x, y) {
+      const rect = canvas.getBoundingClientRect(), ray = new THREE.Raycaster();
+      ray.setFromCamera(new THREE.Vector2((x - rect.left) / rect.width * 2 - 1, 1 - (y - rect.top) / rect.height * 2), camera);
+      const event = new CustomEvent('world:click', { cancelable: true, detail: {
+        ray: { origin: ray.ray.origin.toArray(), direction: ray.ray.direction.toArray() }, point: [5, -.44, 5],
+      } });
+      if (events.dispatchEvent(event)) { walkTargets.push(event.detail.point);player.walkTo(event.detail.point); }
+      clicks.push(event.defaultPrevented);return event.defaultPrevented;
+    }
+    const input = createInput({ canvas, events, controls, isReady: () => true, onLook() {}, onJump: () => player.jump(), onClick: worldClick });
     const player = createPlayerController({ avatar: new THREE.Group(), input, getYaw: () => 0, onTeleport() {}, clickSit: seats.clickSit });
+    const fly = player.flyTo;player.flyTo = (...args) => { flights.push(args);return fly(...args); };
     const cameraRig = { setOverride(fn) { this.override = fn; } };
     const floor = new THREE.Mesh(new THREE.BoxGeometry(400, .2, 400));floor.name = 'Walk_ArenaFloor';floor.position.y = -.54;root.add(floor);root.updateMatrixWorld(true);
     scene.add(root, player.avatar);player.registerWorld(root);player.teleport([-25, -.44, 0, 0]);
@@ -155,8 +171,13 @@ async function fixture(page) {
     events.addEventListener('seat:enter', e => transitions.push(e.detail.seatId));
     const ctx = { THREE, scene, root, camera, player, input, cameraRig, events, uiRoot: document.body,
       renderer: { domElement: canvas }, multiplayer: { positions: peers }, config: name => name === 'seats' ? seats : controls };
-    const instance = create(ctx);events.dispatchEvent(new CustomEvent('app:enter'));
-    window.probe = { ...ctx, instance, seats, peers, notices, transitions, poses, get lockCalls() { return lockCalls; },
+    const instance = create(ctx);createHud(ctx);events.dispatchEvent(new CustomEvent('app:enter'));
+    window.probe = { ...ctx, instance, seats, peers, notices, transitions, poses, clicks, walkTargets, flights, get lockCalls() { return lockCalls; },
+      aimScreen(index) {
+        const face = screen.faces[index];camera.position.fromArray(face.position).addScaledVector(new THREE.Vector3(...face.normal), 24);
+        camera.lookAt(new THREE.Vector3(...face.position));camera.updateMatrixWorld(true);
+      },
+      screenClick(index = 0) { this.aimScreen(index);return worldClick(400, 250); },
       step(dt) { player.update(dt);instance.update();poses.push([...player.position.toArray(), player.avatar.rotation.y]); },
       click(index) {
         instance.update();scene.updateMatrixWorld(true);
@@ -226,6 +247,97 @@ test('U-사용자-3: a seat occupied during flight gives the existing failure no
   });
   expect(result).toMatchObject({ consumed: true, seat: null, airborne: false, transitions: [] });
   expect(result.notices).toContainEqual({ text: '다른 사람이 먼저 앉았어요', tone: 'warning' });
+});
+
+for (let face = 0; face < 4; face++) test(`T94: screen face ${face} flies to the nearest free seat and sits after landing`, async ({ page }) => {
+  await fixture(page);
+  const result = await page.evaluate(async face => {
+    probe.player.walkTo([-10, -.44, 0]);probe.step(.1);
+    const before = probe.player.position.toArray();
+    const expected = [...probe.seats.seats].sort((a, b) => Math.hypot(...a.position.map((v, i) => v - before[i])) - Math.hypot(...b.position.map((v, i) => v - before[i])))[0];
+    const consumed = probe.screenClick(face), seconds = probe.seats.clickSit.flightSeconds;
+    const start = { airborne: probe.player.airborne, seat: arena.seat.seatId, position: probe.player.position.toArray() };
+    probe.input.keys.add('KeyW');probe.player.jump();probe.step(seconds / 2);probe.input.keys.clear();
+    const middle = { airborne: probe.player.airborne, seat: arena.seat.seatId, position: probe.player.position.toArray() };
+    probe.step(seconds / 2);await Promise.resolve();probe.instance.update();probe.cameraRig.override(probe.camera);
+    return { expected, before, consumed, start, middle, seat: arena.seat.seatId, position: probe.player.position.toArray(),
+      airborne: probe.player.airborne, transitions: probe.transitions, walkTargets: probe.walkTargets, fov: probe.camera.fov, config: probe.seats };
+  }, face);
+  expect(result.consumed).toBe(true);expect(result.walkTargets).toEqual([]);
+  expect(result.start).toEqual({ airborne: true, seat: null, position: result.before });
+  expect(result.middle.airborne).toBe(true);expect(result.middle.seat).toBeNull();
+  expect(result.middle.position[0]).toBeCloseTo((result.before[0] + result.expected.position[0]) / 2);
+  expect(result.middle.position[1]).toBeCloseTo((result.before[1] + result.expected.position[1]) / 2 + result.config.clickSit.arcHeightMeters);
+  expect(result.airborne).toBe(false);expect(result.seat).toBe(result.expected.id);expect(result.position).toEqual(result.expected.position);
+  expect(result.transitions).toEqual([result.expected.id]);expect(result.fov).toBe(result.config.camera.fov);
+});
+
+test('T94: screen clicks skip the nearest occupied seat', async ({ page }) => {
+  await fixture(page);
+  const result = await page.evaluate(async () => {
+    const p = probe.player.position.toArray();
+    const ordered = [...probe.seats.seats].sort((a, b) => Math.hypot(...a.position.map((v, i) => v - p[i])) - Math.hypot(...b.position.map((v, i) => v - p[i])));
+    probe.peers.push(ordered[0].position);probe.instance.update();
+    const consumed = probe.screenClick();probe.step(probe.seats.clickSit.flightSeconds);await Promise.resolve();
+    return { consumed, seat: arena.seat.seatId, expected: ordered[1].id, notices: probe.notices };
+  });
+  expect(result).toEqual({ consumed: true, seat: result.expected, expected: result.expected, notices: [] });
+});
+
+test('T94: a full arena consumes the screen click and briefly shows the no-seat notice without moving', async ({ page }) => {
+  await fixture(page);
+  const result = await page.evaluate(() => {
+    probe.peers.push(...probe.seats.seats.map(seat => seat.position));probe.instance.update();
+    const before = probe.player.position.toArray(), consumed = probe.screenClick();probe.step(1);
+    return { before, consumed, position: probe.player.position.toArray(), airborne: probe.player.airborne,
+      seat: arena.seat.seatId, flights: probe.flights, walkTargets: probe.walkTargets };
+  });
+  expect(result).toEqual({ before: result.before, consumed: true, position: result.before, airborne: false, seat: null, flights: [], walkTargets: [] });
+  await expect(page.locator('#hud-toast')).toContainText('빈 좌석이 없어요');
+  await expect(page.locator('#hud-toast > div')).toBeVisible();
+  await expect(page.locator('#hud-toast > div')).toHaveCount(0, { timeout: 3000 });
+});
+
+test('T94: dragging over the screen never becomes a click, but a subsequent tap starts flight', async ({ page }) => {
+  await fixture(page);await page.evaluate(() => probe.aimScreen(0));
+  await page.mouse.move(400, 250);await page.mouse.down();await page.mouse.move(450, 250, { steps: 5 });await page.mouse.up();
+  expect(await page.evaluate(() => ({ clicks: probe.clicks, flights: probe.flights, airborne: probe.player.airborne })))
+    .toEqual({ clicks: [], flights: [], airborne: false });
+  await page.mouse.click(400, 250);
+  expect(await page.evaluate(() => probe.player.airborne)).toBe(true);
+});
+
+test('T94: screen clicks do nothing outside walking, in Full Mode, during flight or when seated', async ({ page }) => {
+  await fixture(page);
+  const result = await page.evaluate(async () => {
+    probe.input.releasePointer();const idle = probe.screenClick();probe.input.capturePointer();
+    arena.screen.fullMode = true;const full = probe.screenClick();arena.screen.fullMode = false;
+    const first = probe.screenClick(), flying = probe.screenClick(1);
+    probe.step(probe.seats.clickSit.flightSeconds);await Promise.resolve();
+    const before = probe.player.position.toArray(), seated = probe.screenClick(2);
+    return { idle, full, first, flying, seated, flights: probe.flights.length, transitions: probe.transitions.length,
+      before, after: probe.player.position.toArray(), notices: probe.notices };
+  });
+  expect(result).toEqual({ idle: false, full: false, first: true, flying: false, seated: false, flights: 1, transitions: 1,
+    before: result.before, after: result.before, notices: [] });
+});
+
+test('T94: rays outside the screen rectangles, parallel to them or pointing away do not start flight', async ({ page }) => {
+  await fixture(page);
+  const result = await page.evaluate(() => {
+    const rays = [
+      { origin: [-30, 3.1, 6.1], direction: [1, 0, 0] },
+      { origin: [-30, 6.5, 0], direction: [1, 0, 0] },
+      { origin: [-30, 3.1, 0], direction: [0, 1, 0] },
+      { origin: [30, 3.1, 0], direction: [1, 0, 0] },
+    ];
+    const consumed = rays.map(ray => {
+      probe.aimScreen(0);
+      const e = new CustomEvent('world:click', { cancelable: true, detail: { ray, point: null } });probe.events.dispatchEvent(e);return e.defaultPrevented;
+    });
+    return { consumed, flights: probe.flights, airborne: probe.player.airborne };
+  });
+  expect(result).toEqual({ consumed: [false, false, false, false], flights: [], airborne: false });
 });
 
 test('U-사용자-4: double-sided stair undersides cannot become a floor or admit an airborne body through a step', async ({ page }) => {

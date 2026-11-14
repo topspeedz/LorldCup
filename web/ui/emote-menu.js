@@ -1,6 +1,6 @@
 import {INPUT_ACTION,EMOTE_REQUEST,EMOTE_MENU_OPEN,SEAT_ENTER,SEAT_EXIT,FULLMODE_ENTER,FULLMODE_EXIT,HUD_TOAST} from '../events.js';
 
-// BL-0009/BL-0031: Alt, the HUD "감정표현" button or the ticket's "응원하기" opens a 2x2 emote menu.
+// BL-0009/BL-0031, T95: a lone Ctrl tap (input.js), the HUD "감정표현" button or the ticket's "응원하기" opens a 2x2 emote menu.
 // Layout and strings: docs/live/graphicmodel/ui/emote-menu.md, docs/live/product/ux/emote-menu.md 6절.
 // Seated, one column so it fits beside the screen player (coordinator msg_4beded3d8634, T31 slides it aside).
 const emotes=[['cheer_clap','박수 환호','👏'],['heart','하트','💖'],['angry','화내기','😠'],['egg_throw','계란 던지기','🥚']];
@@ -10,7 +10,7 @@ export function create(ctx){
  const {events,input,uiRoot}=ctx;
  let resume=false,seated=false,full=false,opener=null;
  const style=document.createElement('style');
- style.textContent=`#emote-menu{position:fixed;z-index:var(--z-menu);left:50%;top:50%;transform:translate(-50%,-50%);display:grid;grid-template-columns:repeat(2,calc(var(--space-5)*4));gap:var(--space-2);padding:var(--space-5);background:rgb(7 18 29/var(--panel-alpha));border:var(--border-width) solid var(--color-border-subtle);border-radius:var(--radius-md);box-shadow:var(--shadow-panel);backdrop-filter:blur(var(--panel-blur));animation:emote-in var(--motion-base) var(--ease-out)}
+ style.textContent=`#emote-menu{position:fixed;z-index:var(--z-menu);right:var(--space-5);top:50%;transform:translateY(-50%);display:grid;grid-template-columns:repeat(2,calc(var(--space-5)*4));gap:var(--space-2);padding:var(--space-5);background:rgb(7 18 29/var(--panel-alpha));border:var(--border-width) solid var(--color-border-subtle);border-radius:var(--radius-md);box-shadow:var(--shadow-panel);backdrop-filter:blur(var(--panel-blur));animation:emote-in var(--motion-base) var(--ease-out)}
 #emote-menu[hidden]{display:none}
 #emote-menu>.bar{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:var(--space-3);margin-bottom:var(--space-1)}
 #emote-menu h2{margin:0;font-size:var(--font-size-md);font-weight:var(--font-weight-bold)}
@@ -26,7 +26,7 @@ body[data-hud=seated] #emote-menu .emote{width:auto;height:calc(var(--space-5)*3
 @keyframes emote-in{from{opacity:0}}`;
  const root=document.createElement('section');
  root.id='emote-menu';root.hidden=true;root.setAttribute('role','dialog');root.setAttribute('aria-labelledby','emote-menu-title');
- root.innerHTML='<div class="bar"><h2 id="emote-menu-title">감정표현</h2><span class="hint"><kbd>Alt</kbd>·<kbd>Esc</kbd> 닫기</span><button type="button" class="close">닫기</button></div>';
+ root.innerHTML='<div class="bar"><h2 id="emote-menu-title">감정표현</h2><span class="hint"><kbd>Ctrl</kbd>·<kbd>Esc</kbd> 닫기</span><button type="button" class="close">닫기</button></div>';
  root.querySelector('.close').addEventListener('click',()=>close(false));
  const buttons=emotes.map(([id,label,icon])=>{
   const b=document.createElement('button');b.type='button';b.className='emote';
@@ -40,7 +40,7 @@ body[data-hud=seated] #emote-menu .emote{width:auto;height:calc(var(--space-5)*3
   root.append(b);return b;
  });
  const button=document.createElement('button');
- button.id='emote-open';button.type='button';button.setAttribute('aria-expanded','false');button.setAttribute('aria-keyshortcuts','Alt');
+ button.id='emote-open';button.type='button';button.setAttribute('aria-expanded','false');button.setAttribute('aria-keyshortcuts','Control');
  button.textContent='감정표현'; // no keycap on dock buttons: keys live in the #hud-keys box (ui hud-controls.md)
  button.addEventListener('click',()=>root.hidden?open():close(false));
  const dock=document.querySelector('#dock');

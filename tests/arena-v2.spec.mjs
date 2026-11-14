@@ -11,7 +11,7 @@ const sky = json('web/config/sky-show.json');
 const stage = json('web/config/stage-players.json');
 const beamSources = json('web/lighting-config.json').lights.filter(light => /^REF_(OverheadBeam|WingUplight)/.test(light.name));
 const shoutFiles = [1, 2, 3].map(i => `./assets/audio/sfx/pro-shout_0${i}.mp3`);
-const ranges = { stage: 128, bowl: 16, seats: 8, concourse: 64, interior: 16, exterior: 8, city: 2 };
+const ranges = { stage: 128, bowl: 16, seats: 8, concourse: 64, interior: 32, exterior: 8, city: 2 }; // T75 rebaked interior peaks at 17.934, above the previous RGBM range.
 const lightmaps = Object.fromEntries(Object.entries(ranges).map(([name, range]) => [`./lightmaps/${name}-v2${name === 'exterior' ? '-2k' : ''}.png`, range]));
 const required = /^(REF_Jumbotron_|REF_Reused_Monitor_pixels__cyan|REF_Player|Walk_|Collide_|Roof|Atrium_ceiling|Audience_|REF_FanLightsticks|REF_(CircularStage|TrophyIsland|RunwayTransition|CenterStairs|TeamRiser)|Seats__|Seat_armrests__|REF_OverheadBeam|REF_WingUplight|AudienceDetail_)/;
 const blockers = /Player_desks|Player_PC|Player_chair|Plaza_bench|Bollards|REF_DeskBody|REF_CenterBackdrop|REF_WingMainFrame|CCR_(Counter|Timber|Refrigerator|Lounge|Banquette)/;
@@ -39,7 +39,7 @@ test('v2 preserves GLB names and metadata; T39 beam sources remain in the lighti
     const size = /\/(bowl|seats|concourse)-v2\.png$/.test(path) ? 4096 : 2048;
     expect([png.readUInt32BE(16), png.readUInt32BE(20)], path).toEqual([size, size]);
   }
-  expect(baked.length).toBe(383);
+  expect(baked.length).toBe(394); // T75 adds five ramp/curb nodes and six baked __lod10 copies.
 });
 
 test('local show settings match T33 cues and use all three T34 shout files', () => {
@@ -116,7 +116,7 @@ test('the app loads v2 and renders the support columns and stair infill with v2 
   }, { names, lightmaps, beamSources });
   expect(result.missing).toEqual([]);
   expect(result.invalid).toEqual([]);
-  expect(result.baked).toEqual({ meshes: 425, materials: 425, textures: 7 });
+  expect(result.baked).toEqual({ meshes: 468, materials: 468, textures: 7 }); // T75 adds 5 ramp/curb primitives and 38 baked __lod10 primitives.
   expect(result.beams).toBe(cues.defaults.sky_beam.count);
   expect(result.missingBeams).toEqual([]);
   expect(result.paletteMatches).toBe(true);

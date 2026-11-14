@@ -80,10 +80,14 @@ async function openArena(page, { arrival = false } = {}) {
       };}` });
   });
   await page.goto('/', { waitUntil: 'domcontentloaded' });
-  await page.waitForFunction(() => window.arena?.ready && window.arena.screen, null, { timeout: 120_000 });
+  // T71b/FX2: loading waits for the character before app:enter (T73), and entry applies the chosen showtime.
+  // Follow the user flow: enter once the character is ready, check the screen took the chosen showtime, then go 30 s into it.
+  await page.waitForFunction(() => window.arena?.ready && window.arena.screen && arena.character?.ready, null, { timeout: 120_000 });
   expect(await page.locator('#arena-screen-player iframe').count()).toBe(0);
+  const showtime = Number(await page.locator('#showtimes button[aria-pressed="true"]').getAttribute('data-showtime'));
   await page.locator('#enter').click();
-  await page.clock.setFixedTime(await page.evaluate(() => arena.screen.roundStart + 30_000));
+  expect(await page.evaluate(() => arena.screen.roundStart)).toBe(showtime);
+  await page.clock.setFixedTime(showtime + 30_000);
   await page.evaluate(arrival => {
     if (arrival) { arena.go('arena'); return; }
     const { THREE, root, cameraRig } = liveLoadContext;

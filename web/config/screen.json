@@ -13,12 +13,19 @@
   "distanceVolume": { "nearMeters": 25, "farMeters": 90, "farRatio": 0.4 },
   "arenaBounds": { "minX": -61, "maxX": 94, "maxAbsZ": 70 },
   "face": "front",
+  "videoFace": "REF_Jumbotron_3",
+  "photos": {
+    "REF_Jumbotron_0": "./assets/screen/arena-stage-front.jpg",
+    "REF_Jumbotron_1": "./assets/screen/arena-stage-left.jpg",
+    "REF_Jumbotron_2": "./assets/screen/arena-stage-right.jpg"
+  },
+  "photoBrightness": 1,
   "aspectRatio": [
     16,
     9
   ],
   "fit": "contain",
-  "mesh": { "width": 15.5, "centerY": 3.1 },
+  "mesh": { "width": 26, "centerY": 6.053125 },
   "playerWidth": 1920,
   "playerHeight": 1080,
   "minimumVisiblePixels": 200,

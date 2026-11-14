@@ -11,6 +11,8 @@ import {createInput} from './input.js';
 import {createPlayerController} from './player-controller.js';
 import {createCameraRig} from './camera-rig.js';
 import {createRenderBatches} from './render-batch.js';
+import {createArenaLod} from './arena-lod.js';
+import {createTeamBackdrops} from './team-backdrops.js';
 
 const scene=new THREE.Scene();scene.background=new THREE.Color('#1a2c45');
 const camera=new THREE.PerspectiveCamera(68,innerWidth/innerHeight,.08,650);
@@ -26,10 +28,10 @@ uiRoot.style.cssText='position:fixed;inset:0;pointer-events:none;z-index:1';
 const uiStyle=document.createElement('style');uiStyle.textContent='#ui-root>*{pointer-events:auto}';uiRoot.append(uiStyle);
 document.body.prepend(cssLayer,renderer.domElement,uiRoot);
 const status=document.querySelector('#status');
-let ready=false,crowd=null,lighting=null;
+let ready=false,crowd=null,lighting=null,arenaLod=null;
 
 async function start(){
- const configNames=['controls','camera','screen','seats','teams','characters','ticket','stage-monitors','crowd','environment','sky-show','stage-players','network','broadcasts'];
+ const configNames=['controls','camera','screen','seats','teams','characters','ticket','stage-monitors','crowd','environment','sky-show','stage-players','network','broadcasts','arena-fixes','ticket-staff','arena-lod'];
  const configs=Object.fromEntries(await Promise.all(configNames.map(async name=>{
   const response=await fetch('./config/'+name+'.json');
   if(!response.ok)throw Error('설정을 불러오지 못했습니다: '+name);
@@ -77,6 +79,7 @@ async function start(){
   multiplayer.update(now);crowd?.update(now);
   const position=player.position,inside=position.x>-95&&position.x<94&&Math.abs(position.z)<70;
   lighting?.update(inside,position);
+  arenaLod?.update();
   renderer.render(scene,camera);
  }
  frameId=requestAnimationFrame(frame);
@@ -85,6 +88,7 @@ async function start(){
  window.addEventListener('pagehide',event=>{
   if(event.persisted)return;
   cancelAnimationFrame(frameId);
+  arenaLod?.dispose();
   for(const instance of [...instances].reverse())instance.dispose?.();
   ctx.renderBatches?.dispose();renderer.domElement.removeEventListener('wheel',invalidateCamera);
   input.dispose();window.removeEventListener('resize',resize);renderer.dispose();
@@ -104,10 +108,18 @@ async function start(){
  status.textContent='경기장 조명 불러오는 중';
  lighting=await createHybridLighting(g.scene,renderer,scene);
  crowd=createCrowdMotion(g.scene,ctx);
- instances=modules.map(module=>module.create(ctx));
- ctx.renderBatches=createRenderBatches(g.scene);
- g.scene.visible=true;
+ let crowdReady;
+ // Let the ticket paint before preparing its crowd; every admission shares the same completion.
+ ctx.prepareCrowd=()=>crowdReady??=new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))).then(async()=>{
+  await crowd.preparation.start();arenaLod.prepare(lighting.interiorReflection);
+ });
+ instances=[await createTeamBackdrops(ctx),...modules.map(module=>module.create(ctx))];
+ // Install the camera's material hooks before making zone-specific material copies.
  ready=true;events.dispatchEvent(new CustomEvent(APP_READY));
+ ctx.arenaLod=arenaLod=createArenaLod(ctx,crowd);
+ ctx.renderBatches=createRenderBatches(g.scene);
+ arenaLod.bindBatches(ctx.renderBatches);
+ g.scene.visible=true;
 }
 start().catch(error=>{
  status.textContent='경기장을 불러오지 못했습니다. start.ps1로 서버를 실행한 뒤 다시 열어주세요.';console.error(error);

@@ -1,11 +1,21 @@
 {
   "seats": [
-    {"id": "lower-entry-north-01", "position": [-53.305719, -0.87, -5.149108]},
-    {"id": "lower-entry-north-02", "position": [-52.216487, -1.3, -5.134863]},
-    {"id": "lower-entry-north-03", "position": [-51.126792, -1.73, -5.119948]},
-    {"id": "lower-entry-south-01", "position": [-53.305719, -0.87, 5.149108]},
-    {"id": "lower-entry-south-02", "position": [-52.216487, -1.3, 5.134863]},
-    {"id": "lower-entry-south-03", "position": [-51.126792, -1.73, 5.119948]}
+    {"id": "lower-entry-north-01", "position": [-53.305719, -0.87, -5.149108], "standPosition": [-53.805719, -0.87, -3.95]},
+    {"id": "lower-entry-north-02", "position": [-52.216487, -1.3, -5.134863], "standPosition": [-52.716487, -1.3, -3.95]},
+    {"id": "lower-entry-north-03", "position": [-51.126792, -1.73, -5.119948], "standPosition": [-51.626792, -1.73, -3.95]},
+    {"id": "lower-entry-north-04", "position": [-50.132004, -2.16, -4.434629], "standPosition": [-50.701256, -2.16, -3.76463]},
+    {"id": "lower-entry-north-05", "position": [-49.041775, -2.59, -4.434629], "standPosition": [-49.614105, -2.59, -3.76463]},
+    {"id": "lower-entry-north-06", "position": [-47.950867, -3.02, -4.434629], "standPosition": [-48.526482, -3.02, -3.76463]},
+    {"id": "lower-entry-north-07", "position": [-46.859203, -3.45, -4.434629], "standPosition": [-47.438343, -3.45, -3.76463]},
+    {"id": "lower-entry-north-08", "position": [-45.766712, -3.88, -4.434629], "standPosition": [-46.349632, -3.88, -3.76463]},
+    {"id": "lower-entry-south-01", "position": [-53.305719, -0.87, 5.149108], "standPosition": [-53.805719, -0.87, 3.95]},
+    {"id": "lower-entry-south-02", "position": [-52.216487, -1.3, 5.134863], "standPosition": [-52.716487, -1.3, 3.95]},
+    {"id": "lower-entry-south-03", "position": [-51.126792, -1.73, 5.119948], "standPosition": [-51.626792, -1.73, 3.95]},
+    {"id": "lower-entry-south-04", "position": [-50.132004, -2.16, 4.445371], "standPosition": [-50.701256, -2.16, 3.775371]},
+    {"id": "lower-entry-south-05", "position": [-49.041775, -2.59, 4.445371], "standPosition": [-49.614105, -2.59, 3.775371]},
+    {"id": "lower-entry-south-06", "position": [-47.950867, -3.02, 4.445371], "standPosition": [-48.526482, -3.02, 3.775371]},
+    {"id": "lower-entry-south-07", "position": [-46.859203, -3.45, 4.445371], "standPosition": [-47.438343, -3.45, 3.775371]},
+    {"id": "lower-entry-south-08", "position": [-45.766712, -3.88, 4.445371], "standPosition": [-46.349632, -3.88, 3.775371]}
   ],
   "interactionDistance": 1.8,
   "clickSit": {
@@ -17,6 +27,7 @@
     "target": "screen",
     "fov": 50,
     "eyeHeight": 3.54,
+    "minEyeY": 1.81,
     "screenFill": 0.85
   }
 }

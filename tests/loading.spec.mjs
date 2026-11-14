@@ -3,6 +3,20 @@ import { test, expect } from '@playwright/test';
 // T65: the first visit is covered by a "로딩 중" screen until the arena is ready.
 const overlay = page => page.getByRole('dialog', { name: '경기장 로딩 중' });
 
+async function recordEntry(page) {
+  await page.evaluate(async () => {
+    const { events, APP_ENTER } = await import('./events.js');
+    window.entryFrames = [];
+    const sample = () => window.entryFrames.push({
+      ready: arena.character.ready,
+      dummyVisible: arena.avatar.children.some(o => o.isMesh && o.visible),
+      fanAttached: !!arena.avatar.getObjectByName('FanRig'),
+      coverHidden: document.querySelector('#loading').hidden,
+    });
+    events.addEventListener(APP_ENTER, () => { sample(); requestAnimationFrame(sample); });
+  });
+}
+
 test('first page comes first; clicking 들어가기 before ready shows the cover, which lifts straight into the arena', async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 720 });
   await page.route('**/arena-v2.glb', async route => { await new Promise(r => setTimeout(r, 3000)); await route.continue(); }); // keep it loading past the click
@@ -50,3 +64,52 @@ test('loading screen keeps covering and shows the failure notice when the arena 
   await expect(cover).toHaveAttribute('aria-busy', 'false');
   await expect(cover.getByRole('progressbar')).toBeHidden();
 });
+
+test('T73: the first uncovered frame has the fan and no dummy, even when its last uniform is delayed', async ({ page }) => {
+  let uniform;
+  await page.route('**/assets/characters/uniform-blg.png', route => { uniform = route; });
+  await page.goto('/');
+  await recordEntry(page);
+  await page.locator('#enter').click();
+  await page.waitForFunction(() => window.arena?.ready);
+  await expect.poll(() => !!uniform).toBe(true);
+  expect(await page.evaluate(() => arena.character.ready)).toBe(false);
+  await expect(overlay(page)).toBeVisible();
+  expect(await page.evaluate(() => entryFrames)).toEqual([]);
+  await uniform.continue();
+  await expect(overlay(page)).toBeHidden({ timeout: 30_000 });
+  await expect.poll(() => page.evaluate(() => entryFrames.length)).toBe(2);
+  expect(await page.evaluate(() => entryFrames)).toEqual([
+    { ready: true, dummyVisible: false, fanAttached: true, coverHidden: true },
+    { ready: true, dummyVisible: false, fanAttached: true, coverHidden: true },
+  ]);
+});
+
+for (const fallback of ['failure', 'timeout']) {
+  test(`T73: character ${fallback} uncovers the dummy without blocking entry`, async ({ page }) => {
+    let fan;
+    if (fallback === 'timeout') await page.clock.install();
+    await page.route('**/assets/characters/fan.glb', route => { fan = route; });
+    await page.goto('/');
+    await recordEntry(page);
+    await page.locator('#enter').click();
+    await page.waitForFunction(() => window.arena?.ready);
+    await expect.poll(() => !!fan).toBe(true);
+    await expect(overlay(page)).toBeVisible();
+    if (fallback === 'failure') await fan.abort();
+    else await page.clock.fastForward(30_001);
+    await expect(overlay(page)).toBeHidden();
+    await expect.poll(() => page.evaluate(() => entryFrames.length)).toBe(2);
+    expect(await page.evaluate(() => entryFrames[0])).toEqual({
+      ready: false, dummyVisible: true, fanAttached: false, coverHidden: true,
+    });
+    await expect(page.locator('body')).toHaveAttribute('data-hud', 'walking');
+    if (fallback === 'failure') expect(await page.evaluate(() => arena.character.error)).toBeTruthy();
+    else {
+      await fan.continue();
+      await page.waitForFunction(() => arena.character.ready);
+      await expect(overlay(page)).toBeHidden();
+      expect(await page.evaluate(() => entryFrames.length)).toBe(2); // late success cannot enter twice
+    }
+  });
+}

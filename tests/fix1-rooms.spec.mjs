@@ -69,7 +69,7 @@ test('BL-0035: room keys per broadcast, auto placement by showtime, invite URL ?
     expect(await a.page.evaluate(() => arena.multiplayer.peerId)).toBe('barclays-tps-room-final-' + ra.code);
     // A different showtime → a different room (the room's roundStart is that showtime).
     const b = await r.open();
-    const second = b.page.locator('#showtimes button[data-showtime]').nth(1);
+    const second = b.page.locator('#showtimes button[data-showtime]').nth(2); // T88: nth(0) is the running round, nth(1) the default
     const showtime = Number(await second.getAttribute('data-showtime'));
     expect(showtime).not.toBe(ra.roundStart);
     await second.click();
@@ -155,5 +155,31 @@ test('RW-H-1: a link without room (?b=&t=) skips the first page and lands in the
     await c.page.locator('#enter').click();
     expect(await room(c.page)).toEqual({ code: ra.code, host: false, roundStart: showtime });
     expect([...a.errors, ...c.errors]).toEqual([]);
+  } finally { await r.close(); }
+});
+
+// T88: the first showtime cell is the round that started last (상영 중). Two people who pick it share one room of that round,
+// and the room's roundStart is in the past (the screen picks up mid-round from it).
+test('T88: picking the running round puts two people in one room whose roundStart is that round', async ({ browser }) => {
+  test.setTimeout(300_000);
+  const r = await rig(browser);
+  try {
+    const interval = JSON.parse(readFileSync(new URL('../web/config/screen.json', import.meta.url), 'utf8')).roundIntervalMinutes * 60_000;
+    const pickRunning = async page => {
+      const cell = page.locator('#showtimes button[data-showtime]').first();
+      await expect(cell).toHaveAccessibleName(/상영 중$/);
+      const showtime = Number(await cell.getAttribute('data-showtime'));
+      expect(showtime).toBe(Math.floor(Date.now() / interval) * interval);
+      await cell.click();
+      await page.locator('#enter').click();
+      return showtime;
+    };
+    const a = await r.open(), ta = await pickRunning(a.page);
+    const ra = await room(a.page);
+    expect(ra).toEqual({ code: '01', host: true, roundStart: ta });
+    const b = await r.open(), tb = await pickRunning(b.page);
+    expect(tb).toBe(ta); // shortcut: assumes no round boundary between the two picks (seconds apart in a 10-minute round)
+    expect(await room(b.page)).toEqual({ code: '01', host: false, roundStart: ta });
+    expect([...a.errors, ...b.errors]).toEqual([]);
   } finally { await r.close(); }
 });

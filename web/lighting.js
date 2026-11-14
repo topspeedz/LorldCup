@@ -8,11 +8,11 @@ export async function createHybridLighting(root,renderer,scene){
  const response=await fetch('./lighting-config.json');
  if(!response.ok)throw new Error(`Lighting config HTTP ${response.status}`);
  const config=await response.json();
- if(!Number.isFinite(config.exposureEV)||!Number.isFinite(config.backgroundStrength)||config.backgroundStrength<0||!Array.isArray(config.lights))throw new Error('Invalid lighting config');
+ if(!Number.isFinite(config.exposureEV)||!Number.isFinite(config.screenExposureEV)||!Number.isFinite(config.backgroundStrength)||config.backgroundStrength<0||!Array.isArray(config.lights)||!Array.isArray(config.disabledLights)||config.disabledLights.some(name=>typeof name!=='string'))throw new Error('Invalid lighting config');
  renderer.toneMapping=THREE.AgXToneMapping;renderer.toneMappingExposure=2**config.exposureEV;
  renderer.outputColorSpace=THREE.SRGBColorSpace;
  renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
- const [baked,hdr,cafeHDR,outsideHDR,sky]=await Promise.all([applyBakedLightmaps(root),new RGBELoader().loadAsync('./stage-reflections.hdr'),new RGBELoader().loadAsync('./concourse-reflections.hdr'),new RGBELoader().loadAsync('./exterior-reflections.hdr'),new THREE.TextureLoader().loadAsync('./world-background.png')]);
+ const [baked,hdr,cafeHDR,outsideHDR,sky]=await Promise.all([applyBakedLightmaps(root,config.lightMapIntensity,2**(config.screenExposureEV-config.exposureEV)),new RGBELoader().loadAsync('./stage-reflections.hdr'),new RGBELoader().loadAsync('./concourse-reflections.hdr'),new RGBELoader().loadAsync('./exterior-reflections.hdr'),new THREE.TextureLoader().loadAsync('./world-background.png')]);
  sky.colorSpace=THREE.SRGBColorSpace;sky.mapping=THREE.EquirectangularReflectionMapping;hdr.mapping=THREE.EquirectangularReflectionMapping;
  const pmrem=new THREE.PMREMGenerator(renderer);
  cafeHDR.mapping=outsideHDR.mapping=THREE.EquirectangularReflectionMapping;
@@ -54,7 +54,7 @@ export async function createHybridLighting(root,renderer,scene){
  const dynamicLights=[];
  const cafeSources=config.lights.filter(l=>l.name.startsWith('CCR_')).map(l=>({...l,location:vector(l.position)}));
  const cafeLights=Array.from({length:3},()=>{const l=new THREE.PointLight(0xffffff,0,12,2);scene.add(l);dynamicLights.push(l);return l;});
- for(const source of config.lights.filter(l=>/^REF_(TeamKey_|BackdropWash_|TrophyFill$|BowlWash_-1_0$|BowlWash_1_0$)/.test(l.name))){
+ for(const source of config.lights.filter(l=>/^REF_(TeamKey_|BackdropWash_|TrophyFill$|BowlWash_-1_0$|BowlWash_1_0$)/.test(l.name)&&!config.disabledLights.includes(l.name))){
   // Area lights become bounded point lights for moving characters; static surfaces use the bake.
   const light=new THREE.PointLight(new THREE.Color(...source.color),source.energy/(4*Math.PI),45,2);
   light.name=source.name;light.position.copy(vector(source.position));scene.add(light);dynamicLights.push(light);

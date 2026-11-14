@@ -78,7 +78,12 @@ test('U-3: seat markers are on screen from the default arena view, highlight on 
   expect(sections.size).toBeGreaterThanOrEqual(2);
   expect(seatsConfig.seats.every(s => s.id.startsWith('lower-'))).toBe(true);
 
-  await page.evaluate(() => arena.go('arena'));
+  // T63b (user decision): the seats now sit either side of the arena entrance, so the arena view a user first gets is
+  // walking in through the entrance, facing the bowl. Stand in the entrance opening (min seat x - 5 m, z 0) facing inward.
+  await page.evaluate(seats => {
+    const { player } = u1Probe.ctx, x = Math.min(...seats.map(s => s.position[0])) - 5;
+    player.teleport([x, player.groundAt(x, 0, seats[0].position[1]), 0, Math.atan2(-x, 0)]);
+  }, seatsConfig.seats);
   await page.waitForTimeout(1500);
   const onScreen = await page.evaluate(() => {
     const { scene, camera, THREE } = u1Probe.ctx, markers = scene.getObjectByName('SeatMarkers');

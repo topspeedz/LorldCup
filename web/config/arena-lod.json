@@ -1,0 +1,19 @@
+{
+  "hysteresisMeters": 0.5,
+  "portal": { "min": [-61.5, -0.2, -4.5], "max": [-60.5, 4.9, 4.5] },
+  "exterior": "^(EXR_|City|Collide_City|Collide_CurtainWall|Facade_|Road|Crosswalk|Plaza|Bollards|Bench|Event_|Flag_|Entry_sign|Welcome|Lobby_)",
+  "interior": "^(REF_|AudienceDetail_(Aisle|Ribbon)|Seats__|Seat_armrests__|Fix_Seat|Fix_Tier|Aisle_|InteriorDetail_|Lighting_truss|Moving_head|Hanging_speakers|Fixture_lens|Stage_light|Suite_|Tier_|Section_number|Player_|Walk_Arena|Walk_Tier|Walk_Ramp)",
+  "walls": [
+    "Collide_Arena_shell__black",
+    "Portal_header__black",
+    "Suite_fascia__ivory",
+    "Suite_piers__ivory",
+    "Fix_TierFascia__concrete",
+    "CCR_Wall_backing_Web",
+    "CCR_Wall_backing_Compact_Web",
+    "CCR_Solid_wall_returns_Web",
+    "CCR_Solid_wall_returns_Compact_Web",
+    "CCR_Vertical_timber_slats_Web",
+    "CCR_Vertical_timber_slats_Compact_Web"
+  ]
+}

@@ -16,8 +16,8 @@ export function create(ctx){
  style.textContent=`
   #ui-root>#full-mode-open{position:fixed;right:24px;top:76px}
   #full-mode-open kbd,#full-mode-close kbd{margin:0 0 0 var(--space-1,4px);background:transparent;color:inherit;border-color:currentColor}
-  #full-mode-open[data-seated],#arena-screen-controls #full-mode-close{background:var(--color-accent,#7fdcff);color:var(--color-text-on-accent,#082338);border-color:var(--color-accent,#7fdcff);font-weight:var(--font-weight-bold,700)}
-  #full-mode-open[data-seated]:hover,#arena-screen-controls #full-mode-close:hover{border-color:var(--color-text,#edf6ff)}
+  #arena-screen-controls #full-mode-close{background:var(--color-accent,#7fdcff);color:var(--color-text-on-accent,#082338);border-color:var(--color-accent,#7fdcff);font-weight:var(--font-weight-bold,700)}
+  #arena-screen-controls #full-mode-close:hover{border-color:var(--color-text,#edf6ff)}
   body.touch #full-mode-open kbd,body.touch #full-mode-close kbd{display:none}
   @media(max-width:650px){#ui-root>#full-mode-open{right:16px;top:142px}}
   #full-mode-wait{flex:none;font-weight:var(--font-weight-bold,700);font-variant-numeric:tabular-nums;white-space:nowrap}

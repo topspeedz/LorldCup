@@ -2,6 +2,7 @@ import { test, expect } from '@playwright/test';
 import { readFileSync } from 'node:fs';
 
 const config = JSON.parse(readFileSync(new URL('../web/config/seats.json', import.meta.url), 'utf8'));
+const screenConfig = JSON.parse(readFileSync(new URL('../web/config/screen.json', import.meta.url), 'utf8'));
 const roundStart = Date.parse('2026-11-13T04:10:00Z');
 test.setTimeout(180_000);
 
@@ -16,7 +17,7 @@ test('BL-0033 / T63: seats occupy the three entrance rows below the removed rim'
 });
 
 for (const viewport of [{ width: 1280, height: 720 }, { width: 390, height: 844 }]) {
-  test(`BL-0033: level, undistorted, unobstructed seated screens at ${viewport.width}x${viewport.height}`, async ({ page }, testInfo) => {
+  test(`BL-0033: centred, unobstructed seated screens at ${viewport.width}x${viewport.height}`, async ({ page }, testInfo) => {
     await page.setViewportSize(viewport);
     // A colored local player isolates camera occlusion from external video availability.
     await page.addInitScript(() => {
@@ -54,13 +55,14 @@ for (const viewport of [{ width: 1280, height: 720 }, { width: 390, height: 844 
     await expect.poll(() => page.evaluate(() => arena.state.walking)).toBe(true);
     const measurements = [];
     for (const seat of config.seats) {
-      const approach = await page.evaluate(seat => {
-        const { player } = seatBackContext, [x, y, z] = seat.position;
-        const approach = [x, y, z - Math.sign(z) * 1.2];
+      // Q3-S-9: z (the seat's z, its side of the entrance) is passed in; it is not in scope inside the page.
+      const approach = await page.evaluate(([seat, z]) => {
+        const { player } = seatBackContext;
+        const approach = seat.standPosition.slice();
         approach[1] = player.groundAt(approach[0], approach[2], 0);
         player.teleport([...approach, 0]);
         return { position: approach, canMove: player.attempt(0, -Math.sign(z) * .03) };
-      }, seat);
+      }, [seat, seat.position[2]]);
       expect(approach.position[1], seat.id).not.toBeNull();
       expect(approach.canMove, seat.id).toBe(true);
       await expect(page.locator('#seat-toggle')).toBeVisible();
@@ -86,11 +88,13 @@ for (const viewport of [{ width: 1280, height: 720 }, { width: 390, height: 844 
         return { pitch: THREE.MathUtils.radToDeg(Math.asin(camera.getWorldDirection(new THREE.Vector3()).y)), centerError: Math.abs(center.clone().project(camera).y) / 2, ratio: (top + bottom) / (left + rightEdge), topBottom: top / bottom, points: points.map(p => p.toArray()), depth: corners.map(p => p.z), alpha, cameraPosition: camera.position.toArray(), cameraDistance: camera.position.distanceTo(center) };
       }, viewport);
       measurements.push({ seat: seat.id, ...measured });
-      expect.soft(measured.cameraDistance, `${seat.id}: entrance viewing distance`).toBeGreaterThan(35);
-      expect.soft(Math.abs(measured.pitch), seat.id).toBeLessThanOrEqual(2);
+      expect.soft(measured.cameraDistance, `${seat.id}: 35 m horizontal viewing distance`).toBeCloseTo(Math.hypot(35, screenConfig.mesh.centerY - seat.position[1] - config.camera.eyeHeight), 2);
+      const sine = (screenConfig.mesh.centerY - seat.position[1] - config.camera.eyeHeight) / measured.cameraDistance;
+      const halfHeight = screenConfig.mesh.width * screenConfig.aspectRatio[1] / screenConfig.aspectRatio[0] / 2;
+      expect.soft(measured.pitch, seat.id).toBeCloseTo(Math.asin(sine) * 180 / Math.PI, 2);
       expect.soft(measured.centerError, seat.id).toBeLessThanOrEqual(.01);
-      expect.soft(Math.abs(measured.ratio / (16 / 9) - 1), seat.id).toBeLessThanOrEqual(.01);
-      expect.soft(Math.abs(measured.topBottom - 1), seat.id).toBeLessThanOrEqual(.01);
+      expect.soft(measured.ratio / (16 / 9), seat.id).toBeCloseTo(1 / Math.hypot(Math.sqrt(1 - sine * sine), screenConfig.mesh.width * sine / (2 * measured.cameraDistance)), 2);
+      expect.soft(measured.topBottom, seat.id).toBeCloseTo((measured.cameraDistance - halfHeight * sine) / (measured.cameraDistance + halfHeight * sine), 2);
       expect.soft(Math.max(...measured.alpha), `${seat.id}: WebGL must leave the screen visible`).toBeLessThanOrEqual(5);
       for (const [x, y] of measured.points) { expect.soft(x).toBeGreaterThanOrEqual(0); expect.soft(x).toBeLessThanOrEqual(viewport.width); expect.soft(y).toBeGreaterThanOrEqual(0); expect.soft(y).toBeLessThanOrEqual(viewport.height); }
       for (const z of measured.depth) { expect.soft(z).toBeGreaterThan(-1); expect.soft(z).toBeLessThan(1); }

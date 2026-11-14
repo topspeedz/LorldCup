@@ -12,6 +12,8 @@ import {create as emoteMenu} from './ui/emote-menu.js';
 import {create as ticket} from './ui/ticket.js';
 import {create as fullMode} from './ui/full-mode.js';
 import {create as invite} from './ui/invite.js';
+import {create as arenaFixes} from './arena-fixes.js';
+import {create as ticketStaff} from './ticket-staff.js';
 
 export const modules=[
  {path:'character.js',create:character},
@@ -28,4 +30,6 @@ export const modules=[
  {path:'ui/ticket.js',create:ticket},
  {path:'ui/full-mode.js',create:fullMode},
  {path:'ui/invite.js',create:invite},
+ {path:'arena-fixes.js',create:arenaFixes},
+ {path:'ticket-staff.js',create:ticketStaff},
 ];

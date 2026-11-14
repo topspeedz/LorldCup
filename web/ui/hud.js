@@ -50,12 +50,48 @@ export function create({events,config}){
  // Key hint press feedback: light the keycap whose label matches the pressed key's bound action.
  const controls=config('controls'),caps=[...hud.querySelectorAll('kbd')];
  const capFor=code=>{
-  const name=code.startsWith('Key')?code.slice(3):code==='Space'?'Space':code.startsWith('Shift')?'Shift':code.startsWith('Alt')?'Alt':null;
+  const name=code.startsWith('Key')?code.slice(3):code==='Space'?'Space':code.startsWith('Shift')?'Shift':code.startsWith('Control')?'Ctrl':null;
   const move=['forward','backward','left','right'].some(action=>controls[action]?.includes(code));
   return caps.filter(cap=>cap.textContent===name||move&&cap.textContent==='WASD');
  };
  document.addEventListener('keydown',e=>{for(const cap of capFor(e.code))cap.classList.add('on');},options);
  document.addEventListener('keyup',e=>{for(const cap of capFor(e.code))cap.classList.remove('on');},options);
+
+ // T67: seated, #dock is one big bar under the screen — [F Full Mode] [E / Esc 일어나기] [Ctrl 감정표현] [볼륨] (ui hud-controls.md).
+ // The volume slider is a second view of screen-video.js's volume: it reads state.userVolume and writes through setVolume.
+ const dock=document.querySelector('#dock'),volume=document.createElement('label');
+ volume.id='seat-volume';volume.innerHTML='<span>볼륨</span><input type="range" min="0" max="100" aria-label="영상 음량">';
+ const slider=volume.querySelector('input');
+ slider.addEventListener('input',()=>window.arena?.screen?.setVolume(slider.value),options);
+ const syncVolume=v=>{if(Number.isFinite(v)&&Number(slider.value)!==v)slider.value=v;};
+ on(SCREEN_STATE,({detail})=>syncVolume(detail?.userVolume));
+ dock?.append(volume);
+ // Place the bar just under the projected screen, centred on it; when it does not fit there it stays at the bottom centre (CSS).
+ // screen-video.js keepClear still moves or hides #dock if it ever meets the video (LG-H-4).
+ let frame=0;
+ function place(){
+  frame=requestAnimationFrame(place);
+  const r=window.arena?.screen?.element?.getBoundingClientRect(),gap=8,edge=parseFloat(getComputedStyle(dock).bottom)||0;
+  const w=dock.offsetWidth,h=dock.offsetHeight,top=r?Math.round(r.bottom+gap):0;
+  const under=r&&r.width>0&&r.bottom>0&&top+h<=innerHeight-edge;
+  const x=under?Math.round(Math.min(Math.max((r.left+r.right)/2,w/2+gap),innerWidth-w/2-gap)):null;
+  if(under){if(dock.dataset.place!=='under')dock.dataset.place='under';dock.style.setProperty('--bar-top',`${top}px`);dock.style.setProperty('--bar-x',`${x}px`);}
+  else if(dock.dataset.place){delete dock.dataset.place;dock.style.removeProperty('--bar-top');dock.style.removeProperty('--bar-x');}
+ }
+ const placing=()=>{
+  if(state==='seated'&&dock){syncVolume(window.arena?.screen?.state?.userVolume);if(!frame)place();return;}
+  cancelAnimationFrame(frame);frame=0;
+  if(dock){delete dock.dataset.place;dock.style.removeProperty('--bar-top');dock.style.removeProperty('--bar-x');}
+ };
+ for(const name of [SEAT_ENTER,SEAT_EXIT,FULLMODE_ENTER,FULLMODE_EXIT])on(name,placing);
+ // Seated Esc stands up (seat-mode.js). With the emote menu open, Esc closes only the menu (T67 memo 1); with focus on the bar's
+ // slider, seat-mode skips inputs, so stand up here. Full Mode keeps its own Esc (full-mode.js, before seat-mode's stand).
+ window.addEventListener('keydown',e=>{
+  if(e.key!=='Escape'||e.repeat||!seated||full)return;
+  const menu=document.querySelector('#emote-menu:not([hidden])');
+  if(menu){e.stopImmediatePropagation();menu.querySelector('.close')?.click();}
+  else if(e.target===slider)document.querySelector('#seat-toggle')?.click();
+ },{capture:true,signal:listeners.signal});
  update();
- return {update,dispose(){listeners.abort();for(const id of timers)clearTimeout(id);timers.clear();clearInterval(waitTimer);toasts.replaceChildren();wait.hidden=true;}};
+ return {update,dispose(){listeners.abort();cancelAnimationFrame(frame);volume.remove();for(const id of timers)clearTimeout(id);timers.clear();clearInterval(waitTimer);toasts.replaceChildren();wait.hidden=true;}};
 }

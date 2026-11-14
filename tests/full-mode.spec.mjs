@@ -66,8 +66,8 @@ async function harness(page, options = {}) {
         face.position.set(Math.sin(face.rotation.y)*5,0,Math.cos(face.rotation.y)*5);root.add(face);
       }
       root.updateMatrixWorld(true);
-      // T71: back far enough that the T67 big screen (15.5 m, centre 3.1 m) stays clear of the top-right button, as in the real app (screens/T71-fullmode-*.png).
-      const camera=new THREE.PerspectiveCamera(50,innerWidth/innerHeight,.1,500);camera.position.set(0,0,30);camera.lookAt(0,0,0);
+      // Keep the fixture screen clear of the Full Mode button as its configured size changes.
+      const camera=new THREE.PerspectiveCamera(50,innerWidth/innerHeight,.1,500);camera.position.set(0,${screenConfig.mesh.centerY},${screenConfig.mesh.width * 2});camera.lookAt(0,${screenConfig.mesh.centerY},0);
       const renderer=new THREE.WebGLRenderer({alpha:true});renderer.setSize(innerWidth,innerHeight);
       const cssLayer=document.createElement('div'),uiRoot=document.createElement('div');cssLayer.id='css-layer';uiRoot.id='ui-root';
       cssLayer.style.cssText='position:fixed;inset:0;pointer-events:none;z-index:0';

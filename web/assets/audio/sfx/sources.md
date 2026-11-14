@@ -87,3 +87,68 @@ FFmpeg converts to mono 48 kHz. Trim starts 5 ms before the first sample above m
 | `Crunch_03.wav` | `60fca71d63c0222d4d1385982ab94d2dc26a0bad48951ec3d9226d56a36130ca` |
 
 Numeric decoding and peak checks passed; listening in the actual scene is still required. Angry files are selected from human attack vocalizations as a short frustrated grunt, and the egg impact is a stylized crunch/pop rather than a recording of an egg. These are the intended mappings, not an assertion of listening approval.
+
+
+## T78 cheer / whistle replacement — 2026-11-14 (current)
+
+This section supersedes **only the three `cheer-clap_01.mp3`–`03.mp3` rows** in the historical FX1 table above. The current files contain a crowd cheer with foreground whistles and quiet hand claps. All other FX1 audio remains unchanged. Playback filenames, `web/character.js` gain `0.3`, and interval `0.12` are unchanged.
+
+### Sources and permission
+
+- **Crowd:** [Crowd Cheering](https://freesound.org/people/SoundsExciting/sounds/365132/) by **SoundsExciting**, sound ID 365132. The creator describes cheering and wooing with applause; the original page declares [CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/). Checked 2026-11-14. Used the publicly served [HQ MP3 preview](https://cdn.freesound.org/previews/365/365132_3279490-hq.mp3), not a claim of downloading the original WAV. Download SHA-256: `87bab1996436dbaa7c37c676aca2622feb695802bfc1e10eff47a520c72ff381` (305864 bytes). Page evidence: `temp/T78/crowd-source.html`.
+- **Whistles:** directly synthesized for T78 with sine waves, smooth pitch bends, vibrato, a faint second harmonic and seeded breath noise; no sampled whistle, voice model, paid service, or account. Reproduction: `temp/T78/build.py`. Base pitches are 2020 / 2230 / 1870 Hz; each variant contains three overlapping whistle gestures.
+- **Quiet hand claps:** reuse of the backed-up FX1 files, from [58 Random Sound Effects](https://opengameart.org/content/58-random-sound-effects) by **TokyoGeisha**, `Hand_Clap_01.wav`–`03.wav`, CC0. Source page and CC0 link rechecked 2026-11-14; `temp/T78/handclap-source.html`. Original archive and WAV hashes remain in the FX1 section. Pre-replacement MP3s are preserved byte-for-byte in `_workspace/_run/2026-11-13-ux-motion-rooms/bak/T78/`.
+
+### Processing
+
+Offline FFmpeg / Python only; no added web dependency. Mono 48 kHz, 192 kbps MP3. Each variant layers two different excerpts from the crowd recording, the second at x0.65 before normalization. Crowd high-pass 180 Hz, low-pass 3800 Hz, +3 dB broad EQ at 1150 Hz, compressor threshold 0.09 / ratio 5 / attack 0.5 ms / release 65 ms. The synthesized whistle layer is about 2.5–2.6 dB below the crowd layer in RMS. The added hand-clap layer is 23.4–25.1 dB below the whistle layer and 26.1–27.6 dB below the crowd; the crowd source itself also contains applause.
+
+The mix uses a compressor (threshold 0.14, ratio 6, attack 0.5 ms, release 50 ms, makeup x5), a 192 kHz oversampled look-ahead limiter (ceiling 0.82, attack 3 ms, release 25 ms), short entrance fades and a 45 ms final fade. The final MP3 is re-decoded and checked for sample peaks and true peaks; encode gain corrections are +0.4 / +0.3 / +0.4 dB. This increases sustained energy instead of relying only on a louder hand-clap transient. No baked stereo positioning or extra reverb.
+
+The original runtime interrupts the previous sound at each clap cue (currently about 0.267–0.333 seconds apart); the first 240 ms already contain the cheer and whistle. The 1.04–1.16 second full files retain a natural tail if allowed to complete. This asset task does not change that playback behavior.
+
+| Current file | Crowd source ranges (s) | Decoded duration (s) | LUFS-I* | Sample peak dBFS | True peak dBTP | Bytes | SHA-256 |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| `cheer-clap_01.mp3` | 0.70–1.74 + 4.20–5.24 | 1.04 | -8.0 | -1.55 | -1.5 | 26540 | `417315f4e5d8e7e2c5c5f32c083de366b4638da716ba3eab4ee65fc4d0965303` |
+| `cheer-clap_02.mp3` | 3.15–4.25 + 7.10–8.20 | 1.10 | -8.0 | -1.64 | -1.6 | 27692 | `208337be2b81a75e5c5c25e13fd80ac0358beae49c25a2141528e64a1b0e7822` |
+| `cheer-clap_03.mp3` | 5.80–6.96 + 9.00–10.16 | 1.16 | -8.1 | -1.55 | -1.6 | 29420 | `5b4ef86bd770a6ea2ebcb1107c2d3fc87b9b5bc6a968a5b7b6fe43063582702b` |
+
+*FFmpeg EBU R128 integrated loudness; clips shorter than 1 s are padded to 1 s for the old/new/comparison measurement. Current T78 files are all longer than 1 s. All current decoded samples are strictly inside ±1. Measurement and processing details: `temp/T78/metrics-green.json`, `temp/T78/processing.json`; report: `_workspace/graphicmodel/2026-11-13-ux-motion-rooms/21_graphic-effect-vfx-designer_cheer-sound_v1.md`. These are numeric checks, not an assertion of subjective listening approval.
+
+## T82 sustained angry screams — 2026-11-14 (current)
+
+This section supersedes **only the three `angry-voice_01.mp3`–`03.mp3` rows** in the historical FX1 table. Each current file is a distinct recorded human scream extended to **4.800 seconds**, the T81 `Emote_Angry` clip length. Playback filenames, `web/character.js` gain `0.32`, and interval `0.75` remain unchanged. Originals, the previous source record, and the character configuration were copied to `_workspace/_run/2026-11-13-ux-motion-rooms/bak/T82/` before replacement and checked by SHA-256.
+
+### Sources and permission
+
+All three recordings are by **JohnsonBrandEditing / Brian R. Johnson**. Each creator page explicitly declares [CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/); checked 2026-11-14. Public HQ MP3 previews were downloaded; no claim is made of obtaining the login-only original downloads. No account, paid source, voice model, or paid generation was used.
+
+| Current file | Creator page | Public HQ preview | Download bytes | Download SHA-256 |
+| --- | --- | --- | --- | --- |
+| `angry-voice_01.mp3` | [human male scream 1](https://freesound.org/people/JohnsonBrandEditing/sounds/243377/) | [243377 HQ MP3](https://cdn.freesound.org/previews/243/243377_3229685-hq.mp3) | 122976 | `09e4672133fb3492c91957970fd98eb1fa4f6e2bd365760d91ba5f50a8a51886` |
+| `angry-voice_02.mp3` | [human male scream 3](https://freesound.org/people/JohnsonBrandEditing/sounds/243381/) | [243381 HQ MP3](https://cdn.freesound.org/previews/243/243381_3229685-hq.mp3) | 80952 | `2a3df23e6e93cfc1fdd87c06528fbade7f30511671667f7953b7cbc294191978` |
+| `angry-voice_03.mp3` | [human male scream 4](https://freesound.org/people/JohnsonBrandEditing/sounds/243380/) | [243380 HQ MP3](https://cdn.freesound.org/previews/243/243380_3229685-hq.mp3) | 66480 | `be42082ff65fde247e77574fcf6d39050359316c5bcd15769e0c61e53eb4ccfa` |
+
+Page evidence is `temp/T82/source-<sound ID>.html`; downloaded audio is `source-<sound ID>.mp3` in the same folder. `downloads.json` records the URLs, license, byte counts, and hashes.
+
+### Processing
+
+Offline FFmpeg and Python only, with the already installed Rubber Band filter; no web dependency was added. Mono 48 kHz / 192 kbps MP3. Each take is cropped to its sustained vocal portion, stretched with smooth transients and preserved formants, then trimmed to 4.8 s. There are no repeated scream onsets or appended silent seconds. Pitch multipliers are small deliberate variations, not imitations of another person.
+
+| Current file | Source range (s) | Tempo multiplier | Pitch multiplier | Gain before compressor |
+| --- | --- | --- | --- | --- |
+| `angry-voice_01.mp3` | 0.245–3.080 | 0.585744 | 0.94 | ×5.222487 |
+| `angry-voice_02.mp3` | 0.130–1.920 | 0.369835 | 1.00 | ×10.993925 |
+| `angry-voice_03.mp3` | 0.260–1.680 | 0.293388 | 0.97 | ×3.375995 |
+
+The chain uses a 90 Hz high-pass, 6.5 kHz low-pass, broad +2 dB EQ at 1450 Hz, compressor (threshold 0.12 / ratio 4 / attack 3 ms / release 70 ms / makeup ×2), 8 ms entrance and 50 ms final fades, loudness processing, and a 192 kHz look-ahead limiter (ceiling 0.81 / attack 3 ms / release 35 ms). Exact filters and gain values are in `temp/T82/processing.json`; reproduction is `python -B temp/T82/build.py`. No baked stereo placement or reverb was added.
+
+| Current file | Decoded duration (s) | LUFS-I* | RMS dBFS | Sample peak dBFS | True peak dBTP | Bytes | Delivered SHA-256 |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| `angry-voice_01.mp3` | 4.800 | -9.3 | -9.65 | -2.08 | -2.1 | 116396 | `8f0601cba54be9b1f270f36b1b72e5ba43a924568427cda6a0e6c9b43005efab` |
+| `angry-voice_02.mp3` | 4.800 | -8.0 | -8.74 | -2.05 | -2.1 | 116396 | `4f60c6239d718bde124ca035f4f5c886921a06a2f369a2c78698840efa8cdfe7` |
+| `angry-voice_03.mp3` | 4.800 | -9.2 | -9.77 | -2.04 | -2.0 | 116396 | `5222bdeac518a729bbae9458491ea2f6bd88452bb82da8986d6b5ceff5c739d3` |
+
+*Same `apad=whole_dur=1,ebur128=peak=true` comparison method as T78. The new files require no padding. Re-decoded MP3s have zero clipped samples; the quietest interior 100 ms RMS windows are -11.00 / -10.60 / -12.82 dBFS. These numeric checks do not establish subjective listening approval.
+
+Runtime limitation: the first `angry_swing` starts audio at frame 22 / 0.733 s and clip completion stops it at about 4.8 s. Thus the current code plays approximately 4.067 s of each 4.8 s asset; T82 did not alter this behavior. The screen's mute and user-volume controls are shared, while current positional-audio distance attenuation differs from the screen's 25–90 m curve. Details and recommendations: `_workspace/graphicmodel/2026-11-13-ux-motion-rooms/25_graphic-effect-vfx-designer_angry-scream_v1.md`.

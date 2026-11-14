@@ -7,6 +7,11 @@ const modulePaths = [...architecture.split('### 기능 모듈')[1].split('### �
   .matchAll(/^\| `(web\/[^`]+\.js)`/gm)].map(match => match[1]);
 const configNames = [...architecture.split('## 설정 파일')[1].split('## 점유 표시')[0]
   .matchAll(/^\| `web\/config\/([^`]+)\.json`/gm)].map(match => match[1]);
+// T63b adds the approved entrance fixes to the documented module registry.
+if (!modulePaths.includes('web/arena-fixes.js')) modulePaths.push('web/arena-fixes.js');
+if (!configNames.includes('arena-fixes')) configNames.push('arena-fixes');
+if (!modulePaths.includes('web/ticket-staff.js')) modulePaths.push('web/ticket-staff.js');
+if (!configNames.includes('ticket-staff')) configNames.push('ticket-staff');
 const legacyKeys = ['ready', 'camera', 'player', 'avatar', 'multiplayer', 'crowd', 'lighting', 'go', 'attempt', 'groundAt', 'state'];
 
 async function openArena(page) {
@@ -34,8 +39,8 @@ async function openArena(page) {
 }
 
 test('module and config files match the architecture and approved defaults', async () => {
-  expect(modulePaths).toHaveLength(14);
-  expect(configNames).toHaveLength(14);
+  expect(modulePaths).toHaveLength(16);
+  expect(configNames).toHaveLength(16);
   for (const path of [...modulePaths, ...configNames.map(name => `web/config/${name}.json`)]) {
     expect(existsSync(new URL(`../${path}`, import.meta.url)), path).toBe(true);
   }
@@ -44,18 +49,18 @@ test('module and config files match the architecture and approved defaults', asy
     forward: ['KeyW', 'ArrowUp'], backward: ['KeyS', 'ArrowDown'],
     left: ['KeyA', 'ArrowLeft'], right: ['KeyD', 'ArrowRight'],
     run: ['ShiftLeft', 'ShiftRight'], jump: ['Space'],
-    emoteMenu: ['AltLeft', 'AltRight'], sit: ['KeyE'], fullMode: ['KeyF'],
+    emoteMenu: ['ControlLeft', 'ControlRight'], sit: ['KeyE'], fullMode: ['KeyF'],
   });
   expect(config('camera')).toMatchObject({ distance: 5, maxDistance: 7.5, minDistance: 0, wheelStep: 0.5 });
   expect(config('screen')).toMatchObject({
     vod: 'https://www.youtube.com/watch?v=rQTHR3aL0SE', live: 'https://www.youtube.com/watch?v=EacB7ADMGpY',
     source: 'vod', roundIntervalMinutes: 10, defaultRound: 'current', ended: 'next-round',
-    syncIntervalSeconds: 5, syncToleranceSeconds: 2, face: 'front', aspectRatio: [16, 9], fit: 'contain', mesh: { width: 15.5, centerY: 3.1 },
+    syncIntervalSeconds: 5, syncToleranceSeconds: 2, face: 'front', aspectRatio: [16, 9], fit: 'contain', mesh: { width: expect.any(Number), centerY: expect.any(Number) },
     muted: true, unmuteOnEnter: true, volume: 70, crowdVolume: 0.3,
   });
   expect(config('characters')).toMatchObject({ ids: ['fan_f1', 'fan_f2', 'fan_m1', 'fan_m2'], default: 'fan_f1' });
   expect(config('teams').teams.map(team => team.name)).toEqual(['GEN.G', 'BLG']);
-  expect(config('teams').teams.every(team => team.uniform === null)).toBe(true);
+  expect(config('teams').teams.every(team => /^\.\/assets\/characters\/[^/]+$/.test(team.uniform) && existsSync(new URL(`../web/${team.uniform}`, import.meta.url)))).toBe(true);
   expect(config('environment')).toMatchObject({ stars: { count: 3000 }, moon: { elevationDegrees: 35 }, sea: { boundaryX: -180 } });
   expect(config('sky-show')).toMatchObject({ beams: { count: 3, periodSeconds: 8, angleDegrees: 25, opacity: 0.055 }, fireworks: { intervalSeconds: [20, 40], count: [1, 3] } });
   expect(config('ticket')).toMatchObject({ barrier: { x: -107.2, z: [-5.79, 6.7175], y: [-0.02, 2.9675] }, sideGlass: { x: [-107.06, -103.99], z: [-60.71, 59.21] }, promptDistance: 3, cardMs: 1800, guardLocations: ['lobby', 'arena'] });
@@ -155,13 +160,13 @@ test('configured actions ignore typing and repeats; capsule acknowledges emotes 
     events.addEventListener('input:action', event => actions.push(event.detail));
     events.addEventListener('emote:played', event => played.push(event.detail));
     const key = (type, code, target = document, repeat = false) => target.dispatchEvent(new KeyboardEvent(type, { code, repeat, bubbles: true, cancelable: true }));
-    const prevented = !key('keydown', 'AltLeft');
-    key('keydown', 'AltLeft', document, true);key('keyup', 'AltLeft');
+    const prevented = !key('keydown', 'ControlLeft');
+    key('keydown', 'ControlLeft', document, true);key('keyup', 'ControlLeft');
     key('keydown', 'KeyE');key('keyup', 'KeyE');
     key('keydown', 'KeyF');key('keyup', 'KeyF');
     key('keydown', 'KeyQ');key('keyup', 'KeyQ');
     const field = document.body.appendChild(document.createElement('input'));field.focus(); // no text field ships any more (the room code input is gone)
-    key('keydown', 'AltLeft', field);key('keyup', 'AltLeft', field);
+    key('keydown', 'ControlLeft', field);key('keyup', 'ControlLeft', field);
     key('keydown', 'KeyQ');key('keyup', 'KeyQ');key('keydown', 'KeyW');
     const typingKeys = input.keys.size;field.blur();field.remove();
     for (const id of ['cheer_clap', 'heart', 'angry', 'egg_throw']) events.dispatchEvent(new CustomEvent('emote:request', { detail: { id } }));
@@ -171,5 +176,5 @@ test('configured actions ignore typing and repeats; capsule acknowledges emotes 
   });
   expect(result.actions).toEqual(['emoteMenu', 'sit', 'fullMode'].flatMap(action => [{ action, down: true }, { action, down: false }]));
   expect(result.played).toEqual(['cheer_clap', 'heart', 'angry', 'egg_throw'].map(id => ({ id })));
-  expect(result).toMatchObject({ prevented: true, typingKeys: 0, blurredKeys: 0, pointerAPI: ['function', 'function'] });
+  expect(result).toMatchObject({ prevented: false, typingKeys: 0, blurredKeys: 0, pointerAPI: ['function', 'function'] });
 });

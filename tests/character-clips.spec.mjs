@@ -60,13 +60,13 @@ async function fixturePage(page, waitForReady = true) {
   if (waitForReady) await page.waitForFunction(() => arena.character?.ready);
 }
 
-test('T19 v2 clip path and all eleven named cues are connected together', () => {
-  expect(characters.clipFile).toBe('./assets/characters/fan-anim-v2.glb');
+test('AJ clip path and all eleven named cues are connected together', () => {
+  expect(characters.clipFile).toBe('./assets/characters/fan-aj-anim.glb');
   expect(characters.clipFps).toBe(30);
   expect(characters.cues).toEqual({
-    Emote_CheerClap: { cheer_windup: 2, cheer_raise: 7, clap_contact: [7, 17, 26, 35, 44, 52, 61, 70, 79] },
+    Emote_CheerClap: { cheer_windup: 2, cheer_raise: 14, clap_contact: [26, 38, 50, 62, 74] },
     Emote_Heart: { heart_open: 16, heart_form: 34, heart_release: 76 },
-    Emote_Angry: { angry_raise: 18, angry_swing: [18, 22] },
+    Emote_Angry: { angry_raise: 14, angry_swing: [22, 42, 64, 86, 108, 126] },
     Emote_EggThrow: { egg_windup: 12, egg_scream: 26, egg_release: 32 },
   });
 });
@@ -85,7 +85,7 @@ test('T19 repeated contacts and coincident cues keep the full impact visible at 
   const rows = await page.evaluate(() => {
     const rows = [];
     for (const fps of [30, 60, 144]) for (const [id, frames] of [
-      ['cheer_clap', [7, 17, 26, 35, 44, 52, 61, 70, 79]], ['angry', [18, 22]],
+      ['cheer_clap', [26, 38, 50, 62, 74]], ['angry', [22, 42, 64, 86, 108, 126]],
     ]) {
       f.emit('emote:request', { id }); let previous = 0;
       for (const frame of frames) {
@@ -148,7 +148,7 @@ test('all four bodies play four distinct real emotes; seated cheers return to Si
         row.push({ active: f.active(), changed: before.some((v, i) => Math.abs(v - f.pose()[i]) > .05),
           image: f.ctx.renderer.domElement.toDataURL(), calls: f.ctx.renderer.info.render.calls,
           triangles: f.ctx.renderer.info.render.triangles, name });
-        f.advance(4); row.at(-1).returned = f.active();
+        f.advance(f.actions.get(f.mixers[0]).find(a => a.getClip().name === name).getClip().duration); row.at(-1).returned = f.active();
       }
       results.push(row);
     }
@@ -271,7 +271,8 @@ test('requests before animation loading do not earn cheers, while a seat selecte
   expect(await page.evaluate(() => f.played.length)).toBe(0);
 });
 
-test('ticket cheer button starts the real clip and earns one ticket; actual seat controls keep the Sit pose', async ({ page }) => {
+// T67 memo 2 (after T64): the ticket is one click on a team in the centred popup — no emote step — so the cheer clip comes from the HUD emote menu.
+test('one team click earns one ticket, the HUD cheer starts the real clip; actual seat controls keep the Sit pose', async ({ page }) => {
   await page.route('**/modules.js', async route => {
     const response = await route.fetch();
     await route.fulfill({ response, body: `${await response.text()}
@@ -284,10 +285,12 @@ test('ticket cheer button starts the real clip and earns one ticket; actual seat
     clipContext.events.addEventListener('emote:played', e => clipPlayed.push(e.detail));
     clipContext.events.addEventListener('ticket:issued', e => ticketIssued.push(e.detail));
     const b = clipContext.config('ticket').barrier; arena.go([b.x - 2, -.02, 0, 0]);
-    clipContext.events.dispatchEvent(new CustomEvent('team:changed', { detail: { teamId: 'geng' } }));
     window.handBefore = arena.avatar.getObjectByName('upper_arm_L').quaternion.toArray();
   });
-  await page.getByRole('dialog', { name: '입장 티켓' }).getByRole('button', { name: '감정표현 고르기', exact: true }).click();
+  await page.getByRole('dialog', { name: '입장 티켓' }).getByRole('group', { name: '응원할 팀' }).getByRole('button').first().click();
+  await page.waitForFunction(() => ticketIssued.length === 1);
+  await page.getByRole('dialog', { name: '입장 티켓' }).getByRole('button', { name: '들어가기', exact: true }).click(); // the centred popup would cover the menu
+  await page.locator('#emote-open').click();
   await page.getByRole('button', { name: '박수 환호', exact: true }).click();
   await expect.poll(() => page.evaluate(() => arena.avatar.getObjectByName('upper_arm_L').quaternion.toArray().some((v, i) => Math.abs(v - handBefore[i]) > .01))).toBe(true);
   await page.waitForFunction(() => ticketIssued.length === 1);
@@ -315,14 +318,14 @@ test('ticket cheer button starts the real clip and earns one ticket; actual seat
 });
 
 test('before and after captures show eight actions at identical clip times and camera settings', async ({ page }) => {
-  expect(characters.clipFile).toBe('./assets/characters/fan-anim-v2.glb');
+  expect(characters.clipFile).toBe('./assets/characters/fan-aj-anim.glb');
   const directory = new URL('../_workspace/web-metaverse-develop/2026-11-13-ux-motion-rooms/b25i/', import.meta.url);
   mkdirSync(directory, { recursive: true });
   const samples = [['Walk', 6], ['Run', 6], ['Jump', 10.8], ['Sit', 24],
     ['Emote_CheerClap', 35], ['Emote_Heart', 34], ['Emote_Angry', 22], ['Emote_EggThrow', 32]];
   const rows = [];
   for (const version of ['before', 'after']) {
-    const config = version === 'before' ? { ...characters, clipFile: reference.clipFile, clipFps: reference.fps, cues: reference.eventFrames } : characters;
+    const config = version === 'before' ? { ...characters, modelFile: './assets/characters/fan.glb', clipFile: reference.clipFile, clipFps: reference.fps, cues: reference.eventFrames } : characters;
     await page.route('**/config/characters.json', route => route.fulfill({ json: config }));
     for (const [clip, frame] of samples) {
       await fixturePage(page);

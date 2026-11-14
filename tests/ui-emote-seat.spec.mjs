@@ -39,21 +39,21 @@ async function enter(page) {
 }
 async function nearSeat(page, seat = seats.seats[0]) {
   await page.evaluate(seat => {
-    const { player } = t30.ctx, [x, y, z] = seat.position;
-    const approach = [x, y, z - Math.sign(z) * 1.2];
+    const { player } = t30.ctx;
+    const approach = seat.standPosition.slice();
     approach[1] = player.groundAt(approach[0], approach[2], 0);
     player.teleport([...approach, 0]);
   }, seat);
 }
 
-test('E-W2/E-W12: Alt opens the menu with names, close hint and a focus that stays inside', async ({ page }) => {
+test('E-W2/E-W12: a Ctrl tap opens the menu with names, close hint and a focus that stays inside', async ({ page }) => {
   const errors = await open(page);
   await enter(page);
-  await page.keyboard.press('Alt');
+  await page.keyboard.press('Control');
   await expect(menu(page)).toBeVisible();
   expect(await walking(page)).toBe(false);
   for (const name of ['박수 환호', '하트', '화내기', '계란 던지기']) await expect(menu(page).getByRole('button', { name, exact: true })).toBeVisible();
-  await expect(menu(page)).toContainText('Alt·Esc 닫기');
+  await expect(menu(page)).toContainText('Ctrl·Esc 닫기');
   await expect(menu(page).getByRole('button', { name: '박수 환호' })).toBeFocused();
   for (let i = 0; i < 6; i++) {
     await page.keyboard.press(i % 2 ? 'Shift+Tab' : 'Tab');
@@ -77,6 +77,7 @@ test('E-W6/E-D4: walking shows the HUD "감정표현" button (no Esc needed); ou
   await expect(opener).toBeVisible();
   await expect(opener).toContainText('감정표현');
   await expect(opener).toHaveAttribute('aria-expanded', 'false');
+  await expect(opener).toHaveAttribute('aria-keyshortcuts', 'Control'); // T95
   await opener.click();
   await expect(menu(page)).toBeVisible();
   await expect(opener).toHaveAttribute('aria-expanded', 'true');
@@ -91,15 +92,15 @@ test('E-W6/E-D4: walking shows the HUD "감정표현" button (no Esc needed); ou
   expect(await page.evaluate(() => __requests)).toEqual([{ id: 'heart' }]);
 });
 
-test('E-W10: Alt does nothing in Full Mode', async ({ page }) => {
+test('E-W10: Ctrl does nothing in Full Mode', async ({ page }) => {
   await open(page);
-  await enter(page); // Alt acts only after app:enter (web/input.js:40); without it the last step could never open the menu
+  await enter(page); // Ctrl acts only after app:enter (web/input.js:40); without it the last step could never open the menu
   await page.evaluate(() => t30.ctx.events.dispatchEvent(new CustomEvent('fullmode:enter')));
-  await page.keyboard.press('Alt');
+  await page.keyboard.press('Control');
   await page.evaluate(() => new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))));
   await expect(menu(page)).toBeHidden();
   await page.evaluate(() => t30.ctx.events.dispatchEvent(new CustomEvent('fullmode:exit')));
-  await page.keyboard.press('Alt');
+  await page.keyboard.press('Control');
   await expect(menu(page)).toBeVisible();
 });
 
@@ -129,13 +130,13 @@ test('S-W3/S-W4/S-W8/E-W7/E-W8: seated frees the cursor, shows the action group,
   await expect.poll(() => page.evaluate(() => arena.seat.seatId)).toBe(seats.seats[0].id);
   await expect.poll(() => page.evaluate(() => !!document.pointerLockElement || document.body.classList.contains('walking'))).toBe(false);
   await expect(page.locator('#hud')).toHaveAttribute('data-state', 'seated');
-  await expect(page.locator('#dock').getByRole('button', { name: '일어나기', exact: true })).toBeVisible();
+  await expect(page.locator('#dock').getByRole('button', { name: /일어나기$/ })).toBeVisible();
   await expect(page.locator('#dock #emote-open')).toBeVisible();
-  // FIX1f: seated shows one E row, seat-mode.js's top #seat-hint, and no static duplicate.
-  await expect(page.locator('#hud-keys #seat-hint')).toHaveText('E일어나기');
-  await expect(page.locator('#hud-keys kbd:visible', { hasText: /^E$/ })).toHaveCount(1);
-  // Group order: 감정표현, 일어나기 (Full Mode follows, T31).
-  const order = await page.evaluate(() => [document.querySelector('#emote-open'), document.querySelector('#seat-toggle')].map(b => b.getBoundingClientRect().x));
+  // T67: seated, E shows once — as the "E / Esc" keycap on the bar's 일어나기 — and the top-right key box hides.
+  await expect(page.locator('#hud-keys')).toBeHidden();
+  expect(await page.locator('#seat-toggle').evaluate(el => getComputedStyle(el, '::before').content)).toBe('"E / Esc"');
+  // T67 bar order: Full Mode, 일어나기, 감정표현.
+  const order = await page.evaluate(() => [document.querySelector('#seat-toggle'), document.querySelector('#emote-open')].map(b => b.getBoundingClientRect().x));
   expect(order[0]).toBeLessThan(order[1]);
   await page.locator('#dock #emote-open').click();
   // E-W8 (coordinator msg_4beded3d8634): seated, the menu is one column so it fits beside the screen player.
@@ -165,7 +166,7 @@ test('S-W7: the "일어나기" button stands up and walking resumes', async ({ p
   await nearSeat(page);
   await page.getByRole('button', { name: '앉기', exact: true }).click();
   await expect.poll(() => page.evaluate(() => arena.seat.seatId)).toBe(seats.seats[0].id);
-  await page.getByRole('button', { name: '일어나기', exact: true }).click();
+  await page.getByRole('button', { name: /일어나기$/ }).click(); // T67: "E / Esc 일어나기" on the bar
   await expect.poll(() => page.evaluate(() => arena.seat.seatId)).toBe(null);
   await expect.poll(() => walking(page)).toBe(true);
 });
@@ -174,6 +175,9 @@ test('P-L-2: the seat UI does not touch the DOM while nothing changes', async ({
   await open(page);
   await enter(page);
   await nearSeat(page);
+  // FX2: read the prompt through the page (as the seat checks above do with expect.poll). In this run the locator's own
+  // visibility polling never saw seat-mode's per-frame prompt land (hidden for 5 s), while page-side polling sees it in 0.5 s.
+  await expect.poll(() => page.evaluate(() => !document.querySelector('#seat-toggle').hidden)).toBe(true);
   await expect(page.locator('#seat-toggle')).toBeVisible();
   const mutations = await page.evaluate(() => new Promise(resolve => {
     let count = 0;

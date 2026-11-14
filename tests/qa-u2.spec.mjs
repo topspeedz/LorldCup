@@ -90,7 +90,7 @@ const overlaps = page => page.evaluate(() => {
 async function sit(page, seat) {
   await page.evaluate(seat => {
     const { player } = uProbe.ctx, [x, y, z] = seat.position;
-    const approach = [x, y, z - Math.sign(z) * 1.2, Math.atan2(-x, -z)];
+    const approach = [...seat.standPosition, Math.atan2(-x, -z)];
     approach[1] = player.groundAt(approach[0], approach[2], y);
     player.teleport(approach);
   }, seat);

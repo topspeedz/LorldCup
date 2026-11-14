@@ -25,8 +25,8 @@ void main(){float edge=1.-smoothstep(.1,.5,length(gl_PointCoord-.5));gl_FragColo
 #include <tonemapping_fragment>
 #include <colorspace_fragment>
 }`});
- const stars=new THREE.Points(starGeometry,starMaterial);stars.name='Environment_Stars';stars.frustumCulled=false;
- stars.onBeforeRender=(_renderer,_scene,camera)=>{stars.position.copy(camera.position);stars.updateMatrixWorld();};
+ starGeometry.computeBoundingSphere();
+ const stars=new THREE.Points(starGeometry,starMaterial);stars.name='Environment_Stars';
 
  const canvas=document.createElement('canvas');canvas.width=canvas.height=128;
  const paint=canvas.getContext('2d'),gradient=paint.createRadialGradient(48,42,8,64,64,64);
@@ -38,10 +38,15 @@ void main(){float edge=1.-smoothstep(.1,.5,length(gl_PointCoord-.5));gl_FragColo
  const moonMap=new THREE.CanvasTexture(canvas);moonMap.colorSpace=THREE.SRGBColorSpace;
  const moon=new THREE.Mesh(new THREE.CircleGeometry(skyRadius*Math.tan(THREE.MathUtils.degToRad(config.moon.angularDiameterDegrees/2)),48),
   new THREE.MeshBasicMaterial({map:moonMap,color:new THREE.Color(...config.moon.color),toneMapped:false}));
- moon.name='Environment_Moon';moon.frustumCulled=false;
- moon.onBeforeRender=(_renderer,_scene,camera)=>{
+ moon.name='Environment_Moon';
+ const beforeRender=scene.onBeforeRender;
+ const followCamera=(renderer,scene,camera,...args)=>{
+  beforeRender.call(scene,renderer,scene,camera,...args);
+  // Camera-relative sky positions must be current before the renderer tests their bounds.
+  stars.position.copy(camera.position);stars.updateMatrixWorld();
   moon.position.copy(camera.position).addScaledVector(direction,skyRadius);moon.quaternion.copy(camera.quaternion);moon.updateMatrixWorld();
  };
+ scene.onBeforeRender=followCamera;
  const moonLight=new THREE.DirectionalLight(new THREE.Color(...config.moon.color),config.moon.lightIntensity);
  moonLight.name='Environment_MoonLight';moonLight.position.copy(direction).multiplyScalar(100);
  moonLight.target.name='Environment_MoonTarget';
@@ -75,6 +80,7 @@ gl_FragColor=vec4(mix(water,horizon,fade),1.);
  }
  update(0,0);
  return {update,dispose(){
+  if(scene.onBeforeRender===followCamera)scene.onBeforeRender=beforeRender;
   player.removeBlocker(shoreline);scene.remove(stars,moon,moonLight,moonLight.target,sea,shoreline);
   for(const object of [stars,moon,sea,shoreline]){object.geometry.dispose();object.material.dispose();}
   moonMap.dispose();moonLight.dispose();scene.backgroundIntensity=previousIntensity;

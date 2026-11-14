@@ -392,11 +392,11 @@ export function create(ctx){
   const viewport=renderer.domElement.getBoundingClientRect();
   if(width!==viewport.width||height!==viewport.height){width=viewport.width;height=viewport.height;css.setSize(width,height);}
   camera.updateMatrixWorld(true);
-  let best=null,score=0;
-  for(const candidate of faces){const facing=direction.subVectors(camera.position,candidate.position).normalize().dot(candidate.normal);if(facing>score){best=candidate;score=facing;}}
+  let best=faces.find(candidate=>candidate.name===config.videoFace),score=-Infinity;
+  if(seated)for(const candidate of faces){const facing=direction.subVectors(camera.position,candidate.position).normalize().dot(candidate.normal);if(facing>score){best=candidate;score=facing;}}
   let visible=false;inView=false;
   if(best){
-   face=best.name;aperture.position.copy(best.position);aperture.quaternion.copy(best.quaternion);aperture.scale.set(best.width,best.height,1);aperture.updateMatrixWorld(true);
+   face=best.name;screenMesh.setVideoFace(face);aperture.position.copy(best.position);aperture.quaternion.copy(best.quaternion);aperture.scale.set(best.width,best.height,1);aperture.updateMatrixWorld(true);
    object.position.copy(best.position);object.quaternion.copy(best.quaternion);object.scale.set(best.width/config.playerWidth,best.height/config.playerHeight,1);
    if(!fullMode){
     css.render(cssScene,camera);
@@ -405,7 +405,7 @@ export function create(ctx){
     for(const p of projected){const x=(p.x+1)*width/2+viewport.left,y=(1-p.y)*height/2+viewport.top;rect.left=Math.min(rect.left,x);rect.right=Math.max(rect.right,x);rect.top=Math.min(rect.top,y);rect.bottom=Math.max(rect.bottom,y);}
     rect.width=rect.right-rect.left;rect.height=rect.bottom-rect.top;
     const area=Math.max(0,Math.min(rect.right,viewport.right)-Math.max(rect.left,viewport.left))*Math.max(0,Math.min(rect.bottom,viewport.bottom)-Math.max(rect.top,viewport.top));
-    inView=projected.every(p=>p.z>-1&&p.z<1)&&area>0;
+    inView=direction.subVectors(camera.position,best.position).dot(best.normal)>0&&projected.every(p=>p.z>-1&&p.z<1)&&area>0;
     visible=inView&&area>rect.width*rect.height*.5;
    }
   }
@@ -413,7 +413,7 @@ export function create(ctx){
   // Use the app's lobby boundary and indoor bounds; keep the outside visibility rule.
   const position=ctx.player.position,bounds=config.arenaBounds,inArena=position.x>=bounds.minX&&position.x<bounds.maxX&&Math.abs(position.z)<bounds.maxAbsZ;
   applyVolume();
-  const next=entered&&!document.hidden&&(inArena||(visible&&rect.width>=config.minimumVisiblePixels&&rect.height>=config.minimumVisiblePixels));
+  const next=entered&&(inArena||(visible&&rect.width>=config.minimumVisiblePixels&&rect.height>=config.minimumVisiblePixels));
   if(next!==eligible){
    eligible=next;
    if(!eligible){starting=false;clearTimeout(playTimer);playTimer=null;if(ready)player.pauseVideo();}
@@ -422,8 +422,7 @@ export function create(ctx){
   display();
  }
  scene.onBeforeRender=beforeRender;
- const visibilityChange=()=>{if(document.hidden){eligible=false;starting=false;clearTimeout(playTimer);playTimer=null;if(ready)player.pauseVideo();display();}};
- document.addEventListener('visibilitychange',visibilityChange);
+ // A hidden tab (Alt+Tab, another window on top) keeps playing: the picture and sound go on (사용자 2026-11-14).
  const api={get state(){return state();},get source(){return source;},get schedule(){return {source:playbackSource(),slot:slot?{...slot}:null,fallback:scheduledFallback};},get face(){return face;},get faces(){return faces.map(({name,position,normal,width,height})=>({name,position:position.toArray(),normal:normal.toArray(),width,height}));},get roundStart(){return roundStart;},get fullMode(){return fullMode;},element,fullModeElement:cssLayer,controlsElement:controls,enterFullMode,exitFullMode,setSource,play,pause,setMuted,setVolume};
  window.arena.screen=api;
  emit();
@@ -445,7 +444,7 @@ export function create(ctx){
    if(disposed)return;exitFullMode();disposed=true;cancelAnimationFrame(startFrame);clearTimeout(loadTimer);clearTimeout(playTimer);clearTimeout(retryTimer);clearTimeout(retryNoticeTimer);
    events.removeEventListener(ROOM_JOINED,joined);events.removeEventListener(ROOM_LEFT,left);events.removeEventListener(ROOM_ROUND,round);events.removeEventListener(APP_ENTER,enter);
    events.removeEventListener(SEAT_ENTER,sit);events.removeEventListener(SEAT_EXIT,stand);
-   document.removeEventListener('fullscreenchange',fullscreenChange);document.removeEventListener('visibilitychange',visibilityChange);
+   document.removeEventListener('fullscreenchange',fullscreenChange);
    observer.disconnect();for(const el of occluded)el.removeAttribute('data-screen-occluded');for(const el of moved)el.style.removeProperty('translate');
    if(scene.onBeforeRender===beforeRender)scene.onBeforeRender=previousRender;
    player?.destroy();screenMesh.dispose();aperture.removeFromParent();geometry.dispose();material.dispose();object.removeFromParent();css.domElement.remove();controls.remove();style.remove();

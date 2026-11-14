@@ -5,7 +5,7 @@ const detourRadius=8,detourStep=2,detourCandidates=49;
 const detourDirections=[[-1,-1],[-1,0],[-1,1],[0,-1],[0,1],[1,-1],[1,0],[1,1]];
 
 export function createPlayerController({avatar,input,getYaw,onTeleport,clickSit}){
- const position=new THREE.Vector3(),floorMeshes=[],wallMeshes=[],ceilingMeshes=[],restrictedMeshes=[],seatMeshes=[];
+ const position=new THREE.Vector3(),floorMeshes=[],wallMeshes=[],ceilingMeshes=[],restrictedMeshes=[],seatMeshes=[],rampMeshes=[];
  const ray=new THREE.Raycaster(),down=new THREE.Vector3(0,-1,0),up=new THREE.Vector3(0,1,0),headHeight=1.85;
  const radius=.32,bodyBounds=new THREE.Box3(),meshBounds=new THREE.Box3(),localBounds=new THREE.Box3(),triangleBounds=new THREE.Box3();
  const triangle=new THREE.Triangle(),inverse=new THREE.Matrix4(),collisionCells=new WeakMap(),cellSize=4;
@@ -13,15 +13,21 @@ export function createPlayerController({avatar,input,getYaw,onTeleport,clickSit}
  const collisionMeshes=[wallMeshes,seatMeshes];
  const locations={plaza:[-139,-.02,0],lobby:[-83,0,0],arena:[-25,-8.9,0]};
  let foot=-.02,airborne=false,verticalSpeed=0,locked=false,walkTarget=null,flight=null,stoppedWalk=null;
+ let lastSafe=null,lowestFloor=Infinity;
  let walkRoute=[];
  function cancelWalk(){walkTarget=null;walkRoute.length=0;stoppedWalk=null;}
  function registerWorld(root){
   root.traverse(o=>{
    if(!o.isMesh)return;
+   if(/^Walk_Ramp[AB]__/.test(o.name))rampMeshes.push(o);
    if(o.name.startsWith('Walk_Tier1')){restrictedMeshes.push(o);wallMeshes.push(o);return;}
    if(/^Seats__|^Seat_armrests__/.test(o.name)){seatMeshes.push(o);return;}
    if(/^Roof|^Atrium_ceiling/.test(o.name))ceilingMeshes.push(o);
-   if(o.name.startsWith('Walk_')||/^REF_(CircularStage|TrophyIsland|RunwayTransition|CenterStairs|TeamRiser)/.test(o.name))floorMeshes.push(o);
+   if(o.name.startsWith('Walk_')||/^REF_(CircularStage|TrophyIsland|RunwayTransition|CenterStairs|TeamRiser)/.test(o.name)){
+    floorMeshes.push(o);
+    if(!o.geometry.boundingBox)o.geometry.computeBoundingBox();
+    lowestFloor=Math.min(lowestFloor,meshBounds.copy(o.geometry.boundingBox).applyMatrix4(o.matrixWorld).min.y);
+   }
    if(o.name.startsWith('Collide_')||/Player_desks|Player_PC|Player_chair|Plaza_bench|Bollards|REF_DeskBody|REF_CenterBackdrop|REF_WingMainFrame|CCR_(Counter|Timber|Refrigerator|Lounge|Banquette)/.test(o.name))wallMeshes.push(o);
   });
  }
@@ -31,7 +37,7 @@ export function createPlayerController({avatar,input,getYaw,onTeleport,clickSit}
   position.set(p[0],p[1],p[2]);foot=p[1];airborne=false;verticalSpeed=0;
   avatar.rotation.y=yaw;input.keys.clear();onTeleport(yaw);
  }
- function groundAt(x,z,previousFoot,stepHeight=.72){
+ function groundAt(x,z,previousFoot,stepHeight=.65){
   ray.set(new THREE.Vector3(x,previousFoot+stepHeight,z),down);ray.far=32;
   // Double-sided stair undersides are visible geometry, not a place to stand.
   const hit=ray.intersectObjects(floorMeshes,false).find(hit=>normal.copy(hit.face.normal).applyNormalMatrix(normalMatrix.getNormalMatrix(hit.object.matrixWorld)).y>0);
@@ -47,6 +53,8 @@ export function createPlayerController({avatar,input,getYaw,onTeleport,clickSit}
    if(!geometry.boundingBox)geometry.computeBoundingBox();
    meshBounds.copy(geometry.boundingBox).applyMatrix4(mesh.matrixWorld);
    if(!bodyBounds.intersectsBox(meshBounds))continue;
+   // Keep the wall solid outside a doorway, even when its triangles span the opening.
+   if(mesh.userData.collisionExclusions?.some(box=>box.containsBox(bodyBounds)))continue;
    localBounds.copy(bodyBounds).applyMatrix4(inverse.copy(mesh.matrixWorld).invert());
    let cache=collisionCells.get(geometry);
    if(!cache||cache.vertices!==vertices||cache.index!==index||cache.version!==vertices.version||cache.indexVersion!==index?.version){
@@ -83,6 +91,9 @@ export function createPlayerController({avatar,input,getYaw,onTeleport,clickSit}
   return false;
  }
  function seatedArea(x,z,height){
+  // The new side ramps cross the seating ellipse; only their actual surface is exempt.
+  ray.ray.origin.set(x,height+.02,z);ray.ray.direction.copy(down);ray.far=.04;
+  if(ray.intersectObjects(rampMeshes,false).some(hit=>normal.copy(hit.face.normal).applyNormalMatrix(normalMatrix.getNormalMatrix(hit.object.matrixWorld)).y>0))return false;
   // Keep seating-block access limits; blocked() checks clearance against the actual seats.
   const t=(Math.atan2(-z,x)+Math.PI*2)%(Math.PI*2),step=Math.PI/8;
   let aisleAngle=t;
@@ -129,7 +140,7 @@ export function createPlayerController({avatar,input,getYaw,onTeleport,clickSit}
   let nextFoot=foot+verticalSpeed*dt-9*dt*dt;verticalSpeed-=18*dt;
   if(nextFoot>foot){
    ray.set(new THREE.Vector3(position.x,foot+headHeight,position.z),up);ray.far=nextFoot-foot+.03;
-   const hit=ray.intersectObjects(wallMeshes.concat(floorMeshes,ceilingMeshes),false)[0];
+   const hit=ray.intersectObjects(wallMeshes.concat(floorMeshes,ceilingMeshes),false).find(hit=>!hit.object.userData.collisionExclusions?.some(box=>box.containsPoint(hit.point)));
    if(hit){nextFoot=foot+Math.max(0,hit.distance-.03);verticalSpeed=0;}
   }else{
    const ground=groundAt(position.x,position.z,foot,.02);
@@ -168,6 +179,19 @@ export function createPlayerController({avatar,input,getYaw,onTeleport,clickSit}
  function walkTo(target){
   if(locked||flight||!input.walking)return;
   const next=new THREE.Vector3(...target);
+  for(const mesh of wallMeshes){
+   const boundary=mesh.userData.walkExclusion;if(!boundary)continue;
+   const [cx,cz]=boundary.center;
+   let dx=next.x-cx,dz=next.z-cz,distance=Math.hypot(dx,dz);
+   if(distance>=boundary.radius)continue;
+   if(distance<1e-8){dx=position.x-cx;dz=position.z-cz;distance=Math.hypot(dx,dz);}
+   if(distance<1e-8){dx=-1;dz=0;distance=1;}
+   dx/=distance;dz/=distance;
+   // Clear the controller's square body in this direction, including diagonal approaches.
+   const outside=boundary.radius+radius*(Math.abs(dx)+Math.abs(dz))+.02;
+   next.set(cx+dx*outside,next.y,cz+dz*outside);
+   next.y=groundAt(next.x,next.z,foot)??next.y;
+  }
   walkRoute=[];
   if(stoppedWalk&&!airborne&&position.distanceToSquared(stoppedWalk.position)<1e-8&&
    (next.x-position.x)*(stoppedWalk.target.x-position.x)+(next.z-position.z)*(stoppedWalk.target.z-position.z)>0)walkRoute=localDetour(next);
@@ -211,10 +235,24 @@ export function createPlayerController({avatar,input,getYaw,onTeleport,clickSit}
    }
   }
   if(airborne)updateJump(dt);
+  if(!locked){
+   if(lastSafe&&foot<lowestFloor-1)teleport([...lastSafe.toArray(),avatar.rotation.y]);
+   if(!airborne&&(!lastSafe||!position.equals(lastSafe))){
+    const ground=groundAt(position.x,position.z,foot,.02);
+    if(ground!==null&&Math.abs(foot-ground)<.02){
+     if(!lastSafe)lastSafe=new THREE.Vector3();
+     lastSafe.copy(position);
+    }
+   }
+  }
   avatar.position.copy(position);
  }
  return {
   position,avatar,floorMeshes,wallMeshes,registerWorld,groundAt,attempt,jump,update,teleport,walkTo,flyTo,
+  standingAt(x,z,y){
+   const h=groundAt(x,z,y);
+   return h!==null&&Math.abs(h-y)<=.65&&!seatedArea(x,z,h)&&!blocked(x,h,z,x,h,z)?[x,h,z]:null;
+  },
   get foot(){return foot;},get airborne(){return airborne;},
   addBlocker(mesh){if(!wallMeshes.includes(mesh))wallMeshes.push(mesh);},
   removeBlocker(mesh){const index=wallMeshes.indexOf(mesh);if(index!==-1)wallMeshes.splice(index,1);},

@@ -1,18 +1,19 @@
 // BL-0035 first page and BL-0034 entry (docs/live/product/ux/entry-loading.md, docs/live/graphicmodel/ui/entry-loading.md).
-// Owns the chosen broadcast and showtime; sends app:enter once, at the later of the #enter click and app:ready (architecture 이벤트).
+// Owns the chosen broadcast and showtime; sends app:enter once after the #enter click, app:ready and character loading.
 // Nothing chosen here goes to browser storage (legal T62).
 import {events,APP_READY,APP_ENTER} from '../events.js';
 import {scheduledSource,upcomingRounds} from '../screen-video.js';
 import {parseInvite} from '../room-keys.js';
 
-const SHOWTIME_COUNT=3; // UI D1: three next round boundaries
+const SHOWTIME_COUNT=3; // UI D1: three next round boundaries, after the one running cell (T88)
 const cover=document.querySelector('#loading'),text=cover.querySelector('[role=status]'),bar=cover.querySelector('progress');
 const panel=document.querySelector('#panel'),status=document.querySelector('#status'),enter=document.querySelector('#enter');
 const broadcastsBox=document.querySelector('#broadcasts'),showtimesBox=document.querySelector('#showtimes'),showtimeRow=showtimesBox.querySelector('.row');
 const title=document.querySelector('#panel-title');
 
 let choice=null,clicked=false,entered=false,failed=false,tick=0,invite=null;
-const isReady=()=>!!window.arena?.ready;
+let characterSettled=false,characterWaiting=false;
+const isReady=()=>!!window.arena?.ready&&(window.arena.character?.ready||characterSettled);
 const query=new URLSearchParams(location.search),hasRoom=query.has('room')||query.has('t'); // t alone is an invite too (UX-M15)
 
 let coverWatch=null;
@@ -61,6 +62,20 @@ enter.addEventListener('click',()=>{
  else{panel.hidden=true;showCover(true);}
 });
 const ready=()=>{
+ if(!isReady()){
+  if(characterWaiting)return;
+  characterWaiting=true;
+  const finish=()=>{
+   if(characterSettled)return;
+   characterSettled=true;clearTimeout(timer);ready();
+  };
+  const timer=setTimeout(()=>{
+   console.warn('캐릭터 준비 시간이 초과되어 기본 캐릭터로 입장합니다.');
+   finish();
+  },30_000);
+  window.arena.character.loaded.then(finish,finish);
+  return;
+ }
  if(clicked)fire();
  else if(invite&&!failed){showCover(false);panel.hidden=false;enter.focus();}
 };
@@ -79,12 +94,13 @@ function firstPage(broadcasts,screen){
   card.addEventListener('click',()=>{broadcastId=b.id;render();});
   broadcastsBox.append(card);return card;
  });
- const slots=Array.from({length:SHOWTIME_COUNT},()=>{
+ const slots=Array.from({length:SHOWTIME_COUNT+1},()=>{
   const b=document.createElement('button');b.type='button';
   b.addEventListener('click',()=>{showtime=Number(b.dataset.showtime);render();});
   showtimeRow.append(b);return b;
  });
  // Re-run every second: a passed showtime drops out and the next boundary joins (UX E15); the cells never move.
+ // T88: the first cell is the round that started last (상영 중); it is replaced once a round length (the interval) has passed.
  function render(){
   const now=Date.now();
   live=scheduledSource(now,screen)==='live';
@@ -94,8 +110,9 @@ function firstPage(broadcasts,screen){
   }
   showtimesBox.hidden=live;
   if(live)return;
-  const times=upcomingRounds(now,screen.roundIntervalMinutes,SHOWTIME_COUNT);
-  if(!times.includes(showtime))showtime=times[0];
+  const interval=screen.roundIntervalMinutes*60000,upcoming=upcomingRounds(now,screen.roundIntervalMinutes,SHOWTIME_COUNT);
+  const times=[Math.floor(now/interval)*interval,...upcoming];
+  if(!times.includes(showtime))showtime=upcoming[0];
   slots.forEach((b,i)=>{
    b.dataset.showtime=String(times[i]);b.textContent=clock(times[i]);
    b.setAttribute('aria-pressed',String(times[i]===showtime));
@@ -116,9 +133,10 @@ async function start(){
   const detail=invite;choice=()=>detail;
   panel.dataset.mode='invite';title.textContent='친구가 부른 방으로 들어가요';
   showCover(true);sync();
-  if(isReady())ready();
+  if(window.arena?.ready)ready();
   return;
  }
  showCover(false);firstPage(broadcasts,screen);
+ if(window.arena?.ready)ready();
 }
 start().catch(error=>{console.warn(error);status.textContent='경기장을 불러오지 못했습니다';});

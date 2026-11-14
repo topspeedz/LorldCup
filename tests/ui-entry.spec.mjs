@@ -14,7 +14,8 @@ async function open(page, { size = { width: 1280, height: 720 }, abort, enter = 
   await page.setViewportSize(size);
   await page.goto('/');
   if (abort) return errors;
-  await page.waitForFunction(() => window.arena?.ready, null, { timeout: 120_000 });
+  // T73: app:enter waits for the character too (ui/loading.js isReady); wait for both so 들어가기 enters at once, like a user who waits for loading.
+  await page.waitForFunction(() => window.arena?.ready && window.arena.character?.ready, null, { timeout: 120_000 });
   if (enter) await page.locator('#enter').click(); // mouse-first: everything in the arena exists from app:enter
   return errors;
 }
@@ -254,3 +255,50 @@ test('S13·K13·E14 touch at 360×640: the opener, the ticket buttons and the en
   await expect(ticketDialog(page).getByRole('img', { name: new RegExp(teams[0].name) })).toBeVisible();
 });
 // B-M-2 (an emote pick finishes the ticket when clips fail) was removed with the emote step (T64).
+
+// ---- T88: the round that started last (상영 중) as the first showtime cell ----
+// User 2026-11-14: "이미 상영중인 방에도 들어갈수있게해줘" / "지금시간으로부터 딱 이전시간 방".
+const INTERVAL = read('screen').roundIntervalMinutes * 60_000;
+const fakeYouTube = `window.YT={Player:class {
+  constructor(target,options){this.options=options;this.time=options.playerVars.start;this.muted=true;this.started=false;
+    this.iframe=document.createElement('iframe');this.iframe.src='https://www.youtube.com/embed/'+options.videoId;target.replaceWith(this.iframe);
+    window.yt=this;queueMicrotask(()=>options.events.onReady({target:this}));}
+  emit(data){if(data===1)this.started=true;this.options.events.onStateChange({target:this,data});}
+  playVideo(){this.emit(1);} pauseVideo(){this.emit(2);} seekTo(time){this.time=time;}
+  cueVideoById({startSeconds=0}){this.time=startSeconds;this.started=false;queueMicrotask(()=>this.emit(5));}
+  getCurrentTime(){return this.started?this.time:0;} getDuration(){return 3600;} getIframe(){return this.iframe;}
+  mute(){this.muted=true;} unMute(){this.muted=false;} isMuted(){return this.muted;} setVolume(){} destroy(){this.iframe.remove();}
+}};window.onYouTubeIframeAPIReady();`;
+
+test('T88 the first showtime cell is the round that started last, marked 상영 중; entering it plays from now − its start; next cells as before', async ({ page }) => {
+  const now = Date.parse('2026-11-13T04:14:30Z'), running = Math.floor(now / INTERVAL) * INTERVAL;
+  await page.clock.setFixedTime(now);
+  await page.route('https://www.youtube.com/embed/**', route => route.fulfill({ contentType: 'text/html', body: '<body>Player fixture</body>' }));
+  await page.route('https://www.youtube.com/iframe_api', route => route.fulfill({ contentType: 'text/javascript', body: fakeYouTube }));
+  const errors = await open(page, { enter: false });
+  const cells = page.locator('#showtimes button[data-showtime]');
+  // (a) running round first, then the three next boundaries; only the first says 상영 중.
+  expect(await cells.evaluateAll(bs => bs.map(b => Number(b.dataset.showtime)))).toEqual([0, 1, 2, 3].map(i => running + i * INTERVAL));
+  // The tag is CSS ::after (labels stay HH:MM text); it is part of the button's name and shows on screen.
+  await expect(cells.first()).toHaveAccessibleName(/^\d{2}:\d{2}\s*상영 중$/);
+  expect(await cells.first().evaluate(b => getComputedStyle(b, '::after').content)).toBe('"상영 중"');
+  for (const i of [1, 2, 3]) await expect(cells.nth(i)).toHaveAccessibleName(/^\d{2}:\d{2}$/);
+  // (d) the nearest next round is still the default, and a next cell is picked as before (one pressed).
+  await expect(page.locator('#showtimes [aria-pressed=true]')).toHaveAttribute('data-showtime', String(running + INTERVAL));
+  await cells.nth(2).click();
+  await expect(page.locator('#showtimes [aria-pressed=true]')).toHaveAttribute('data-showtime', String(running + 2 * INTERVAL));
+  // (b) picking the running cell sends app:enter with that round's start.
+  await cells.first().click();
+  await expect(page.locator('#showtimes [aria-pressed=true]')).toHaveCount(1);
+  await page.evaluate(async () => {
+    const { events, APP_ENTER } = await import('./events.js');
+    events.addEventListener(APP_ENTER, e => { window.__enter = e.detail; }, { once: true });
+  });
+  await page.locator('#enter').click();
+  await expect.poll(() => page.evaluate(() => window.__enter?.showtime)).toBe(running);
+  // (c) the screen starts at now − round start (270 s here), not at 0, and does not wait.
+  await expect.poll(() => page.evaluate(() => window.yt?.options.playerVars.start), { timeout: 30_000 }).toBe((now - running) / 1000);
+  expect(await page.evaluate(() => arena.screen.state.status)).not.toBe('waiting');
+  expect(await page.evaluate(() => arena.screen.roundStart)).toBe(running);
+  expect(errors).toEqual([]);
+});

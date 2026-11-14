@@ -2,5 +2,11 @@
   "distance": 5,
   "maxDistance": 7.5,
   "minDistance": 0,
-  "wheelStep": 0.5
+  "wheelStep": 0.5,
+  "occlusion": {
+    "opacity": 0.12,
+    "fadeDistance": 0.5,
+    "targetPadding": 0.35,
+    "radius": 1.6
+  }
 }

@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-// BL-0009 (decisions 14, 15): Alt opens a 2x2 emote menu; each button requests its own emote.
+// BL-0009 (decisions 14, 15), T95: a lone Ctrl tap opens a 2x2 emote menu; each button requests its own emote.
 const emotes = [['박수 환호', 'cheer_clap'], ['하트', 'heart'], ['화내기', 'angry'], ['계란 던지기', 'egg_throw']];
 
 async function open(page) {
@@ -13,14 +13,15 @@ async function open(page) {
     Object.defineProperty(Document.prototype, 'pointerLockElement', { configurable: true, get: () => locked });
     Element.prototype.requestPointerLock = function () { locked = this; fire(); return Promise.resolve(); };
     Document.prototype.exitPointerLock = function () { if (locked) { locked = null; fire(); } };
-    // Record whether Alt's default action (browser menu bar) was suppressed.
-    window.__alt = [];
-    for (const type of ['keydown', 'keyup'])
-      window.addEventListener(type, e => { if (e.key === 'Alt') __alt.push([type, e.defaultPrevented]); });
+    // T95: record whether Ctrl combos keep their browser default (copy, close tab...).
+    window.__combo = [];
+    window.addEventListener('keydown', e => { if (e.ctrlKey && e.code !== 'ControlLeft' && e.code !== 'ControlRight') __combo.push([e.code, e.defaultPrevented]); });
   });
   await page.goto('/');
   await page.waitForFunction(() => window.arena?.ready);
   await page.locator('#enter').click(); // into the arena: the dock and walking input exist from app:enter
+  // T73: loading waits for the character before app:enter, and input ignores keys until then; wait for entry like a user.
+  await expect(page.locator('#hud')).not.toHaveAttribute('data-state', 'entry', { timeout: 120_000 });
   await page.evaluate(async () => {
     const { events } = await import('./events.js');
     window.__requests = [];
@@ -31,12 +32,10 @@ async function open(page) {
 const menu = page => page.getByRole('dialog', { name: '감정표현' });
 const requests = page => page.evaluate(() => window.__requests);
 
-test('Alt shows four square buttons in a 2x2 grid; releasing Alt keeps it open', async ({ page }) => {
+test('a lone Ctrl tap shows four square buttons in a 2x2 grid and it stays open', async ({ page }) => {
   const errors = await open(page);
   await expect(menu(page)).toBeHidden();
-  await page.keyboard.down('Alt');
-  await expect(menu(page)).toBeVisible();
-  await page.keyboard.up('Alt');
+  await page.keyboard.press('Control');
   await expect(menu(page)).toBeVisible();
   const boxes = [];
   for (const [name] of emotes) boxes.push(await menu(page).getByRole('button', { name }).boundingBox());
@@ -47,22 +46,37 @@ test('Alt shows four square buttons in a 2x2 grid; releasing Alt keeps it open',
   expect(errors).toEqual([]);
 });
 
-test('Alt does not trigger the browser menu bar', async ({ page }) => {
+test('T95: Ctrl held with another key (Ctrl+C) never opens the menu and keeps the browser default; Alt no longer opens it', async ({ page }) => {
   await open(page);
-  await page.keyboard.press('Alt');
-  await page.keyboard.press('Alt');
-  const alt = await page.evaluate(() => window.__alt);
-  expect(alt.length).toBe(4);
-  for (const [, prevented] of alt) expect(prevented).toBe(true);
+  const settle = () => page.evaluate(() => new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))));
+  await page.keyboard.press('Control+KeyC');
+  await settle();
+  await expect(menu(page)).toBeHidden();
+  // Ctrl released after the other key: still a combo, not a tap.
+  await page.keyboard.down('ControlLeft'); await page.keyboard.down('KeyC'); await page.keyboard.up('KeyC'); await page.keyboard.up('ControlLeft');
+  await settle();
+  await expect(menu(page)).toBeHidden();
+  expect(await page.evaluate(() => window.__combo)).toEqual([['KeyC', false], ['KeyC', false]]);
+  // A mouse press while Ctrl is held cancels the tap too.
+  await page.keyboard.down('ControlLeft'); await page.mouse.click(5, 300); await page.keyboard.up('ControlLeft');
+  await settle();
+  await expect(menu(page)).toBeHidden();
+  for (const key of ['Alt', 'AltLeft', 'AltRight']) await page.keyboard.press(key);
+  await settle();
+  await expect(menu(page)).toBeHidden();
 });
 
-test('Alt again and Esc close the menu', async ({ page }) => {
+test('Ctrl again and Esc close the menu; ControlRight works like ControlLeft', async ({ page }) => {
   await open(page);
-  await page.keyboard.press('Alt');
+  await page.keyboard.press('Control');
   await expect(menu(page)).toBeVisible();
-  await page.keyboard.press('Alt');
+  await page.keyboard.press('Control');
   await expect(menu(page)).toBeHidden();
-  await page.keyboard.press('Alt');
+  await page.keyboard.press('ControlRight');
+  await expect(menu(page)).toBeVisible();
+  await page.keyboard.press('ControlRight');
+  await expect(menu(page)).toBeHidden();
+  await page.keyboard.press('Control');
   await expect(menu(page)).toBeVisible();
   await page.keyboard.press('Escape');
   await expect(menu(page)).toBeHidden();
@@ -72,7 +86,7 @@ test('Alt again and Esc close the menu', async ({ page }) => {
 test('each button sends its own emote:request and closes the menu', async ({ page }) => {
   const errors = await open(page);
   for (const [name] of emotes) {
-    await page.keyboard.press('Alt');
+    await page.keyboard.press('Control');
     await menu(page).getByRole('button', { name }).click();
     await expect(menu(page)).toBeHidden();
   }
@@ -95,11 +109,11 @@ test('emoteMenu:open (ticket "응원하기") opens the same menu', async ({ page
 test('opening pauses movement keys; picking or Esc hands them back (no pointer lock anywhere)', async ({ page }) => {
   await open(page);
   await page.waitForFunction(() => document.body.classList.contains('walking'));
-  await page.keyboard.press('Alt');
+  await page.keyboard.press('Control');
   await page.keyboard.press('Escape');
   await expect(menu(page)).toBeHidden();
   await expect(page.locator('body')).toHaveClass(/walking/); // mouse-first: Esc must not strand the avatar
-  await page.keyboard.press('Alt');
+  await page.keyboard.press('Control');
   await expect(menu(page)).toBeVisible();
   await expect(page.locator('body')).not.toHaveClass(/walking/);
   await menu(page).getByRole('button', { name: '화내기' }).click();

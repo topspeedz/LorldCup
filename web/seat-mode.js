@@ -49,11 +49,12 @@ body.touch #seat-toggle{min-height:var(--size-target-touch);bottom:calc(var(--ti
  uiRoot.append(style,button);
  document.querySelector('#hud-keys')?.prepend(hint);
  const canvas=ctx.renderer.domElement,cursor=canvas.style.cursor,raycaster=new THREE.Raycaster(),pointer=new THREE.Vector2();
+ const screenPlane=new THREE.Plane(),screenHit=new THREE.Vector3(),screenRight=new THREE.Vector3(),screenUp=new THREE.Vector3();
  let seated=null,flying=null,hovered=null,returnPose=null,returnZoom=1,temporaryPose=[],disposed=false,shown='';
  function occupied(seat,peers){return peers.some(p=>Math.abs(p[1]-seat.point.y)<1&&Math.hypot(p[0]-seat.point.x,p[2]-seat.point.z)<.55);}
- function nearest(peers=ctx.multiplayer.positions){
+ function nearest(peers=ctx.multiplayer.positions,distance=config.interactionDistance**2){
   if(!faces.length)return null;
-  let result=null,distance=config.interactionDistance**2;
+  let result=null;
   for(const seat of seats){
    const next=player.position.distanceToSquared(seat.point);
    if(next>=distance||occupied(seat,peers))continue;
@@ -90,7 +91,7 @@ body.touch #seat-toggle{min-height:var(--size-target-touch);bottom:calc(var(--ti
    const facing=direction.subVectors(seat.point,candidate.position).normalize().dot(candidate.normal);
    if(facing>score){face=candidate;score=facing;}
   }
-  returnPose=[...player.position.toArray(),player.avatar.rotation.y];
+  returnPose=[...seat.standPosition,player.avatar.rotation.y];
   returnZoom=ctx.camera.zoom;
   seated=seat;
   player.teleport([...seat.position,Math.atan2(seat.point.x-target.x,seat.point.z-target.z)]);
@@ -103,9 +104,10 @@ body.touch #seat-toggle{min-height:var(--size-target-touch);bottom:calc(var(--ti
    parts[1].position.y=1.38;parts[2].position.y=1.40;
    for(const leg of parts.slice(3)){leg.rotation.x=Math.PI/2;leg.position.y=.48;leg.position.z=-.32;}
   }
-  const distance=Math.hypot(seat.point.x-face.position.x,seat.point.z-face.position.z);
+  const distance=Math.min(35,Math.hypot(seat.point.x-face.position.x,seat.point.z-face.position.z));
   cameraRig.setOverride(camera=>{
-   camera.position.copy(face.position).addScaledVector(face.normal,distance);camera.position.y=seat.point.y+config.camera.eyeHeight;
+   // The pulled-forward camera must stay above the bowl chairs even for lower rows.
+   camera.position.copy(face.position).addScaledVector(face.normal,distance);camera.position.y=Math.max(config.camera.minEyeY,seat.point.y+config.camera.eyeHeight);
    camera.lookAt(face.position);player.avatar.visible=false;
    // Keep the HUD margin and fit portrait screens without moving behind the bowl.
    const fit=Math.max(face.width/(camera.aspect*config.camera.screenFill),face.height/Math.min(config.camera.screenFill,.64));
@@ -118,6 +120,13 @@ body.touch #seat-toggle{min-height:var(--size-target-touch);bottom:calc(var(--ti
  }
  function stand(restore=true){
   if(!seated)return;
+  if(restore){
+   const distance=p=>(p[0]-seated.point.x)**2+(p[1]-seated.point.y)**2+(p[2]-seated.point.z)**2;
+   const points=seats.map(seat=>seat.standPosition).sort((a,b)=>distance(a)-distance(b));
+   const free=points.map(p=>player.standingAt(p[0],p[2],p[1])).find(Boolean);
+   if(!free){events.dispatchEvent(new CustomEvent(HUD_TOAST,{detail:{text:'일어설 통로가 막혀 있어요',tone:'warning'}}));return false;}
+   returnPose=[...free,returnPose[3]];
+  }
   seated=null;
   for(const {part,position,rotation,scale} of temporaryPose){part.position.copy(position);part.rotation.copy(rotation);part.scale.copy(scale);}
   temporaryPose=[];
@@ -126,21 +135,21 @@ body.touch #seat-toggle{min-height:var(--size-target-touch);bottom:calc(var(--ti
    for(const code of held)input.keys.add(code);
   }
   returnPose=null;player.setLocked(false);ctx.camera.zoom=returnZoom;cameraRig.setOverride(null);player.avatar.visible=true;
+  if(!disposed&&!window.arena.screen.fullMode)input.capturePointer();
   events.dispatchEvent(new CustomEvent(SEAT_EXIT));prompt();
- }
- function standAndWalk(){
-  stand();
-  input.capturePointer();
+  return true;
  }
  function toggle(){
   if(disposed||flying||window.arena.screen.fullMode)return;
-  if(seated)standAndWalk();else{const seat=nearest();if(seat)sit(seat);}
+  if(seated)stand();else{const seat=nearest();if(seat)sit(seat);}
  }
  const movement=['forward','backward','left','right'];
  // The cursor is free while seated, so input.js does not take movement keys: catch them here (UX-S-R05).
  const key=e=>{
-  if(!seated||window.arena.screen.fullMode||e.target.matches?.('input,textarea')||!movement.some(action=>controls[action].includes(e.code)))return;
-  standAndWalk();input.keys.add(e.code);
+  if(!seated||window.arena.screen.fullMode||e.target.matches?.('input,textarea'))return;
+  const walking=movement.some(action=>controls[action].includes(e.code));
+  if(!walking&&e.code!=='Escape')return;
+  if(stand()&&walking)input.keys.add(e.code);
  };
  const action=e=>{if(e.detail.action==='sit'&&e.detail.down)toggle();};
  function hitSeat(){
@@ -148,11 +157,24 @@ body.touch #seat-toggle{min-height:var(--size-target-touch);bottom:calc(var(--ti
   const hit=raycaster.intersectObjects(markers.children.filter(marker=>marker.visible),false)[0];
   return seats.find(seat=>seat.marker===hit?.object&&!occupied(seat,ctx.multiplayer.positions))??null;
  }
+ function hitScreen(){
+  for(const face of faces){
+   screenPlane.setFromNormalAndCoplanarPoint(face.normal,face.position);
+   if(!raycaster.ray.intersectPlane(screenPlane,screenHit))continue;
+   screenRight.set(face.normal.z,0,-face.normal.x).normalize();screenUp.crossVectors(face.normal,screenRight).normalize();
+   screenHit.sub(face.position);
+   if(Math.abs(screenHit.dot(screenRight))<=face.width/2&&Math.abs(screenHit.dot(screenUp))<=face.height/2)return true;
+  }
+  return false;
+ }
  function click(e){
   if(disposed||seated||flying||!input.walking||window.arena.screen.fullMode)return;
   raycaster.ray.origin.fromArray(e.detail.ray.origin);raycaster.ray.direction.fromArray(e.detail.ray.direction);
-  const seat=hitSeat();if(!seat)return;
-  e.preventDefault();flying=seat;prompt();
+  let seat=hitSeat();
+  if(!seat){if(!hitScreen())return;seat=nearest(ctx.multiplayer.positions,Infinity);}
+  e.preventDefault();
+  if(!seat){events.dispatchEvent(new CustomEvent(HUD_TOAST,{detail:{text:'빈 좌석이 없어요',tone:'warning',ms:2000}}));return;}
+  flying=seat;prompt();
   player.flyTo([...seat.position,Math.atan2(seat.point.x-target.x,seat.point.z-target.z)],config.clickSit.flightSeconds).then(landed=>{
    if(disposed)return;
    flying=null;if(landed!==false)sit(seat);else prompt();
@@ -176,7 +198,7 @@ body.touch #seat-toggle{min-height:var(--size-target-touch);bottom:calc(var(--ti
    if(disposed)return;
    if(seated){
     if(player.position.distanceToSquared(seated.point)>.01)stand(false);
-    else if(!window.arena.screen.fullMode&&movement.some(action=>input.down(action)))standAndWalk();
+    else if(!window.arena.screen.fullMode&&movement.some(action=>input.down(action)))stand();
    }
    prompt();
   },

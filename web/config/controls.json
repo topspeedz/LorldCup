@@ -23,8 +23,8 @@
     "Space"
   ],
   "emoteMenu": [
-    "AltLeft",
-    "AltRight"
+    "ControlLeft",
+    "ControlRight"
   ],
   "sit": [
     "KeyE"

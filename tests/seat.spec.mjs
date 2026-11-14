@@ -2,8 +2,9 @@ import { test, expect } from '@playwright/test';
 import { readFileSync, writeFileSync } from 'node:fs';
 
 const config = JSON.parse(readFileSync(new URL('../web/config/seats.json', import.meta.url), 'utf8'));
+const screenConfig = JSON.parse(readFileSync(new URL('../web/config/screen.json', import.meta.url), 'utf8'));
 const roundStart = Date.parse('2026-11-13T04:10:00Z');
-const shots = '_workspace/web-metaverse-develop/2026-11-13-ux-motion-rooms/seat-back/';
+const shots = 'temp/T71/size-seat-captures/';
 test.setTimeout(90_000);
 
 async function openArena(page) {
@@ -55,18 +56,18 @@ test('seat settings provide surveyed seats and the approved seated camera', () =
 });
 
 test('T63 seats occupy both sides of the entrance', () => {
-  expect(config.seats.length).toBeGreaterThanOrEqual(6);
+  expect(config.seats.length).toBe(16);
   expect(new Set(config.seats.map(seat => Math.sign(seat.position[2]))).size).toBe(2);
   for (const seat of config.seats) {
-    expect(Math.hypot(seat.position[0] + 61, seat.position[2]), seat.id).toBeLessThan(12);
+    expect(Math.hypot(seat.position[0] + 61, seat.position[2]), seat.id).toBeLessThan(18);
     expect(seat.position[1], seat.id).toBeLessThan(-.8);
   }
 });
 
-test('T64 empty-seat markers render from the default arena view and highlight the nearby seat', async ({ page }) => {
+test('T64 empty-seat markers render from the entrance view and highlight the nearby seat', async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 720 });
   await openArena(page);
-  await page.evaluate(() => { arena.screen.pause();arena.crowd.seek(0);arena.crowd.setPaused(true);arena.go('arena'); });
+  await page.evaluate(() => { arena.screen.pause();arena.crowd.seek(0);arena.crowd.setPaused(true);arena.go([-64, 0, 0, -Math.PI / 2]); });
   await page.waitForTimeout(1000);
   const phase = process.env.T64_CAPTURE_PHASE || 'after';
   await page.screenshot({ path: shots + `T64-default-${phase}.png` });
@@ -85,7 +86,7 @@ test('T64 empty-seat markers render from the default arena view and highlight th
   });
   await page.evaluate(seat => {
     const { player } = seatProbe.ctx, [x, y, z] = seat.position;
-    const approach = [x, y, z - Math.sign(z) * 1.2, Math.atan2(-x, -z)];
+    const approach = [...seat.standPosition, Math.atan2(-x, -z)];
     approach[1] = player.groundAt(approach[0], approach[2], y);
     player.teleport(approach);
   }, config.seats[0]);
@@ -217,7 +218,7 @@ test('T68 every seated view enlarges the actual screen without clipping at both 
       console.log('T68 seated screen:', JSON.stringify(measured));
       measurements.push(measured);
       expect.soft(measured.after.height, `${seat.id} ${width}: larger than T64`).toBeGreaterThan(measured.before.height);
-      expect.soft(measured.after.distance, `${seat.id} ${width}: entrance viewing distance`).toBeGreaterThan(35);
+      expect.soft(measured.after.distance, `${seat.id} ${width}: 35 m horizontal viewing distance`).toBeCloseTo(Math.hypot(35, screenConfig.mesh.centerY - Math.max(config.camera.minEyeY, seat.position[1] + config.camera.eyeHeight)), 2);
       expect.soft(measured.after.height, `${seat.id} ${width}: minimum player`).toBeGreaterThanOrEqual(200);
       expect.soft(measured.after.left, `${seat.id} ${width}: left`).toBeGreaterThanOrEqual(0);
       expect.soft(measured.after.top, `${seat.id} ${width}: top`).toBeGreaterThanOrEqual(0);
@@ -225,7 +226,7 @@ test('T68 every seated view enlarges the actual screen without clipping at both 
       expect.soft(measured.after.bottom, `${seat.id} ${width}: bottom`).toBeLessThanOrEqual(height);
       expect.soft(measured.after.minDepth).toBeGreaterThan(-1);expect.soft(measured.after.maxDepth).toBeLessThan(1);
       expect.soft(measured.after.maxAlpha, `${seat.id} ${width}: WebGL does not cover player`).toBeLessThanOrEqual(5);
-      await expect(page.getByRole('button', { name: '일어나기', exact: true })).toBeVisible();
+      await expect(page.getByRole('button', { name: /일어나기$/ })).toBeVisible(); // T67: "E / Esc 일어나기" on the bar
       if (width === 1280 && captureSeats.some(capture => capture.id === seat.id)) {
         await expect.poll(() => page.evaluate(() => arena.screen.state.playing), { timeout: 45_000 }).toBe(true);
         await page.screenshot({ path: shots + `T68-${seat.id}-after.png` });
@@ -250,17 +251,17 @@ test('configured seats are empty entrance cushions with a walkable approach', as
       if (/^Seats__/.test(mesh.name)) cushions.push(mesh);
     });
     const ray = new THREE.Raycaster(), down = new THREE.Vector3(0, -1, 0);
-    const inspect = position => {
+    const inspect = ({ position, standPosition }) => {
       const [x, y, z] = position;
       ray.set(new THREE.Vector3(x, y + .6, z), down);ray.far = .3;
       const cushion = ray.intersectObjects(cushions, false)[0];
       const nearest = Math.min(...occupants.map(p => Math.hypot(p.x - x, p.z - z)));
-      const approach = [x, y, z - Math.sign(z) * 1.2];
+      const approach = standPosition.slice();
       approach[1] = player.groundAt(approach[0], approach[2], y);
       player.teleport([...approach, 0]);
       return { position, cushionY: cushion?.point.y ?? null, nearest, approach, canMove: player.attempt(0, -Math.sign(z) * .12) };
     };
-    return { configured: config('seats').seats.map(seat => inspect(seat.position)) };
+    return { configured: config('seats').seats.map(inspect) };
   });
   console.log('T63 entrance survey:', JSON.stringify(survey));
   expect(survey.configured.length).toBeGreaterThan(0);
@@ -285,7 +286,7 @@ test('E and the seat button sit, enlarge the screen, and restore movement on E o
   expect(config.seats.length).toBeGreaterThan(0);
   await page.evaluate(seat => {
     const { player } = seatProbe.ctx, [x, y, z] = seat.position;
-    const approach = [x, y, z - Math.sign(z) * 1.2, Math.atan2(x, z)];
+    const approach = [...seat.standPosition, Math.atan2(x, z)];
     approach[1] = player.groundAt(approach[0], approach[2], y);
     player.teleport(approach);
     const { THREE, root, cameraRig } = seatProbe.ctx, screen = new THREE.Box3();
@@ -303,7 +304,7 @@ test('E and the seat button sit, enlarge the screen, and restore movement on E o
     const { THREE, root, camera } = seatProbe.ctx;
     camera.updateMatrixWorld(true);
     return Math.max(...[0, 1, 2, 3].map(i => {
-      const mesh = root.getObjectByName('REF_Jumbotron_' + i), a = mesh.geometry.attributes.position;
+      const mesh = root.getObjectByName('ScreenMesh_REF_Jumbotron_' + i), a = mesh.geometry.attributes.position;
       let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
       const p = new THREE.Vector3();
       for (let j = 0; j < a.count; j++) {
@@ -317,7 +318,7 @@ test('E and the seat button sit, enlarge the screen, and restore movement on E o
   expect(standingArea).toBeGreaterThan(0);
   await page.keyboard.press('KeyE');
   await expect.poll(() => page.evaluate(() => seatProbe.locked)).toBe(true);
-  await expect(page.getByRole('button', { name: '일어나기', exact: true })).toBeVisible();
+  await expect(page.getByRole('button', { name: /일어나기$/ })).toBeVisible(); // T67: "E / Esc 일어나기" on the bar
   await expect.poll(() => page.evaluate(() => arena.camera.fov)).toBe(config.camera.fov);
   await expect.poll(() => page.evaluate(() => arena.avatar.getObjectByName('hips').position.y)).toBeCloseTo(.56, 2);
   expect(await page.evaluate(() => arena.camera.position.y)).toBeCloseTo(config.seats[0].position[1] + config.camera.eyeHeight);
@@ -350,7 +351,7 @@ test('E and the seat button sit, enlarge the screen, and restore movement on E o
   await page.keyboard.press('KeyE');
   await expect.poll(() => page.evaluate(() => seatProbe.locked)).toBe(false);
   expect(await page.evaluate(() => arena.camera.fov)).toBe(68);
-  expect(await page.evaluate(() => arena.player.toArray())).toEqual(before.position);
+  (await page.evaluate(() => arena.player.toArray())).forEach((value, axis) => expect(value).toBeCloseTo(config.seats[0].standPosition[axis], 3));
   await expect.poll(() => page.evaluate(() => arena.avatar.getObjectByName('hips').position.y)).toBeGreaterThan(.8);
   await showCursor(page);
   await button.click();
@@ -358,7 +359,7 @@ test('E and the seat button sit, enlarge the screen, and restore movement on E o
   await expect.poll(() => page.evaluate(() => arena.camera.fov)).toBe(config.camera.fov);
   await page.keyboard.down('KeyW');
   await expect.poll(() => page.evaluate(() => seatProbe.locked)).toBe(false);
-  await expect.poll(() => page.evaluate(position => arena.player.distanceTo(new seatProbe.ctx.THREE.Vector3(...position)), before.position)).toBeGreaterThan(.1);
+  await expect.poll(() => page.evaluate(position => arena.player.distanceTo(new seatProbe.ctx.THREE.Vector3(...position)), config.seats[0].standPosition)).toBeGreaterThan(.1);
   await page.keyboard.up('KeyW');
   expect(await page.evaluate(() => arena.camera.fov)).toBe(68);
   expect(await page.evaluate(() => seatProbe.events.map(e => e.type))).toEqual(['seat:enter', 'seat:exit', 'seat:enter', 'seat:exit']);
@@ -368,15 +369,17 @@ test('E and the seat button sit, enlarge the screen, and restore movement on E o
   await page.keyboard.press('KeyE');
   expect(await page.evaluate(() => seatProbe.events.length)).toBe(4);
   await page.locator('#seat-typing-probe').evaluate(field => field.remove());
-  const resources = await page.evaluate(() => ({ ...seatProbe.ctx.renderer.info.memory }));
+  let resources;
   for (let i = 0; i < 3; i++) {
     // Standing up keeps the cursor available for the next button click.
     await showCursor(page);
     await button.click();
     await expect.poll(() => page.evaluate(() => seatProbe.locked)).toBe(true);
     await showCursor(page);
-    await page.getByRole('button', { name: '일어나기', exact: true }).click();
+    await page.getByRole('button', { name: /일어나기$/ }).click();
     await expect.poll(() => page.evaluate(() => seatProbe.locked)).toBe(false);
+    await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+    if (i === 0) resources = await page.evaluate(() => ({ ...seatProbe.ctx.renderer.info.memory }));
   }
   expect(await page.evaluate(() => ({ ...seatProbe.ctx.renderer.info.memory }))).toEqual(resources);
   expect(await page.evaluate(() => seatProbe.events.length)).toBe(10);

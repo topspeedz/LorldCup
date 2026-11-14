@@ -65,12 +65,11 @@ const walkEast = (page, x, z, steps = 40) => page.evaluate(([x, z, steps]) => {
   for (let i = 0; i < steps; i++) arena.attempt(.25, 0);
   return arena.state.x;
 }, [x, z, steps]);
-const pixelOfUniform = (page, id) => page.evaluate(id => {
+// T69: the body's Uniform material shows the team's uniform picture from teams.json (the crowd's picture), not a flat colour.
+const uniformSrc = (page, id) => page.evaluate(id => {
   const body = qaB.rig()?.getObjectByName(id); let material;
   body?.traverse(o => { if (o.material?.name === 'Uniform') material = o.material; });
-  if (!material?.map?.image) return null;
-  const c = document.createElement('canvas').getContext('2d'); c.canvas.width = c.canvas.height = 64;
-  c.drawImage(material.map.image, 0, 0, 64, 64); return Array.from(c.getImageData(20, 20, 1, 1).data);
+  return material?.map?.image?.src ?? null;
 }, id);
 
 test('B ticket: real clicks — a team click in the centred ticket popup issues the card, then the entrance opens (T64: no emote step)', async ({ page }, testInfo) => {
@@ -96,7 +95,7 @@ test('B ticket: real clicks — a team click in the centred ticket popup issues 
   expect(errors).toEqual([]);
 });
 
-test('B emote menu: Alt opens 2x2; releasing Alt keeps it; Esc and Alt close; four distinct clips; egg flies and scream plays', async ({ page }, testInfo) => {
+test('B emote menu: a Ctrl tap opens 2x2 and it stays open; Esc and Ctrl close; four distinct clips; egg flies and scream plays', async ({ page }, testInfo) => {
   test.setTimeout(300_000);
   const errors = await open(page);
   await characterSettled(page);
@@ -106,29 +105,31 @@ test('B emote menu: Alt opens 2x2; releasing Alt keeps it; Esc and Alt close; fo
     THREE.PositionalAudio.prototype.play = function (...a) { if (this.parent?.name === 'head' && qaB.rig()?.getObjectByName('head') === this.parent) qaB.plays++; return play.apply(this, a); }; // local fan only
   });
   // BL-0034: no crowd-sound button; sound is on from 들어가기.
+  // T80 (user decision): the crowd and its cheering exist only inside the arena, so listen for it there.
+  await page.evaluate(() => arena.go('arena'));
   await page.waitForFunction(() => arena.crowd?.sounding === true, null, { timeout: 10_000 });
   await page.waitForTimeout(1500); // scream buffer fetch
   await page.evaluate(() => arena.go('plaza'));
+  await page.waitForFunction(() => arena.crowd?.sounding === false, null, { timeout: 10_000 }); // T80: silent outside
   const menu = emoteMenu(page);
-  await page.keyboard.down('AltLeft');
+  await page.keyboard.press('ControlLeft');
   await expect(menu).toBeVisible();
-  await page.keyboard.up('AltLeft');
   await page.waitForTimeout(300);
   await expect(menu).toBeVisible();
   const boxes = await menu.getByRole('button').evaluateAll(bs => bs.map(b => { const r = b.getBoundingClientRect(); return [Math.round(r.x), Math.round(r.y), Math.round(r.width), Math.round(r.height)]; }));
   await page.screenshot({ path: testInfo.outputPath('emote-menu-2x2.png') });
   await page.keyboard.press('Escape');
   await expect(menu).toBeHidden();
-  await page.keyboard.press('AltLeft');
+  await page.keyboard.press('ControlLeft');
   await expect(menu).toBeVisible();
-  await page.keyboard.press('AltLeft');
+  await page.keyboard.press('ControlLeft');
   await expect(menu).toBeHidden();
 
   const idle = await page.evaluate(() => qaB.pose());
   const result = {};
   for (const [id, label] of emotes) {
     await page.waitForTimeout(500);
-    await page.keyboard.press('AltLeft');
+    await page.keyboard.press('ControlLeft');
     await menu.getByRole('button', { name: label }).click();
     await expect(menu).toBeHidden();
     await page.waitForFunction(id => qaB.events.at(-1)?.type === 'emote:played' && qaB.events.at(-1).detail.id === id, id, { timeout: 5000 });
@@ -171,12 +172,12 @@ test('B character and team: four bodies, team uniforms painted on the body mesh,
     visible[id] = await page.evaluate(ids => ids.filter(c => qaB.rig().getObjectByName(c).visible), chars.ids);
     for (const t of [teams[0], teams[1], teams[0]]) {
       await dialog.getByRole('button', { name: t.name, exact: true }).click();
-      (pixels[id] ??= []).push(await pixelOfUniform(page, id));
+      (pixels[id] ??= []).push(await uniformSrc(page, id));
     }
   }
   await dialog.getByRole('button', { name: '팀·캐릭터 선택 닫기' }).click();
   await page.screenshot({ path: testInfo.outputPath('character-geng.png') });
-  const hex = c => [1, 3, 5].map(i => parseInt(c.slice(i, i + 2), 16));
+  const picture = t => new URL(t.uniform, page.url()).href;
   // Locomotion and sit for each body.
   const loco = {};
   for (const id of chars.ids) {
@@ -218,7 +219,7 @@ test('B character and team: four bodies, team uniforms painted on the body mesh,
   console.log('QA-B character', JSON.stringify({ structure, visible, pixels, loco }));
   for (const id of chars.ids) {
     expect(visible[id]).toEqual([id]);
-    expect(pixels[id].map(p => p?.slice(0, 3))).toEqual([hex(teams[0].color), hex(teams[1].color), hex(teams[0].color)]);
+    expect(pixels[id]).toEqual([picture(teams[0]), picture(teams[1]), picture(teams[0])]);
     for (const k of ['walk', 'run', 'jump', 'sit']) expect(loco[id][k]).toBeGreaterThan(.05);
     expect(loco[id].sitHeadDrop).toBeGreaterThan(.2);
   }
@@ -308,7 +309,7 @@ return new N(id,{...o,host:'127.0.0.1',port:${port},path:'/signal/',secure:false
     }, peerId);
     await expect.poll(look, { timeout: 20_000 }).toEqual({ visible: ['fan_f2'] });
     const idle = await host.evaluate(peerId => qaB.pose(arena.multiplayer.avatarOf(peerId)), peerId);
-    await guest.keyboard.press('AltLeft');
+    await guest.keyboard.press('ControlLeft');
     await emoteMenu(guest).getByRole('button', { name: '하트' }).click();
     const seen = await host.evaluate(([peerId, idle]) => qaB.watch(idle, 4000, arena.multiplayer.avatarOf(peerId)), [peerId, idle]);
     const state = await host.evaluate(peerId => arena.multiplayer.peers.find(p => p.peerId === peerId), peerId);

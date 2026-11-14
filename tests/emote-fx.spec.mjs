@@ -55,7 +55,16 @@ test('configuration selects a real clip file with named frame cues and FX1 effec
     const values = [].concat(chars.cues[clip][event]); expect(values.length).toBeGreaterThan(0);
     for (const frame of values) { expect(Number.isInteger(frame)).toBe(true); expect(frame).toBeGreaterThanOrEqual(0); }
   }
-  expect(chars.fx).toEqual(design.fx);
+  // T82b / T96 approved stronger angry and egg effects; the other effects retain FX1 values.
+  const { angry, egg_throw: egg, ...rest } = chars.fx, { angry: designAngry, egg_throw: designEgg, ...designRest } = design.fx;
+  expect(rest).toEqual(designRest);
+  expect(Object.keys(angry).sort()).toEqual(Object.keys(designAngry).sort());
+  expect(angry.maxParticles).toBeGreaterThan(designAngry.maxParticles); expect(angry.seconds).toBeGreaterThan(designAngry.seconds);
+  expect(egg).toMatchObject({ projectileScale: designEgg.projectileScale * 4, splatSizeMeters: designEgg.splatSizeMeters * 8,
+    maxParticles: 12, yolkParticles: 8, maxConcurrentEffects: 8,
+    seatedReleaseSeconds: .18, flightSeconds: .55, splatSeconds: 1, splatFadeSeconds: .7, maxSplatAreaRatio: .12, impactGain: .65 });
+  expect(egg.firstPerson.seconds).toBe(.36);
+  expect(egg.size).toBeCloseTo(designEgg.size * 5, 5);
 });
 
 test('clip path, frame rate and cue arrays come from configuration, and absent screen geometry skips flight', async ({ page }) => {
@@ -84,8 +93,9 @@ test('named cues start local and remote silhouettes once, including skipped fram
       let seq = 0;
       if (remote) f.peer(`peer-${fps}`, null, 0);
       for (const [id, clip, event, count] of [
-        ['cheer_clap', 'Emote_CheerClap', 'clap_contact', 12], ['heart', 'Emote_Heart', 'heart_form', 4], ['angry', 'Emote_Angry', 'angry_swing', 4],
+        ['cheer_clap', 'Emote_CheerClap', 'clap_contact'], ['heart', 'Emote_Heart', 'heart_form'], ['angry', 'Emote_Angry', 'angry_swing'],
       ]) {
+        const count = f.config.characters.fx[id].maxParticles; // T82b: angry burst size lives in characters.json
         if (remote) f.peer(`peer-${fps}`, id, ++seq); else f.emit('emote:request', { id });
         const frame = [].concat(frames[clip][event])[0]; f.advance(frame / 30 - .002, 1 / fps);
         const before = f.count(id); f.step(.002); const at = f.count(id);
@@ -135,10 +145,10 @@ test('the four effects draw visible pixels and the heart follows its hands until
   expect(result.gap).toBeLessThan(.001); expect(result.flightGap).toBeLessThan(.001); expect(errors).toEqual([]);
 });
 
-test('egg leaves the hand at frame 32, hits the thrower-facing centre in 0.8s and fades by 1.5s after impact', async ({ page }) => {
+test('standing local and remote eggs use the clip release cue, configured flight, size and fade on every face', async ({ page }) => {
   await fixture(page);
   const result = await page.evaluate(() => {
-    const rows = [], placements = [[0, 0, 8], [0, 0, -8], [8, 0, 0], [-8, 0, 0]];
+    const rows = [], cfg = f.config.characters.fx.egg_throw, placements = [[0, 0, 8], [0, 0, -8], [8, 0, 0], [-8, 0, 0]];
     let sequence = 0;
     for (const remote of [false, true]) for (const fps of [30, 60, 144]) for (let side = 0; side < 4; side++) {
       const avatar = remote ? f.peer('thrower', null, 0, placements[side]) : arena.avatar;
@@ -149,21 +159,26 @@ test('egg leaves the hand at frame 32, hits the thrower-facing centre in 0.8s an
       f.advance(32 / 30 - .002, 1 / fps); const before = f.count('flight');
       f.step(.002);
       const hand = avatar.getObjectByName('Prop_Egg').getWorldPosition(new f.THREE.Vector3()), start = f.point('flight');
-      f.advance(.4, 1 / fps); const half = f.point('flight');
+      const scale = new f.THREE.Vector3();
+      const matrix = new f.THREE.Matrix4(); f.batch('flight').getMatrixAt(0, matrix); scale.setFromMatrixScale(matrix);
+      f.advance(cfg.flightSeconds / 2, 1 / fps); const half = f.point('flight');
       const midpoint = hand.clone().lerp(new f.THREE.Vector3().fromArray(f.faces[side].position), .5); midpoint.y += .6;
-      f.advance(.4, 1 / fps); const splat = f.splats()[0];
-      const impact = { flights: f.count('flight'), shards: f.count('shells'), point: splat?.position.toArray(), face: splat?.userData.face, opacity: splat?.material.opacity };
-      f.advance(.9, 1 / fps); const held = f.splats()[0]?.material.opacity;
-      f.advance(.3, 1 / fps); const faded = f.splats()[0]?.material.opacity;
-      f.advance(.3, 1 / fps);
-      rows.push({ before, gap: hand.distanceTo(new f.THREE.Vector3().fromArray(start)), halfGap: midpoint.distanceTo(new f.THREE.Vector3().fromArray(half)), impact, held, faded, gone: f.splats().length, side });
+      f.advance(cfg.flightSeconds / 2, 1 / fps); const splat = f.splats()[0], face = f.faces[side];
+      const impact = { flights: f.count('flight'), shards: f.count('shells'), yolk: f.count('yolk'), point: splat?.position.toArray(), face: splat?.userData.face, opacity: splat?.material.opacity,
+        size: splat?.scale.x, expectedSize: Math.min(cfg.splatSizeMeters, Math.sqrt(face.width * face.height * cfg.maxSplatAreaRatio), face.width, face.height) };
+      f.advance(cfg.splatSeconds - cfg.splatFadeSeconds, 1 / fps); const held = f.splats()[0]?.material.opacity;
+      f.advance(cfg.splatFadeSeconds / 2, 1 / fps); const faded = f.splats()[0]?.material.opacity;
+      f.advance(cfg.splatFadeSeconds / 2, 1 / fps);
+      rows.push({ before, scale: scale.toArray(), gap: hand.distanceTo(new f.THREE.Vector3().fromArray(start)), halfGap: midpoint.distanceTo(new f.THREE.Vector3().fromArray(half)), impact, held, faded, gone: f.splats().length, side });
       f.advance(1);
     }
-    return rows;
+    return { rows, cfg };
   });
-  for (const row of result) {
+  for (const row of result.rows) {
     expect(row.before).toBe(0); expect(row.gap).toBeLessThan(.001); expect(row.halfGap).toBeLessThan(.001);
-    expect(row.impact).toMatchObject({ flights: 0, shards: 8, face: ['north', 'south', 'east', 'west'][row.side], opacity: .7 });
+    expect(row.impact).toMatchObject({ flights: 0, shards: result.cfg.maxParticles, yolk: result.cfg.yolkParticles, face: ['north', 'south', 'east', 'west'][row.side], opacity: .7 });
+    row.scale.forEach(value => expect(value).toBeCloseTo(result.cfg.projectileScale, 5));
+    expect(row.impact.size).toBeCloseTo(row.impact.expectedSize, 5);
     const point = [[0, 3, 2.02], [0, 3, -2.02], [2.02, 3, 0], [-2.02, 3, 0]][row.side];
     row.impact.point.forEach((value, i) => expect(value).toBeCloseTo(point[i], 5));
     expect(row.held).toBeCloseTo(.7, 5); expect(row.faded).toBeCloseTo(.175, 5); expect(row.gone).toBe(0);
@@ -211,8 +226,9 @@ test('16 throwers respect shared draw, texture, particle and per-face stain budg
     for (let i = 1; i < 16; i++) {
       f.peer(`crowd-${i}`, null, 0, placements[i % 4]); f.peer(`crowd-${i}`, 'egg_throw', 1);
     }
-    f.advance(32 / 30); const flights = f.count('flight'); f.advance(.8);
-    const shards = f.count('shells'), splats = f.splats().map(o => ({ width: o.scale.x, area: o.scale.x * o.scale.y, face: o.userData.face }));
+    const cfg = f.config.characters.fx.egg_throw;
+    f.advance(32 / 30); const flights = f.count('flight'); f.advance(cfg.flightSeconds);
+    const shards = f.count('shells'), yolk = f.count('yolk'), splats = f.splats().map(o => ({ width: o.scale.x, area: o.scale.x * o.scale.y, face: o.userData.face }));
     f.emit('emote:request', { id: 'cheer_clap' });
     for (let i = 1; i < 16; i++) f.peer(`crowd-${i}`, 'cheer_clap', 2);
     f.advance(8 / 30); f.render();
@@ -225,11 +241,12 @@ test('16 throwers respect shared draw, texture, particle and per-face stain budg
     for (const t of textures) resources.add(t);
     for (const r of resources) r.addEventListener('dispose', () => disposed++);
     f.instance.dispose(); f.instance.dispose();
-    return { flights, shards, splats, bytes, textures: textures.size, mipmaps: [...textures].some(t => t.generateMipmaps), extraCalls,
+    return { cfg, flights, shards, yolk, splats, bytes, textures: textures.size, mipmaps: [...textures].some(t => t.generateMipmaps), extraCalls,
       disposed, resources: resources.size, remained: f.ctx.scene.children.some(o => o.name.startsWith('EmoteFX_')) };
   });
-  expect(result.flights).toBe(16); expect(result.shards).toBe(128); expect(result.splats).toHaveLength(4);
-  for (const splat of result.splats) { expect(splat.width).toBeLessThanOrEqual(.7); expect(splat.area).toBeLessThanOrEqual((['north', 'south'].includes(splat.face) ? 96 : 48) * .0025 + 1e-8); }
+  expect(result.flights).toBe(result.cfg.maxConcurrentEffects); expect(result.shards).toBe(result.cfg.maxConcurrentEffects * result.cfg.maxParticles);
+  expect(result.yolk).toBe(result.cfg.maxConcurrentEffects * result.cfg.yolkParticles); expect(result.splats).toHaveLength(4);
+  for (const splat of result.splats) { expect(splat.width).toBeLessThanOrEqual(result.cfg.splatSizeMeters); expect(splat.area).toBeLessThanOrEqual((['north', 'south'].includes(splat.face) ? 96 : 48) * result.cfg.maxSplatAreaRatio + 1e-8); }
   expect(result.textures).toBe(4); expect(result.bytes).toBe(1048576); expect(result.mipmaps).toBe(false); expect(result.extraCalls).toBeLessThanOrEqual(9);
   expect(result.disposed).toBe(result.resources); expect(result.remained).toBe(false);
   console.log('T18 FX budgets', JSON.stringify(result));
@@ -240,11 +257,42 @@ test('reduced motion uses capped particles and a straight flight; a hidden-tab e
   const result = await page.evaluate(() => {
     f.emit('emote:request', { id: 'heart' }); f.advance(34 / 30); const hearts = f.count('heart');
     f.emit('emote:request', { id: 'egg_throw' }); f.advance(32 / 30); const start = f.point('flight');
-    f.advance(.4); const midpoint = f.point('flight');
+    f.advance(f.config.characters.fx.egg_throw.flightSeconds / 2); const midpoint = f.point('flight');
     Object.defineProperty(document, 'hidden', { configurable: true, value: true }); document.dispatchEvent(new Event('visibilitychange'));
     f.step(30);
     Object.defineProperty(document, 'hidden', { configurable: true, value: false }); document.dispatchEvent(new Event('visibilitychange')); f.step(0);
     return { hearts, straight: Math.abs(midpoint[1] - (start[1] + 3) / 2) < .001, expired: f.count('flight') + f.count('shells') + f.splats().length };
   });
   expect(result).toEqual({ hearts: 1, straight: true, expired: 0 });
+});
+
+test('T96: seated release is early at 30/60/144 Hz; a camera arm is local, low in view, and brief', async ({ page }) => {
+  await fixture(page, 'no-preference', {});
+  const result = await page.evaluate(() => {
+    const cfg = f.config.characters.fx.egg_throw, rows = [], arm = f.ctx.camera.getObjectByName('EggFirstPerson');
+    for (const fps of [30, 60, 144]) {
+      f.emit('seat:enter'); f.emit('emote:request', { id: 'egg_throw' }); f.advance(cfg.seatedReleaseSeconds / 2, 1 / fps);
+      const hand = arm.getObjectByName('EggFirstPersonHand').getWorldPosition(new f.THREE.Vector3()).project(f.ctx.camera);
+      const held = arm.visible && arm.getObjectByName('EggFirstPersonEgg').visible;
+      f.advance(cfg.seatedReleaseSeconds / 2 - .001, 1 / fps); const before = f.count('flight'); f.step(.001);
+      const released = f.count('flight'), eggHidden = !arm.getObjectByName('EggFirstPersonEgg').visible;
+      f.advance(cfg.firstPerson.seconds - cfg.seatedReleaseSeconds, 1 / fps); const ended = !arm.visible;
+      f.advance(4); f.emit('seat:exit'); f.emit('emote:request', { id: 'egg_throw' }); f.advance(cfg.seatedReleaseSeconds);
+      const standing = { arm: arm.visible, flight: f.count('flight') };
+      f.advance(4); f.peer('observer', null, 0);
+      f.emit('peer:state', { ...f.states.get('observer'), seated: true, emote: 'egg_throw', emoteSeq: fps });
+      f.advance(cfg.seatedReleaseSeconds); const remote = { arm: arm.visible, flight: f.count('flight') };
+      f.advance(4); rows.push({ fps, held, hand: hand.toArray(), before, released, eggHidden, ended, standing, remote });
+    }
+    f.emit('seat:enter'); f.emit('emote:request', { id: 'egg_throw' }); f.advance(.05);
+    arena.screen.fullMode = true; f.step(0); const fullHidden = !arm.visible; arena.screen.fullMode = false;
+    f.emit('seat:exit'); f.step(0); const stoodHidden = !arm.visible;
+    f.instance.dispose(); return { rows, fullHidden, stoodHidden, disposed: !arm.parent };
+  });
+  for (const row of result.rows) {
+    expect(row).toMatchObject({ held: true, before: 0, released: 1, eggHidden: true, ended: true,
+      standing: { arm: false, flight: 0 }, remote: { arm: false, flight: 1 } });
+    expect(Math.abs(row.hand[0])).toBeLessThan(1); expect(row.hand[1]).toBeGreaterThan(-1); expect(row.hand[1]).toBeLessThan(0);
+  }
+  expect(result).toMatchObject({ fullHidden: true, stoodHidden: true, disposed: true });
 });

@@ -1,8 +1,105 @@
 import { test, expect } from '@playwright/test';
 import { readFileSync } from 'node:fs';
+import * as THREE from '../web/vendor/three.module.js';
 
 const config = JSON.parse(readFileSync(new URL('../web/config/environment.json', import.meta.url), 'utf8'));
 const oldLighting = JSON.parse(readFileSync(new URL('../web/lighting-config.json', import.meta.url), 'utf8'));
+
+test('T90 CPU: atlas intensity scales preserve RGBM range and default atlases, including zero', async () => {
+  const source = readFileSync(new URL('../web/baked-lighting.js', import.meta.url), 'utf8')
+    .replace("'three'", JSON.stringify(new URL('../web/vendor/three.module.js', import.meta.url).href));
+  const { applyBakedLightmaps } = await import('data:text/javascript;base64,' + Buffer.from(source).toString('base64'));
+  const root = new THREE.Group(), originals = [], textures = [];
+  const load = THREE.TextureLoader.prototype.loadAsync;
+  THREE.TextureLoader.prototype.loadAsync = async () => { const texture = new THREE.Texture();textures.push(texture);return texture; };
+  try {
+    for (const atlas of ['bowl', 'seats', 'stage', 'interior']) {
+      const geometry = new THREE.PlaneGeometry(), material = new THREE.MeshStandardMaterial();
+      const mesh = new THREE.Mesh(geometry, material);mesh.name = atlas === 'stage' ? 'REF_Jumbotron_0' : atlas;originals.push(material);
+      geometry.setAttribute('_lightmap_uv', geometry.getAttribute('uv'));
+      mesh.userData.bakedLighting = { texture: `./lightmaps/${atlas}-v2.png`, range: 32, uvAttribute: '_lightmap_uv' };
+      root.add(mesh);
+    }
+    await applyBakedLightmaps(root, { './lightmaps/bowl-v2.png': .6, './lightmaps/seats-v2.png': 0 }, 2);
+    expect(root.children.map(mesh => mesh.material.emissiveIntensity)).toEqual([1, 1, 2, 1]);
+    expect(root.children.map(mesh => mesh.material.lightMapIntensity / Math.PI)).toEqual([.6, 0, 1, 1]);
+    for (const mesh of root.children) {
+      const shader = { uniforms: {}, fragmentShader: '' };mesh.material.onBeforeCompile(shader);
+      expect(shader.uniforms.bakedLightRange.value).toBe(32);
+    }
+    for (const value of [-1, NaN, Infinity]) {
+      await expect(applyBakedLightmaps(new THREE.Group(), { './lightmaps/bowl-v2.png': value })).rejects.toThrow('Invalid lightmap intensity');
+      await expect(applyBakedLightmaps(new THREE.Group(), {}, value)).rejects.toThrow('Invalid screen intensity');
+    }
+  } finally {
+    THREE.TextureLoader.prototype.loadAsync = load;
+    for (const mesh of root.children) { mesh.geometry.dispose();mesh.material.dispose(); }
+    for (const material of originals) material.dispose();
+    for (const texture of textures) texture.dispose();
+  }
+});
+
+test('T90 exposure, per-atlas intensity and configured light count reach the arena without dimming photos', async ({ page }) => {
+  await openArena(page);
+  await page.waitForFunction(() => {
+    const photos = [];environmentProbe.ctx.root.traverse(mesh => { if (mesh.userData.screenFace && mesh.material?.isMeshBasicMaterial) photos.push(mesh); });
+    return photos.length === 3 && photos.every(mesh => mesh.material.map?.image?.width > 0);
+  });
+  const result = await page.evaluate(() => {
+    const { ctx } = environmentProbe, { renderer, root, THREE } = ctx, intensities = {}, photos = [], posters = [];
+    root.traverse(mesh => {
+      for (const material of Array.isArray(mesh.material) ? mesh.material : [mesh.material]) {
+        if (material?.lightMap) intensities['./lightmaps/' + material.lightMap.image.src.split('/').pop()] = material.lightMapIntensity / Math.PI;
+      }
+      if (mesh.userData.screenFace) (mesh.material?.isMeshBasicMaterial ? photos : posters).push(mesh);
+    });
+    // Use the canvas: Three skips tone mapping for ordinary render targets.
+    const scene = new THREE.Scene(), camera = new THREE.OrthographicCamera(-1, 1, 1, -1, .1, 10);
+    camera.position.z = 2;
+    const geometry = new THREE.PlaneGeometry(2, 2), mismatches = [], maxChanges = [], photoPixels = [];
+    geometry.setAttribute('uv3', geometry.getAttribute('uv'));
+    const viewport = renderer.getViewport(new THREE.Vector4()), gl = renderer.getContext(), side = Math.floor(32 * renderer.getPixelRatio());
+    const exposure = renderer.toneMappingExposure;
+    renderer.setRenderTarget(null);renderer.setViewport(0, 0, 32, 32);
+    try {
+      for (const photo of [...photos, ...posters]) {
+        const mesh = new THREE.Mesh(geometry, photo.material);scene.add(mesh);
+        const intensity = photo.material.emissiveIntensity;
+        const buffers = [1, exposure].map(value => {
+          if (!photo.material.isMeshBasicMaterial) photo.material.emissiveIntensity = value === 1 ? 1 : intensity;
+          renderer.toneMappingExposure = value;renderer.render(scene, camera);
+          const data = new Uint8Array(side * side * 4);gl.readPixels(0, 0, side, side, gl.RGBA, gl.UNSIGNED_BYTE, data);return data;
+        });
+        if (!photo.material.isMeshBasicMaterial) photo.material.emissiveIntensity = intensity;
+        mismatches.push(buffers[0].filter((value, i) => value !== buffers[1][i]).length);
+        maxChanges.push(buffers[0].reduce((max, value, i) => Math.max(max, Math.abs(value - buffers[1][i])), 0));
+        photoPixels.push(buffers[0].filter((value, i) => i % 4 !== 3 && value > 0).length);scene.remove(mesh);
+      }
+    } finally { renderer.setViewport(viewport);renderer.toneMappingExposure = exposure;geometry.dispose(); }
+    return { exposure, intensities, lights: arena.lighting.dynamicLights.map(light => light.name),
+      photoCount: photos.length, photoToneMapped: photos.map(photo => photo.material.toneMapped), mismatches, maxChanges, photoPixels,
+      posters: posters.map(mesh => ({ intensity: mesh.material.emissiveIntensity, color: mesh.material.color.toArray() })),
+      videoFilter: getComputedStyle(ctx.cssLayer).filter };
+  });
+  expect(oldLighting.exposureEV).toBeLessThan(0);
+  expect(result.exposure).toBe(2 ** oldLighting.exposureEV);
+  for (const [path, intensity] of Object.entries(result.intensities)) expect(intensity).toBeCloseTo(oldLighting.lightMapIntensity[path] ?? 1, 8);
+  expect(result.intensities['./lightmaps/bowl-v2.png']).toBeLessThan(1);
+  expect(result.intensities['./lightmaps/seats-v2.png']).toBeLessThan(1);
+  expect(result.intensities['./lightmaps/stage-v2.png']).toBe(1);
+  expect(result.intensities['./lightmaps/interior-v2.png']).toBe(1);
+  expect(result.lights).toHaveLength(11);
+  for (const name of oldLighting.disabledLights) expect(result.lights).not.toContain(name);
+  expect(result.photoCount).toBeGreaterThan(0);
+  expect(result.photoToneMapped.every(value => value === false)).toBe(true);
+  expect(result.mismatches.slice(0, result.photoCount).every(value => value === 0)).toBe(true);
+  expect(result.maxChanges.every(value => value <= 1)).toBe(true);
+  expect(result.posters).toHaveLength(1);
+  expect(result.posters[0].intensity).toBeCloseTo(2 ** (oldLighting.screenExposureEV - oldLighting.exposureEV), 8);
+  expect(result.posters[0].color).toEqual([0, 0, 0]);
+  expect(result.photoPixels.every(value => value > 0)).toBe(true);
+  expect(result.videoFilter).toBe('none');
+});
 
 async function openArena(page) {
   await page.route('**/modules.js', async route => {

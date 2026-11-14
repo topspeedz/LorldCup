@@ -30,7 +30,7 @@ const uniform = page => page.evaluate(() => {
   const canvas = document.createElement('canvas'), c = canvas.getContext('2d');
   c.drawImage(material.map.image, 0, 0);
   const pixel = [...c.getImageData(20, 20, 1, 1).data].slice(0, 3);
-  return { map: material.map.uuid, color: '#' + pixel.map(n => n.toString(16).padStart(2, '0')).join(''),
+  return { map: material.map.uuid, src: material.map.image.src ?? null, color: '#' + pixel.map(n => n.toString(16).padStart(2, '0')).join(''),
     legacySame: arena.avatar.userData.material === window.__avatarMaterial, legacyColor: arena.avatar.userData.material.color.getHexString() };
 });
 
@@ -73,7 +73,8 @@ test('picking a team and a character sends events; picking again changes the Uni
   await expect(d.getByRole('button', { name: characters.names[characters.default] })).toHaveAttribute('aria-pressed', 'false');
   expect(await picks(page)).toEqual([['team:changed', { teamId: a.id }], ['character:changed', { characterId: other }]]);
   const first = await uniform(page);
-  expect(first.color).toBe(a.color.toLowerCase());
+  // T69: the uniform is the team's picture in teams.json (the same one the crowd wears), not a flat team colour.
+  expect(first.src).toBe(new URL(a.uniform, page.url()).href);
   expect(first.map).not.toBe(before.map);
   expect(first.legacySame).toBe(true);
   expect(first.legacyColor).toBe(before.legacyColor);
@@ -84,7 +85,7 @@ test('picking a team and a character sends events; picking again changes the Uni
   await expect(d.getByRole('button', { name: b.name })).toHaveAttribute('aria-pressed', 'true');
   expect((await picks(page)).slice(2)).toEqual([['team:changed', { teamId: b.id }], ['character:changed', { characterId: characters.default }]]);
   const second = await uniform(page);
-  expect(second.color).toBe(b.color.toLowerCase());
+  expect(second.src).toBe(new URL(b.uniform, page.url()).href);
   expect(second.map).not.toBe(first.map);
   expect(second.legacySame).toBe(true);
   expect(second.legacyColor).toBe(before.legacyColor);

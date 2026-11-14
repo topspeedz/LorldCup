@@ -1,0 +1,8 @@
+{
+  "uniformColor": "#7fdcff",
+  "staff": [
+    { "character": "fan_f1", "position": [-106, -0.02, -4.7], "yaw": -1.5707963267948966 },
+    { "character": "fan_m1", "position": [-106, -0.02, 4.8], "yaw": -1.5707963267948966 },
+    { "character": "fan_m2", "position": [-105, -0.02, 3.8], "yaw": -1.5707963267948966 }
+  ]
+}

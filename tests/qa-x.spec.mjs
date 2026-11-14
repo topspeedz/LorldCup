@@ -192,6 +192,9 @@ return new N(id,{...o,host:'127.0.0.1',port:${port},path:'/signal/',secure:false
     expect(room.roundStart % 600_000, 'roundStart is a showtime boundary').toBe(0);
     const crowdNow = page => page.evaluate(async () => { const t0 = arena.crowd.time; await new Promise(r => setTimeout(r, 500));
       return { meshes: arena.crowd.meshes.length, moving: arena.crowd.time !== t0 }; });
+    // T80 (user decision): the AI crowd lives only inside the arena (hidden and paused outside), so watch it from inside.
+    expect((await crowdNow(host.page)).moving, 'outside the arena the crowd is hidden and still').toBe(false);
+    await host.page.evaluate(() => arena.go('arena'));
     const crowd0 = await crowdNow(host.page);
     expect(crowd0.moving).toBe(true);
 

@@ -33,7 +33,8 @@ async function boot(page, { url = '/', size = { width: 1280, height: 720 }, cloc
     events.addEventListener('app:enter', e => __enters.push(e.detail));
   });
 }
-const ready = page => page.waitForFunction(() => window.arena?.ready, null, { timeout: 120_000 });
+// T73: the app is ready to enter once the arena and the character are loaded (ui/loading.js isReady); app:enter waits for both.
+const ready = page => page.waitForFunction(() => window.arena?.ready && window.arena.character?.ready, null, { timeout: 120_000 });
 const enter = async page => { await ready(page); await page.locator('#enter').click(); };
 const box = (page, sel) => page.evaluate(s => { const r = document.querySelector(s)?.getBoundingClientRect(); return r && { l: r.left, t: r.top, r: r.right, b: r.bottom, w: r.width, h: r.height }; }, sel);
 const meets = (a, b) => Math.min(a.r, b.r) > Math.max(a.l, b.l) && Math.min(a.b, b.b) > Math.max(a.t, b.t);
@@ -53,8 +54,8 @@ test('BL-0035 first page: one chosen broadcast card, three next showtimes with t
   await expect(page.locator('#panel h1')).toHaveText('어떤 경기를 볼까요?');
   const first = Math.ceil(FIXED / INTERVAL) * INTERVAL;
   const times = await page.locator('#showtimes button[data-showtime]').evaluateAll(bs => bs.map(b => [Number(b.dataset.showtime), b.getAttribute('aria-pressed'), b.textContent]));
-  expect(times.map(t => t[0])).toEqual([first, first + INTERVAL, first + 2 * INTERVAL]); // 20:10·20:20·20:30, not 20:00
-  expect(times.map(t => t[1])).toEqual(['true', 'false', 'false']);
+  expect(times.map(t => t[0])).toEqual([first - INTERVAL, first, first + INTERVAL, first + 2 * INTERVAL]); // T88: 20:00 상영 중, then 20:10·20:20·20:30
+  expect(times.map(t => t[1])).toEqual(['false', 'true', 'false', 'false']);
   for (const [, , label] of times) expect(label).toMatch(/^\d{2}:\d{2}$/);
   await page.locator(`#showtimes button[data-showtime="${first + INTERVAL}"]`).click();
   expect(await page.locator('#showtimes [aria-pressed=true]').count()).toBe(1);
@@ -102,7 +103,7 @@ test('BL-0035 invite link skips the first page: invite line, notice, 들어가�
 
 test('BL-0035 waiting: after 들어가기 with a later showtime, one "N분 뒤 시작해요" line, no window, walking still works', async ({ page }) => {
   await boot(page);
-  await page.locator(`#showtimes button`).nth(2).click(); // 20:30 → 27 minutes away
+  await page.locator(`#showtimes button`).nth(3).click(); // 20:30 → 27 minutes away (T88: nth(0) is the running round)
   await enter(page);
   await expect.poll(() => page.evaluate(() => arena.screen.state.status)).toBe('waiting');
   const line = page.locator('#showtime-wait');

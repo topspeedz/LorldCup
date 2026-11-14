@@ -16,6 +16,7 @@ const css=`
 #ticket .card small{display:block;font-size:var(--font-size-xs);letter-spacing:var(--letter-spacing-label);margin-top:var(--space-1)}
 #ticket .opened{margin-top:var(--space-4)}#ticket .opened h3{margin:0 0 var(--space-1);font-size:var(--font-size-md)}#ticket .opened h3::before{content:'● ';color:var(--color-accent)}
 #ticket .go{width:100%;padding:var(--space-3)}
+#ticket .preparing{margin:0;padding:var(--space-5) 0;font-size:var(--font-size-xl);font-weight:var(--font-weight-bold);color:var(--color-text)}
 #ticket-reopen{padding:var(--space-2) var(--space-3);background:rgb(7 18 29/var(--panel-alpha-hud));border:0;border-left:3px solid var(--color-accent);border-radius:var(--radius-sm)}
 @keyframes ticket-in{from{opacity:0;transform:translate(-50%,-50%) scale(.96)}}
 @keyframes ticket-card{from{opacity:0;transform:perspective(600px) rotateY(180deg)}}
@@ -43,14 +44,16 @@ export function create(ctx){
  mark.name='Ticket_GateMark';mark.position.set(b.x-.15,y0+.01,(z0+z1)/2);scene.add(mark);
 
  let team=null,issued=false,issuing=false,opened=false,dismissed=false,near=false,timer=0;
+ let disposed=false;
 
  const style=document.createElement('style');style.textContent=css;
  const root=document.createElement('section');
  root.id='ticket';root.hidden=true;root.setAttribute('role','dialog');root.setAttribute('aria-label','입장 티켓');
  root.innerHTML=`<span class="tag">입장 티켓</span><div class="pick"><h2>응원할 팀 고르기</h2><p>팀을 고르면 바로 티켓이 나오고 입구가 열립니다.</p><div class="teams" role="group" aria-label="응원할 팀"></div></div>
-<div class="slot" aria-live="polite"></div><button type="button" class="close" aria-label="티켓 창 닫기">✕</button>`;
+<p class="preparing" role="status" hidden>티켓팅 중...</p><div class="slot" aria-live="polite"></div><button type="button" class="close" aria-label="티켓 창 닫기">✕</button>`;
  uiRoot.append(style);document.body.append(root); // on <body>, above the static HUD boxes
  const pick=root.querySelector('.pick'),slot=root.querySelector('.slot'),closeButton=root.querySelector('.close');
+ const preparing=root.querySelector('.preparing');
  // A pick goes out as TEAM_CHANGED, so the character, the room and the team picker all follow it; onTeam below issues the ticket.
  const teamButtons=teams.map(t=>{
   const b=document.createElement('button');b.type='button';b.textContent=t.name;
@@ -68,7 +71,7 @@ export function create(ctx){
  };
  closeButton.addEventListener('click',()=>{dismissed=true;root.hidden=true;});
  reopen.addEventListener('click',()=>{dismissed=false;show();});
- root.addEventListener('keydown',e=>{if(e.key==='Escape'&&!issued){e.stopPropagation();dismissed=true;root.hidden=true;}});
+ root.addEventListener('keydown',e=>{if(e.key==='Escape'&&!issued&&!issuing){e.stopPropagation();dismissed=true;root.hidden=true;}});
 
  function setObjective(){
   if(!objective)return;
@@ -78,13 +81,26 @@ export function create(ctx){
  }
  function issue(){
   issuing=true;
+  pick.hidden=true;closeButton.hidden=true;preparing.hidden=false;root.hidden=false;root.setAttribute('aria-busy','true');
+  ctx.prepareCrowd().then(()=>{
+   if(disposed)return;
+   preparing.hidden=true;root.removeAttribute('aria-busy');showCard();
+  }).catch(error=>{
+   if(disposed)return;
+   preparing.textContent='입장 준비에 실패했습니다. 새로고침해 주세요.';root.removeAttribute('aria-busy');console.error('Crowd preparation failed',error);
+  });
+ }
+ function showCard(){
   const card=document.createElement('div');
   card.className='card';card.setAttribute('role','img');card.setAttribute('aria-label',`${team.name} 입장 티켓`);
   card.style.setProperty('--card-ms',cfg.cardMs+'ms');
   card.style.background=team.color;card.style.borderColor=team.accent;card.style.color=textOn(team.color);
   card.innerHTML=`<span></span><small>WORLDS 2026 · ADMIT ONE</small>`;card.firstChild.textContent=team.name;
-  pick.hidden=true;closeButton.hidden=true;slot.append(card);if(near)root.hidden=false; // a pick in the 팀·캐릭터 picker away from the gate issues quietly
-  timer=setTimeout(()=>{
+  slot.append(card);
+  timer=setTimeout(finishIssue,cfg.cardMs);
+ }
+ function finishIssue(){
+   if(disposed||issued)return;
    issued=true;player.removeBlocker(gate);
    mark.material.color.set(markColor.open);mark.material.opacity=1;
    const done=document.createElement('div');done.className='opened';
@@ -93,7 +109,6 @@ export function create(ctx){
    slot.append(done);opened=true;setObjective();
    if(!root.hidden)done.querySelector('.go').focus();
    events.dispatchEvent(new CustomEvent(TICKET_ISSUED,{detail:{teamId:team.id}}));
-  },cfg.cardMs);
  }
  // Any team pick issues the ticket (this popup or the 팀·캐릭터 picker); later picks change only the team, not the ticket.
  const onTeam=e=>{const t=teams.find(t=>t.id===e.detail?.teamId);if(t&&!issuing){team=t;issue();}};
@@ -111,6 +126,7 @@ export function create(ctx){
    setObjective();
   },
   dispose(){
+   disposed=true;
    clearTimeout(timer);
    events.removeEventListener(TEAM_CHANGED,onTeam);
    for(const mesh of [gate,...glass]){player.removeBlocker(mesh);mesh.geometry.dispose();}

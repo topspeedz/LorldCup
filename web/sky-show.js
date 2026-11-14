@@ -49,7 +49,7 @@ gl_FragColor=vec4(beamColor,opacity*edge*fade);
  return {
   update(_dt,now){
    if(disposed)return;
-   if(document.hidden){lastNow=null;return;}
+   if(document.hidden||!group.visible){lastNow=null;return;}
    if(lastNow!==null)elapsed+=Math.max(0,now-lastNow);lastNow=now;
    const reduced=reducedMotion.matches;
    const angle=reduced?0:Math.sin(elapsed*2*Math.PI/(beamConfig.periodSeconds*1000))*THREE.MathUtils.degToRad(beamConfig.angleDegrees);

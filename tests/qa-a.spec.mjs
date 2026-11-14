@@ -27,9 +27,13 @@ async function openApp(page, { fakeFullscreen = true } = {}) {
   });
   await page.setViewportSize({ width: 960, height: 640 });
   await page.goto('/');
-  await page.waitForFunction(() => window.arena?.ready && window.arena.screen, null, { timeout: 120_000 });
+  // T71b/FX2: loading waits for the character before app:enter (T73), and entry applies the chosen showtime.
+  // Follow the user flow: enter once the character is ready, check the screen took the chosen showtime, then go 30 s into it.
+  await page.waitForFunction(() => window.arena?.ready && window.arena.screen && arena.character?.ready, null, { timeout: 120_000 });
+  const showtime = Number(await page.locator('#showtimes button[aria-pressed="true"]').getAttribute('data-showtime'));
   await page.locator('#enter').click();
-  await page.clock.setFixedTime(await page.evaluate(() => arena.screen.roundStart + 30_000));
+  expect(await page.evaluate(() => arena.screen.roundStart)).toBe(showtime);
+  await page.clock.setFixedTime(showtime + 30_000);
   return errors;
 }
 
@@ -227,7 +231,7 @@ test('A seat: E sits on a configured seat, the playing screen is larger at 45°,
   // Approach the first seat facing the screen (same approach as seat.spec).
   await page.evaluate(seat => {
     const { THREE, root, player, cameraRig } = qaA.ctx, [x, y, z] = seat.position;
-    const approach = [x, y, z - Math.sign(z) * 1.2, Math.atan2(x, z)];
+    const approach = [...seat.standPosition, Math.atan2(x, z)];
     approach[1] = player.groundAt(approach[0], approach[2], y);
     player.teleport(approach);
     const screen = new THREE.Box3();
@@ -289,6 +293,6 @@ test('A seat: E sits on a configured seat, the playing screen is larger at 45°,
   // T31 full-mode.md UX-F-R05·F-D3 (with seat.md S-D1): leaving Full Mode from a seat returns to the seated view with the cursor free.
   expect(afterFull).toEqual({ seatId: seats.seats[0].id, fov: seats.camera.fov, walking: false });
   expect(stood.fov).toBe(standing.fov);
-  expect(stood.pos).toEqual(standing.pos);
+  stood.pos.forEach((value, axis) => expect(value).toBeCloseTo(seats.seats[0].standPosition[axis], 3));
   expect(errors).toEqual([]);
 });

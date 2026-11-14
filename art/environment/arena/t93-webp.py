@@ -1,0 +1,9 @@
+"""Reuse T75's lossless image conversion without changing decoded texture pixels."""
+from pathlib import Path
+ART = Path(__file__).resolve().parent
+source = (ART / 't75-webp.py').read_text(encoding='utf-8').replace("OUT = ROOT / 'temp/T75'", "OUT = ROOT / 'temp/T93'")
+source = source.replace("'arena-quantized.glb'", "'arena-ready.glb'")
+source = source.replace("final_path = OUT / 'arena-final.glb'", "final_path = ROOT / 'web/arena-v2.glb'")
+source = source.replace("cached[image['bufferView']]", "cached[image.get('name')]")
+source = source.replace("cached.get(image['bufferView'])", "cached.get(image.get('name'))")
+exec(compile(source, str(ART / 't75-webp.py'), 'exec'), globals())

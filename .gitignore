@@ -15,3 +15,5 @@ renders/
 *.blend1
 *.zip
 web/arena.glb
+
+.claude/.stop-hook-runs

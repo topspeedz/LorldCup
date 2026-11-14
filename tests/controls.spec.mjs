@@ -138,7 +138,7 @@ test('emote menu suspends movement and restores it without pointer lock', async 
   await fixture(page);
   await page.locator('#enter').click();
   expect(await page.evaluate(() => document.pointerLockElement)).toBeNull();
-  await page.keyboard.press('Alt');
+  await page.keyboard.press('Control');
   const menu = page.getByRole('dialog', { name: '감정표현' });
   await expect(menu).toBeVisible();
   await expect.poll(() => page.evaluate(() => document.pointerLockElement === null)).toBe(true);
@@ -163,7 +163,7 @@ test('arena cursor after emote return and drag release has no native pointer loc
   await page.locator('#enter').click();
   await expect.poll(() => page.evaluate(() => arena.state.walking)).toBe(true);
   expect(await page.evaluate(() => document.pointerLockElement)).toBeNull();
-  await page.keyboard.press('Alt');
+  await page.keyboard.press('Control');
   await page.getByRole('dialog', { name: '감정표현' }).getByRole('button', { name: '화내기' }).click();
   await expect.poll(() => page.evaluate(() => arena.state.walking)).toBe(true);
   await page.mouse.down();

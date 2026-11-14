@@ -1,5 +1,11 @@
 {
-  "exposureEV": 0.0,
+  "exposureEV": -0.5,
+  "screenExposureEV": 0,
+  "lightMapIntensity": {
+    "./lightmaps/bowl-v2.png": 0.79,
+    "./lightmaps/seats-v2.png": 0.84
+  },
+  "disabledLights": [],
   "backgroundStrength": 0.017999999225139618,
   "lights": [
     {
