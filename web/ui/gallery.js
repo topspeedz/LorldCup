@@ -12,7 +12,7 @@ export function create(ctx){
   body:not(.touch)[data-hud=seated] #dock>#gallery-open{margin-left:0}
   #gallery-tools{position:fixed;top:var(--edge,12px);z-index:var(--z-hud,auto);display:flex;flex-direction:column;gap:var(--space-2,8px)}#gallery-tools[hidden]{display:none}
   #gallery-tools button{min-height:var(--size-target-touch,44px);white-space:nowrap;background:rgb(7 18 29/var(--panel-alpha,.91))}
-  #gallery-tools [data-do=auto]{font-size:var(--font-size-xs,12px)}
+  #gallery-tools :is([data-do=auto],[data-do=tab]){font-size:var(--font-size-xs,12px)}
   #gallery-tools [data-zoom]{text-align:center;font-size:var(--font-size-xs,12px);font-variant-numeric:tabular-nums;color:var(--color-text,#edf6ff);text-shadow:var(--text-shadow-hud,0 1px 2px #000000b3)}
   #gallery-tools button[aria-pressed=true]{background:var(--color-accent,#7fdcff);border-color:var(--color-accent,#7fdcff);color:var(--color-text-on-accent,#082338);font-weight:var(--font-weight-bold,700)}
   #gallery-open[aria-expanded=true]{background:var(--color-panel-hover);border-color:var(--color-accent)}`;
@@ -21,7 +21,7 @@ export function create(ctx){
  button.title='게시판을 왼쪽에 열기';button.setAttribute('aria-expanded','false');
  // Beside the panel: reload now, and reload every minute. The page is another site's, so a reload can only load the list again.
  const tools=document.createElement('div');tools.id='gallery-tools';tools.hidden=true;
- tools.innerHTML='<button type="button" data-do="reload">새로고침</button><button type="button" data-do="auto" aria-pressed="false">1분마다 새로고침</button><button type="button" data-do="in" aria-label="글씨 크게">＋</button><span data-zoom role="status"></span><button type="button" data-do="out" aria-label="글씨 작게">－</button>';
+ tools.innerHTML='<button type="button" data-do="reload">새로고침</button><button type="button" data-do="auto" aria-pressed="false">1분마다 새로고침</button><button type="button" data-do="tab" title="글쓰기·댓글은 새 탭에서">새 탭에서 열기</button><button type="button" data-do="in" aria-label="글씨 크게">＋</button><span data-zoom role="status"></span><button type="button" data-do="out" aria-label="글씨 작게">－</button>';
  const [reloadButton,autoButton]=tools.children;let auto=0;
  const reload=()=>{const frame=panel.querySelector('iframe');if(frame)frame.src=URL_;};
  const setAuto=on=>{clearInterval(auto);auto=on?setInterval(reload,60000):0;autoButton.setAttribute('aria-pressed',String(on));};
@@ -32,6 +32,8 @@ export function create(ctx){
  tools.querySelector('[data-do=in]').addEventListener('click',()=>setZoom(zoom+10));
  tools.querySelector('[data-do=out]').addEventListener('click',()=>setZoom(zoom-10));
  setZoom(zoom);
+ // Writing needs the site's own cookies, which browsers hold back inside another site's frame: open the board in its own tab for that.
+ tools.querySelector('[data-do=tab]').addEventListener('click',()=>window.open(URL_,'_blank','noopener'));
  reloadButton.addEventListener('click',reload);autoButton.addEventListener('click',()=>setAuto(!auto));
  uiRoot.append(style,panel,tools);(document.querySelector('#dock')||uiRoot).append(button);
  // Fit between the left edge and the video so the player is not covered; under 280px of room the panel keeps 280px.
@@ -43,7 +45,7 @@ export function create(ctx){
   tools.style.left=`${Math.round(panel.getBoundingClientRect().right+8)}px`;
  };
  function open(){
-  const frame=document.createElement('iframe');frame.title='갤러리 게시판';frame.src=URL_;frame.referrerPolicy='no-referrer';
+  const frame=document.createElement('iframe');frame.title='갤러리 게시판';frame.src=URL_;
   fit();timer=setInterval(fit,500);panel.replaceChildren(frame);panel.hidden=false;tools.hidden=false;fit();button.setAttribute('aria-expanded','true');
  }
  function close(){clearInterval(timer);setAuto(false);tools.hidden=true;panel.hidden=true;panel.replaceChildren();button.setAttribute('aria-expanded','false');}

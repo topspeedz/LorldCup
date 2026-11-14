@@ -132,6 +132,8 @@ export function create(ctx){
   #css-layer[data-screen-full] #arena-screen-source,#css-layer[data-screen-full] #arena-screen-notice{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   #arena-screen-controls [data-full-state]{margin-left:auto;flex:none;padding:0 var(--space-2,8px);border:var(--border-width,1px) solid var(--color-accent,#7fdcff);border-radius:var(--radius-sm,3px);color:var(--color-accent,#7fdcff);font:var(--font-weight-bold,700) var(--font-size-xs,12px)/var(--size-keycap,20px) var(--font-family,system-ui)}
   #arena-screen-controls #full-mode-close{flex:none;white-space:nowrap;padding-inline:var(--space-4,16px)}
+  /* Mouse and keyboard: Full Mode is the video alone, edge to edge, with no bar; Esc or F leaves. Touch keeps the bar, its only way out. */
+  body:not(.touch) #css-layer[data-screen-full]{--bar-h:0px}body:not(.touch) #css-layer[data-screen-full] #arena-screen-controls{display:none}
   @media(max-width:650px){
    #css-layer[data-screen-full]{--bar-h:calc(var(--size-keycap,20px) + var(--size-target-touch,44px) + var(--space-1,4px)*3)}
    #css-layer[data-screen-full] #arena-screen-controls{flex-wrap:wrap;align-content:center;row-gap:var(--space-1,4px)}
