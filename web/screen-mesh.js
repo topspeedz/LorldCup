@@ -1,3 +1,4 @@
+import {isModelTeam} from './team-theme.js';
 export function createScreenMesh({THREE,root,config}){
  const screen=config('screen'),settings=screen.mesh,originals=[],meshes=[],surfaces=[],photos=new Map(),group=new THREE.Group();group.name='ArenaScreenMesh';
  root.updateMatrixWorld(true);
@@ -41,7 +42,15 @@ export function createScreenMesh({THREE,root,config}){
      uv.setXY(i,point.dot(right)/Math.hypot(size.x,size.z)+.5,point.y/size.y+.5);
     }
     photoGeometry.setAttribute('uv',uv);
-    surfaces.push({mesh:replacement,geometry:mesh.geometry,material:mesh.material,photoGeometry});
+    // The model's idle artwork shows GEN.G (Artwork_G) or BLG (Artwork_B); another match shows its own team's backdrop.
+    const slot=/Artwork_B/.test(mesh.material.name)?'BLG':/Artwork_G/.test(mesh.material.name)?'GEN.G':null,team=(config('teams')?.teams||[]).find(t=>t.slot===slot);
+    let idle={geometry:mesh.geometry,material:mesh.material};
+    if(team?.backdrop&&!isModelTeam(team)){
+     const map=new THREE.TextureLoader().load(team.backdrop);map.colorSpace=THREE.SRGBColorSpace;
+     idle={geometry:photoGeometry,material:new THREE.MeshBasicMaterial({map,toneMapped:false,side:mesh.material.side}),owned:true};
+     replacement.geometry=idle.geometry;replacement.material=idle.material;
+    }
+    surfaces.push({mesh:replacement,...idle,photoGeometry});
     const path=screen.photos[mesh.name];
     if(path){
      const map=new THREE.TextureLoader().load(path);map.colorSpace=THREE.SRGBColorSpace;
@@ -62,5 +71,5 @@ export function createScreenMesh({THREE,root,config}){
  }
  setVideoFace(screen.videoFace);
  root.add(group);root.updateMatrixWorld(true);
- return {meshes,setVideoFace,dispose(){group.removeFromParent();for(const {photoGeometry} of surfaces)photoGeometry.dispose();for(const material of photos.values()){material.map.dispose();material.dispose();}for(const {mesh,visible} of originals)mesh.visible=visible;}};
+ return {meshes,setVideoFace,dispose(){group.removeFromParent();for(const {photoGeometry,material,owned} of surfaces){photoGeometry.dispose();if(owned){material.map.dispose();material.dispose();}}for(const material of photos.values()){material.map.dispose();material.dispose();}for(const {mesh,visible} of originals)mesh.visible=visible;}};
 }

@@ -66,7 +66,7 @@ export function create(ctx){
  let source=playbackSource(),roundStart=Number.isFinite(initialRound)?initialRound:currentRound(),inRoom=Number.isFinite(initialRound),fullMode=false,disposed=false,entered=false;
  let player=null,ready=false,cueing=false,starting=false,eligible=false,inView=false,hasImage=false,status='loading',error=null;
  let muted=config.muted,face=null,lastSync=0,lastState='',loadTimer,playTimer,retryTimer,startFrame,retryDelay=3000,playbackTimeouts=0,sourceVersion=0;
- let waitStarted=null,retryFailures=0,retryNoticeTimer,lastFailure='';
+ let videoId=null,waitStarted=null,retryFailures=0,retryNoticeTimer,lastFailure='';
  let seated=false,sourceStarted=false,effectiveVolume=config.volume,broadcast=null;
  const waitLimit=config.retry.waitLimitSeconds*1000;
  const isWaiting=()=>entered&&source==='vod'&&roundPosition(Date.now(),roundStart,0).seconds<0;
@@ -310,6 +310,7 @@ export function create(ctx){
   cancelAnimationFrame(startFrame);clearTimeout(retryTimer);
   clearTimeout(playTimer);playTimer=null;clearTimeout(loadTimer);cueing=true;starting=false;sourceStarted=false;hasImage=false;error=null;status=isWaiting()?'waiting':'loading';display();
   waitStarted??=performance.now();
+  videoId=info?.id||null;
   if(!info){if(!fallbackLive())fallback('영상 주소가 없거나 올바른 유튜브 주소가 아닙니다.');return;}
   if(retryFailures)showRetryNotice();else{notice.textContent='유튜브 연결 중…';notice.hidden=isWaiting();}emit();
   try{
@@ -426,7 +427,7 @@ export function create(ctx){
  }
  scene.onBeforeRender=beforeRender;
  // A hidden tab (Alt+Tab, another window on top) keeps playing: the picture and sound go on (사용자 2026-11-14).
- const api={get state(){return state();},get source(){return source;},get schedule(){return {source:playbackSource(),slot:slot?{...slot}:null,fallback:scheduledFallback};},get face(){return face;},get faces(){return faces.map(({name,position,normal,width,height})=>({name,position:position.toArray(),normal:normal.toArray(),width,height}));},get roundStart(){return roundStart;},get fullMode(){return fullMode;},element,fullModeElement:cssLayer,controlsElement:controls,enterFullMode,exitFullMode,setSource,play,pause,setMuted,setVolume};
+ const api={get state(){return state();},get source(){return source;},get schedule(){return {source:playbackSource(),slot:slot?{...slot}:null,fallback:scheduledFallback};},get face(){return face;},get faces(){return faces.map(({name,position,normal,width,height})=>({name,position:position.toArray(),normal:normal.toArray(),width,height}));},get roundStart(){return roundStart;},get fullMode(){return fullMode;},get videoId(){return (ready&&player.getVideoData?.().video_id)||videoId;},element,fullModeElement:cssLayer,controlsElement:controls,enterFullMode,exitFullMode,setSource,play,pause,setMuted,setVolume};
  window.arena.screen=api;
  emit();
  return {

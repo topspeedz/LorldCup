@@ -5,7 +5,7 @@ export function createInput({canvas,events,controls,isReady,onLook,onJump,onClic
  canvas.style.touchAction='none';
  let entered=false,walking=false,drag=null,tap=null; // tap: emoteMenu key pressed alone so far (T95)
  const typing=target=>(target instanceof HTMLElement&&target.matches('input,textarea'))||document.activeElement?.matches('input,textarea');
- const bound=(action,code)=>controls[action].includes(code);
+ const bound=(action,code)=>controls[action]?.includes(code);
  const down=action=>!typing(document.activeElement)&&controls[action].some(code=>keys.has(code));
  // Only leaving walk mode drops held keys: a click while walking must not stop a run (Windows repeats only the last key).
  function walkMode(value){walking=value;document.body.classList.toggle('walking',value);if(!value)keys.clear();}
@@ -42,8 +42,8 @@ export function createInput({canvas,events,controls,isReady,onLook,onJump,onClic
   if(bound('emoteMenu',e.code)){if(!e.repeat)tap=e.code;return;} // no preventDefault: Ctrl combos keep their browser default
   if(bound('jump',e.code)&&walking){e.preventDefault();if(isReady()&&!e.repeat)onJump();}
   if(walking&&['forward','backward','left','right','run'].some(action=>bound(action,e.code))){e.preventDefault();keys.add(e.code);}
-  for(const action of ['sit','fullMode']){
-   if(bound(action,e.code)){e.preventDefault();if(!e.repeat)events.dispatchEvent(new CustomEvent(INPUT_ACTION,{detail:{action,down:true}}));}
+  for(const action of ['sit','fullMode','chat']){
+   if(bound(action,e.code)&&!e.ctrlKey&&!e.metaKey){e.preventDefault();if(!e.repeat)events.dispatchEvent(new CustomEvent(INPUT_ACTION,{detail:{action,down:true}}));}
   }
  },options);
  document.addEventListener('keyup',e=>{
@@ -51,7 +51,7 @@ export function createInput({canvas,events,controls,isReady,onLook,onJump,onClic
   const alone=tap===e.code;if(bound('emoteMenu',e.code))tap=null;
   if(!entered||typing(e.target))return;
   if(bound('emoteMenu',e.code)){if(alone)for(const down of [true,false])events.dispatchEvent(new CustomEvent(INPUT_ACTION,{detail:{action:'emoteMenu',down}}));return;}
-  for(const action of ['sit','fullMode']){
+  for(const action of ['sit','fullMode','chat']){
    if(bound(action,e.code)){e.preventDefault();events.dispatchEvent(new CustomEvent(INPUT_ACTION,{detail:{action,down:false}}));}
   }
  },options);

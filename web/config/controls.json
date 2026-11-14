@@ -31,5 +31,8 @@
   ],
   "fullMode": [
     "KeyF"
+  ],
+  "chat": [
+    "KeyC"
   ]
 }
