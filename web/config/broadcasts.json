@@ -2,10 +2,10 @@
  "broadcasts": [
   {
    "id": "final",
-   "liveOn": true,
    "name": "결승전",
    "image": "./assets/broadcasts/final.webp",
    "vod": "https://www.youtube.com/watch?v=qQ4QqT20Ibs",
+   "vodStart": 4776,
    "teams": [
     "geng",
     "blg"
